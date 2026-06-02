@@ -1,0 +1,30 @@
+extends State
+class_name Pogo
+ 
+@export var player: CharacterBody2D
+ 
+const SPEED       := 80.0
+const GRAVITY     := 600.0
+const POGO_FORCE  := -220.0  #Força do quique 
+
+func update(_delta: float) -> void:
+	if Input.is_action_just_released("pogo"): #Soltou o botão de pogo volta a cair normalmente em fall
+		transitioned.emit(self, "fall")
+ 
+func _physics_update(delta: float) -> void:
+	var direction := Input.get_axis("left", "right")
+	if direction != 0:
+		player.velocity.x = direction * SPEED
+	else:
+		player.velocity.x = move_toward(player.velocity.x, 0, SPEED)
+ 
+	player.velocity.y += GRAVITY * delta
+ 
+	player.move_and_slide()
+ 	
+	if player.is_on_floor() and Input.is_action_pressed("pogo"): #Tocou no chão segurando pogo quica de novo
+		player.velocity.y = POGO_FORCE
+ 	
+	if not Input.is_action_pressed("pogo") and player.velocity.y > 0: #Soltou enquanto estava no ar volta para fall
+		transitioned.emit(self, "fall")
+ 
