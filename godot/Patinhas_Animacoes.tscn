@@ -109,6 +109,9 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cccv5")
+}, {
+"duration": 1.0,
+"texture": null
 }],
 "loop": true,
 "name": &"Dano",
@@ -195,5 +198,3 @@ animations = [{
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_fhwcv")
 animation = &"Abaixar"
-frame = 1
-frame_progress = 0.6786035
