@@ -114,6 +114,9 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cccv5")
+}, {
+"duration": 1.0,
+"texture": null
 }],
 "loop": true,
 "name": &"Dano",
@@ -203,6 +206,7 @@ height = 26.35
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2082220831]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_fhwcv")
+animation = &"Abaixar"
 animation = &"Caminhar"
 frame_progress = 0.24807206
 
