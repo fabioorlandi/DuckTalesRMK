@@ -174,9 +174,6 @@ physics_layer_0/collision_layer = 1
 physics_layer_1/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_wyuc7")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_deayw"]
-size = Vector2(22.16, 20)
-
 [node name="Node2D" type="Node2D" unique_id=1058646140]
 
 [node name="DuckTalesMap" type="Sprite2D" parent="." unique_id=50978032]
@@ -192,10 +189,3 @@ tile_set = SubResource("TileSet_deayw")
 
 [node name="Patinhas" parent="." unique_id=917563206 instance=ExtResource("3_deayw")]
 position = Vector2(38, 369)
-
-[node name="Sprite2D" type="CharacterBody2D" parent="." unique_id=1699351530]
-position = Vector2(146, 394)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D" unique_id=1937473387]
-scale = Vector2(28.919998, 1)
-shape = SubResource("RectangleShape2D_deayw")

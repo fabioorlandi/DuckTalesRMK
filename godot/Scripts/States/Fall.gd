@@ -2,6 +2,8 @@ extends State
 class_name Fall
 
 @export var player: CharacterBody2D
+@export var animation = &"Cair_Final"
+@export var animation_2 = &"Pular"
  
 const SPEED   := 80.0
 const GRAVITY := 400.0
@@ -18,11 +20,15 @@ func _physics_update(delta: float) -> void:
  	
 	player.velocity.y += GRAVITY * delta #Gravidade aplicada
  
+	animate(animation_2, direction < 0)
 	player.move_and_slide()
  	
 	if player.is_on_floor(): #Voltou para o chão, troca para MOVE
 		player.velocity.y = 0
-		transitioned.emit(self, "move")
+		animate(animation, direction < 0)
+		
+		await get_tree().create_timer(0.05).timeout
+		transitioned.emit(self, "idle")
 		
 	if Input.is_action_just_pressed("pogo"):
 		transitioned.emit(self, "pogo")

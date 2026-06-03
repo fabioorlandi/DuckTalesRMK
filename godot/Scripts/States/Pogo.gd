@@ -2,6 +2,8 @@ extends State
 class_name Pogo
  
 @export var player: CharacterBody2D
+@export var animation = &"Pogo_Inicio"
+@export var animation_2 = &"Pogo_Final"
  
 const SPEED       := 80.0
 const GRAVITY     := 600.0
@@ -20,9 +22,13 @@ func _physics_update(delta: float) -> void:
  
 	player.velocity.y += GRAVITY * delta
  
+	animate(animation, direction < 0)
 	player.move_and_slide()
  	
 	if player.is_on_floor() and Input.is_action_pressed("pogo"): #Tocou no chão segurando pogo quica de novo
+		animate(animation_2, direction < 0)
+		await get_tree().create_timer(0.05).timeout
+
 		player.velocity.y = POGO_FORCE
  	
 	if not Input.is_action_pressed("pogo") and player.velocity.y > 0: #Soltou enquanto estava no ar volta para fall
