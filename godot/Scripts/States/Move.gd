@@ -2,6 +2,7 @@ extends State
 class_name Move
 
 @export var player: CharacterBody2D
+@export var animation = &"Caminhar"
  
 const SPEED := 80.0
 const GRAVITY := 400.0
@@ -21,8 +22,10 @@ func _physics_update(delta: float) -> void:
  
 	if direction != 0:
 		player.velocity.x = direction * SPEED
-	else:		
+	else:
 		player.velocity.x = move_toward(player.velocity.x, 0, SPEED) #Desaceleração suave ao soltar o botão
+		transitioned.emit(self, "idle")
  
+	animate(animation, direction < 0)
 	player.move_and_slide()
  

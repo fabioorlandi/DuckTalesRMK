@@ -2,7 +2,8 @@ extends State
 class_name Jump
 
 @export var player: CharacterBody2D
- 
+@export var animation = &"Pular"
+
 const SPEED    := 80.0
 const GRAVITY  := 400.0
 const JUMP_FORCE := -200.0
@@ -24,6 +25,7 @@ func _physics_update(delta: float) -> void:
  	
 	player.velocity.y += GRAVITY * delta #Aplica gravidade
  
+	animate(animation, direction < 0)
 	player.move_and_slide()
  	
 	if player.velocity.y > 0: #Quando a velocidade vertical vira positiva troca pra fall
