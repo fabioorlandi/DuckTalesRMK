@@ -15,9 +15,12 @@ func update(delta: float) -> void:
 func _physics_update(delta: float) -> void:
 	pass
 
-func animate(animation: String, flip_h: bool = false):
+func animate(animation: String, direction: float):
 	var animated_sprite = self.get_parent().get_parent()\
 		.get_node("AnimatedSprite2D")
 	animated_sprite.animation = animation
-	animated_sprite.flip_h  = flip_h
+	
+	if direction != 0:
+		animated_sprite.flip_h = direction < 0
+	
 	animated_sprite.play()

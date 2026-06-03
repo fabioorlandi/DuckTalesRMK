@@ -13,8 +13,8 @@ func update(_delta: float) -> void:
 		transitioned.emit(self, "jump")
 		
 	if direction == 0:
-		animate(animation)
+		animate(animation, direction)
 
 func enter() -> void:
-	animate(animation)	
+	animate(animation, 0)	
 	player.move_and_slide()
