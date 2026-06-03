@@ -20,12 +20,12 @@ func _physics_update(delta: float) -> void:
  	
 	player.velocity.y += GRAVITY * delta #Gravidade aplicada
  
-	animate(animation_2, direction < 0)
+	animate(animation_2, direction)
 	player.move_and_slide()
  	
 	if player.is_on_floor(): #Voltou para o chão, troca para MOVE
 		player.velocity.y = 0
-		animate(animation, direction < 0)
+		animate(animation, direction)
 		
 		await get_tree().create_timer(0.05).timeout
 		transitioned.emit(self, "idle")

@@ -25,7 +25,7 @@ func _physics_update(delta: float) -> void:
  	
 	player.velocity.y += GRAVITY * delta #Aplica gravidade
  
-	animate(animation, direction < 0)
+	animate(animation, direction)
 	player.move_and_slide()
  	
 	if player.velocity.y > 0: #Quando a velocidade vertical vira positiva troca pra fall

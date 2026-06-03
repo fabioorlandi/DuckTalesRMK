@@ -22,11 +22,11 @@ func _physics_update(delta: float) -> void:
  
 	player.velocity.y += GRAVITY * delta
  
-	animate(animation, direction < 0)
+	animate(animation, direction)
 	player.move_and_slide()
  	
 	if player.is_on_floor() and Input.is_action_pressed("pogo"): #Tocou no chão segurando pogo quica de novo
-		animate(animation_2, direction < 0)
+		animate(animation_2, direction)
 		await get_tree().create_timer(0.05).timeout
 
 		player.velocity.y = POGO_FORCE

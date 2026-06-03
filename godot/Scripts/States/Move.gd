@@ -26,6 +26,6 @@ func _physics_update(delta: float) -> void:
 		player.velocity.x = move_toward(player.velocity.x, 0, SPEED) #Desaceleração suave ao soltar o botão
 		transitioned.emit(self, "idle")
  
-	animate(animation, direction < 0)
+	animate(animation, direction)
 	player.move_and_slide()
  
