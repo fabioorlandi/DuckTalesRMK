@@ -25,11 +25,16 @@ func _physics_update(delta: float) -> void:
 	animate(animation, direction)
 	player.move_and_slide()
  	
-	if player.is_on_floor() and Input.is_action_pressed("pogo"): #Tocou no chão segurando pogo quica de novo
+	if player.is_on_floor() and Input.is_action_pressed("pogo"): #Tocou no chão/objeto segurxando pogo quica de novo
 		animate(animation_2, direction)
 		await get_tree().create_timer(0.05).timeout
 
 		player.velocity.y = POGO_FORCE
+		
+		var collision = player.get_last_slide_collision()
+		if collision:
+			var body = collision.get_collider()
+			body.emit_signal("destroy_on_collision")
  	
 	if not Input.is_action_pressed("pogo") and player.velocity.y > 0: #Soltou enquanto estava no ar volta para fall
 		transitioned.emit(self, "fall")
