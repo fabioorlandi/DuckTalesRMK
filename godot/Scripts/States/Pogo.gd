@@ -25,7 +25,7 @@ func _physics_update(delta: float) -> void:
 	animate(animation, direction)
 	player.move_and_slide()
  	
-	if player.is_on_floor() and Input.is_action_pressed("pogo"): #Tocou no chão/objeto segurxando pogo quica de novo
+	if player.is_on_floor() and Input.is_action_pressed("pogo"): #Tocou no chão/objeto segurando pogo quica de novo
 		animate(animation_2, direction)
 		await get_tree().create_timer(0.05).timeout
 
