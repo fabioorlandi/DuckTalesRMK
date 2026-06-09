@@ -16,5 +16,5 @@ func update(_delta: float) -> void:
 		animate(animation, direction)
 
 func enter() -> void:
-	animate(animation, 0)	
+	animate(animation, 0)
 	player.move_and_slide()
