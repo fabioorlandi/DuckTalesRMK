@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cndy3gnqfeqdo" path="res://Assets/DuckTalesMap.png" id="1_wyuc7"]
 [ext_resource type="PackedScene" uid="uid://cogx0t83rjkoh" path="res://Patinhas_Animacoes.tscn" id="3_deayw"]
 [ext_resource type="PackedScene" uid="uid://u1rejandld05" path="res://Bloco_Destruivel.tscn" id="4_63sgq"]
+[ext_resource type="PackedScene" uid="uid://dxb786ckq0g4i" path="res://Pato_Esqueleto.tscn" id="5_pgjuh"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_63sgq"]
 
@@ -202,3 +203,6 @@ tile_set = SubResource("TileSet_63sgq")
 
 [node name="Patinhas" parent="." unique_id=917563206 instance=ExtResource("3_deayw")]
 position = Vector2(38, 369)
+
+[node name="Pato_Esqueleto" parent="." unique_id=1090572787 instance=ExtResource("5_pgjuh")]
+position = Vector2(232, 371)

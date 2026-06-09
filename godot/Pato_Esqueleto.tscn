@@ -1,0 +1,122 @@
+[gd_scene format=3 uid="uid://dxb786ckq0g4i"]
+
+[ext_resource type="Script" uid="uid://bjwkkray8gie2" path="res://PatoEsqueleto_Scripts/pato_esqueleto.gd" id="1_h0573"]
+[ext_resource type="Texture2D" uid="uid://dtonmsktfbpqb" path="res://Assets/Pato_Esqueleto_Spritesheet.png" id="1_im06y"]
+[ext_resource type="Script" uid="uid://d4mndy3buxsc2" path="res://Scripts/FSM.gd" id="2_7foch"]
+[ext_resource type="Script" uid="uid://dre0h1h7rw5a2" path="res://PatoEsqueleto_Scripts/idle.gd" id="3_wdf0l"]
+[ext_resource type="Script" uid="uid://1hxyyqy2b1wu" path="res://PatoEsqueleto_Scripts/move.gd" id="5_16nbr"]
+[ext_resource type="Script" uid="uid://dy0qoyopxrnra" path="res://PatoEsqueleto_Scripts/ativado.gd" id="5_xkut6"]
+[ext_resource type="Script" uid="uid://bvx65v6wnq6t2" path="res://PatoEsqueleto_Scripts/desativado.gd" id="7_im06y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qvwdq"]
+size = Vector2(23, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3udnp"]
+atlas = ExtResource("1_im06y")
+region = Rect2(0, 0, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbrd6"]
+atlas = ExtResource("1_im06y")
+region = Rect2(28, 0, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fmqwh"]
+atlas = ExtResource("1_im06y")
+region = Rect2(56, 0, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7dvkr"]
+atlas = ExtResource("1_im06y")
+region = Rect2(84, 0, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgtj2"]
+atlas = ExtResource("1_im06y")
+region = Rect2(28, 0, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_elyxr"]
+atlas = ExtResource("1_im06y")
+region = Rect2(0, 0, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2sn0e"]
+atlas = ExtResource("1_im06y")
+region = Rect2(0, 0, 28, 28)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wyc2n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3udnp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbrd6")
+}],
+"loop": false,
+"name": &"Ativado",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fmqwh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7dvkr")
+}],
+"loop": true,
+"name": &"Caminhar",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rgtj2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_elyxr")
+}],
+"loop": false,
+"name": &"Desativado",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2sn0e")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[node name="Pato_Esqueleto" type="CharacterBody2D" unique_id=1090572787]
+script = ExtResource("1_h0573")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1528432573]
+position = Vector2(0.5, 1)
+shape = SubResource("RectangleShape2D_qvwdq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1465435755]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_wyc2n")
+animation = &"Idle"
+
+[node name="Label_State" type="Label" parent="." unique_id=174796275]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="FSM" type="Node" parent="." unique_id=33226552 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_7foch")
+initial_state = NodePath("IDLE")
+
+[node name="IDLE" type="Node" parent="FSM" unique_id=939635675]
+script = ExtResource("3_wdf0l")
+animation = &"Idle"
+
+[node name="MOVE" type="Node" parent="FSM" unique_id=1291984618]
+script = ExtResource("5_16nbr")
+
+[node name="ATIVADO" type="Node" parent="FSM" unique_id=2119277495]
+script = ExtResource("5_xkut6")
+
+[node name="DESATIVADO" type="Node" parent="FSM" unique_id=1122758392]
+script = ExtResource("7_im06y")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1777087500]
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
