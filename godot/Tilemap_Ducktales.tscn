@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bdxti27hvfdlj" path="res://Assets/Tilemap_Ducktales.png" id="1_bsvjp"]
 [ext_resource type="Texture2D" uid="uid://cndy3gnqfeqdo" path="res://Assets/DuckTalesMap.png" id="1_wyuc7"]
 [ext_resource type="PackedScene" uid="uid://cogx0t83rjkoh" path="res://Patinhas_Animacoes.tscn" id="3_deayw"]
-[ext_resource type="PackedScene" uid="uid://chvsxiehk03to" path="res://Bloco_Destruivel.tscn" id="4_63sgq"]
+[ext_resource type="PackedScene" uid="uid://u1rejandld05" path="res://Bloco_Destruivel.tscn" id="4_63sgq"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_63sgq"]
 
@@ -74,7 +74,6 @@ texture = ExtResource("1_bsvjp")
 3:4/0 = 0
 3:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 4:4/0 = 0
-4:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 5:4/0 = 0
 6:4/0 = 0
 7:4/0 = 0

@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://chvsxiehk03to"]
+[gd_scene format=3 uid="uid://u1rejandld05"]
 
 [ext_resource type="Script" uid="uid://bh4e6qjiy66rj" path="res://Scripts/BlocoDestruivel.gd" id="1_6ua7y"]
 [ext_resource type="Texture2D" uid="uid://bdxti27hvfdlj" path="res://Assets/Tilemap_Ducktales.png" id="1_ty2yn"]
@@ -32,10 +32,13 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lnm2q")
+}, {
+"duration": 1.0,
+"texture": null
 }],
 "loop": false,
 "name": &"destroy_block",
-"speed": 5.0
+"speed": 8.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ty2yn"]
@@ -46,6 +49,7 @@ script = ExtResource("1_6ua7y")
 metadata/_edit_group_ = true
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=771571931]
+rect = Rect2(-8, -8, 16, 16)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1730345579]
 texture_filter = 1
