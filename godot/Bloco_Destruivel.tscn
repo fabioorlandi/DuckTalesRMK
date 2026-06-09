@@ -35,7 +35,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"destroy_block",
-"speed": 8.0
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ty2yn"]
@@ -45,10 +45,14 @@ size = Vector2(16, 16)
 script = ExtResource("1_6ua7y")
 metadata/_edit_group_ = true
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=771571931]
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1730345579]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_6ua7y")
-animation = &"block"
+animation = &"destroy_block"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1130057150]
 shape = SubResource("RectangleShape2D_ty2yn")
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
