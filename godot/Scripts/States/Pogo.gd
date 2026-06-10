@@ -7,13 +7,13 @@ class_name Pogo
  
 const SPEED       := 80.0
 const GRAVITY     := 600.0
-const POGO_FORCE  := -220.0  #Força do quique 
+const POGO_FORCE  := -280.0  #Força do quique 
 
 func update(_delta: float) -> void:
 	if Input.is_action_just_released("pogo"): #Soltou o botão de pogo volta a cair normalmente em fall
 		transitioned.emit(self, "fall")
  
-func _physics_update(delta: float) -> void:
+func physics_update(delta: float) -> void:
 	var direction := Input.get_axis("left", "right")
 	if direction != 0:
 		player.velocity.x = direction * SPEED

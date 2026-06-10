@@ -23,7 +23,7 @@ func update(delta: float) -> void:
 	if Input.is_action_pressed("right"):
 		pass
 	
-func _physics_update(delta: float) -> void:
+func physics_update(delta: float) -> void:
 	if Input.is_action_pressed("up"):
 		player.velocity.y = -1 * SPEED
 		animated.speed_scale = 1

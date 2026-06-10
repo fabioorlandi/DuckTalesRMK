@@ -4,10 +4,6 @@ class_name Idle
 @export var player: CharacterBody2D
 @export var animation = &"Parado"
 
-func enter() -> void:
-	animate(animation, 0)
-	player.move_and_slide()
-
 func update(_delta: float) -> void:
 	var direction := Input.get_axis("left", "right")
 	if direction != 0:
@@ -20,3 +16,5 @@ func update(_delta: float) -> void:
 		
 	if direction == 0:
 		animate(animation, direction)
+
+	player.move_and_slide()

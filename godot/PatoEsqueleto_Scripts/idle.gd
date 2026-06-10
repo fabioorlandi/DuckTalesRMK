@@ -23,7 +23,7 @@ func update(delta: float) -> void:
 	if actor.player_on_screen and timer >= reactivate_delay:
 		transitioned.emit(self, "ativado")
 
-func _physics_update(_delta: float) -> void:
+func physics_update(_delta: float) -> void:
 	pass
 
 func exit() -> void:
