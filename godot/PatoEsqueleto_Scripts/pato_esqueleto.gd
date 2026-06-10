@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name PatoEsqueleto
 
 var primeira_ativacao :=true
 var player_on_screen := false
