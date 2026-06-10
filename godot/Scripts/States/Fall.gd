@@ -27,9 +27,15 @@ func _physics_update(delta: float) -> void:
 		player.velocity.y = 0
 		animate(animation, direction)
 		
-		await get_tree().create_timer(0.05).timeout
-		transitioned.emit(self, "idle")
 		
-	if Input.is_action_just_pressed("pogo"):
+		if Input.is_action_pressed("down"):
+			transitioned.emit(self, "crouch")
+		else:
+			await get_tree().create_timer(0.05).timeout
+			transitioned.emit(self, "idle")
+		
+	if Input.is_action_pressed("pogo") and Input.is_action_pressed("down"):
 		transitioned.emit(self, "pogo")
+	if Input.is_action_just_pressed("up"): #adicionar que se estiver em contato com a corta ================
+		transitioned.emit(self, "climb")
  

@@ -4,7 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://cndy3gnqfeqdo" path="res://Assets/DuckTalesMap.png" id="1_wyuc7"]
 [ext_resource type="PackedScene" uid="uid://cogx0t83rjkoh" path="res://Patinhas_Animacoes.tscn" id="3_deayw"]
 [ext_resource type="PackedScene" uid="uid://u1rejandld05" path="res://Bloco_Destruivel.tscn" id="4_63sgq"]
-[ext_resource type="PackedScene" path="res://Pato_Esqueleto.tscn" id="5_pgjuh"]
+[ext_resource type="PackedScene" uid="uid://dxb786ckq0g4i" path="res://Pato_Esqueleto.tscn" id="5_pgjuh"]
+[ext_resource type="Script" uid="uid://c10vnem3irjlw" path="res://Corda.gd" id="6_4oyrw"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_63sgq"]
 
@@ -188,6 +189,8 @@ scenes/1/scene = ExtResource("4_63sgq")
 [sub_resource type="TileSet" id="TileSet_63sgq"]
 sources/0 = SubResource("TileSetScenesCollectionSource_deayw")
 
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_pgjuh"]
+
 [node name="MainNode" type="Node2D" unique_id=1058646140]
 
 [node name="DuckTalesMap" type="Sprite2D" parent="." unique_id=50978032]
@@ -206,7 +209,17 @@ tile_map_data = PackedByteArray("AAAIABcAAAAAAAAAAQAJABcAAAAAAAAAAQAKABcAAAAAAAA
 tile_set = SubResource("TileSet_63sgq")
 
 [node name="Patinhas" parent="." unique_id=917563206 instance=ExtResource("3_deayw")]
-position = Vector2(38, 369)
+position = Vector2(38, 370)
 
 [node name="Pato_Esqueleto" parent="." unique_id=1090572787 instance=ExtResource("5_pgjuh")]
 position = Vector2(232, 371)
+
+[node name="Corda" type="Area2D" parent="." unique_id=1975783942]
+position = Vector2(896, 336)
+scale = Vector2(1, -31.600004)
+script = ExtResource("6_4oyrw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Corda" unique_id=1584375562]
+shape = SubResource("SegmentShape2D_pgjuh")
+
+[connection signal="body_entered" from="Corda" to="Corda" method="_on_body_entered"]

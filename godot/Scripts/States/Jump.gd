@@ -16,7 +16,7 @@ func update(_delta: float) -> void:
 	if Input.is_action_just_released("jump") and player.velocity.y < 0: #Pulo curto
 		player.velocity.y *= JUMP_CUT
  
-func _physics_update(delta: float) -> void:	
+func _physics_update(delta: float) -> void:
 	var direction := Input.get_axis("left", "right") #Controle horizontal no ar
 	if direction != 0:
 		player.velocity.x = direction * SPEED
@@ -28,12 +28,19 @@ func _physics_update(delta: float) -> void:
 	animate(animation, direction)
 	player.move_and_slide()
  	
+	var collision = player.get_last_slide_collision()
+	if collision:
+		var body = collision.get_collider()
+		print(body.get_class())
+		
+	
 	if player.velocity.y > 0: #Quando a velocidade vertical vira positiva troca pra fall
 		transitioned.emit(self, "fall")
 		
-	if Input.is_action_just_pressed("pogo"):
+	if Input.is_action_pressed("pogo") and Input.is_action_pressed("down"):
 		transitioned.emit(self, "pogo")
+	if Input.is_action_just_pressed("up"): #adicionar que se estiver em contato com a corta ================
+		transitioned.emit(self, "climb")
 	
-	if player.is_on_ceiling(): #Caso toque no teto para o incremento do jump
+	if player.is_on_ceiling(): #Caso toque no teto encerra o incremento do jump
 		player.velocity.y = 0
- 
