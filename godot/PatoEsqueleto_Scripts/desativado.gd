@@ -31,7 +31,7 @@ func update(_delta: float) -> void:
 		# volta pro idle (desmontado)
 		transitioned.emit(self, "idle")
 
-func _physics_update(_delta: float) -> void:
+func physics_update(_delta: float) -> void:
 	actor.velocity.y += 1000 * _delta
 	actor.velocity.x = 0
 	actor.move_and_slide()

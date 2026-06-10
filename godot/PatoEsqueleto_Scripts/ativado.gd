@@ -33,7 +33,7 @@ func update(_delta: float) -> void:
 	actor.velocity.x = actor.direction * 50
 	transitioned.emit(self, "move")
 
-func _physics_update(_delta: float) -> void:
+func physics_update(_delta: float) -> void:
 	pass
 
 func exit() -> void:

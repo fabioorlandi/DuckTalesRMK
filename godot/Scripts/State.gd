@@ -12,7 +12,7 @@ func exit() -> void:
 func update(delta: float) -> void:
 	pass
 	
-func _physics_update(delta: float) -> void:
+func physics_update(delta: float) -> void:
 	pass
 
 func animate(animation: String, direction: float):

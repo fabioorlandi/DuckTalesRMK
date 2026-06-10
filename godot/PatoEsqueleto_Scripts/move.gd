@@ -12,7 +12,7 @@ func enter() -> void:
 	var sprite: AnimatedSprite2D = actor.get_node("AnimatedSprite2D")
 	sprite.play("Caminhar")
 
-func _physics_update(_delta: float) -> void:
+func physics_update(_delta: float) -> void:
 	# movimento horizontal
 	actor.velocity.x = actor.direction * speed
 	
