@@ -54,7 +54,7 @@ rect = Rect2(-8, -8, 16, 16)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1730345579]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_6ua7y")
-animation = &"destroy_block"
+animation = &"block"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1130057150]
 shape = SubResource("RectangleShape2D_ty2yn")
