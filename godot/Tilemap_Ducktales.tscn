@@ -162,7 +162,6 @@ texture = ExtResource("1_bsvjp")
 8:11/0 = 0
 1:12/0 = 0
 2:12/0 = 0
-2:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:12/0 = 0
 4:12/0 = 0
 5:12/0 = 0
@@ -203,6 +202,7 @@ sources/0 = SubResource("TileSetScenesCollectionSource_deayw")
 [node name="MainNode" type="Node2D" unique_id=1058646140]
 
 [node name="DuckTalesMap" type="Sprite2D" parent="." unique_id=50978032]
+visible = false
 modulate = Color(1, 1, 1, 0.35686275)
 texture_filter = 1
 position = Vector2(1024, -168)

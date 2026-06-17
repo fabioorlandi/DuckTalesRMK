@@ -31,4 +31,5 @@ func physics_update(_delta: float) -> void:
 		if collision:
 			var body = collision.get_collider()
 			body.emit_signal("destroy_on_collision")
+		
 		transitioned.emit(self, "desativado")
