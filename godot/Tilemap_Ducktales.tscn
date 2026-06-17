@@ -5,9 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://cogx0t83rjkoh" path="res://Patinhas_Animacoes.tscn" id="3_deayw"]
 [ext_resource type="PackedScene" uid="uid://u1rejandld05" path="res://Bloco_Destruivel.tscn" id="4_63sgq"]
 [ext_resource type="PackedScene" uid="uid://dmy14x3qhkdta" path="res://Bloco_Empurravel.tscn" id="4_fcfpr"]
-[ext_resource type="PackedScene" uid="uid://bqwigldj0fobp" path="res://Cabeca_Cavaleiro.tscn" id="4_fu7tr"]
-[ext_resource type="PackedScene" uid="uid://c80yiyuey4dff" path="res://Pato_Esqueleto.tscn" id="5_pgjuh"]
-[ext_resource type="Script" path="res://Corda.gd" id="6_4oyrw"]
+[ext_resource type="PackedScene" uid="uid://bqwigldj0fobp" path="res://Armadura.tscn" id="4_fu7tr"]
+[ext_resource type="PackedScene" uid="uid://dxb786ckq0g4i" path="res://Pato_Esqueleto.tscn" id="5_pgjuh"]
+[ext_resource type="Script" uid="uid://c10vnem3irjlw" path="res://Corda.gd" id="6_4oyrw"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_63sgq"]
 
@@ -153,9 +153,7 @@ texture = ExtResource("1_bsvjp")
 7:10/0 = 0
 8:10/0 = 0
 1:11/0 = 0
-1:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:11/0 = 0
-2:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:11/0 = 0
 4:11/0 = 0
 5:11/0 = 0
@@ -163,7 +161,6 @@ texture = ExtResource("1_bsvjp")
 7:11/0 = 0
 8:11/0 = 0
 1:12/0 = 0
-1:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:12/0 = 0
 2:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:12/0 = 0
@@ -234,9 +231,9 @@ script = ExtResource("6_4oyrw")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Corda" unique_id=1584375562]
 shape = SubResource("SegmentShape2D_pgjuh")
 
-[node name="Itens" type="Node2D" parent="." unique_id=326382331]
+[node name="Interacao_Cenario" type="Node2D" parent="." unique_id=326382331]
 
-[node name="RigidBody2D" parent="Itens" unique_id=635808693 instance=ExtResource("4_fu7tr")]
+[node name="Armadura01" parent="Interacao_Cenario" unique_id=635808693 instance=ExtResource("4_fu7tr")]
 position = Vector2(496, 350)
 
 [connection signal="body_entered" from="Corda" to="Corda" method="_on_body_entered"]

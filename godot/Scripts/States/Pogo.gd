@@ -36,6 +36,7 @@ func physics_update(delta: float) -> void:
 			var body = collision.get_collider()
 			body.emit_signal("destroy_on_collision")
 			body.emit_signal("fall_on_collision")
+			body.emit_signal("slide_on_collision")
  	
 	if not Input.is_action_pressed("pogo") and player.velocity.y > 0: #Soltou enquanto estava no ar volta para fall
 		transitioned.emit(self, "fall")
