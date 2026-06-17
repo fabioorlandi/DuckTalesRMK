@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://cndy3gnqfeqdo" path="res://Assets/DuckTalesMap.png" id="1_wyuc7"]
 [ext_resource type="PackedScene" uid="uid://cogx0t83rjkoh" path="res://Patinhas_Animacoes.tscn" id="3_deayw"]
 [ext_resource type="PackedScene" uid="uid://u1rejandld05" path="res://Bloco_Destruivel.tscn" id="4_63sgq"]
+[ext_resource type="PackedScene" uid="uid://dmy14x3qhkdta" path="res://Bloco_Empurravel.tscn" id="4_fcfpr"]
+[ext_resource type="PackedScene" uid="uid://bqwigldj0fobp" path="res://Cabeca_Cavaleiro.tscn" id="4_fu7tr"]
 [ext_resource type="PackedScene" uid="uid://c80yiyuey4dff" path="res://Pato_Esqueleto.tscn" id="5_pgjuh"]
 [ext_resource type="Script" path="res://Corda.gd" id="6_4oyrw"]
 
@@ -192,8 +194,9 @@ physics_layer_0/physics_material = SubResource("PhysicsMaterial_63sgq")
 sources/0 = SubResource("TileSetAtlasSource_wyuc7")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_deayw"]
-resource_name = "Bloco_Destruivel"
+resource_name = "Cenário_Interativo"
 scenes/1/scene = ExtResource("4_63sgq")
+scenes/3/scene = ExtResource("4_fcfpr")
 
 [sub_resource type="TileSet" id="TileSet_63sgq"]
 sources/0 = SubResource("TileSetScenesCollectionSource_deayw")
@@ -203,7 +206,6 @@ sources/0 = SubResource("TileSetScenesCollectionSource_deayw")
 [node name="MainNode" type="Node2D" unique_id=1058646140]
 
 [node name="DuckTalesMap" type="Sprite2D" parent="." unique_id=50978032]
-visible = false
 modulate = Color(1, 1, 1, 0.35686275)
 texture_filter = 1
 position = Vector2(1024, -168)
@@ -215,7 +217,7 @@ tile_map_data = PackedByteArray("AAAAABgAAAABAAEAAAABABgAAAACAAEAAAACABgAAAABAAE
 tile_set = SubResource("TileSet_deayw")
 
 [node name="TileMapLayerForeground" type="TileMapLayer" parent="." unique_id=688610627]
-tile_map_data = PackedByteArray("AAAIABcAAAAAAAAAAQAJABcAAAAAAAAAAQAKABcAAAAAAAAAAQALABcAAAAAAAAAAQASABcAAAAAAAAAAQATABcAAAAAAAAAAQAUABcAAAAAAAAAAQAVABcAAAAAAAAAAQAWABcAAAAAAAAAAQAXABcAAAAAAAAAAQAAABYAAAAAAAAAAQAAABcAAAAAAAAAAQA8ABAAAAAAAAAAAQA8ABEAAAAAAAAAAQA8ABIAAAAAAAAAAQA8ABMAAAAAAAAAAQA8ABQAAAAAAAAAAQA8ABUAAAAAAAAAAQAXAAsAAAAAAAAAAQAYAAsAAAAAAAAAAQA8AAcAAAAAAAAAAQA8AAgAAAAAAAAAAQA9ABUAAAAAAAAAAQA+ABUAAAAAAAAAAQA/ABUAAAAAAAAAAQAuABIAAAAAAAAAAQAvABIAAAAAAAAAAQAwABIAAAAAAAAAAQAzABcAAAAAAAAAAQAyABcAAAAAAAAAAQAxABcAAAAAAAAAAQAwABcAAAAAAAAAAQA=")
+tile_map_data = PackedByteArray("AAAIABcAAAAAAAAAAQAJABcAAAAAAAAAAQAKABcAAAAAAAAAAQALABcAAAAAAAAAAQASABcAAAAAAAAAAQATABcAAAAAAAAAAQAUABcAAAAAAAAAAQAVABcAAAAAAAAAAQAWABcAAAAAAAAAAQAXABcAAAAAAAAAAQAAABYAAAAAAAAAAQAAABcAAAAAAAAAAQA8ABAAAAAAAAAAAQA8ABEAAAAAAAAAAQA8ABIAAAAAAAAAAQA8ABMAAAAAAAAAAQA8ABQAAAAAAAAAAQA8ABUAAAAAAAAAAQAXAAsAAAAAAAAAAQAYAAsAAAAAAAAAAQA8AAcAAAAAAAAAAQA8AAgAAAAAAAAAAQA9ABUAAAAAAAAAAQA+ABUAAAAAAAAAAQA/ABUAAAAAAAAAAQAuABIAAAAAAAAAAQAvABIAAAAAAAAAAQAwABIAAAAAAAAAAQAzABcAAAAAAAAAAQAyABcAAAAAAAAAAQAxABcAAAAAAAAAAQAwABcAAAAAAAAAAQAxAAQAAAAAAAAAAwA=")
 tile_set = SubResource("TileSet_63sgq")
 
 [node name="Patinhas" parent="." unique_id=917563206 instance=ExtResource("3_deayw")]
@@ -231,5 +233,10 @@ script = ExtResource("6_4oyrw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Corda" unique_id=1584375562]
 shape = SubResource("SegmentShape2D_pgjuh")
+
+[node name="Itens" type="Node2D" parent="." unique_id=326382331]
+
+[node name="RigidBody2D" parent="Itens" unique_id=635808693 instance=ExtResource("4_fu7tr")]
+position = Vector2(496, 350)
 
 [connection signal="body_entered" from="Corda" to="Corda" method="_on_body_entered"]
