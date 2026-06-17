@@ -1,16 +1,24 @@
 [gd_scene format=3 uid="uid://bqwigldj0fobp"]
 
 [ext_resource type="Texture2D" uid="uid://dka3cjpnddhj2" path="res://Assets/Helmet.png" id="1_pnd5t"]
+[ext_resource type="Script" uid="uid://c81ewdyka13ab" path="res://Scripts/CabecaCavaleiro.gd" id="1_u8vg3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pnd5t"]
 size = Vector2(14, 10)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u8vg3"]
+size = Vector2(14, 16)
+
 [node name="RigidBody2D" type="RigidBody2D" unique_id=635808693]
+script = ExtResource("1_u8vg3")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=586642916]
 texture_filter = 1
 texture = ExtResource("1_pnd5t")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=185195479]
+[node name="CollisionShape2DEstatico" type="CollisionShape2D" parent="." unique_id=185195479]
 position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_pnd5t")
+
+[node name="CollisionShape2DCaido" type="CollisionShape2D" parent="." unique_id=1722043860]
+shape = SubResource("RectangleShape2D_u8vg3")
