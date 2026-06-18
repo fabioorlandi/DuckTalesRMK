@@ -35,6 +35,8 @@ func physics_update(delta: float) -> void:
 		if collision:
 			var body = collision.get_collider()
 			body.emit_signal("destroy_on_collision")
+			body.emit_signal("fall_on_collision")
+			body.emit_signal("slide_on_collision")
  	
 	#saveLastDir
 	if Input.is_action_pressed("left"):

@@ -2,10 +2,10 @@ extends RigidBody2D
 signal destroy_on_collision
 
 func _ready() -> void:
-	self.gravity_scale = 0
+	freeze = true
 	destroy_on_collision.connect(destroy_body)
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	pass
 
 func destroy_body():

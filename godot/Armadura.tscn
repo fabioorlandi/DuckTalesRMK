@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://bqwigldj0fobp"]
+
+[ext_resource type="Script" uid="uid://c81ewdyka13ab" path="res://Scripts/ElmoCavaleiro.gd" id="1_l102d"]
+[ext_resource type="Texture2D" uid="uid://dka3cjpnddhj2" path="res://Assets/Helmet.png" id="1_pnd5t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l102d"]
+size = Vector2(29.875, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pnd5t"]
+size = Vector2(16, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u8vg3"]
+size = Vector2(16, 16)
+
+[node name="RigidBodyArmadura" type="RigidBody2D" unique_id=635808693]
+freeze = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShapeArmadura" type="CollisionShape2D" parent="." unique_id=1247080618]
+position = Vector2(0, 18)
+shape = SubResource("RectangleShape2D_l102d")
+
+[node name="CharacterBodyElmo" type="CharacterBody2D" parent="." unique_id=767663677]
+script = ExtResource("1_l102d")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBodyElmo" unique_id=586642916]
+texture_filter = 1
+texture = ExtResource("1_pnd5t")
+
+[node name="CollisionShapeElmoEstatico" type="CollisionShape2D" parent="CharacterBodyElmo" unique_id=185195479]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_pnd5t")
+
+[node name="CollisionShapeElmoCaido" type="CollisionShape2D" parent="CharacterBodyElmo" unique_id=1722043860]
+shape = SubResource("RectangleShape2D_u8vg3")
