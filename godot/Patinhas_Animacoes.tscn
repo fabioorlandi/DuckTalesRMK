@@ -236,8 +236,6 @@ size = Vector2(22, 21)
 [node name="Patinhas" type="CharacterBody2D" unique_id=917563206]
 script = ExtResource("1_rdkiu")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1648574872]
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2082220831]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_fhwcv")

@@ -174,15 +174,6 @@ texture = ExtResource("1_bsvjp")
 0:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 0:12/0 = 0
 0:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-0:13/0 = 0
-1:13/0 = 0
-1:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-2:13/0 = 0
-2:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-3:13/0 = 0
-3:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-4:13/0 = 0
-4:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSet" id="TileSet_deayw"]
 physics_layer_0/collision_layer = 1
@@ -197,12 +188,34 @@ scenes/3/scene = ExtResource("4_fcfpr")
 [sub_resource type="TileSet" id="TileSet_63sgq"]
 sources/0 = SubResource("TileSetScenesCollectionSource_deayw")
 
+[sub_resource type="GDScript" id="GDScript_fu7tr"]
+script/source = "extends Camera2D
+
+@export var player: CharacterBody2D
+@export var speed := 5.0
+
+var follow = false
+
+var fixed_y: float
+
+func _ready():
+	fixed_y = global_position.y
+
+func _process(delta):
+	if follow:
+		global_position.x = lerp(
+			global_position.x,
+			player.global_position.x,
+			speed * delta
+		)
+		global_position.y = fixed_y
+"
+
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_pgjuh"]
 
 [node name="MainNode" type="Node2D" unique_id=1058646140]
 
 [node name="DuckTalesMap" type="Sprite2D" parent="." unique_id=50978032]
-visible = false
 modulate = Color(1, 1, 1, 0.35686275)
 texture_filter = 1
 position = Vector2(1024, -168)
@@ -223,10 +236,39 @@ position = Vector2(438, 373)
 [node name="Pato_Esqueleto" parent="." unique_id=1090572787 instance=ExtResource("5_pgjuh")]
 position = Vector2(232, 371)
 
+[node name="Camera2D" type="Camera2D" parent="." unique_id=356561041]
+position = Vector2(128, 312)
+script = SubResource("GDScript_fu7tr")
+
+[node name="UI" type="Node2D" parent="Camera2D" unique_id=1631643127]
+position = Vector2(-38, -362)
+
+[node name="Background" type="Sprite2D" parent="Camera2D/UI" unique_id=269774112]
+z_index = 10
+position = Vector2(38, 274)
+texture = ExtResource("7_fu7tr")
+region_enabled = true
+region_rect = Rect2(0, 146, 256, 48)
+
+[node name="Left" type="Sprite2D" parent="Camera2D/UI" unique_id=1922133915]
+z_index = 11
+position = Vector2(-34, 278)
+texture = ExtResource("7_fu7tr")
+region_enabled = true
+region_rect = Rect2(8, 4, 95, 39)
+
+[node name="Right" type="Sprite2D" parent="Camera2D/UI" unique_id=1952773466]
+z_index = 12
+position = Vector2(114, 278)
+texture = ExtResource("7_fu7tr")
+region_enabled = true
+region_rect = Rect2(161, 4, 87, 39)
+
 [node name="Corda" type="Area2D" parent="." unique_id=1975783942]
 position = Vector2(896, 336)
 scale = Vector2(1, -31.600004)
 script = ExtResource("6_4oyrw")
+ropeX = 896.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Corda" unique_id=1584375562]
 shape = SubResource("SegmentShape2D_pgjuh")
@@ -237,3 +279,4 @@ shape = SubResource("SegmentShape2D_pgjuh")
 position = Vector2(496, 350)
 
 [connection signal="body_entered" from="Corda" to="Corda" method="_on_body_entered"]
+[connection signal="body_exited" from="Corda" to="Corda" method="_on_body_exited"]

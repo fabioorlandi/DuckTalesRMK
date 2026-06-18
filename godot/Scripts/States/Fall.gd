@@ -19,7 +19,7 @@ func physics_update(delta: float) -> void:
 		player.velocity.x = move_toward(player.velocity.x, 0, SPEED)
  	
 	player.velocity.y += GRAVITY * delta #Gravidade aplicada
- 
+ 		
 	animate(animation_2, direction)
 	player.move_and_slide()
  	
@@ -32,9 +32,15 @@ func physics_update(delta: float) -> void:
 		else:
 			await get_tree().create_timer(0.05).timeout
 			transitioned.emit(self, "idle")
-		
+	
+	#saveLastDir
+	if Input.is_action_pressed("left"):
+		player.lastDir = "left"
+	elif Input.is_action_pressed("right"):
+		player.lastDir = "right"
+	
 	if Input.is_action_pressed("pogo") and Input.is_action_pressed("down"):
 		transitioned.emit(self, "pogo")
-	if Input.is_action_just_pressed("up"): #adicionar que se estiver em contato com a corda ================
+	if Input.is_action_pressed("up") and player.canClimb: #Caso pressione Cima e esteja em contato com a corda
 		transitioned.emit(self, "climb")
  

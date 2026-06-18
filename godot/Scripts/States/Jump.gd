@@ -28,18 +28,20 @@ func physics_update(delta: float) -> void:
 	animate(animation, direction)
 	player.move_and_slide()
  	
-	var collision = player.get_last_slide_collision()
-	if collision:
-		var body = collision.get_collider()
-		print(body.get_class())
+	#saveLastDir
+	if Input.is_action_pressed("left"):
+		player.lastDir = "left"
+	elif Input.is_action_pressed("right"):
+		player.lastDir = "right"
+	
+	
+
+	if Input.is_action_pressed("pogo") and Input.is_action_pressed("down"):
+		transitioned.emit(self, "pogo")
+	if Input.is_action_pressed("up") and player.canClimb: #Caso pressione Cima e esteja em contato com a corda
+		transitioned.emit(self, "climb")
 
 	if player.velocity.y > 0: #Quando a velocidade vertical vira positiva troca pra fall
 		transitioned.emit(self, "fall")
-		
-	if Input.is_action_pressed("pogo") and Input.is_action_pressed("down"):
-		transitioned.emit(self, "pogo")
-	if Input.is_action_just_pressed("up"): #adicionar que se estiver em contato com a corta ================
-		transitioned.emit(self, "climb")
-	
 	if player.is_on_ceiling(): #Caso toque no teto encerra o incremento do jump
 		player.velocity.y = 0
