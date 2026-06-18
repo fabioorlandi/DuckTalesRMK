@@ -129,7 +129,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Caminhar",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -231,7 +231,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iwqf0"]
-size = Vector2(22, 21)
+size = Vector2(20, 21)
 
 [node name="Patinhas" type="CharacterBody2D" unique_id=917563206]
 script = ExtResource("1_rdkiu")
@@ -239,10 +239,10 @@ script = ExtResource("1_rdkiu")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2082220831]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_fhwcv")
-animation = &"Abaixar"
+animation = &"Caminhar"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2049646420]
-position = Vector2(-1, 3.5)
+position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_iwqf0")
 
 [node name="Label_State" type="Label" parent="." unique_id=1786105537]

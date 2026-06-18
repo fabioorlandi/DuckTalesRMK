@@ -52,3 +52,5 @@ func physics_update(delta: float) -> void:
 		transitioned.emit(self, "fall")
 	if Input.is_action_pressed("right") and Input.is_action_pressed("jump"):
 		transitioned.emit(self, "fall")
+	if Input.is_action_pressed("down") and not player.canClimb:
+		transitioned.emit(self, "fall")

@@ -4,7 +4,7 @@ signal fall_on_collision
 var can_fall = true
 var fallen = false
 var is_falling = false
-var distance_ticks = 78;
+var distance_ticks = 80;
 
 func _ready() -> void:
 	$CollisionShapeElmoCaido.disabled = true
