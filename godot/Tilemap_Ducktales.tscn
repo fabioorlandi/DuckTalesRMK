@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bqwigldj0fobp" path="res://Armadura.tscn" id="4_fu7tr"]
 [ext_resource type="PackedScene" uid="uid://dxb786ckq0g4i" path="res://Pato_Esqueleto.tscn" id="5_pgjuh"]
 [ext_resource type="Script" uid="uid://c10vnem3irjlw" path="res://Corda.gd" id="6_4oyrw"]
-
+[ext_resource type="Texture2D" uid="uid://c3jqlf0xit1bo" path="res://UIBackground.png" id="7_fu7tr"]
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_63sgq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wyuc7"]
@@ -153,7 +153,9 @@ texture = ExtResource("1_bsvjp")
 7:10/0 = 0
 8:10/0 = 0
 1:11/0 = 0
+1:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:11/0 = 0
+2:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:11/0 = 0
 4:11/0 = 0
 5:11/0 = 0
@@ -161,7 +163,9 @@ texture = ExtResource("1_bsvjp")
 7:11/0 = 0
 8:11/0 = 0
 1:12/0 = 0
+1:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:12/0 = 0
+2:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:12/0 = 0
 4:12/0 = 0
 5:12/0 = 0
@@ -231,7 +235,7 @@ tile_map_data = PackedByteArray("AAAIABcAAAAAAAAAAQAJABcAAAAAAAAAAQAKABcAAAAAAAA
 tile_set = SubResource("TileSet_63sgq")
 
 [node name="Patinhas" parent="." unique_id=917563206 instance=ExtResource("3_deayw")]
-position = Vector2(438, 373)
+position = Vector2(38, 370)
 
 [node name="Pato_Esqueleto" parent="." unique_id=1090572787 instance=ExtResource("5_pgjuh")]
 position = Vector2(232, 371)
