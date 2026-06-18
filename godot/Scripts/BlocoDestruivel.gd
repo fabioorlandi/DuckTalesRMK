@@ -5,7 +5,7 @@ func _ready() -> void:
 	freeze = true
 	destroy_on_collision.connect(destroy_body)
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	pass
 
 func destroy_body():

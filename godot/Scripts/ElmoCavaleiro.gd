@@ -1,40 +1,47 @@
-extends RigidBody2D
+extends CharacterBody2D
 signal fall_on_collision
 
+var can_fall = true
 var fallen = false
 var is_falling = false
+var distance_ticks = 78;
 
 func _ready() -> void:
 	$CollisionShapeElmoCaido.disabled = true
 	fall_on_collision.connect(fall_body)
 
-func _process(delta: float) -> void:
-	pass
-
-func fall_body():
-	if fallen or is_falling:
+func _physics_process(delta: float) -> void:
+	if not fallen or not can_fall:
 		return
 		
-	is_falling = true
-	$CollisionShapeElmoEstatico.disabled = true
-	$CollisionShapeElmoCaido.disabled = false
+	distance_ticks -= 1;
 	
-	$Sprite2D.global_rotation_degrees = -90
-	$CollisionShapeElmoCaido.global_rotation_degrees = -90
+	if not is_falling:
+		is_falling = true
+		$CollisionShapeElmoEstatico.disabled = true
+		$CollisionShapeElmoCaido.disabled = false
 	
-	var tween = create_tween()
-	var start_x = position.x
+		$Sprite2D.global_rotation_degrees = -90
+		$CollisionShapeElmoCaido.global_rotation_degrees = -90
+		
+		var tween_shake = create_tween()
+		var start_x = position.x
 	
-	var shake_intensity = 2
-	for i in range(24):
-		var offset_x = randf_range(-shake_intensity, shake_intensity)
-		tween.tween_property(self, "position:x", start_x + offset_x, 0.05)
+		var shake_intensity = 2
+		for i in range(16):
+			var offset_x = randf_range(-shake_intensity, shake_intensity)
+			tween_shake.tween_property(self, "position:x", start_x + offset_x, 0.05)
 	
-	tween.tween_property(self, "position:x", start_x, 0.05)
+		tween_shake.tween_property(self, "position:x", start_x, 0.05)
 	
-	await tween.finished
+		await tween_shake.finished
 	
-	apply_impulse(Vector2(-100, -200))
+	velocity = Vector2(-5, 8) * 20
+	if distance_ticks <= 0:
+		can_fall = false
+		is_falling = false
 
-	is_falling = false
+	move_and_slide()
+
+func fall_body():
 	fallen = true
