@@ -17,4 +17,10 @@ func update(_delta: float) -> void:
 	if direction == 0:
 		animate(animation, direction)
 
+	#saveLastDir
+	if Input.is_action_pressed("left"):
+		player.lastDir = "left"
+	elif Input.is_action_pressed("right"):
+		player.lastDir = "right"
+
 	player.move_and_slide()

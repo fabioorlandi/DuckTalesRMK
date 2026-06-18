@@ -10,7 +10,7 @@ const GRAVITY     := 600.0
 const POGO_FORCE  := -280.0  #Força do quique 
 
 func update(_delta: float) -> void:
-	if Input.is_action_just_released("pogo"): #Soltou o botão de pogo volta a cair normalmente em fall
+	if Input.is_action_just_released("pogo") or Input.is_action_just_released("down"): #Soltou o botão de pogo volta a cair normalmente em fall
 		transitioned.emit(self, "fall")
  
 func physics_update(delta: float) -> void:
@@ -36,6 +36,13 @@ func physics_update(delta: float) -> void:
 			var body = collision.get_collider()
 			body.emit_signal("destroy_on_collision")
  	
-	if not Input.is_action_pressed("pogo") and player.velocity.y > 0: #Soltou enquanto estava no ar volta para fall
-		transitioned.emit(self, "fall")
+	#saveLastDir
+	if Input.is_action_pressed("left"):
+		player.lastDir = "left"
+	elif Input.is_action_pressed("right"):
+		player.lastDir = "right"
+	
+	if not Input.is_action_pressed("pogo") or not Input.is_action_pressed("down"):
+		if player.velocity.y > 0: #Soltou enquanto estava no ar volta para fall
+			transitioned.emit(self, "fall")
  
