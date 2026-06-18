@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name PatoEsqueleto
 
-var primeira_ativacao :=true
+var primeira_ativacao := true
 var player_on_screen := false
 
 var direction := -1  # começa indo pra esquerda

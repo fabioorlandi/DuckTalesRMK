@@ -8,7 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://bqwigldj0fobp" path="res://Armadura.tscn" id="4_fu7tr"]
 [ext_resource type="PackedScene" uid="uid://dxb786ckq0g4i" path="res://Pato_Esqueleto.tscn" id="5_pgjuh"]
 [ext_resource type="Script" uid="uid://c10vnem3irjlw" path="res://Corda.gd" id="6_4oyrw"]
-[ext_resource type="Texture2D" uid="uid://c3jqlf0xit1bo" path="res://UIBackground.png" id="7_fu7tr"]
+[ext_resource type="Texture2D" uid="uid://c3jqlf0xit1bo" path="res://Assets/UIBackground.png" id="7_fu7tr"]
+
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_63sgq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wyuc7"]
@@ -178,6 +179,11 @@ texture = ExtResource("1_bsvjp")
 0:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 0:12/0 = 0
 0:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:13/0 = 0
+1:13/0 = 0
+2:13/0 = 0
+3:13/0 = 0
+4:13/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_deayw"]
 physics_layer_0/collision_layer = 1
@@ -198,20 +204,27 @@ script/source = "extends Camera2D
 @export var player: CharacterBody2D
 @export var speed := 5.0
 
-var follow = false
-
+var follow_x = true
+var follow_y = false
 var fixed_y: float
 
 func _ready():
 	fixed_y = global_position.y
 
 func _process(delta):
-	if follow:
+	if follow_x:
 		global_position.x = lerp(
 			global_position.x,
 			player.global_position.x,
 			speed * delta
 		)
+	if follow_y:
+		global_position.y = lerp(
+			global_position.y,
+			player.global_position.y,
+			speed * delta
+		)
+	else:
 		global_position.y = fixed_y
 "
 
@@ -240,9 +253,10 @@ position = Vector2(38, 370)
 [node name="Pato_Esqueleto" parent="." unique_id=1090572787 instance=ExtResource("5_pgjuh")]
 position = Vector2(232, 371)
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=356561041]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=356561041 node_paths=PackedStringArray("player")]
 position = Vector2(128, 312)
 script = SubResource("GDScript_fu7tr")
+player = NodePath("../Patinhas")
 
 [node name="UI" type="Node2D" parent="Camera2D" unique_id=1631643127]
 position = Vector2(-38, -362)
