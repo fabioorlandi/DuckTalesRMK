@@ -31,6 +31,12 @@ func physics_update(delta: float) -> void:
 		player.velocity.x = move_toward(player.velocity.x, 0, SPEED) #Desaceleração suave ao soltar o botão
 		transitioned.emit(self, "idle")
  
+	#saveLastDir
+	if Input.is_action_pressed("left"):
+		player.lastDir = "left"
+	elif Input.is_action_pressed("right"):
+		player.lastDir = "right"
+
 	animate(animation, direction)
 	player.move_and_slide()
  

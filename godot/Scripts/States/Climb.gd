@@ -8,20 +8,24 @@ class_name Climb
 @export var animation = &"Escalar"
 
 var cordaX: float
-var offsetX: float
+var offsetX: float = 4
 
 const SPEED := 50.0
 
 func enter() -> void:
-	#pega a posição x da corda
-	pass
-
+	player.velocity = Vector2.ZERO
+	cordaX = player.ropeX	
+	if player.lastDir == "left":
+		player.global_position.x = cordaX + offsetX
+	elif player.lastDir == "right":
+		player.global_position.x = cordaX - offsetX
+	
 func update(delta: float) -> void:
 	#seta o jogador com a posição x da corda -/+ offset
 	if Input.is_action_pressed("left"):
-		pass
+		player.global_position.x = cordaX + offsetX		
 	if Input.is_action_pressed("right"):
-		pass
+		player.global_position.x = cordaX - offsetX		
 	
 func physics_update(delta: float) -> void:
 	if Input.is_action_pressed("up"):
@@ -37,6 +41,12 @@ func physics_update(delta: float) -> void:
 	var direction := Input.get_axis("left", "right")
 	animate(animation, direction)
 	player.move_and_slide()
+	
+	#saveLastDir
+	if Input.is_action_pressed("left"):
+		player.lastDir = "left"
+	elif Input.is_action_pressed("right"):
+		player.lastDir = "right"
 	
 	if Input.is_action_pressed("left") and Input.is_action_pressed("jump"):
 		transitioned.emit(self, "fall")
