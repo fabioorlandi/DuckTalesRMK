@@ -49,7 +49,7 @@ func fall_body():
 	fallen = true
 
 func destroy_body():
-	if fallen and not can_fall:
+	if fallen and not is_falling:
 		$AnimatedSprite2D.play("destroy_helmet")
 		await $AnimatedSprite2D.animation_finished
 	
