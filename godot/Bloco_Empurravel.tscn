@@ -3,20 +3,37 @@
 [ext_resource type="Texture2D" uid="uid://d1fg8jtq5kaw3" path="res://Assets/Platform.png" id="1_gvk3a"]
 [ext_resource type="Script" uid="uid://duvvpcy6ys41h" path="res://Scripts/BlocoEmpurravel.gd" id="1_ywsyg"]
 
+[sub_resource type="GDScript" id="GDScript_ywsyg"]
+script/source = "extends Marker2D
+
+func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
+	$CharacterBody2D/Sprite2D.visible = true
+	$CharacterBody2D/CollisionShape2D.disabled = false
+	$CharacterBody2D.global_position = position
+"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ywsyg"]
 size = Vector2(16, 16)
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1388280796]
+[node name="Spawner" type="Marker2D" unique_id=1719703537]
+script = SubResource("GDScript_ywsyg")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1616530933]
+rect = Rect2(-8, -8, 16, 16)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1397728476]
 script = ExtResource("1_ywsyg")
 metadata/_edit_group_ = true
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=189318028]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="CharacterBody2D" unique_id=189318028]
+rect = Rect2(-8, -8, 16, 16)
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1858527511]
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=1858527511]
 texture_filter = 1
 texture = ExtResource("1_gvk3a")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=219299579]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=219299579]
 shape = SubResource("RectangleShape2D_ywsyg")
 
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="CharacterBody2D/VisibleOnScreenNotifier2D" to="CharacterBody2D" method="_on_visible_on_screen_notifier_2d_screen_exited"]

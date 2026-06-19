@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dmy14x3qhkdta" path="res://Bloco_Empurravel.tscn" id="4_fcfpr"]
 [ext_resource type="PackedScene" uid="uid://bqwigldj0fobp" path="res://Armadura.tscn" id="4_fu7tr"]
 [ext_resource type="PackedScene" uid="uid://dxb786ckq0g4i" path="res://Pato_Esqueleto.tscn" id="5_pgjuh"]
-[ext_resource type="Script" uid="uid://c10vnem3irjlw" path="res://Corda.gd" id="6_4oyrw"]
+[ext_resource type="Script" uid="uid://c10vnem3irjlw" path="res://Scripts/Corda.gd" id="6_4oyrw"]
 [ext_resource type="Texture2D" uid="uid://c3jqlf0xit1bo" path="res://Assets/UIBackground.png" id="7_fu7tr"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_63sgq"]
@@ -193,7 +193,7 @@ sources/0 = SubResource("TileSetAtlasSource_wyuc7")
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_deayw"]
 resource_name = "Cenário_Interativo"
 scenes/1/scene = ExtResource("4_63sgq")
-scenes/3/scene = ExtResource("4_fcfpr")
+scenes/2/scene = ExtResource("4_fcfpr")
 
 [sub_resource type="TileSet" id="TileSet_63sgq"]
 sources/0 = SubResource("TileSetScenesCollectionSource_deayw")
@@ -205,7 +205,7 @@ script/source = "extends Camera2D
 @export var speed := 5.0
 
 var follow_x = true
-var follow_y = false
+var follow_y = true
 var fixed_y: float
 
 func _ready():
@@ -244,7 +244,7 @@ tile_map_data = PackedByteArray("AAAAABgAAAABAAEAAAABABgAAAACAAEAAAACABgAAAABAAE
 tile_set = SubResource("TileSet_deayw")
 
 [node name="TileMapLayerForeground" type="TileMapLayer" parent="." unique_id=688610627]
-tile_map_data = PackedByteArray("AAAIABcAAAAAAAAAAQAJABcAAAAAAAAAAQAKABcAAAAAAAAAAQALABcAAAAAAAAAAQASABcAAAAAAAAAAQATABcAAAAAAAAAAQAUABcAAAAAAAAAAQAVABcAAAAAAAAAAQAWABcAAAAAAAAAAQAXABcAAAAAAAAAAQAAABYAAAAAAAAAAQAAABcAAAAAAAAAAQA8ABAAAAAAAAAAAQA8ABEAAAAAAAAAAQA8ABIAAAAAAAAAAQA8ABMAAAAAAAAAAQA8ABQAAAAAAAAAAQA8ABUAAAAAAAAAAQAXAAsAAAAAAAAAAQAYAAsAAAAAAAAAAQA8AAcAAAAAAAAAAQA8AAgAAAAAAAAAAQA9ABUAAAAAAAAAAQA+ABUAAAAAAAAAAQA/ABUAAAAAAAAAAQAuABIAAAAAAAAAAQAvABIAAAAAAAAAAQAwABIAAAAAAAAAAQAzABcAAAAAAAAAAQAyABcAAAAAAAAAAQAxABcAAAAAAAAAAQAwABcAAAAAAAAAAQAxAAQAAAAAAAAAAwA=")
+tile_map_data = PackedByteArray("AAAIABcAAAAAAAAAAQAJABcAAAAAAAAAAQAKABcAAAAAAAAAAQALABcAAAAAAAAAAQASABcAAAAAAAAAAQATABcAAAAAAAAAAQAUABcAAAAAAAAAAQAVABcAAAAAAAAAAQAWABcAAAAAAAAAAQAXABcAAAAAAAAAAQAAABYAAAAAAAAAAQAAABcAAAAAAAAAAQA8ABAAAAAAAAAAAQA8ABEAAAAAAAAAAQA8ABIAAAAAAAAAAQA8ABMAAAAAAAAAAQA8ABQAAAAAAAAAAQA8ABUAAAAAAAAAAQAXAAsAAAAAAAAAAQAYAAsAAAAAAAAAAQA8AAcAAAAAAAAAAQA8AAgAAAAAAAAAAQA9ABUAAAAAAAAAAQA+ABUAAAAAAAAAAQA/ABUAAAAAAAAAAQAuABIAAAAAAAAAAQAvABIAAAAAAAAAAQAwABIAAAAAAAAAAQAzABcAAAAAAAAAAQAyABcAAAAAAAAAAQAxABcAAAAAAAAAAQAwABcAAAAAAAAAAQAxAAQAAAAAAAAAAgA=")
 tile_set = SubResource("TileSet_63sgq")
 
 [node name="Patinhas" parent="." unique_id=917563206 instance=ExtResource("3_deayw")]

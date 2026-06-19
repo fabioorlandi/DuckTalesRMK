@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cogx0t83rjkoh"]
 
 [ext_resource type="Texture2D" uid="uid://da6fvo1i264yj" path="res://Assets/Patinhas_spritesheet1.png" id="1_kafnk"]
-[ext_resource type="Script" uid="uid://x88d5d8txn2d" path="res://Patinhas.gd" id="1_rdkiu"]
+[ext_resource type="Script" uid="uid://x88d5d8txn2d" path="res://Scripts/Patinhas.gd" id="1_rdkiu"]
 [ext_resource type="Texture2D" uid="uid://d1tate207xnu2" path="res://Assets/Patinhas_spritesheet2.png" id="2_2t7sk"]
 [ext_resource type="Script" uid="uid://d4mndy3buxsc2" path="res://Scripts/FSM.gd" id="3_7wdkl"]
 [ext_resource type="Script" uid="uid://b2fhx28lcfc2x" path="res://Scripts/States/Move.gd" id="3_onk4t"]
