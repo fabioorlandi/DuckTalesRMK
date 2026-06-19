@@ -9,6 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://dxb786ckq0g4i" path="res://Pato_Esqueleto.tscn" id="5_pgjuh"]
 [ext_resource type="Script" uid="uid://c10vnem3irjlw" path="res://Corda.gd" id="6_4oyrw"]
 [ext_resource type="Texture2D" uid="uid://c3jqlf0xit1bo" path="res://Assets/UIBackground.png" id="7_fu7tr"]
+[ext_resource type="Script" uid="uid://cklkcqugwuar7" path="res://Scripts/UIController.gd" id="7_lek72"]
+[ext_resource type="FontFile" uid="uid://dtdqm04fcn0od" path="res://Pixelon.ttf" id="8_rf2pp"]
+[ext_resource type="Texture2D" uid="uid://byx22j1o1twia" path="res://Assets/hpImages.png" id="9_t4tih"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_63sgq"]
 
@@ -260,6 +263,12 @@ player = NodePath("../Patinhas")
 
 [node name="UI" type="Node2D" parent="Camera2D" unique_id=1631643127]
 position = Vector2(-38, -362)
+script = ExtResource("7_lek72")
+score = 500
+totalScore = 30000
+health = 1
+healthCap = 4
+lifesCap = 2
 
 [node name="Background" type="Sprite2D" parent="Camera2D/UI" unique_id=269774112]
 z_index = 10
@@ -281,6 +290,145 @@ position = Vector2(114, 278)
 texture = ExtResource("7_fu7tr")
 region_enabled = true
 region_rect = Rect2(161, 4, 87, 39)
+
+[node name="$Stage" type="Label" parent="Camera2D/UI" unique_id=735883775]
+z_index = 13
+offset_left = -68.0
+offset_top = 262.0
+offset_right = -28.0
+offset_bottom = 285.0
+theme_override_fonts/font = ExtResource("8_rf2pp")
+theme_override_font_sizes/font_size = 11
+text = "$"
+vertical_alignment = 1
+
+[node name="Points" type="Label" parent="Camera2D/UI/$Stage" unique_id=518924337]
+z_index = 13
+layout_mode = 0
+offset_left = 17.0
+offset_right = 57.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("8_rf2pp")
+theme_override_font_sizes/font_size = 11
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="$Total" type="Label" parent="Camera2D/UI" unique_id=1072256964]
+z_index = 13
+offset_left = 22.0
+offset_top = 257.0
+offset_right = 62.0
+offset_bottom = 280.0
+theme_override_fonts/font = ExtResource("8_rf2pp")
+theme_override_font_sizes/font_size = 11
+text = "TOTAL"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="$" type="Label" parent="Camera2D/UI/$Total" unique_id=1778502307]
+z_index = 13
+layout_mode = 0
+offset_left = -16.0
+offset_top = 11.0
+offset_right = 24.0
+offset_bottom = 34.0
+theme_override_fonts/font = ExtResource("8_rf2pp")
+theme_override_font_sizes/font_size = 11
+text = "$"
+vertical_alignment = 1
+
+[node name="Points" type="Label" parent="Camera2D/UI/$Total" unique_id=1829704049]
+z_index = 13
+layout_mode = 0
+offset_left = 16.0
+offset_top = 11.0
+offset_right = 56.0
+offset_bottom = 34.0
+theme_override_fonts/font = ExtResource("8_rf2pp")
+theme_override_font_sizes/font_size = 11
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Lifes" type="Label" parent="Camera2D/UI" unique_id=793890336]
+z_index = 13
+offset_left = 22.0
+offset_top = 278.0
+offset_right = 62.0
+offset_bottom = 301.0
+theme_override_fonts/font = ExtResource("8_rf2pp")
+theme_override_font_sizes/font_size = 11
+text = "P. "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HP" type="Label" parent="Camera2D/UI" unique_id=1263364934]
+z_index = 13
+offset_left = -81.0
+offset_top = 276.0
+offset_right = -41.0
+offset_bottom = 299.0
+theme_override_fonts/font = ExtResource("8_rf2pp")
+theme_override_font_sizes/font_size = 11
+text = "HP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="hp1" type="Sprite2D" parent="Camera2D/UI/HP" unique_id=1508669766]
+position = Vector2(37, 10)
+texture = ExtResource("9_t4tih")
+region_enabled = true
+region_rect = Rect2(0, 0, 9, 9)
+
+[node name="hp2" type="Sprite2D" parent="Camera2D/UI/HP" unique_id=326713152]
+position = Vector2(46, 10)
+texture = ExtResource("9_t4tih")
+region_enabled = true
+region_rect = Rect2(0, 0, 9, 9)
+
+[node name="hp3" type="Sprite2D" parent="Camera2D/UI/HP" unique_id=938518976]
+position = Vector2(55, 10)
+texture = ExtResource("9_t4tih")
+region_enabled = true
+region_rect = Rect2(0, 0, 9, 9)
+
+[node name="hp4" type="Sprite2D" parent="Camera2D/UI/HP" unique_id=308396642]
+position = Vector2(64, 10)
+texture = ExtResource("9_t4tih")
+region_enabled = true
+region_rect = Rect2(0, 0, 9, 9)
+
+[node name="hp5" type="Sprite2D" parent="Camera2D/UI/HP" unique_id=376985193]
+position = Vector2(73, 10)
+texture = ExtResource("9_t4tih")
+region_enabled = true
+region_rect = Rect2(0, 0, 9, 9)
+
+[node name="Time" type="Label" parent="Camera2D/UI" unique_id=1887529692]
+z_index = 13
+offset_left = 86.0
+offset_top = 268.0
+offset_right = 126.0
+offset_bottom = 291.0
+theme_override_fonts/font = ExtResource("8_rf2pp")
+theme_override_font_sizes/font_size = 11
+text = "TIME"
+vertical_alignment = 1
+
+[node name="Timer" type="Label" parent="Camera2D/UI/Time" unique_id=587385360]
+z_index = 13
+layout_mode = 0
+offset_left = 23.0
+offset_right = 63.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("8_rf2pp")
+theme_override_font_sizes/font_size = 11
+text = "500"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="StageTimer" type="Timer" parent="Camera2D/UI/Time" unique_id=1099315288]
 
 [node name="Corda" type="Area2D" parent="." unique_id=1975783942]
 position = Vector2(896, 336)
