@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 @export var canClimb: bool
+var onRope: bool = false
+
 var ropeX: float
 var lastDir = "right"
 

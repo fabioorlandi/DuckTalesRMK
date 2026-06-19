@@ -8,10 +8,12 @@
 [ext_resource type="PackedScene" uid="uid://bqwigldj0fobp" path="res://Armadura.tscn" id="4_fu7tr"]
 [ext_resource type="PackedScene" uid="uid://dxb786ckq0g4i" path="res://Pato_Esqueleto.tscn" id="5_pgjuh"]
 [ext_resource type="Script" uid="uid://c10vnem3irjlw" path="res://Corda.gd" id="6_4oyrw"]
+[ext_resource type="Script" uid="uid://cgnb3xww2ahjd" path="res://CameraFollow.gd" id="7_1sa6h"]
 [ext_resource type="Texture2D" uid="uid://c3jqlf0xit1bo" path="res://Assets/UIBackground.png" id="7_fu7tr"]
 [ext_resource type="Script" uid="uid://cklkcqugwuar7" path="res://Scripts/UIController.gd" id="7_lek72"]
 [ext_resource type="FontFile" uid="uid://dtdqm04fcn0od" path="res://Pixelon.ttf" id="8_rf2pp"]
 [ext_resource type="Texture2D" uid="uid://byx22j1o1twia" path="res://Assets/hpImages.png" id="9_t4tih"]
+[ext_resource type="Script" uid="uid://duegq8tgxl7vr" path="res://CameraCollider.gd" id="13_voubw"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_63sgq"]
 
@@ -201,37 +203,10 @@ scenes/3/scene = ExtResource("4_fcfpr")
 [sub_resource type="TileSet" id="TileSet_63sgq"]
 sources/0 = SubResource("TileSetScenesCollectionSource_deayw")
 
-[sub_resource type="GDScript" id="GDScript_fu7tr"]
-script/source = "extends Camera2D
-
-@export var player: CharacterBody2D
-@export var speed := 5.0
-
-var follow_x = true
-var follow_y = false
-var fixed_y: float
-
-func _ready():
-	fixed_y = global_position.y
-
-func _process(delta):
-	if follow_x:
-		global_position.x = lerp(
-			global_position.x,
-			player.global_position.x,
-			speed * delta
-		)
-	if follow_y:
-		global_position.y = lerp(
-			global_position.y,
-			player.global_position.y,
-			speed * delta
-		)
-	else:
-		global_position.y = fixed_y
-"
-
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_pgjuh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1sa6h"]
+size = Vector2(5.6447678, 49.09293)
 
 [node name="MainNode" type="Node2D" unique_id=1058646140]
 
@@ -251,22 +226,37 @@ tile_map_data = PackedByteArray("AAAIABcAAAAAAAAAAQAJABcAAAAAAAAAAQAKABcAAAAAAAA
 tile_set = SubResource("TileSet_63sgq")
 
 [node name="Patinhas" parent="." unique_id=917563206 instance=ExtResource("3_deayw")]
-position = Vector2(38, 370)
+position = Vector2(47, 370)
 
 [node name="Pato_Esqueleto" parent="." unique_id=1090572787 instance=ExtResource("5_pgjuh")]
 position = Vector2(232, 371)
 
+[node name="Corda" type="Area2D" parent="." unique_id=1975783942]
+position = Vector2(896, 336)
+scale = Vector2(1, -31.600004)
+script = ExtResource("6_4oyrw")
+ropeX = 896.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Corda" unique_id=1584375562]
+shape = SubResource("SegmentShape2D_pgjuh")
+
+[node name="Interacao_Cenario" type="Node2D" parent="." unique_id=326382331]
+
+[node name="Armadura01" parent="Interacao_Cenario" unique_id=635808693 instance=ExtResource("4_fu7tr")]
+position = Vector2(496, 350)
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=356561041 node_paths=PackedStringArray("player")]
 position = Vector2(128, 312)
-script = SubResource("GDScript_fu7tr")
+script = ExtResource("7_1sa6h")
 player = NodePath("../Patinhas")
+speed = 250.0
 
 [node name="UI" type="Node2D" parent="Camera2D" unique_id=1631643127]
 position = Vector2(-38, -362)
 script = ExtResource("7_lek72")
 score = 500
 totalScore = 30000
-health = 1
+health = 4
 healthCap = 4
 lifesCap = 2
 
@@ -430,19 +420,57 @@ vertical_alignment = 1
 
 [node name="StageTimer" type="Timer" parent="Camera2D/UI/Time" unique_id=1099315288]
 
-[node name="Corda" type="Area2D" parent="." unique_id=1975783942]
-position = Vector2(896, 336)
-scale = Vector2(1, -31.600004)
-script = ExtResource("6_4oyrw")
-ropeX = 896.0
+[node name="CameraColliders" type="Node" parent="." unique_id=2093379251]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Corda" unique_id=1584375562]
-shape = SubResource("SegmentShape2D_pgjuh")
+[node name="FollowXCol" type="Area2D" parent="CameraColliders" unique_id=80427989]
+position = Vector2(139, 325)
+scale = Vector2(0.19999999, 1)
+script = ExtResource("13_voubw")
+FollowX = true
 
-[node name="Interacao_Cenario" type="Node2D" parent="." unique_id=326382331]
+[node name="Follow" type="CollisionShape2D" parent="CameraColliders/FollowXCol" unique_id=1679509600]
+position = Vector2(0, -1.0001221)
+scale = Vector2(1.771551, 4.0739007)
+shape = SubResource("RectangleShape2D_1sa6h")
 
-[node name="Armadura01" parent="Interacao_Cenario" unique_id=635808693 instance=ExtResource("4_fu7tr")]
-position = Vector2(496, 350)
+[node name="UnfollowXCol" type="Area2D" parent="CameraColliders" unique_id=1337491644]
+position = Vector2(120, 324)
+scale = Vector2(0.16000247, 1)
+script = ExtResource("13_voubw")
+UnfollowX = true
+
+[node name="Follow" type="CollisionShape2D" parent="CameraColliders/UnfollowXCol" unique_id=1573055993]
+position = Vector2(0, -1.0001221)
+scale = Vector2(1.771551, 4.0739007)
+shape = SubResource("RectangleShape2D_1sa6h")
+
+[node name="TransitionCol-72" type="Area2D" parent="CameraColliders" unique_id=396331675]
+position = Vector2(896, 203)
+scale = Vector2(3.2, 0.4)
+script = ExtResource("13_voubw")
+Transition = true
+TransitionPos = 72
+
+[node name="Follow" type="CollisionShape2D" parent="CameraColliders/TransitionCol-72" unique_id=1855719502]
+position = Vector2(0, -1.0001221)
+scale = Vector2(1.771551, 4.0739007)
+shape = SubResource("RectangleShape2D_1sa6h")
+
+[node name="TransitionCol-312" type="Area2D" parent="CameraColliders" unique_id=1651814085]
+position = Vector2(896, 200)
+scale = Vector2(3.2, 0.4)
+script = ExtResource("13_voubw")
+Transition = true
+TransitionPos = 312
+
+[node name="Follow" type="CollisionShape2D" parent="CameraColliders/TransitionCol-312" unique_id=671993920]
+position = Vector2(0, -1.0001221)
+scale = Vector2(1.771551, 4.0739007)
+shape = SubResource("RectangleShape2D_1sa6h")
 
 [connection signal="body_entered" from="Corda" to="Corda" method="_on_body_entered"]
 [connection signal="body_exited" from="Corda" to="Corda" method="_on_body_exited"]
+[connection signal="body_entered" from="CameraColliders/FollowXCol" to="CameraColliders/FollowXCol" method="_on_body_entered"]
+[connection signal="body_entered" from="CameraColliders/UnfollowXCol" to="CameraColliders/UnfollowXCol" method="_on_body_entered"]
+[connection signal="body_entered" from="CameraColliders/TransitionCol-72" to="CameraColliders/TransitionCol-72" method="_on_body_entered"]
+[connection signal="body_entered" from="CameraColliders/TransitionCol-312" to="CameraColliders/TransitionCol-312" method="_on_body_entered"]
