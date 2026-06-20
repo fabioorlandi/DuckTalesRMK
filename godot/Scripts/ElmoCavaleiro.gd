@@ -1,5 +1,6 @@
 extends CharacterBody2D
 signal fall_on_collision
+signal destroy_on_collision
 
 var can_fall = true
 var fallen = false
@@ -9,6 +10,7 @@ var distance_ticks = 80;
 func _ready() -> void:
 	$CollisionShapeElmoCaido.disabled = true
 	fall_on_collision.connect(fall_body)
+	destroy_on_collision.connect(destroy_body)
 
 func _physics_process(delta: float) -> void:
 	if not fallen or not can_fall:
@@ -21,7 +23,7 @@ func _physics_process(delta: float) -> void:
 		$CollisionShapeElmoEstatico.disabled = true
 		$CollisionShapeElmoCaido.disabled = false
 	
-		$Sprite2D.global_rotation_degrees = -90
+		$AnimatedSprite2D.global_rotation_degrees = -90
 		$CollisionShapeElmoCaido.global_rotation_degrees = -90
 		
 		var tween_shake = create_tween()
@@ -45,3 +47,20 @@ func _physics_process(delta: float) -> void:
 
 func fall_body():
 	fallen = true
+
+func destroy_body():
+	if fallen and not is_falling:
+		$AnimatedSprite2D.play("destroy_helmet")
+		await $AnimatedSprite2D.animation_finished
+	
+		$CollisionShapeElmoEstatico.disabled = true
+		$CollisionShapeElmoCaido.disabled = true
+		$CollisionShapeElmoEstatico.visible = false
+		$CollisionShapeElmoEstatico.visible = false
+		$AnimatedSprite2D.visible = false
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	if fallen:
+		$CollisionShapeElmoCaido.disabled = true
+		$CollisionShapeElmoEstatico.disabled = true
+		$AnimatedSprite2D.visible = false

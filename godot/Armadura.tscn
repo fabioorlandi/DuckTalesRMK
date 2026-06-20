@@ -2,9 +2,43 @@
 
 [ext_resource type="Script" uid="uid://c81ewdyka13ab" path="res://Scripts/ElmoCavaleiro.gd" id="1_l102d"]
 [ext_resource type="Texture2D" uid="uid://dka3cjpnddhj2" path="res://Assets/Helmet.png" id="1_pnd5t"]
+[ext_resource type="Texture2D" uid="uid://chc6wwgjqdf7t" path="res://Assets/DuckTales_Itens.png" id="2_wj7cg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l102d"]
 size = Vector2(29.875, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wj7cg"]
+atlas = ExtResource("2_wj7cg")
+region = Rect2(96, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxvc7"]
+atlas = ExtResource("2_wj7cg")
+region = Rect2(112, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rub5d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wj7cg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kxvc7")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": 0,
+"name": &"destroy_helmet",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_pnd5t")
+}],
+"loop": 1,
+"name": &"helmet",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pnd5t"]
 size = Vector2(16, 10)
@@ -24,9 +58,12 @@ shape = SubResource("RectangleShape2D_l102d")
 script = ExtResource("1_l102d")
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBodyElmo" unique_id=586642916]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="CharacterBodyElmo" unique_id=834361176]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBodyElmo" unique_id=1563461756]
 texture_filter = 1
-texture = ExtResource("1_pnd5t")
+sprite_frames = SubResource("SpriteFrames_rub5d")
+animation = &"helmet"
 
 [node name="CollisionShapeElmoEstatico" type="CollisionShape2D" parent="CharacterBodyElmo" unique_id=185195479]
 position = Vector2(0, -3)
@@ -34,3 +71,5 @@ shape = SubResource("RectangleShape2D_pnd5t")
 
 [node name="CollisionShapeElmoCaido" type="CollisionShape2D" parent="CharacterBodyElmo" unique_id=1722043860]
 shape = SubResource("RectangleShape2D_u8vg3")
+
+[connection signal="screen_exited" from="CharacterBodyElmo/VisibleOnScreenNotifier2D" to="CharacterBodyElmo" method="_on_visible_on_screen_notifier_2d_screen_exited"]

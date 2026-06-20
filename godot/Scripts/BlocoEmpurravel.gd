@@ -19,5 +19,6 @@ func _physics_process(delta: float) -> void:
 func slide_body():
 	can_slide = true
 
-func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
-	pass
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	$Sprite2D.visible = false
+	$CollisionShape2D.disabled = true
