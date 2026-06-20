@@ -9,6 +9,12 @@ const SPEED       := 80.0
 const GRAVITY     := 600.0
 const POGO_FORCE  := -280.0  #Força do quique 
 
+func enter() -> void:
+	$"../../PogoCollision/CollisionShape2D".disabled = false
+
+func exit() -> void:
+	$"../../PogoCollision/CollisionShape2D".disabled = true
+
 func update(_delta: float) -> void:
 	if Input.is_action_just_released("pogo") or Input.is_action_just_released("down"): #Soltou o botão de pogo volta a cair normalmente em fall
 		transitioned.emit(self, "fall")
@@ -30,14 +36,7 @@ func physics_update(delta: float) -> void:
 		await get_tree().create_timer(0.05).timeout
 
 		player.velocity.y = POGO_FORCE
-		
-		var collision = player.get_last_slide_collision()
-		if collision:
-			var body = collision.get_collider()
-			body.emit_signal("destroy_on_collision")
-			body.emit_signal("fall_on_collision")
-			body.emit_signal("slide_on_collision")
- 	
+
 	#saveLastDir
 	if Input.is_action_pressed("left"):
 		player.lastDir = "left"
