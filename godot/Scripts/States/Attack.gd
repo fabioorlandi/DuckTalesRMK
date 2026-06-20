@@ -53,7 +53,8 @@ func physics_update(delta: float) -> void:
 		else:
 			transitioned.emit(self, "idle")
 
-	#saveLastDir
+	player.move_and_slide()
+	
 	if Input.is_action_pressed("left"):
 		player.lastDir = "left"
 	elif Input.is_action_pressed("right"):
@@ -68,10 +69,10 @@ func can_attack(body: PhysicsBody2D) -> bool:
 		body.emit_signal("destroy_on_collision")
 		can_attack = true
 	if body.has_signal("fall_on_collision"):
-		body.emit_signal("fall_on_collision")
+		body.emit_signal("fall_on_collision", Vector2(1, 1) if player.lastDir == "right" else Vector2(-1, 1))
 		can_attack = true
 	if body.has_signal("slide_on_collision"):
-		body.emit_signal("slide_on_collision")
+		body.emit_signal("slide_on_collision", Vector2(1, 0) if player.lastDir == "right" else Vector2(-1, 0))
 		can_attack = true
 		
 	return can_attack

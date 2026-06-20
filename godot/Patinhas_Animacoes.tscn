@@ -262,7 +262,7 @@ target_position = Vector2(12, 0)
 z_index = 30
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_fhwcv")
-animation = &"Tacada"
+animation = &"Pogo_Final"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2049646420]
 position = Vector2(0, 3.5)

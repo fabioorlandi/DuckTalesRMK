@@ -6,6 +6,7 @@ var can_fall = true
 var fallen = false
 var is_falling = false
 var distance_ticks = 80;
+var fall_direction = Vector2.ZERO
 
 func _ready() -> void:
 	$CollisionShapeElmoCaido.disabled = true
@@ -38,15 +39,16 @@ func _physics_process(delta: float) -> void:
 	
 		await tween_shake.finished
 	
-	velocity = Vector2(-5, 8) * 20
+	velocity = fall_direction * Vector2(-5, 8) * 20
 	if distance_ticks <= 0:
 		can_fall = false
 		is_falling = false
 
 	move_and_slide()
 
-func fall_body():
+func fall_body(direction: Vector2):
 	fallen = true
+	fall_direction = direction
 
 func destroy_body():
 	if fallen and not is_falling:

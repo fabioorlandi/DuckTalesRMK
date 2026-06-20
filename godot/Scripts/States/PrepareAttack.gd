@@ -47,7 +47,9 @@ func physics_update(delta: float) -> void:
 			transitioned.emit(self, "jump")
 		if Input.is_action_just_pressed("down") and player.is_on_floor(): #Manda agachar
 			transitioned.emit(self, "crouch")
-				
+
+	player.move_and_slide()
+
 	#saveLastDir
 	if Input.is_action_pressed("left"):
 		player.lastDir = "left"
