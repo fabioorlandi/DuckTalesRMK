@@ -14,6 +14,7 @@ const SPEED := 50.0
 
 func enter() -> void:
 	player.velocity = Vector2.ZERO
+	player.onRope = true
 	cordaX = player.ropeX	
 	if player.lastDir == "left":
 		player.global_position.x = cordaX + offsetX
@@ -49,8 +50,10 @@ func physics_update(delta: float) -> void:
 		player.lastDir = "right"
 	
 	if Input.is_action_pressed("left") and Input.is_action_pressed("jump"):
+		player.onRope = false
 		transitioned.emit(self, "fall")
 	if Input.is_action_pressed("right") and Input.is_action_pressed("jump"):
+		player.onRope = false
 		transitioned.emit(self, "fall")
 	if Input.is_action_pressed("down") and not player.canClimb:
 		transitioned.emit(self, "fall")

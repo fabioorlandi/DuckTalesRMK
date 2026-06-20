@@ -237,6 +237,7 @@ size = Vector2(20, 21)
 script = ExtResource("1_rdkiu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2082220831]
+z_index = 30
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_fhwcv")
 animation = &"Caminhar"
