@@ -26,7 +26,7 @@ func physics_update(delta: float) -> void:
 		transitioned.emit(self, "jump")
 	
 	if not crouched:
-		animate(animation, direction)
+		player.animate(animation)
 		crouched = true
 		
 	#saveLastDir

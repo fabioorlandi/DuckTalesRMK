@@ -24,9 +24,9 @@ func enter() -> void:
 func update(delta: float) -> void:
 	#seta o jogador com a posição x da corda -/+ offset
 	if Input.is_action_pressed("left"):
-		player.global_position.x = cordaX + offsetX		
+		player.global_position.x = cordaX + offsetX
 	if Input.is_action_pressed("right"):
-		player.global_position.x = cordaX - offsetX		
+		player.global_position.x = cordaX - offsetX
 	
 func physics_update(delta: float) -> void:
 	if Input.is_action_pressed("up"):
@@ -39,8 +39,7 @@ func physics_update(delta: float) -> void:
 		player.velocity.y = 0
 		animated.speed_scale = 0
 		
-	var direction := Input.get_axis("left", "right")
-	animate(animation, direction)
+	player.animate(animation)
 	player.move_and_slide()
 	
 	#saveLastDir

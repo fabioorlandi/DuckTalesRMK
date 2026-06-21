@@ -15,7 +15,7 @@ func update(_delta: float) -> void:
 		transitioned.emit(self, "crouch")
 		
 	if direction == 0:
-		animate(animation, direction)
+		player.animate(animation)
 
 	#saveLastDir
 	if Input.is_action_pressed("left"):

@@ -11,6 +11,8 @@
 [ext_resource type="Script" uid="uid://bmxi842rayekn" path="res://Scripts/States/Idle.gd" id="9_cccv5"]
 [ext_resource type="Script" uid="uid://cjboqhctab4pw" path="res://Scripts/States/Crouch.gd" id="9_t4a7s"]
 [ext_resource type="Script" uid="uid://bd4f5mer07g23" path="res://Scripts/States/Climb.gd" id="10_rdkiu"]
+[ext_resource type="Script" uid="uid://ct4tsbh2r3aw1" path="res://Scripts/States/Attack.gd" id="12_o5uhb"]
+[ext_resource type="Script" uid="uid://b0ndc0gw8amf1" path="res://Scripts/States/PrepareAttack.gd" id="13_p2la0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u4570"]
 atlas = ExtResource("1_kafnk")
@@ -90,11 +92,11 @@ region = Rect2(64, 224, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4xdqv"]
 atlas = ExtResource("1_kafnk")
-region = Rect2(32, 192, 32, 32)
+region = Rect2(33, 192, 33, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tkxqm"]
 atlas = ExtResource("1_kafnk")
-region = Rect2(64, 192, 32, 32)
+region = Rect2(66, 192, 30, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fhwcv"]
 animations = [{
@@ -203,9 +205,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4mfbb")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"Tacada",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -213,10 +215,22 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_yekqw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_skccd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yekqw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_skccd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yekqw")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"Tacada_Falha",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -225,7 +239,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_tkxqm")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"Tacada_Sucesso",
 "speed": 5.0
 }]
@@ -240,15 +254,15 @@ size = Vector2(16, 4)
 script = ExtResource("1_rdkiu")
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=1898229934]
-position = Vector2(0, 3.5)
-scale = Vector2(1, 3.5)
+position = Vector2(0, 7.5)
+scale = Vector2(1, 2)
 target_position = Vector2(12, 0)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2082220831]
 z_index = 30
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_fhwcv")
-animation = &"Pogo_Final"
+animation = &"Tacada_Sucesso"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2049646420]
 position = Vector2(0, 3.5)
@@ -271,34 +285,40 @@ offset_bottom = -18.0
 script = ExtResource("3_7wdkl")
 initial_state = NodePath("IDLE")
 
-[node name="IDLE" type="Node" parent="FSM" unique_id=1513266930 node_paths=PackedStringArray("player")]
-script = ExtResource("9_cccv5")
-player = NodePath("../..")
-
-[node name="MOVE" type="Node" parent="FSM" unique_id=988217350 node_paths=PackedStringArray("player")]
-script = ExtResource("3_onk4t")
-player = NodePath("../..")
-
-[node name="JUMP" type="Node" parent="FSM" unique_id=1455852524 node_paths=PackedStringArray("player")]
-script = ExtResource("4_7wdkl")
-player = NodePath("../..")
-
-[node name="FALL" type="Node" parent="FSM" unique_id=1771207371 node_paths=PackedStringArray("player")]
-script = ExtResource("5_iwqf0")
-player = NodePath("../..")
-
-[node name="POGO" type="Node" parent="FSM" unique_id=2130752415 node_paths=PackedStringArray("player")]
-script = ExtResource("6_cccv5")
-player = NodePath("../..")
-
-[node name="CROUCH" type="Node" parent="FSM" unique_id=1474342808 node_paths=PackedStringArray("player")]
-script = ExtResource("9_t4a7s")
+[node name="ATTACK" type="Node" parent="FSM" unique_id=2090874058 node_paths=PackedStringArray("player")]
+script = ExtResource("12_o5uhb")
 player = NodePath("../..")
 
 [node name="CLIMB" type="Node" parent="FSM" unique_id=1322242661 node_paths=PackedStringArray("player")]
 script = ExtResource("10_rdkiu")
 player = NodePath("../..")
 
-[node name="ATTACK" type="Node" parent="FSM" unique_id=1715685243]
+[node name="CROUCH" type="Node" parent="FSM" unique_id=1474342808 node_paths=PackedStringArray("player")]
+script = ExtResource("9_t4a7s")
+player = NodePath("../..")
+
+[node name="FALL" type="Node" parent="FSM" unique_id=1771207371 node_paths=PackedStringArray("player")]
+script = ExtResource("5_iwqf0")
+player = NodePath("../..")
+
+[node name="IDLE" type="Node" parent="FSM" unique_id=1513266930 node_paths=PackedStringArray("player")]
+script = ExtResource("9_cccv5")
+player = NodePath("../..")
+
+[node name="JUMP" type="Node" parent="FSM" unique_id=1455852524 node_paths=PackedStringArray("player")]
+script = ExtResource("4_7wdkl")
+player = NodePath("../..")
+
+[node name="MOVE" type="Node" parent="FSM" unique_id=988217350 node_paths=PackedStringArray("player")]
+script = ExtResource("3_onk4t")
+player = NodePath("../..")
+
+[node name="POGO" type="Node" parent="FSM" unique_id=2130752415 node_paths=PackedStringArray("player")]
+script = ExtResource("6_cccv5")
+player = NodePath("../..")
+
+[node name="PREPARE_ATTACK" type="Node" parent="FSM" unique_id=1715685243 node_paths=PackedStringArray("player")]
+script = ExtResource("13_p2la0")
+player = NodePath("../..")
 
 [connection signal="body_entered" from="PogoCollision" to="." method="_on_area_2d_body_entered"]

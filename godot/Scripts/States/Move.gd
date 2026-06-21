@@ -6,7 +6,7 @@ class_name Move
  
 const SPEED := 100.0
 const GRAVITY := 400.0
-  
+
 func update(_delta: float) -> void:
 	if Input.is_action_just_pressed("jump") and player.is_on_floor(): #Pula se pode pular
 		transitioned.emit(self, "jump")
@@ -17,12 +17,12 @@ func physics_update(delta: float) -> void:
 		if player.velocity.y > 0: #Caso não esteja pulando e comece a cair
 			transitioned.emit(self, "fall")
 			return
- 
+
 	var direction := Input.get_axis("left", "right")
- 
-	if direction != 0:
-		player.velocity.x = direction * SPEED
-		
+	if direction != 0 or (Input.is_action_pressed("left") and Input.is_action_pressed("right")):
+		var inferred_direction = -1 if player.lastDir == "left" else 1
+		player.velocity.x = inferred_direction * SPEED
+
 		if Input.is_action_pressed("down"):
 			transitioned.emit(self, "crouch")
 	elif Input.is_action_pressed("down"):
@@ -37,6 +37,10 @@ func physics_update(delta: float) -> void:
 	elif Input.is_action_pressed("right"):
 		player.lastDir = "right"
 
-	animate(animation, direction)
+	player.animate(animation)
 	player.move_and_slide()
- 
+
+	var collider_normal = $"../../RayCast2D".get_collision_normal()
+	var collider = $"../../RayCast2D".get_collider()
+	if collider and collider_normal.x == direction * -1:
+		transitioned.emit(self, "prepare_attack")

@@ -3,7 +3,7 @@ class_name Fall
 
 @export var player: CharacterBody2D
 @export var animation = &"Cair_Final"
-@export var animation_2 = &"Pular"
+@export var animation_final = &"Pular"
  
 const SPEED   := 80.0
 const GRAVITY := 400.0
@@ -20,12 +20,11 @@ func physics_update(delta: float) -> void:
  	
 	player.velocity.y += GRAVITY * delta #Gravidade aplicada
  		
-	animate(animation_2, direction)
-	player.move_and_slide()
+	player.animate(animation_final)
  	
 	if player.is_on_floor(): #Voltou para o chão, troca para MOVE
 		player.velocity.y = 0
-		animate(animation, direction)
+		player.animate(animation)
 
 		if Input.is_action_pressed("down"):
 			transitioned.emit(self, "crouch")
@@ -39,8 +38,9 @@ func physics_update(delta: float) -> void:
 	elif Input.is_action_pressed("right"):
 		player.lastDir = "right"
 	
-	if Input.is_action_pressed("pogo") and Input.is_action_pressed("down"):
+	if Input.is_action_pressed("pogo-attack") and Input.is_action_pressed("down"):
 		transitioned.emit(self, "pogo")
 	if Input.is_action_pressed("up") and player.canClimb: #Caso pressione Cima e esteja em contato com a corda
 		transitioned.emit(self, "climb")
  
+	player.move_and_slide()

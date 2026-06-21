@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dmy14x3qhkdta" path="res://Bloco_Empurravel.tscn" id="4_fcfpr"]
 [ext_resource type="PackedScene" uid="uid://bqwigldj0fobp" path="res://Armadura.tscn" id="4_fu7tr"]
 [ext_resource type="PackedScene" uid="uid://dxb786ckq0g4i" path="res://Pato_Esqueleto.tscn" id="5_pgjuh"]
-[ext_resource type="Script" uid="uid://c10vnem3irjlw" path="res://Corda.gd" id="6_4oyrw"]
+[ext_resource type="Script" uid="uid://c10vnem3irjlw" path="res://Scripts/Corda.gd" id="6_4oyrw"]
 [ext_resource type="Script" uid="uid://cgnb3xww2ahjd" path="res://CameraFollow.gd" id="7_1sa6h"]
 [ext_resource type="Texture2D" uid="uid://c3jqlf0xit1bo" path="res://Assets/UIBackground.png" id="7_fu7tr"]
 [ext_resource type="Script" uid="uid://cklkcqugwuar7" path="res://Scripts/UIController.gd" id="7_lek72"]
@@ -139,9 +139,7 @@ texture = ExtResource("1_bsvjp")
 0:9/0 = 0
 0:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:9/0 = 0
-1:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:9/0 = 0
-2:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:9/0 = 0
 4:9/0 = 0
 5:9/0 = 0
@@ -149,9 +147,7 @@ texture = ExtResource("1_bsvjp")
 7:9/0 = 0
 8:9/0 = 0
 1:10/0 = 0
-1:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:10/0 = 0
-2:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:10/0 = 0
 4:10/0 = 0
 5:10/0 = 0
