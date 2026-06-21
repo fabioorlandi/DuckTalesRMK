@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://chc6wwgjqdf7t" path="res://Assets/DuckTales_Itens.png" id="2_wj7cg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l102d"]
-size = Vector2(32, 32)
+size = Vector2(32.5, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wj7cg"]
 atlas = ExtResource("2_wj7cg")
