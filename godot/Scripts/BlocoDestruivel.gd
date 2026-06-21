@@ -15,7 +15,7 @@ func destroy_body(direction: Vector2):
 	var areas = $DetectSorroundingObjects.get_overlapping_areas().filter(\
 		func(area): return area.get_parent() is RigidBody2D and area.monitoring and area.monitorable)
 	
-	if areas.size() >= 1:
+	if areas.size() >= 1 or direction == Vector2.ZERO:
 		$AnimatedSprite2D.play("destroy_block")
 		await $AnimatedSprite2D.animation_finished
 		

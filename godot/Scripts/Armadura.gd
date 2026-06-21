@@ -50,7 +50,7 @@ func fall_body(direction: Vector2):
 	fall_direction = direction
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if can_fall:
+	if can_fall or body.name == "Patinhas":
 		return
 	
 	if not $RigidBodyElmo.projectile:
