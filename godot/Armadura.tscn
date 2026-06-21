@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bqwigldj0fobp"]
 
 [ext_resource type="Script" uid="uid://hi5jm6wgex5q" path="res://Scripts/Armadura.gd" id="1_kxvc7"]
-[ext_resource type="Script" uid="uid://c81ewdyka13ab" path="res://Scripts/ElmoCavaleiro.gd" id="1_l102d"]
+[ext_resource type="Script" uid="uid://c81ewdyka13ab" path="res://Scripts/ElmoArmadura.gd" id="1_l102d"]
 [ext_resource type="Texture2D" uid="uid://dka3cjpnddhj2" path="res://Assets/Helmet.png" id="1_pnd5t"]
 [ext_resource type="Texture2D" uid="uid://chc6wwgjqdf7t" path="res://Assets/DuckTales_Itens.png" id="2_wj7cg"]
 

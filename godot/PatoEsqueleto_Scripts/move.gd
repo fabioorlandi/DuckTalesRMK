@@ -30,6 +30,6 @@ func physics_update(_delta: float) -> void:
 		var collision = actor.get_last_slide_collision()
 		if collision:
 			var body = collision.get_collider()
-			body.emit_signal("destroy_on_collision")
+			body.emit_signal("destroy_on_collision", Vector2.ZERO)
 		
 		transitioned.emit(self, "desativado")

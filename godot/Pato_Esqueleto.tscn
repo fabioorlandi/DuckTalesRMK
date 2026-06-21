@@ -48,7 +48,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vbrd6")
 }],
-"loop": false,
+"loop": 0,
 "name": &"Ativado",
 "speed": 1.0
 }, {
@@ -59,7 +59,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7dvkr")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Caminhar",
 "speed": 5.0
 }, {
@@ -70,7 +70,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_elyxr")
 }],
-"loop": false,
+"loop": 0,
 "name": &"Desativado",
 "speed": 5.0
 }, {
@@ -78,7 +78,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2sn0e")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Idle",
 "speed": 5.0
 }]
