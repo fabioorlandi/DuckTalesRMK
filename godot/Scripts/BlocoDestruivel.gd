@@ -1,6 +1,8 @@
 extends RigidBody2D
 signal destroy_on_collision
 
+var can_be_destroyed = true
+
 func _ready() -> void:
 	freeze = true
 	destroy_on_collision.connect(destroy_body)

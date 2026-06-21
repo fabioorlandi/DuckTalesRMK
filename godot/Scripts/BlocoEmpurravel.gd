@@ -1,24 +1,25 @@
 extends CharacterBody2D
 signal slide_on_collision(direction: float)
 
-var can_slide = false
+var can_slide = true
+var is_sliding = false
 var slide_direction = Vector2.ZERO
 
 func _ready() -> void:
 	slide_on_collision.connect(slide_body)
 
 func _physics_process(delta: float) -> void:
-	if can_slide and is_on_floor() and not is_on_wall():
+	if is_sliding and is_on_floor() and not is_on_wall():
 		velocity = slide_direction * Vector2(10, 0) * 20
 	else:
 		velocity.x = 0
 		velocity.y += 5
-		can_slide = false
+		is_sliding = false
 
 	move_and_slide()
 
 func slide_body(direction: Vector2):
-	can_slide = true
+	is_sliding = true
 	slide_direction = direction
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
