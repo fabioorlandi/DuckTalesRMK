@@ -1,6 +1,7 @@
-extends CharacterBody2D
+extends RigidBody2D
 signal destroy_on_collision
 
+var projectile = false
 var can_be_destroyed = false
 
 func _ready() -> void:
@@ -17,6 +18,10 @@ func destroy_body(direction: Vector2):
 			$CollisionShapeElmoEstatico.visible = false
 			$CollisionShapeElmoEstatico.visible = false
 			$AnimatedSprite2D.visible = false
+		else:
+			projectile = true
+			freeze = false
+			apply_impulse(Vector2(100, 250) * direction)
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	if $"..".fallen:

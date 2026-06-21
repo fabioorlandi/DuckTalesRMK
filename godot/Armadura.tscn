@@ -47,6 +47,9 @@ size = Vector2(16, 10)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u8vg3"]
 size = Vector2(16, 16)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f0asi"]
+size = Vector2(18, 18)
+
 [node name="RigidBodyArmadura" type="RigidBody2D" unique_id=635808693]
 freeze = true
 script = ExtResource("1_kxvc7")
@@ -56,23 +59,30 @@ metadata/_edit_group_ = true
 position = Vector2(0, 18)
 shape = SubResource("RectangleShape2D_l102d")
 
-[node name="CharacterBodyElmo" type="CharacterBody2D" parent="." unique_id=767663677]
+[node name="RigidBodyElmo" type="RigidBody2D" parent="." unique_id=2052259023]
+freeze_mode = 1
 script = ExtResource("1_l102d")
 metadata/_edit_group_ = true
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="CharacterBodyElmo" unique_id=834361176]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="RigidBodyElmo" unique_id=834361176]
 rect = Rect2(-8, -8, 16, 16)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBodyElmo" unique_id=1563461756]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RigidBodyElmo" unique_id=1563461756]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_rub5d")
 animation = &"helmet"
 
-[node name="CollisionShapeElmoEstatico" type="CollisionShape2D" parent="CharacterBodyElmo" unique_id=185195479]
+[node name="CollisionShapeElmoEstatico" type="CollisionShape2D" parent="RigidBodyElmo" unique_id=185195479]
 position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_pnd5t")
 
-[node name="CollisionShapeElmoCaido" type="CollisionShape2D" parent="CharacterBodyElmo" unique_id=1722043860]
+[node name="CollisionShapeElmoCaido" type="CollisionShape2D" parent="RigidBodyElmo" unique_id=1722043860]
 shape = SubResource("RectangleShape2D_u8vg3")
 
-[connection signal="screen_exited" from="CharacterBodyElmo/VisibleOnScreenNotifier2D" to="CharacterBodyElmo" method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[node name="Area2D" type="Area2D" parent="RigidBodyElmo" unique_id=512182862]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBodyElmo/Area2D" unique_id=82175131]
+shape = SubResource("RectangleShape2D_f0asi")
+
+[connection signal="screen_exited" from="RigidBodyElmo/VisibleOnScreenNotifier2D" to="RigidBodyElmo" method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="body_entered" from="RigidBodyElmo/Area2D" to="." method="_on_area_2d_body_entered"]
