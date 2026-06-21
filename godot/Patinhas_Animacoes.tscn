@@ -92,11 +92,11 @@ region = Rect2(64, 224, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4xdqv"]
 atlas = ExtResource("1_kafnk")
-region = Rect2(32, 192, 32, 32)
+region = Rect2(33, 192, 33, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tkxqm"]
 atlas = ExtResource("1_kafnk")
-region = Rect2(64, 192, 32, 32)
+region = Rect2(66, 192, 30, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fhwcv"]
 animations = [{
@@ -262,7 +262,7 @@ target_position = Vector2(12, 0)
 z_index = 30
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_fhwcv")
-animation = &"Pogo_Final"
+animation = &"Tacada_Sucesso"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2049646420]
 position = Vector2(0, 3.5)
