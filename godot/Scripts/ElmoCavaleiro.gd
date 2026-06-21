@@ -6,7 +6,7 @@ var can_be_destroyed = false
 func _ready() -> void:
 	destroy_on_collision.connect(destroy_body)
 
-func destroy_body():
+func destroy_body(direction: Vector2):
 	if $"..".fallen and not $"..".is_falling:
 		$AnimatedSprite2D.play("destroy_helmet")
 		await $AnimatedSprite2D.animation_finished
