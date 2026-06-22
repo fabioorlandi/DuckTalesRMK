@@ -40,7 +40,7 @@ func physics_update(delta: float) -> void:
 	
 	if Input.is_action_pressed("pogo-attack") and Input.is_action_pressed("down"):
 		transitioned.emit(self, "pogo")
-	if Input.is_action_pressed("up") and player.canClimb: #Caso pressione Cima e esteja em contato com a corda
+	if Input.is_action_just_pressed("up") and player.canClimb: #Caso pressione Cima e esteja em contato com a corda
 		transitioned.emit(self, "climb")
  
 	player.move_and_slide()

@@ -21,6 +21,10 @@ func enter() -> void:
 	elif player.lastDir == "right":
 		player.global_position.x = cordaX - offsetX
 	
+func exit() -> void:
+	animated.speed_scale = 1
+	player.onRope = false
+	
 func update(delta: float) -> void:
 	#seta o jogador com a posição x da corda -/+ offset
 	if Input.is_action_pressed("left"):
@@ -48,11 +52,7 @@ func physics_update(delta: float) -> void:
 	elif Input.is_action_pressed("right"):
 		player.lastDir = "right"
 	
-	if Input.is_action_pressed("left") and Input.is_action_pressed("jump"):
-		player.onRope = false
-		transitioned.emit(self, "fall")
-	if Input.is_action_pressed("right") and Input.is_action_pressed("jump"):
-		player.onRope = false
+	if Input.is_action_pressed("jump") and not Input.is_action_pressed("up") and player.canClimb:
 		transitioned.emit(self, "fall")
 	if Input.is_action_pressed("down") and not player.canClimb:
 		transitioned.emit(self, "fall")
