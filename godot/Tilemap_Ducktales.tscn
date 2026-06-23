@@ -6,14 +6,16 @@
 [ext_resource type="PackedScene" uid="uid://u1rejandld05" path="res://Bloco_Destruivel.tscn" id="4_63sgq"]
 [ext_resource type="PackedScene" uid="uid://dmy14x3qhkdta" path="res://Bloco_Empurravel.tscn" id="4_fcfpr"]
 [ext_resource type="PackedScene" uid="uid://bqwigldj0fobp" path="res://Armadura.tscn" id="4_fu7tr"]
-[ext_resource type="PackedScene" uid="uid://dxb786ckq0g4i" path="res://Pato_Esqueleto.tscn" id="5_pgjuh"]
 [ext_resource type="Script" uid="uid://c10vnem3irjlw" path="res://Scripts/Corda.gd" id="6_4oyrw"]
 [ext_resource type="Script" uid="uid://cgnb3xww2ahjd" path="res://CameraFollow.gd" id="7_1sa6h"]
 [ext_resource type="Texture2D" uid="uid://c3jqlf0xit1bo" path="res://Assets/UIBackground.png" id="7_fu7tr"]
 [ext_resource type="Script" uid="uid://cklkcqugwuar7" path="res://Scripts/UIController.gd" id="7_lek72"]
 [ext_resource type="FontFile" uid="uid://dtdqm04fcn0od" path="res://Pixelon.ttf" id="8_rf2pp"]
 [ext_resource type="Texture2D" uid="uid://byx22j1o1twia" path="res://Assets/hpImages.png" id="9_t4tih"]
+[ext_resource type="FontFile" uid="uid://bmvryxwvhho2k" path="res://Ducktales_Font2.ttf" id="13_55obg"]
 [ext_resource type="Script" uid="uid://duegq8tgxl7vr" path="res://CameraCollider.gd" id="13_voubw"]
+[ext_resource type="PackedScene" uid="uid://whihmuos5mw" path="res://inimigo_generico.tscn" id="15_ke5s7"]
+[ext_resource type="PackedScene" uid="uid://y0qr46lfx8x2" path="res://spawn_esqueleto.tscn" id="16_55obg"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_63sgq"]
 
@@ -224,8 +226,17 @@ tile_set = SubResource("TileSet_63sgq")
 [node name="Patinhas" parent="." unique_id=917563206 instance=ExtResource("3_deayw")]
 position = Vector2(47, 370)
 
-[node name="Pato_Esqueleto" parent="." unique_id=1090572787 instance=ExtResource("5_pgjuh")]
-position = Vector2(232, 371)
+[node name="Inimigo_Generico" parent="." unique_id=403823545 instance=ExtResource("15_ke5s7")]
+position = Vector2(747, 64)
+
+[node name="Spawn" parent="." unique_id=1704297689 instance=ExtResource("16_55obg")]
+position = Vector2(245, 371)
+
+[node name="Spawn2" parent="." unique_id=1762905738 instance=ExtResource("16_55obg")]
+position = Vector2(819, 291)
+
+[node name="Spawn3" parent="." unique_id=447239704 instance=ExtResource("16_55obg")]
+position = Vector2(874, 371)
 
 [node name="Corda" type="Area2D" parent="." unique_id=1975783942]
 position = Vector2(896, 336)
@@ -279,26 +290,29 @@ region_rect = Rect2(161, 4, 87, 39)
 
 [node name="$Stage" type="Label" parent="Camera2D/UI" unique_id=735883775]
 z_index = 13
-offset_left = -68.0
-offset_top = 262.0
-offset_right = -28.0
-offset_bottom = 285.0
-theme_override_fonts/font = ExtResource("8_rf2pp")
-theme_override_font_sizes/font_size = 11
+texture_filter = 1
+offset_left = -69.0
+offset_top = 259.0
+offset_right = -29.0
+offset_bottom = 282.0
+theme_override_fonts/font = ExtResource("13_55obg")
+theme_override_font_sizes/font_size = 8
 text = "$"
 vertical_alignment = 1
 
 [node name="Points" type="Label" parent="Camera2D/UI/$Stage" unique_id=518924337]
 z_index = 13
+texture_filter = 1
 layout_mode = 0
-offset_left = 17.0
-offset_right = 57.0
+offset_left = 16.0
+offset_right = 56.0
 offset_bottom = 23.0
-theme_override_fonts/font = ExtResource("8_rf2pp")
-theme_override_font_sizes/font_size = 11
+theme_override_fonts/font = ExtResource("13_55obg")
+theme_override_font_sizes/font_size = 8
 text = "0"
 horizontal_alignment = 2
 vertical_alignment = 1
+autowrap_trim_flags = 128
 
 [node name="$Total" type="Label" parent="Camera2D/UI" unique_id=1072256964]
 z_index = 13

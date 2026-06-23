@@ -8,10 +8,11 @@ var timer := 0.0
 
 func _ready():
 	actor = get_parent().get_parent()
-
+	
 func enter() -> void:
 	timer = 0.0
-	
+	$"../../CollisionShape2D".disabled = true
+	$"../../IdleCollisionShape".disabled = false
 	actor.velocity = Vector2.ZERO
 	
 	var anim = actor.get_node("AnimatedSprite2D")
