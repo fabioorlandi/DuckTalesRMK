@@ -46,7 +46,20 @@ func _ready():
 	timerLabel.text = str(timeLeft)
 	
 func _process(delta):
-	pass
+	if Input.is_action_just_pressed("e"):
+		RemoveScore(100)
+	if Input.is_action_just_pressed("r"):
+		AddScore(200)
+	if Input.is_action_just_pressed("t"):
+		AddToTotalScore()
+	if Input.is_action_just_pressed("y"):
+		CauseDamage(1)
+	if Input.is_action_just_pressed("u"):
+		ReceiveCure(1)
+	if Input.is_action_just_pressed("i"):
+		LoseLife()
+	if Input.is_action_just_pressed("o"):
+		ResetLifes()
 
 func AddScore(points: int) -> void:
 	score += points
