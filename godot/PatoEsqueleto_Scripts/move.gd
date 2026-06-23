@@ -23,7 +23,6 @@ func physics_update(_delta: float) -> void:
 	var sprite: AnimatedSprite2D = actor.get_node("AnimatedSprite2D")
 	sprite.flip_h = actor.direction > 0
 	
-
 	if actor.is_on_wall():
 		var collision = actor.get_last_slide_collision()
 		if collision:

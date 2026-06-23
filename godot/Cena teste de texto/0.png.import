@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://5qnrb8udtf4w"
-path="res://.godot/imported/0.png-30cc601930bfed815371fe5acba60898.ctex"
+path="res://.godot/imported/0.png-bf8f20bc5305c1dce37c51ea2e747575.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://0.png"
-dest_files=["res://.godot/imported/0.png-30cc601930bfed815371fe5acba60898.ctex"]
+source_file="res://Cena teste de texto/0.png"
+dest_files=["res://.godot/imported/0.png-bf8f20bc5305c1dce37c51ea2e747575.ctex"]
 
 [params]
 

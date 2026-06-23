@@ -1,23 +1,24 @@
 extends CharacterBody2D
 class_name PatoEsqueleto
-signal destroy_on_collision
+signal die_on_collision
 
 var collision_disabled := false
 var primeira_ativacao := true
 var player_on_screen := false
 
-
 var direction := -1  
 
 func _ready():
-	connect("destroy_on_collision", _on_destroy)
-func _on_destroy(_dir: Vector2) -> void:
+	connect("die_on_collision", _on_die)
+
+func _on_die() -> void:
+	if $FSM.current_state is IDLE:
+		return
+
 	$CollisionShape2D.set_deferred("disabled", true)
 	$IdleCollisionShape.set_deferred("disabled", true)
 	collision_disabled = true
 	$AnimatedSprite2D.pause()
-	
-	
 	
 func _physics_process(delta: float) -> void:
 	velocity.y += 200 * delta

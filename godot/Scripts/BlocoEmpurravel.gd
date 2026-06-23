@@ -8,13 +8,21 @@ var slide_direction = Vector2.ZERO
 func _ready() -> void:
 	slide_on_collision.connect(slide_body)
 
-func _physics_process(delta: float) -> void:
-	if is_sliding and is_on_floor() and not is_on_wall():
+func _process(delta: float) -> void:
+	if is_sliding and is_on_floor():
+		can_slide = false
 		velocity = slide_direction * Vector2(10, 0) * 20
+		
+		var collision = self.get_last_slide_collision()
+		if collision:
+			var body = collision.get_collider()
+			if body and body.has_signal("die_on_collision"):
+				body.emit_signal("die_on_collision")
 	else:
 		velocity.x = 0
 		velocity.y += 5
 		is_sliding = false
+		can_slide = true
 
 	move_and_slide()
 
