@@ -32,7 +32,7 @@ func update(_delta: float) -> void:
 		transitioned.emit(self, "idle")
 
 func physics_update(_delta: float) -> void:
-	actor.velocity.y += 1000 * _delta
+	
 	actor.velocity.x = 0
 	actor.move_and_slide()
 

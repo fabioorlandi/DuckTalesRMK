@@ -11,6 +11,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qvwdq"]
 size = Vector2(23, 24)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nkdbr"]
+size = Vector2(20, 1)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_3udnp"]
 atlas = ExtResource("1_im06y")
 region = Rect2(0, 0, 28, 28)
@@ -90,12 +93,19 @@ script = ExtResource("1_h0573")
 position = Vector2(0.5, 1)
 shape = SubResource("RectangleShape2D_qvwdq")
 
+[node name="IdleCollisionShape" type="CollisionShape2D" parent="." unique_id=457361946]
+position = Vector2(0, 13)
+scale = Vector2(1, 0.1)
+shape = SubResource("RectangleShape2D_nkdbr")
+debug_color = Color(0.8296411, 0.6198923, 0.13814053, 0.41960785)
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1465435755]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_wyc2n")
 animation = &"Idle"
 
 [node name="Label_State" type="Label" parent="." unique_id=174796275]
+visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 
@@ -117,6 +127,7 @@ script = ExtResource("5_xkut6")
 script = ExtResource("7_im06y")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1777087500]
+rect = Rect2(-10, -10, 21, 23)
 
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
