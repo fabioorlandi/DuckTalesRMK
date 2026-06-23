@@ -40,13 +40,16 @@ func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 func _on_detect_sorrounding_objects_body_entered(body: Node2D) -> void:
 	if not projectile:
 		return
-		
-	$AnimatedSprite2D.play("destroy_block")
-	await $AnimatedSprite2D.animation_finished
+	
+	if body.has_signal("die_on_collision"):
+		body.emit_signal("die_on_collision")
 	
 	freeze = true
 	projectile = false
 	
+	$AnimatedSprite2D.play("destroy_block")
+	await $AnimatedSprite2D.animation_finished
+
 	$DetectSorroundingObjects/CollisionShape2D.disabled = true
 	$CollisionShape2D.disabled = true
 	$CollisionShape2D.visible = false
