@@ -261,11 +261,9 @@ speed = 250.0
 [node name="UI" type="Node2D" parent="Camera2D" unique_id=1631643127]
 position = Vector2(-38, -362)
 script = ExtResource("7_lek72")
-score = 500
-totalScore = 30000
-health = 4
-healthCap = 4
-lifesCap = 2
+health = 3
+healthCap = 3
+lifesCap = 3
 
 [node name="Background" type="Sprite2D" parent="Camera2D/UI" unique_id=269774112]
 z_index = 10
@@ -292,9 +290,9 @@ region_rect = Rect2(161, 4, 87, 39)
 z_index = 13
 texture_filter = 1
 offset_left = -69.0
-offset_top = 259.0
+offset_top = 262.0
 offset_right = -29.0
-offset_bottom = 282.0
+offset_bottom = 285.0
 theme_override_fonts/font = ExtResource("13_55obg")
 theme_override_font_sizes/font_size = 8
 text = "$"

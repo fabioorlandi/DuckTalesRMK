@@ -60,6 +60,8 @@ func _process(delta):
 		LoseLife()
 	if Input.is_action_just_pressed("o"):
 		ResetLifes()
+	if Input.is_action_just_pressed("m"):
+		get_tree().reload_current_scene()
 
 func AddScore(points: int) -> void:
 	score += points
