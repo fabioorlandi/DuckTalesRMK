@@ -2,16 +2,16 @@ extends RichTextLabel
 
 # Dictionary mapping characters to your image paths
 const IMAGE_MAP = {
-	"0": "res://0.png",
-	"1": "res://1.png",
-	"2": "res://2.png",
-	"3": "res://3.png",
-	"4": "res://4.png",
-	"5": "res://5.png",
-	"6": "res://6.png",
-	"7": "res://7.png",
-	"8": "res://8.png",
-	"9": "res://9.png"
+	"0": "res://Cena teste de texto/0.png",
+	"1": "res://Cena teste de texto/1.png",
+	"2": "res://Cena teste de texto/2.png",
+	"3": "res://Cena teste de texto/3.png",
+	"4": "res://Cena teste de texto/4.png",
+	"5": "res://Cena teste de texto/5.png",
+	"6": "res://Cena teste de texto/6.png",
+	"7": "res://Cena teste de texto/7.png",
+	"8": "res://Cena teste de texto/8.png",
+	"9": "res://Cena teste de texto/9.png"
 }
 
 # This variable holds the number. Changing it automatically updates the UI.

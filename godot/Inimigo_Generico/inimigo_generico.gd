@@ -9,15 +9,13 @@ func _ready():
 	connect("die_on_collision", _on_die)
 
 func _on_die() -> void:
-
 	$CollisionShape2D.set_deferred("disabled", true)
 	collision_disabled = true
 	$AnimatedSprite2D.pause()
-	velocity.x = 0
 	
 func _physics_process(delta: float) -> void:
 	# gravidade sempre
-	velocity.y += 200 * delta
+	velocity.y += 500 * delta
 	move_and_slide()
 	if self.global_position.y >= 1110:
 		print("caíiii")

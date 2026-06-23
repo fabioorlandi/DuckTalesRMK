@@ -13,9 +13,11 @@ func enter() -> void:
 	sprite.play("Inimigo_generico_caminhar")
 
 func physics_update(_delta: float) -> void:
+	if actor.collision_disabled:
+		actor.velocity.x = 0
+	else:
+		actor.velocity.x = actor.direction * speed
 	
-	
-	actor.velocity.x = actor.direction * speed
 	actor.move_and_slide()
 	
 	var sprite: AnimatedSprite2D = actor.get_node("AnimatedSprite2D")

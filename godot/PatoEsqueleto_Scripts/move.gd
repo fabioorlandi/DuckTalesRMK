@@ -15,7 +15,10 @@ func enter() -> void:
 	$"../../IdleCollisionShape".disabled = true
 func physics_update(_delta: float) -> void:
 	# movimento horizontal
-	actor.velocity.x = actor.direction * speed
+	if actor.collision_disabled:
+		actor.velocity.x = 0
+	else:
+		actor.velocity.x = actor.direction * speed
 	
 	actor.move_and_slide()
 	
