@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c6q3b47w4upjj"]
 
-[ext_resource type="Script" uid="uid://dgys1lnwwn7ra" path="res://rich_text_label.gd" id="1_0fbet"]
+[ext_resource type="Script" uid="uid://dgys1lnwwn7ra" path="res://Cena teste de texto/rich_text_label.gd" id="1_0fbet"]
 
 [node name="Control" type="Control" unique_id=2018066315]
 layout_mode = 3
@@ -15,6 +15,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=531651987]
+texture_filter = 1
 layout_mode = 0
 offset_left = 91.0
 offset_top = 48.0
