@@ -15,7 +15,7 @@ const IMAGE_MAP = {
 }
 
 # This variable holds the number. Changing it automatically updates the UI.
-var current_value: int = 60:
+var current_value: String = "Teste 123":
 	set(value):
 		current_value = value
 		_update_image_display()

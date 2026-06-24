@@ -16,11 +16,12 @@ func destroy_body(direction: Vector2):
 		func(area): return area.get_parent() is RigidBody2D and area.monitoring and area.monitorable)
 	
 	if areas.size() >= 1 or direction == Vector2.ZERO:
+		$CollisionShape2D.disabled = true
+		$DetectSorroundingObjects/CollisionShape2D.disabled = true
+		
 		$AnimatedSprite2D.play("destroy_block")
 		await $AnimatedSprite2D.animation_finished
 		
-		$DetectSorroundingObjects/CollisionShape2D.disabled = true
-		$CollisionShape2D.disabled = true
 		$CollisionShape2D.visible = false
 		$AnimatedSprite2D.visible = false
 	else:
@@ -30,10 +31,11 @@ func destroy_body(direction: Vector2):
 		apply_impulse(Vector2(100, 250) * direction)
 
 func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
-	$AnimatedSprite2D.play("block")
-	
 	$DetectSorroundingObjects/CollisionShape2D.disabled = false
 	$CollisionShape2D.disabled = false
+	
+	$AnimatedSprite2D.play("block")
+
 	$CollisionShape2D.visible = true
 	$AnimatedSprite2D.visible = true
 
