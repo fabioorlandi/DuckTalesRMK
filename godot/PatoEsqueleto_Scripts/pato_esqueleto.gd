@@ -19,7 +19,15 @@ func _on_die() -> void:
 	$IdleCollisionShape.set_deferred("disabled", true)
 	collision_disabled = true
 	$AnimatedSprite2D.pause()
-	
+	var tween = create_tween()
+	tween.set_trans(Tween.TRANS_QUAD)
+	tween.set_ease(Tween.EASE_OUT)
+	tween.tween_property(
+		self,
+		"global_position:y",
+		global_position.y - 25,
+		0.15
+	)
 func _physics_process(delta: float) -> void:
 	velocity.y += 200 * delta
 	

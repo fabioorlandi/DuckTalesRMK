@@ -11,7 +11,8 @@ func _ready():
 
 func enter() -> void:
 	finished = false
-	
+	$"../../CollisionShape2D".disabled = true
+	$"../../IdleCollisionShape".disabled = false
 	var sprite: AnimatedSprite2D = actor.get_node("AnimatedSprite2D")
 	sprite.play(animation)
 
