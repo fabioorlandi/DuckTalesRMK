@@ -247,6 +247,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iwqf0"]
 size = Vector2(20, 21)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p2la0"]
+size = Vector2(6, 4)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f0asi"]
 size = Vector2(6, 4)
 
@@ -270,7 +273,14 @@ shape = SubResource("RectangleShape2D_iwqf0")
 
 [node name="PogoCollision" type="Area2D" parent="." unique_id=591049758]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PogoCollision" unique_id=1637887757]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PogoCollision" unique_id=1637899080]
+position = Vector2(0, 14)
+shape = SubResource("RectangleShape2D_p2la0")
+disabled = true
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="PogoCollision" unique_id=427707586]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PogoCollision/CharacterBody2D" unique_id=1637887757]
 position = Vector2(0, 14)
 shape = SubResource("RectangleShape2D_f0asi")
 disabled = true

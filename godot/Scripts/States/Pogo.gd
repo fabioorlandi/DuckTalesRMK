@@ -4,18 +4,18 @@ class_name Pogo
 @export var player: CharacterBody2D
 @export var animation = &"Pogo_Inicio"
 @export var animation_2 = &"Pogo_Final"
-var pogo_teste = false
 
 const SPEED       := 80.0
 const GRAVITY     := 600.0
 const POGO_FORCE  := -280.0  #Força do quique 
 
 func enter() -> void:
-	pogo_teste = true
 	$"../../PogoCollision/CollisionShape2D".disabled = false
+	$"../../PogoCollision/CharacterBody2D/CollisionShape2D".disabled = false
 
 func exit() -> void:
 	$"../../PogoCollision/CollisionShape2D".disabled = true
+	$"../../PogoCollision/CharacterBody2D/CollisionShape2D".disabled = true
 
 func update(_delta: float) -> void:
 	if Input.is_action_just_released("pogo-attack") or Input.is_action_just_released("down"): #Soltou o botão de pogo volta a cair normalmente em fall
@@ -32,9 +32,15 @@ func physics_update(delta: float) -> void:
  
 	player.animate(animation)
 	player.move_and_slide()
+	$"../../PogoCollision/CharacterBody2D".move_and_slide()
+	
+	var has_collider = false
+	var collision = $"../../PogoCollision/CharacterBody2D".get_last_slide_collision()
+	if collision:
+		has_collider = collision.get_collider() != null
 	
 	if Input.is_action_pressed("pogo-attack"):
-		if player.pogo_hit and pogo_teste:  #Tocou no chão/objeto segurando pogo quica de novo
+		if has_collider: #Tocou no chão/objeto segurando pogo quica de novo
 			player.animate(animation_2)
 			await get_tree().create_timer(0.05).timeout
 
@@ -51,6 +57,5 @@ func physics_update(delta: float) -> void:
 	
 	if not Input.is_action_pressed("pogo-attack") or not Input.is_action_pressed("down"):
 		if player.velocity.y > 0: #Soltou enquanto estava no ar volta para fall
-			pogo_teste = false
 			transitioned.emit(self, "fall")
  

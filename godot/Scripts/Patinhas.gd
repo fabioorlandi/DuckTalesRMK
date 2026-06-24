@@ -4,9 +4,11 @@ extends CharacterBody2D
 @export var lastDir = "right"
 
 var attacking: bool = false
-var pogo_hit = false
 var onRope: bool = false
 var ropeX: float
+
+func _ready() -> void:
+	self.add_collision_exception_with($PogoCollision/CharacterBody2D)
 
 func _process(delta: float) -> void:
 	if lastDir == "left":
@@ -28,17 +30,8 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Patinhas":
 		return
 	
-	pogo_hit = true
-	
 	if body is PhysicsBody2D and body.has_signal("destroy_on_collision"):
 		body.emit_signal("destroy_on_collision", Vector2.ZERO)
 		
 	if body is PhysicsBody2D and body.has_signal("die_on_collision"):
 		body.emit_signal("die_on_collision")
-
-
-func _on_pogo_collision_body_exited(body: Node2D) -> void:
-	if body.name == "Patinhas":
-		return
-	
-	pogo_hit = false
