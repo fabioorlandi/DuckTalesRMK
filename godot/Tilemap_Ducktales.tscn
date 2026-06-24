@@ -201,6 +201,9 @@ scenes/2/scene = ExtResource("4_fcfpr")
 [sub_resource type="TileSet" id="TileSet_63sgq"]
 sources/0 = SubResource("TileSetScenesCollectionSource_deayw")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nkdbr"]
+size = Vector2(16, 7)
+
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_pgjuh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1sa6h"]
@@ -229,6 +232,15 @@ position = Vector2(47, 370)
 
 [node name="Inimigo_Generico" parent="." unique_id=403823545 instance=ExtResource("15_ke5s7")]
 position = Vector2(747, 64)
+
+[node name="Area2D" type="StaticBody2D" parent="." unique_id=1296536085]
+position = Vector2(792, 70)
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2031131104]
+position = Vector2(0, 6.5)
+shape = SubResource("RectangleShape2D_nkdbr")
 
 [node name="Spawn" parent="." unique_id=1704297689 instance=ExtResource("16_55obg")]
 position = Vector2(245, 371)
