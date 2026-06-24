@@ -11,11 +11,9 @@ const POGO_FORCE  := -280.0  #Força do quique
 
 func enter() -> void:
 	$"../../PogoCollision/CollisionShape2D".disabled = false
-	$"../../PogoCollision/CharacterBody2D/CollisionShape2D".disabled = false
 
 func exit() -> void:
 	$"../../PogoCollision/CollisionShape2D".disabled = true
-	$"../../PogoCollision/CharacterBody2D/CollisionShape2D".disabled = true
 
 func update(_delta: float) -> void:
 	if Input.is_action_just_released("pogo-attack") or Input.is_action_just_released("down"): #Soltou o botão de pogo volta a cair normalmente em fall
@@ -32,12 +30,19 @@ func physics_update(delta: float) -> void:
  
 	player.animate(animation)
 	player.move_and_slide()
-	$"../../PogoCollision/CharacterBody2D".move_and_slide()
+	$"../../PogoCollision".move_and_slide()
 	
 	var has_collider = false
-	var collision = $"../../PogoCollision/CharacterBody2D".get_last_slide_collision()
+	var collision = $"../../PogoCollision".get_last_slide_collision()
 	if collision:
-		has_collider = collision.get_collider() != null
+		var body = collision.get_collider()
+		has_collider = body != null
+	
+		if body is PhysicsBody2D and body.has_signal("destroy_on_collision"):
+			body.emit_signal("destroy_on_collision", Vector2.ZERO)
+		
+		if body is PhysicsBody2D and body.has_signal("die_on_collision"):
+			body.emit_signal("die_on_collision")
 	
 	if Input.is_action_pressed("pogo-attack"):
 		if has_collider: #Tocou no chão/objeto segurando pogo quica de novo
