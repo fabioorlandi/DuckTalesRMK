@@ -18,7 +18,7 @@ func enter() -> void:
 		player.animate(animation)
 		await $"../../AnimatedSprite2D".animation_finished
 		
-		var collider = $"../../RayCast2D".get_collider()
+		var collider = player.attack_raycast.get_collider()
 		if can_attack(collider as PhysicsBody2D):
 			attacking_state = AttackState.Success
 		else:

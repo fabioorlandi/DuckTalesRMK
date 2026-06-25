@@ -4,10 +4,12 @@ class_name Crouch
 @export var player: CharacterBody2D
 @export var animation = &"Abaixar"
 
+const GRAVITY := 400.0
+
 var crouched = false
 
 func enter() -> void:
-	player.velocity = Vector2.ZERO
+	player.velocity.x = 0
 	crouched = false
 
 func update(_delta: float) -> void:
@@ -24,6 +26,8 @@ func physics_update(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("jump") and player.is_on_floor(): #Pula se pode pular
 		transitioned.emit(self, "jump")
+	
+	player.velocity.y = GRAVITY * delta
 	
 	if not crouched:
 		player.animate(animation)

@@ -40,7 +40,7 @@ func physics_update(delta: float) -> void:
 	player.animate(animation)
 	player.move_and_slide()
 
-	var collider_normal = $"../../RayCast2D".get_collision_normal()
-	var collider = $"../../RayCast2D".get_collider()
+	var collider_normal = player.attack_raycast.get_collision_normal()
+	var collider = player.attack_raycast.get_collider()
 	if collider and collider_normal.x == direction * -1:
 		transitioned.emit(self, "prepare_attack")
