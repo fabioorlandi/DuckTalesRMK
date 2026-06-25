@@ -22,5 +22,5 @@ offset_top = 48.0
 offset_right = 860.0
 offset_bottom = 334.0
 bbcode_enabled = true
-text = "TESTE 123"
+text = "50"
 script = ExtResource("1_0fbet")
