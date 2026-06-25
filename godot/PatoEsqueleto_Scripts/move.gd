@@ -7,7 +7,7 @@ var actor
 
 func _ready():
 	actor = get_parent().get_parent()
-	
+
 func enter() -> void:
 	var sprite: AnimatedSprite2D = actor.get_node("AnimatedSprite2D")
 	sprite.play("Caminhar")
