@@ -11,7 +11,7 @@ func physics_update(delta: float) -> void:
 	var direction := Input.get_axis("left", "right")
 	var lastDir = player.lastDir
 	
-	var collider_normal = $"../../RayCast2D".get_collision_normal()
+	var collider_normal = player.attack_raycast.get_collision_normal()
 	var collision = player.get_last_slide_collision()
 	if collision:
 		var body = collision.get_collider()

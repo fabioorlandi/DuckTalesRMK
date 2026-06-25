@@ -247,36 +247,29 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iwqf0"]
 size = Vector2(20, 21)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_f0asi"]
-size = Vector2(16, 4)
-
 [node name="Patinhas" type="CharacterBody2D" unique_id=917563206]
 script = ExtResource("1_rdkiu")
 
-[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1898229934]
+[node name="AttackRayCast2D" type="RayCast2D" parent="." unique_id=1898229934]
 position = Vector2(0, 7.5)
 scale = Vector2(1, 2)
 target_position = Vector2(12, 0)
+
+[node name="PogoRayCast2D" type="RayCast2D" parent="." unique_id=320817553]
+scale = Vector2(2, 1)
+target_position = Vector2(0, 17)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2082220831]
 z_index = 30
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_fhwcv")
-animation = &"Tacada_Sucesso"
+animation = &"Pogo_Inicio"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2049646420]
 position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_iwqf0")
 
-[node name="PogoCollision" type="Area2D" parent="." unique_id=591049758]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PogoCollision" unique_id=1637887757]
-position = Vector2(0, 14)
-shape = SubResource("RectangleShape2D_f0asi")
-disabled = true
-
 [node name="Label_State" type="Label" parent="." unique_id=1786105537]
-visible = false
 offset_left = -20.0
 offset_top = -41.0
 offset_right = 20.0
@@ -321,5 +314,3 @@ player = NodePath("../..")
 [node name="PREPARE_ATTACK" type="Node" parent="FSM" unique_id=1715685243 node_paths=PackedStringArray("player")]
 script = ExtResource("13_p2la0")
 player = NodePath("../..")
-
-[connection signal="body_entered" from="PogoCollision" to="." method="_on_area_2d_body_entered"]
