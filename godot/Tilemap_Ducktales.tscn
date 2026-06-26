@@ -37,7 +37,7 @@ size = Vector2(5.6447678, 49.09293)
 [node name="TileMapLayerBackground" parent="." unique_id=1744038407 instance=ExtResource("2_55obg")]
 
 [node name="TileMapLayerForeground" type="TileMapLayer" parent="." unique_id=688610627]
-tile_map_data = PackedByteArray("AAAIABcAAAAAAAAAAQAJABcAAAAAAAAAAQAKABcAAAAAAAAAAQALABcAAAAAAAAAAQASABcAAAAAAAAAAQATABcAAAAAAAAAAQAUABcAAAAAAAAAAQAVABcAAAAAAAAAAQAWABcAAAAAAAAAAQAXABcAAAAAAAAAAQAAABYAAAAAAAAAAQAAABcAAAAAAAAAAQAXAAsAAAAAAAAAAQAYAAsAAAAAAAAAAQA/ABUAAAAAAAAAAQAuABIAAAAAAAAAAQAvABIAAAAAAAAAAQAwABIAAAAAAAAAAQAzABcAAAAAAAAAAQAyABcAAAAAAAAAAQAxABcAAAAAAAAAAQAwABcAAAAAAAAAAQAxAAQAAAAAAAAAAgA+ABUAAAAAAAAAAQA9ABUAAAAAAAAAAQA8ABUAAAAAAAAAAQA=")
+tile_map_data = PackedByteArray("AAAIABcAAAAAAAAAAQAJABcAAAAAAAAAAQAKABcAAAAAAAAAAQALABcAAAAAAAAAAQASABcAAAAAAAAAAQATABcAAAAAAAAAAQAUABcAAAAAAAAAAQAVABcAAAAAAAAAAQAWABcAAAAAAAAAAQAXABcAAAAAAAAAAQAAABYAAAAAAAAAAQAAABcAAAAAAAAAAQA/ABUAAAAAAAAAAQAuABIAAAAAAAAAAQAvABIAAAAAAAAAAQAwABIAAAAAAAAAAQAzABcAAAAAAAAAAQAyABcAAAAAAAAAAQAxABcAAAAAAAAAAQAwABcAAAAAAAAAAQAxAAQAAAAAAAAAAgA+ABUAAAAAAAAAAQA9ABUAAAAAAAAAAQA8ABUAAAAAAAAAAQA=")
 tile_set = SubResource("TileSet_63sgq")
 
 [node name="Patinhas" parent="." unique_id=917563206 instance=ExtResource("3_deayw")]
@@ -66,7 +66,7 @@ position = Vector2(874, 371)
 
 [node name="Corda" type="Area2D" parent="." unique_id=1975783942]
 position = Vector2(896, 336)
-scale = Vector2(1, -31.600004)
+scale = Vector2(0.997, -31.5)
 script = ExtResource("6_4oyrw")
 ropeX = 896.0
 
@@ -75,11 +75,29 @@ shape = SubResource("SegmentShape2D_pgjuh")
 
 [node name="Corda2" type="Area2D" parent="." unique_id=1868219995]
 position = Vector2(1920, 528)
-scale = Vector2(0.858, -27.305)
+scale = Vector2(0.848, -27)
 script = ExtResource("6_4oyrw")
 ropeX = 1920.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Corda2" unique_id=818096108]
+shape = SubResource("SegmentShape2D_pgjuh")
+
+[node name="Corda3" type="Area2D" parent="." unique_id=756863121]
+position = Vector2(1408, 80)
+scale = Vector2(0.943, -31.5)
+script = ExtResource("6_4oyrw")
+ropeX = 1408.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Corda3" unique_id=1074112452]
+shape = SubResource("SegmentShape2D_pgjuh")
+
+[node name="Corda4" type="Area2D" parent="." unique_id=1158805]
+position = Vector2(384, 224)
+scale = Vector2(1.906, -62)
+script = ExtResource("6_4oyrw")
+ropeX = 384.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Corda4" unique_id=1455820483]
 shape = SubResource("SegmentShape2D_pgjuh")
 
 [node name="Interacao_Cenario" type="Node2D" parent="." unique_id=326382331]
@@ -287,30 +305,6 @@ position = Vector2(0, -1.0001221)
 scale = Vector2(1.771551, 4.0739007)
 shape = SubResource("RectangleShape2D_1sa6h")
 
-[node name="floor-312-To-72" type="Area2D" parent="CameraColliders" unique_id=396331675]
-position = Vector2(896, 203)
-scale = Vector2(3.2, 0.4)
-script = ExtResource("13_voubw")
-Transition = true
-TransitionPos = 72
-
-[node name="Follow" type="CollisionShape2D" parent="CameraColliders/floor-312-To-72" unique_id=1855719502]
-position = Vector2(0, -1.0001221)
-scale = Vector2(1.771551, 4.0739007)
-shape = SubResource("RectangleShape2D_1sa6h")
-
-[node name="floor-72-To-312" type="Area2D" parent="CameraColliders" unique_id=1651814085]
-position = Vector2(896, 200)
-scale = Vector2(3.2, 0.4)
-script = ExtResource("13_voubw")
-Transition = true
-TransitionPos = 312
-
-[node name="Follow" type="CollisionShape2D" parent="CameraColliders/floor-72-To-312" unique_id=671993920]
-position = Vector2(0, -1.0001221)
-scale = Vector2(1.771551, 4.0739007)
-shape = SubResource("RectangleShape2D_1sa6h")
-
 [node name="floor-543-To-312" type="Area2D" parent="CameraColliders" unique_id=876611780]
 position = Vector2(1920, 435)
 scale = Vector2(3.2, 0.4)
@@ -335,13 +329,171 @@ position = Vector2(0, -1.0001221)
 scale = Vector2(1.771551, 4.0739007)
 shape = SubResource("RectangleShape2D_1sa6h")
 
+[node name="floor-312-To-72 - right" type="Area2D" parent="CameraColliders" unique_id=396331675]
+position = Vector2(896, 203)
+scale = Vector2(3.2, 0.4)
+script = ExtResource("13_voubw")
+Transition = true
+TransitionPos = 72
+
+[node name="Follow" type="CollisionShape2D" parent="CameraColliders/floor-312-To-72 - right" unique_id=1855719502]
+position = Vector2(0, -1.0001221)
+scale = Vector2(1.771551, 4.0739007)
+shape = SubResource("RectangleShape2D_1sa6h")
+
+[node name="floor-72-To-312 - right" type="Area2D" parent="CameraColliders" unique_id=1651814085]
+position = Vector2(896, 200)
+scale = Vector2(3.2, 0.4)
+script = ExtResource("13_voubw")
+Transition = true
+TransitionPos = 312
+
+[node name="Follow" type="CollisionShape2D" parent="CameraColliders/floor-72-To-312 - right" unique_id=671993920]
+position = Vector2(0, -1.0001221)
+scale = Vector2(1.771551, 4.0739007)
+shape = SubResource("RectangleShape2D_1sa6h")
+
+[node name="floor-312-To-72 - left" type="Area2D" parent="CameraColliders" unique_id=1146254360]
+position = Vector2(384, 155)
+scale = Vector2(3.2, 0.12000242)
+script = ExtResource("13_voubw")
+Transition = true
+TransitionPos = 72
+
+[node name="Follow" type="CollisionShape2D" parent="CameraColliders/floor-312-To-72 - left" unique_id=971010173]
+position = Vector2(0, -1.0001221)
+scale = Vector2(1.771551, 4.0739007)
+shape = SubResource("RectangleShape2D_1sa6h")
+
+[node name="floor-72-To-312 - left" type="Area2D" parent="CameraColliders" unique_id=1305761540]
+position = Vector2(384, 152)
+scale = Vector2(3.2, 0.12000242)
+script = ExtResource("13_voubw")
+Transition = true
+TransitionPos = 312
+
+[node name="Follow" type="CollisionShape2D" parent="CameraColliders/floor-72-To-312 - left" unique_id=761859310]
+position = Vector2(0, -1.0001221)
+scale = Vector2(1.771551, 4.0739007)
+shape = SubResource("RectangleShape2D_1sa6h")
+
+[node name="floor-72-To- -168 - left" type="Area2D" parent="CameraColliders" unique_id=247762335]
+position = Vector2(384, -37)
+scale = Vector2(3.2, 0.12000242)
+script = ExtResource("13_voubw")
+Transition = true
+TransitionPos = -168
+
+[node name="Follow" type="CollisionShape2D" parent="CameraColliders/floor-72-To- -168 - left" unique_id=2013563637]
+position = Vector2(0, -1.0001221)
+scale = Vector2(1.771551, 4.0739007)
+shape = SubResource("RectangleShape2D_1sa6h")
+
+[node name="floor--168-To- 72 - left" type="Area2D" parent="CameraColliders" unique_id=1856685793]
+position = Vector2(384, -40)
+scale = Vector2(3.2, 0.12000242)
+script = ExtResource("13_voubw")
+Transition = true
+TransitionPos = 72
+
+[node name="Follow" type="CollisionShape2D" parent="CameraColliders/floor--168-To- 72 - left" unique_id=1007252897]
+position = Vector2(0, -1.0001221)
+scale = Vector2(1.771551, 4.0739007)
+shape = SubResource("RectangleShape2D_1sa6h")
+
+[node name="floor--168 -To- -408 - left" type="Area2D" parent="CameraColliders" unique_id=426687097]
+position = Vector2(384, -279)
+scale = Vector2(3.2, 0.3600024)
+script = ExtResource("13_voubw")
+Transition = true
+TransitionPos = -408
+
+[node name="Follow" type="CollisionShape2D" parent="CameraColliders/floor--168 -To- -408 - left" unique_id=1169622897]
+position = Vector2(0, -1.0001221)
+scale = Vector2(1.771551, 4.0739007)
+shape = SubResource("RectangleShape2D_1sa6h")
+
+[node name="floor- -408-To- -168 - left" type="Area2D" parent="CameraColliders" unique_id=1217952647]
+position = Vector2(384, -282)
+scale = Vector2(3.2, 0.3600024)
+script = ExtResource("13_voubw")
+Transition = true
+TransitionPos = -168
+
+[node name="Follow" type="CollisionShape2D" parent="CameraColliders/floor- -408-To- -168 - left" unique_id=925241054]
+position = Vector2(0, -1.0001221)
+scale = Vector2(1.771551, 4.0739007)
+shape = SubResource("RectangleShape2D_1sa6h")
+
+[node name="floor- -408-To- -168 - fall" type="Area2D" parent="CameraColliders" unique_id=1533478671]
+position = Vector2(896, -267)
+scale = Vector2(3.2, 0.0800024)
+script = ExtResource("13_voubw")
+Transition = true
+TransitionPos = -168
+
+[node name="Follow" type="CollisionShape2D" parent="CameraColliders/floor- -408-To- -168 - fall" unique_id=1560740780]
+position = Vector2(0, -1.0001221)
+scale = Vector2(1.771551, 4.0739007)
+shape = SubResource("RectangleShape2D_1sa6h")
+
+[node name="floor- -648-To- -408 - fall" type="Area2D" parent="CameraColliders" unique_id=1065240544]
+position = Vector2(384, -497)
+scale = Vector2(3.2, 0.0800024)
+script = ExtResource("13_voubw")
+Transition = true
+TransitionPos = -168
+
+[node name="Follow" type="CollisionShape2D" parent="CameraColliders/floor- -648-To- -408 - fall" unique_id=58658416]
+position = Vector2(0, -1.0001221)
+scale = Vector2(1.771551, 4.0739007)
+shape = SubResource("RectangleShape2D_1sa6h")
+
+[node name="floor-72-To--168 - right" type="Area2D" parent="CameraColliders" unique_id=131587611]
+position = Vector2(1408, -40)
+scale = Vector2(3.2, 0.4)
+script = ExtResource("13_voubw")
+Transition = true
+TransitionPos = -168
+
+[node name="Follow" type="CollisionShape2D" parent="CameraColliders/floor-72-To--168 - right" unique_id=1470253269]
+position = Vector2(0, -1.0001221)
+scale = Vector2(1.771551, 4.0739007)
+shape = SubResource("RectangleShape2D_1sa6h")
+
+[node name="floor--168-To-72 - right" type="Area2D" parent="CameraColliders" unique_id=1801262641]
+position = Vector2(1408, -43)
+scale = Vector2(3.2, 0.4)
+script = ExtResource("13_voubw")
+Transition = true
+TransitionPos = 72
+
+[node name="Follow" type="CollisionShape2D" parent="CameraColliders/floor--168-To-72 - right" unique_id=1787054833]
+position = Vector2(0, -1.0001221)
+scale = Vector2(1.771551, 4.0739007)
+shape = SubResource("RectangleShape2D_1sa6h")
+
 [connection signal="body_entered" from="Corda" to="Corda" method="_on_body_entered"]
 [connection signal="body_exited" from="Corda" to="Corda" method="_on_body_exited"]
 [connection signal="body_entered" from="Corda2" to="Corda2" method="_on_body_entered"]
 [connection signal="body_exited" from="Corda2" to="Corda2" method="_on_body_exited"]
+[connection signal="body_entered" from="Corda3" to="Corda3" method="_on_body_entered"]
+[connection signal="body_exited" from="Corda3" to="Corda3" method="_on_body_exited"]
+[connection signal="body_entered" from="Corda4" to="Corda4" method="_on_body_entered"]
+[connection signal="body_exited" from="Corda4" to="Corda4" method="_on_body_exited"]
 [connection signal="body_entered" from="CameraColliders/FollowXCol" to="CameraColliders/FollowXCol" method="_on_body_entered"]
 [connection signal="body_entered" from="CameraColliders/UnfollowXCol" to="CameraColliders/UnfollowXCol" method="_on_body_entered"]
-[connection signal="body_entered" from="CameraColliders/floor-312-To-72" to="CameraColliders/floor-312-To-72" method="_on_body_entered"]
-[connection signal="body_entered" from="CameraColliders/floor-72-To-312" to="CameraColliders/floor-72-To-312" method="_on_body_entered"]
 [connection signal="body_entered" from="CameraColliders/floor-543-To-312" to="CameraColliders/floor-543-To-312" method="_on_body_entered"]
 [connection signal="body_entered" from="CameraColliders/floor-312-To-543" to="CameraColliders/floor-312-To-543" method="_on_body_entered"]
+[connection signal="body_entered" from="CameraColliders/floor-312-To-72 - right" to="CameraColliders/floor-312-To-72 - right" method="_on_body_entered"]
+[connection signal="body_entered" from="CameraColliders/floor-72-To-312 - right" to="CameraColliders/floor-72-To-312 - right" method="_on_body_entered"]
+[connection signal="body_entered" from="CameraColliders/floor-312-To-72 - left" to="CameraColliders/floor-312-To-72 - left" method="_on_body_entered"]
+[connection signal="body_entered" from="CameraColliders/floor-72-To-312 - left" to="CameraColliders/floor-72-To-312 - left" method="_on_body_entered"]
+[connection signal="body_entered" from="CameraColliders/floor-72-To- -168 - left" to="CameraColliders/floor-72-To- -168 - left" method="_on_body_entered"]
+[connection signal="body_entered" from="CameraColliders/floor--168-To- 72 - left" to="CameraColliders/floor--168-To- 72 - left" method="_on_body_entered"]
+[connection signal="body_entered" from="CameraColliders/floor--168 -To- -408 - left" to="CameraColliders/floor--168 -To- -408 - left" method="_on_body_entered"]
+[connection signal="body_entered" from="CameraColliders/floor- -408-To- -168 - left" to="CameraColliders/floor- -408-To- -168 - left" method="_on_body_entered"]
+[connection signal="body_entered" from="CameraColliders/floor- -408-To- -168 - fall" to="CameraColliders/floor- -408-To- -168 - fall" method="_on_body_entered"]
+[connection signal="body_entered" from="CameraColliders/floor- -648-To- -408 - fall" to="CameraColliders/floor- -648-To- -408 - fall" method="_on_body_entered"]
+[connection signal="body_entered" from="CameraColliders/floor-72-To--168 - right" to="CameraColliders/floor-72-To--168 - right" method="_on_body_entered"]
+[connection signal="body_entered" from="CameraColliders/floor--168-To-72 - right" to="CameraColliders/floor--168-To-72 - right" method="_on_body_entered"]

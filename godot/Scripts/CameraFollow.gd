@@ -24,6 +24,5 @@ func _process(delta):
 		
 		if onTransition == true and global_position.y == futurePos:
 			onTransition = false
-		
 	else:
 		global_position.y = fixed_y
