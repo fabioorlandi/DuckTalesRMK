@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://e8xfdok3vvgu"]
+
+[ext_resource type="Texture2D" uid="uid://eyckrs081bgs" path="res://Assets/Inimigo_Mumia.png" id="1_xsh0q"]
+[ext_resource type="Script" uid="uid://btx64rff6hb07" path="res://fsm_Inimigo_Mumia.gd" id="2_m5n7u"]
+[ext_resource type="Script" uid="uid://cpqatuhian43e" path="res://Idle_Mumia.gd" id="3_5qvjo"]
+[ext_resource type="Script" uid="uid://d3s84xdmpjy46" path="res://move_mumia.gd" id="4_5qvjo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8bd05"]
+size = Vector2(24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfgdg"]
+atlas = ExtResource("1_xsh0q")
+region = Rect2(104, 0, 24, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5n7u"]
+atlas = ExtResource("1_xsh0q")
+region = Rect2(130, 0, 24, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5qvjo"]
+atlas = ExtResource("1_xsh0q")
+region = Rect2(156, 0, 24, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6aen"]
+atlas = ExtResource("1_xsh0q")
+region = Rect2(0, 0, 24, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1rjv"]
+atlas = ExtResource("1_xsh0q")
+region = Rect2(78, 0, 24, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ls7r7"]
+atlas = ExtResource("1_xsh0q")
+region = Rect2(26, 0, 24, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hygu2"]
+atlas = ExtResource("1_xsh0q")
+region = Rect2(52, 0, 24, 33)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nkdbr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfgdg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m5n7u")
+}],
+"loop": 1,
+"name": &"Die_Mummy",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5qvjo")
+}],
+"loop": 1,
+"name": &"Fall_Mummy",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6aen")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e1rjv")
+}],
+"loop": 1,
+"name": &"Idle_Mummy",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ls7r7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hygu2")
+}],
+"loop": 1,
+"name": &"Walk_Mummy",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="CharacterBody2D" unique_id=1149204696]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1584462000]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_8bd05")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1365441463]
+sprite_frames = SubResource("SpriteFrames_nkdbr")
+animation = &"Idle_Mummy"
+
+[node name="Label_State" type="Label" parent="." unique_id=482812527]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="FSM" type="Node" parent="." unique_id=1818629868]
+script = ExtResource("2_m5n7u")
+
+[node name="Idle_Mummy" type="Node" parent="FSM" unique_id=1967518032]
+script = ExtResource("3_5qvjo")
+animation = &"Idle_Mummy"
+
+[node name="Walk_Mummy" type="Node" parent="FSM" unique_id=1023584438]
+script = ExtResource("4_5qvjo")

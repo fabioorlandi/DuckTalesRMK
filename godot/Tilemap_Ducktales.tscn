@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://duegq8tgxl7vr" path="res://Scripts/CameraCollider.gd" id="13_voubw"]
 [ext_resource type="PackedScene" uid="uid://whihmuos5mw" path="res://inimigo_generico.tscn" id="15_ke5s7"]
 [ext_resource type="PackedScene" uid="uid://y0qr46lfx8x2" path="res://spawn_esqueleto.tscn" id="16_55obg"]
+[ext_resource type="PackedScene" uid="uid://e8xfdok3vvgu" path="res://Inimigo_Mumia.tscn" id="16_udr8q"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_deayw"]
 resource_name = "Cenário_Interativo"
@@ -334,6 +335,9 @@ TransitionPos = 543
 position = Vector2(0, -1.0001221)
 scale = Vector2(1.771551, 4.0739007)
 shape = SubResource("RectangleShape2D_1sa6h")
+
+[node name="Inimigo_Mumia" parent="." unique_id=1149204696 instance=ExtResource("16_udr8q")]
+position = Vector2(83, 369)
 
 [connection signal="body_entered" from="Corda" to="Corda" method="_on_body_entered"]
 [connection signal="body_exited" from="Corda" to="Corda" method="_on_body_exited"]
