@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://duegq8tgxl7vr" path="res://Scripts/CameraCollider.gd" id="13_voubw"]
 [ext_resource type="PackedScene" uid="uid://whihmuos5mw" path="res://inimigo_generico.tscn" id="15_ke5s7"]
 [ext_resource type="PackedScene" uid="uid://y0qr46lfx8x2" path="res://spawn_esqueleto.tscn" id="16_55obg"]
+[ext_resource type="PackedScene" uid="uid://cd1fwimvplkgl" path="res://Mirror.tscn" id="16_udr8q"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_deayw"]
 resource_name = "Cenário_Interativo"
@@ -27,10 +28,10 @@ sources/0 = SubResource("TileSetScenesCollectionSource_deayw")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nkdbr"]
 size = Vector2(16, 7)
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_pgjuh"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1sa6h"]
 size = Vector2(5.6447678, 49.09293)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_pgjuh"]
 
 [node name="MainNode" type="Node2D" unique_id=1058646140]
 
@@ -63,42 +64,6 @@ position = Vector2(819, 291)
 
 [node name="Spawn3" parent="." unique_id=447239704 instance=ExtResource("16_55obg")]
 position = Vector2(874, 371)
-
-[node name="Corda" type="Area2D" parent="." unique_id=1975783942]
-position = Vector2(896, 336)
-scale = Vector2(0.997, -31.5)
-script = ExtResource("6_4oyrw")
-ropeX = 896.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Corda" unique_id=1584375562]
-shape = SubResource("SegmentShape2D_pgjuh")
-
-[node name="Corda2" type="Area2D" parent="." unique_id=1868219995]
-position = Vector2(1920, 528)
-scale = Vector2(0.848, -27)
-script = ExtResource("6_4oyrw")
-ropeX = 1920.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Corda2" unique_id=818096108]
-shape = SubResource("SegmentShape2D_pgjuh")
-
-[node name="Corda3" type="Area2D" parent="." unique_id=756863121]
-position = Vector2(1408, 80)
-scale = Vector2(0.943, -31.5)
-script = ExtResource("6_4oyrw")
-ropeX = 1408.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Corda3" unique_id=1074112452]
-shape = SubResource("SegmentShape2D_pgjuh")
-
-[node name="Corda4" type="Area2D" parent="." unique_id=1158805]
-position = Vector2(384, 224)
-scale = Vector2(1.906, -62)
-script = ExtResource("6_4oyrw")
-ropeX = 384.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Corda4" unique_id=1455820483]
-shape = SubResource("SegmentShape2D_pgjuh")
 
 [node name="Interacao_Cenario" type="Node2D" parent="." unique_id=326382331]
 
@@ -442,7 +407,7 @@ position = Vector2(384, -497)
 scale = Vector2(3.2, 0.0800024)
 script = ExtResource("13_voubw")
 Transition = true
-TransitionPos = -168
+TransitionPos = -408
 
 [node name="Follow" type="CollisionShape2D" parent="CameraColliders/floor- -648-To- -408 - fall" unique_id=58658416]
 position = Vector2(0, -1.0001221)
@@ -473,14 +438,88 @@ position = Vector2(0, -1.0001221)
 scale = Vector2(1.771551, 4.0739007)
 shape = SubResource("RectangleShape2D_1sa6h")
 
-[connection signal="body_entered" from="Corda" to="Corda" method="_on_body_entered"]
-[connection signal="body_exited" from="Corda" to="Corda" method="_on_body_exited"]
-[connection signal="body_entered" from="Corda2" to="Corda2" method="_on_body_entered"]
-[connection signal="body_exited" from="Corda2" to="Corda2" method="_on_body_exited"]
-[connection signal="body_entered" from="Corda3" to="Corda3" method="_on_body_entered"]
-[connection signal="body_exited" from="Corda3" to="Corda3" method="_on_body_exited"]
-[connection signal="body_entered" from="Corda4" to="Corda4" method="_on_body_entered"]
-[connection signal="body_exited" from="Corda4" to="Corda4" method="_on_body_exited"]
+[node name="Mirrors" type="Node" parent="." unique_id=886873331]
+
+[node name="Mirror-Spikes" parent="Mirrors" unique_id=166940864 instance=ExtResource("16_udr8q")]
+position = Vector2(1068, 608)
+canTravel = true
+positionTo = Vector2(367, 273)
+floorPos = 312.0
+
+[node name="Mirror-ToCart" parent="Mirrors" unique_id=872589022 instance=ExtResource("16_udr8q")]
+position = Vector2(1553, -176)
+canTravel = true
+positionTo = Vector2(1136, -655)
+floorPos = -648.0
+
+[node name="Mirror-ToKnights" parent="Mirrors" unique_id=1885394110 instance=ExtResource("16_udr8q")]
+position = Vector2(1873, -176)
+canTravel = true
+positionTo = Vector2(816, -142)
+floorPos = -168.0
+
+[node name="Mirror-ToBoss" parent="Mirrors" unique_id=421718730 instance=ExtResource("16_udr8q")]
+position = Vector2(1936, -176)
+canTravel = true
+positionTo = Vector2(2000, -416)
+floorPos = -408.0
+
+[node name="Ropes" type="Node" parent="." unique_id=81944688]
+
+[node name="Corda" type="Area2D" parent="Ropes" unique_id=1975783942]
+position = Vector2(896, 336)
+scale = Vector2(0.997, -31.5)
+script = ExtResource("6_4oyrw")
+ropeX = 896.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ropes/Corda" unique_id=1584375562]
+shape = SubResource("SegmentShape2D_pgjuh")
+
+[node name="Corda2" type="Area2D" parent="Ropes" unique_id=1868219995]
+position = Vector2(1920, 528)
+scale = Vector2(0.848, -27)
+script = ExtResource("6_4oyrw")
+ropeX = 1920.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ropes/Corda2" unique_id=818096108]
+shape = SubResource("SegmentShape2D_pgjuh")
+
+[node name="Corda3" type="Area2D" parent="Ropes" unique_id=756863121]
+position = Vector2(1408, 80)
+scale = Vector2(0.943, -31.5)
+script = ExtResource("6_4oyrw")
+ropeX = 1408.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ropes/Corda3" unique_id=1074112452]
+shape = SubResource("SegmentShape2D_pgjuh")
+
+[node name="Corda4" type="Area2D" parent="Ropes" unique_id=1158805]
+position = Vector2(384, 224)
+scale = Vector2(1.906, -62)
+script = ExtResource("6_4oyrw")
+ropeX = 384.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ropes/Corda4" unique_id=1455820483]
+shape = SubResource("SegmentShape2D_pgjuh")
+
+[node name="Corda5" type="Area2D" parent="Ropes" unique_id=508272933]
+position = Vector2(896.00006, -288)
+scale = Vector2(0.943, -17.5)
+script = ExtResource("6_4oyrw")
+ropeX = 896.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ropes/Corda5" unique_id=1139954921]
+shape = SubResource("SegmentShape2D_pgjuh")
+
+[node name="Corda6" type="Area2D" parent="Ropes" unique_id=349228609]
+position = Vector2(384, -528)
+scale = Vector2(0.943, -17.5)
+script = ExtResource("6_4oyrw")
+ropeX = 384.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ropes/Corda6" unique_id=269217436]
+shape = SubResource("SegmentShape2D_pgjuh")
+
 [connection signal="body_entered" from="CameraColliders/FollowXCol" to="CameraColliders/FollowXCol" method="_on_body_entered"]
 [connection signal="body_entered" from="CameraColliders/UnfollowXCol" to="CameraColliders/UnfollowXCol" method="_on_body_entered"]
 [connection signal="body_entered" from="CameraColliders/floor-543-To-312" to="CameraColliders/floor-543-To-312" method="_on_body_entered"]
@@ -497,3 +536,15 @@ shape = SubResource("RectangleShape2D_1sa6h")
 [connection signal="body_entered" from="CameraColliders/floor- -648-To- -408 - fall" to="CameraColliders/floor- -648-To- -408 - fall" method="_on_body_entered"]
 [connection signal="body_entered" from="CameraColliders/floor-72-To--168 - right" to="CameraColliders/floor-72-To--168 - right" method="_on_body_entered"]
 [connection signal="body_entered" from="CameraColliders/floor--168-To-72 - right" to="CameraColliders/floor--168-To-72 - right" method="_on_body_entered"]
+[connection signal="body_entered" from="Ropes/Corda" to="Ropes/Corda" method="_on_body_entered"]
+[connection signal="body_exited" from="Ropes/Corda" to="Ropes/Corda" method="_on_body_exited"]
+[connection signal="body_entered" from="Ropes/Corda2" to="Ropes/Corda2" method="_on_body_entered"]
+[connection signal="body_exited" from="Ropes/Corda2" to="Ropes/Corda2" method="_on_body_exited"]
+[connection signal="body_entered" from="Ropes/Corda3" to="Ropes/Corda3" method="_on_body_entered"]
+[connection signal="body_exited" from="Ropes/Corda3" to="Ropes/Corda3" method="_on_body_exited"]
+[connection signal="body_entered" from="Ropes/Corda4" to="Ropes/Corda4" method="_on_body_entered"]
+[connection signal="body_exited" from="Ropes/Corda4" to="Ropes/Corda4" method="_on_body_exited"]
+[connection signal="body_entered" from="Ropes/Corda5" to="Ropes/Corda5" method="_on_body_entered"]
+[connection signal="body_exited" from="Ropes/Corda5" to="Ropes/Corda5" method="_on_body_exited"]
+[connection signal="body_entered" from="Ropes/Corda6" to="Ropes/Corda6" method="_on_body_entered"]
+[connection signal="body_exited" from="Ropes/Corda6" to="Ropes/Corda6" method="_on_body_exited"]
