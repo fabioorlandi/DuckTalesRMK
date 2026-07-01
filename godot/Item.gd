@@ -5,6 +5,8 @@ enum Item { yellow_diamond_G, yellow_diamond_P, red_diamond_G, stage_trophy, ske
 			
 @export var current_item: Item
 
+@onready var ui = get_tree().get_first_node_in_group("ui")
+
 var on_fade: bool = false
 
 @onready var timer: Timer = $Timer
@@ -17,17 +19,6 @@ const y_force := -50.0
 
 func _ready() -> void:
 	$AnimatedSprite2D.play("brilho")
-	
-	var tween = create_tween()
-	tween.set_trans(Tween.TRANS_QUAD)
-	tween.set_ease(Tween.EASE_OUT)
-	velocity.y = 0
-	tween.tween_property(
-		self,
-		"global_position:y",
-		global_position.y - 25,
-		0.15
-	)
 	
 	if(destroyable):
 		timer.timeout.connect(_on_timer_timeout)
@@ -52,24 +43,36 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		DoFunction()
 		queue_free()
 		
+func apply_tween() -> void:
+	var tween = create_tween()
+	tween.set_trans(Tween.TRANS_QUAD)
+	tween.set_ease(Tween.EASE_OUT)
+	velocity.y = 0
+	tween.tween_property(
+		self,
+		"global_position:y",
+		global_position.y - 30,
+		0.15
+	)
+
 func DoFunction() -> void:
 	match  current_item:
 		Item.yellow_diamond_G:
-			$"../UI".AddScore(10000)
+			ui.AddScore(10000)
 		Item.yellow_diamond_P:
-			$"../UI".AddScore(2000)
+			ui.AddScore(2000)
 		Item.red_diamond_G:
-			$"../UI".AddScore(50000)
+			ui.AddScore(50000)
 		Item.stage_trophy:
-			$"../UI".AddScore(1000000)
+			ui.AddScore(1000000)
 		Item.invulnerable:
 			#set player invulnerable per 8s
 			pass
 		Item.health_star:
-			$"../UI".GainHealth()
+			ui.GainHealth()
 		Item.life_duck:
-			$"../UI".GainLife()
+			ui.GainLife()
 		Item.cake:
-			$"../UI".ResetHealth()
+			ui.ResetHealth()
 		Item.ice_cream:
-			$"../UI".ReceiveCure(1)
+			ui.ReceiveCure(1)

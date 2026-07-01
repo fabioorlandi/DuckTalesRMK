@@ -74,7 +74,7 @@ size = Vector2(1, 4)
 [sub_resource type="CircleShape2D" id="CircleShape2D_h0spi"]
 radius = 9.0
 
-[node name="YellowDiamond" type="CharacterBody2D" unique_id=106499222]
+[node name="YellowDiamondG" type="CharacterBody2D" unique_id=106499222]
 script = ExtResource("1_47xrb")
 destroyable = true
 

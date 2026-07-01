@@ -3,18 +3,29 @@
 [ext_resource type="Script" uid="uid://bwnb23xe8esmc" path="res://Item.gd" id="1_id2yj"]
 [ext_resource type="Texture2D" uid="uid://chc6wwgjqdf7t" path="res://Assets/DuckTales_Itens.png" id="2_w5urj"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ofule"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_id2yj"]
 atlas = ExtResource("2_w5urj")
-region = Rect2(16, 16, 16, 16)
+region = Rect2(0, 16, 16, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_55obg"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_udr8q"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ofule")
+"texture": SubResource("AtlasTexture_id2yj")
 }],
 "loop": 1,
 "name": &"brilho",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_id2yj")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": 1,
+"name": &"fade",
 "speed": 16.0
 }]
 
@@ -30,8 +41,8 @@ current_item = 6
 destroyable = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1282890572]
-sprite_frames = SubResource("SpriteFrames_55obg")
-animation = &"brilho"
+sprite_frames = SubResource("SpriteFrames_udr8q")
+animation = &"fade"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1754361571]
 position = Vector2(0, 5)

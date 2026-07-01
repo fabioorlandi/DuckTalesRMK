@@ -16,6 +16,17 @@ animations = [{
 "loop": 1,
 "name": &"brilho",
 "speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_67n1t")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": 1,
+"name": &"fade",
+"speed": 16.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dfwst"]
@@ -24,13 +35,14 @@ size = Vector2(1, 4)
 [sub_resource type="CircleShape2D" id="CircleShape2D_h0spi"]
 radius = 9.0
 
-[node name="StageTrophy" type="CharacterBody2D" unique_id=106499222]
+[node name="Life Duck" type="CharacterBody2D" unique_id=106499222]
 script = ExtResource("1_67n1t")
 current_item = 9
+destroyable = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1282890572]
 sprite_frames = SubResource("SpriteFrames_55obg")
-animation = &"brilho"
+animation = &"fade"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1754361571]
 position = Vector2(0, 5)

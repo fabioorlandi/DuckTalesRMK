@@ -16,6 +16,17 @@ animations = [{
 "loop": 1,
 "name": &"brilho",
 "speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ofule")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": 1,
+"name": &"fade",
+"speed": 16.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dfwst"]
