@@ -53,15 +53,4 @@ func physics_update(delta: float) -> void:
 			transitioned.emit(self, "fall")
  
 func can_pogo_bounce(body: Object) -> bool:
-	var can_bounce = false
-	if not body:
-		return can_bounce
-	
-	if body.has_signal("destroy_on_collision"):
-		can_bounce = true
-	if body.has_signal("fall_on_collision") and body.can_fall:
-		can_bounce = true
-	if body.has_signal("slide_on_collision"):
-		can_bounce = true
-		
-	return can_bounce
+	return body.has_method("is_pogo_interactive") and body.is_pogo_interactive()
