@@ -89,8 +89,12 @@ func ReceiveCure(cure: int) -> void:
 	
 	HealthSpritesUpdate()
 
+func GainHealth() -> void:
+	healthCap += 1
+	ResetHealth()
+
 func ResetHealth() -> void:
-	#health = healthCap
+	health = healthCap
 	HealthSpritesUpdate()
 
 func HealthSpritesUpdate() -> void:
@@ -120,6 +124,10 @@ func LoseLife() -> void:
 		lifesLabel.text = "P. " + str(lifes)
 		#RESET STAGE
 		pass
+
+func GainLife() -> void:
+	lifes += 1
+	lifesLabel.text = "P. " + str(lifes)
 
 func ResetLifes() -> void:
 	lifes = lifesCap
