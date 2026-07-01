@@ -1,0 +1,171 @@
+[gd_scene format=3 uid="uid://dk8uxrf3ew60t"]
+
+[ext_resource type="Script" uid="uid://bwjyq5ou7c883" path="res://inimigo_mummy.gd" id="1_kvpv3"]
+[ext_resource type="Texture2D" uid="uid://eyckrs081bgs" path="res://Assets/Inimigo_Mumia.png" id="2_ksb4e"]
+[ext_resource type="Script" uid="uid://btx64rff6hb07" path="res://fsm_Inimigo_Mumia.gd" id="3_n4kqe"]
+[ext_resource type="Script" uid="uid://cpqatuhian43e" path="res://Idle_Mumia.gd" id="4_3xbiw"]
+[ext_resource type="Script" uid="uid://d3s84xdmpjy46" path="res://walk_mummy.gd" id="5_10hyg"]
+[ext_resource type="Script" uid="uid://1tgqheeuod50" path="res://return_from_right.gd" id="6_68vs2"]
+[ext_resource type="Script" uid="uid://carkkg162w1ry" path="res://walk_mummy_left.gd" id="7_0kd8u"]
+[ext_resource type="Script" uid="uid://bujxrh3thh3s6" path="res://return_from_left.gd" id="8_gb7b2"]
+[ext_resource type="Texture2D" uid="uid://gt1v2ybrwx6u" path="res://Assets/Bola_Inimigo_Mumia.png" id="9_2iwue"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kvpv3"]
+size = Vector2(16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jv54q"]
+atlas = ExtResource("9_2iwue")
+region = Rect2(21, 9, 6, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ksb4e"]
+atlas = ExtResource("9_2iwue")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kdjip"]
+size = Vector2(24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfgdg"]
+atlas = ExtResource("2_ksb4e")
+region = Rect2(104, 0, 24, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5n7u"]
+atlas = ExtResource("2_ksb4e")
+region = Rect2(130, 0, 24, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5qvjo"]
+atlas = ExtResource("2_ksb4e")
+region = Rect2(156, 0, 24, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6aen"]
+atlas = ExtResource("2_ksb4e")
+region = Rect2(0, 0, 24, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1rjv"]
+atlas = ExtResource("2_ksb4e")
+region = Rect2(78, 0, 24, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ls7r7"]
+atlas = ExtResource("2_ksb4e")
+region = Rect2(26, 0, 24, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hygu2"]
+atlas = ExtResource("2_ksb4e")
+region = Rect2(52, 0, 24, 33)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xo88k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfgdg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m5n7u")
+}],
+"loop": 1,
+"name": &"Die_Mummy",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5qvjo")
+}],
+"loop": 1,
+"name": &"Fall_Mummy",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6aen")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e1rjv")
+}],
+"loop": 1,
+"name": &"Idle_Mummy",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ls7r7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hygu2")
+}],
+"loop": 1,
+"name": &"Walk_Mummy",
+"speed": 8.0
+}]
+
+[node name="Inimigo_mummy" type="Node2D" unique_id=1500723760]
+
+[node name="Ball" type="Area2D" parent="." unique_id=761809068]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball" unique_id=765871618]
+position = Vector2(0, 7)
+shape = SubResource("RectangleShape2D_kvpv3")
+
+[node name="Chain_Right" type="Node2D" parent="Ball" unique_id=969948813]
+visible = false
+
+[node name="Chain_Sprite" type="Sprite2D" parent="Ball/Chain_Right" unique_id=673890696]
+position = Vector2(11, 12)
+texture = SubResource("AtlasTexture_jv54q")
+
+[node name="Chain_Sprite2" type="Sprite2D" parent="Ball/Chain_Right" unique_id=2012791399]
+position = Vector2(18, 12)
+texture = SubResource("AtlasTexture_jv54q")
+
+[node name="Chain_Left" type="Node2D" parent="Ball" unique_id=960415781]
+visible = false
+position = Vector2(-29, 0)
+
+[node name="Chain_Sprite" type="Sprite2D" parent="Ball/Chain_Left" unique_id=1727026494]
+position = Vector2(11, 12)
+texture = SubResource("AtlasTexture_jv54q")
+
+[node name="Chain_Sprite2" type="Sprite2D" parent="Ball/Chain_Left" unique_id=901324455]
+position = Vector2(18, 12)
+texture = SubResource("AtlasTexture_jv54q")
+
+[node name="Ball Sprite" type="Sprite2D" parent="Ball" unique_id=82915722]
+position = Vector2(0, 7)
+texture = SubResource("AtlasTexture_ksb4e")
+
+[node name="Inimigo_mummy" type="CharacterBody2D" parent="." unique_id=1400228556]
+script = ExtResource("1_kvpv3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Inimigo_mummy" unique_id=732796683]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_kdjip")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Inimigo_mummy" unique_id=1583876472]
+sprite_frames = SubResource("SpriteFrames_xo88k")
+animation = &"Fall_Mummy"
+
+[node name="Label_State" type="Label" parent="Inimigo_mummy" unique_id=960576604]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="FSM" type="Node" parent="Inimigo_mummy" unique_id=1401464793 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_n4kqe")
+initial_state = NodePath("Idle_Mummy")
+
+[node name="Idle_Mummy" type="Node" parent="Inimigo_mummy/FSM" unique_id=703073307]
+script = ExtResource("4_3xbiw")
+
+[node name="Walk_Mummy_Right" type="Node" parent="Inimigo_mummy/FSM" unique_id=1977567453]
+script = ExtResource("5_10hyg")
+
+[node name="Return_From_Right" type="Node" parent="Inimigo_mummy/FSM" unique_id=1160998744]
+script = ExtResource("6_68vs2")
+
+[node name="Walk_Mummy_Left" type="Node" parent="Inimigo_mummy/FSM" unique_id=19421660]
+script = ExtResource("7_0kd8u")
+
+[node name="Return_From_Left" type="Node" parent="Inimigo_mummy/FSM" unique_id=1772495321]
+script = ExtResource("8_gb7b2")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Inimigo_mummy" unique_id=918754582]
+
+[connection signal="screen_entered" from="Inimigo_mummy/VisibleOnScreenNotifier2D" to="Inimigo_mummy" method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="Inimigo_mummy/VisibleOnScreenNotifier2D" to="Inimigo_mummy" method="_on_visible_on_screen_notifier_2d_screen_exited"]
