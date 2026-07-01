@@ -5,28 +5,26 @@ class_name Fall
 @export var animation = &"Cair_Final"
 @export var animation_final = &"Pular"
  
-const SPEED   := 80.0
-const GRAVITY := 400.0
-
 func update(_delta: float) -> void:
 	pass
  
 func physics_update(delta: float) -> void:	
 	var direction := Input.get_axis("left", "right") #Movimento horizontal durante a queda
 	if direction != 0:
-		player.velocity.x = direction * SPEED
+		player.velocity.x = direction * player.SPEED
 	else:
-		player.velocity.x = move_toward(player.velocity.x, 0, SPEED)
+		player.velocity.x = move_toward(player.velocity.x, 0, player.SPEED)
  	
-	player.velocity.y += GRAVITY * delta #Gravidade aplicada
+	player.velocity.y += player.GRAVITY * delta #Gravidade aplicada
  		
 	player.animate(animation_final)
  	
-	if player.is_on_floor(): #Voltou para o chão, troca para MOVE
-		player.velocity.y = 0
+	if player.is_on_floor(): #Voltou para o chão
 		player.animate(animation)
-
-		if Input.is_action_pressed("down"):
+		
+		if direction != 0:
+			transitioned.emit(self, "move")
+		elif Input.is_action_pressed("down"):
 			transitioned.emit(self, "crouch")
 		else:
 			await get_tree().create_timer(0.05).timeout

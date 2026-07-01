@@ -3,7 +3,16 @@ extends CharacterBody2D
 @export var canClimb: bool
 @export var lastDir = "right"
 @onready var attack_raycast = $AttackRayCast2D
-@onready var pogo_raycast = $PogoRayCast2D
+@onready var interactive_pogo_shapecast = $InteractivePogoShapeCast2D
+@onready var floor_pogo_shapecast = $FloorPogoShapeCast2D
+
+@export var GRAVITY = 500.0
+@export var SPEED := 100.0
+@export var ROPE_SPEED := 50.0
+@export var JUMP_FORCE := -225.0
+@export var JUMP_CUT   := 0.25
+@export var POGO_FORCE  := -280.0
+@export var POGO_GRAVITY  := 600.0
 
 var attacking: bool = false
 var onRope: bool = false

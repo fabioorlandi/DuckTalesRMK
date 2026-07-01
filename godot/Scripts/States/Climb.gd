@@ -2,15 +2,11 @@ extends State
 class_name Climb
 
 @onready var animated = $"../../AnimatedSprite2D"
-
 @export var player: CharacterBody2D
-
 @export var animation = &"Escalar"
 
 var cordaX: float
 var offsetX: float = 4
-
-const SPEED := 50.0
 
 func enter() -> void:
 	player.velocity = Vector2.ZERO
@@ -34,10 +30,10 @@ func update(delta: float) -> void:
 	
 func physics_update(delta: float) -> void:
 	if Input.is_action_pressed("up"):
-		player.velocity.y = -1 * SPEED
+		player.velocity.y = -1 * player.ROPE_SPEED
 		animated.speed_scale = 1
 	elif Input.is_action_pressed("down"):
-		player.velocity.y  = 1 * SPEED
+		player.velocity.y  = 1 * player.ROPE_SPEED
 		animated.speed_scale = 1
 	elif Input.is_action_just_released("up") or Input.is_action_just_released("down"):
 		player.velocity.y = 0

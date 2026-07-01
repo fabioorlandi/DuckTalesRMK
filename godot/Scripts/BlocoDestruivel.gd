@@ -17,10 +17,12 @@ func destroy_body(direction: Vector2):
 
 	if areas.size() >= 1 or direction == Vector2.ZERO:
 		$AnimatedSprite2D.play("destroy_block")
-		await $AnimatedSprite2D.animation_finished
-
+		
 		$DetectSorroundingObjects/CollisionShape2D.disabled = true
 		$CollisionShape2D.disabled = true
+		
+		await $AnimatedSprite2D.animation_finished
+
 		$CollisionShape2D.visible = false
 		$AnimatedSprite2D.visible = false
 	else:

@@ -14,6 +14,12 @@
 [ext_resource type="Script" uid="uid://ct4tsbh2r3aw1" path="res://Scripts/States/Attack.gd" id="12_o5uhb"]
 [ext_resource type="Script" uid="uid://b0ndc0gw8amf1" path="res://Scripts/States/PrepareAttack.gd" id="13_p2la0"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5i68f"]
+size = Vector2(16, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p2la0"]
+size = Vector2(8, 8)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_u4570"]
 atlas = ExtResource("1_kafnk")
 region = Rect2(32, 64, 32, 32)
@@ -115,7 +121,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_k8t62")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"Cair_Final",
 "speed": 5.0
 }, {
@@ -255,15 +261,19 @@ position = Vector2(0, 7.5)
 scale = Vector2(1, 2)
 target_position = Vector2(12, 0)
 
-[node name="PogoRayCast2D" type="RayCast2D" parent="." unique_id=320817553]
-scale = Vector2(2, 1)
-target_position = Vector2(0, 17)
+[node name="InteractivePogoShapeCast2D" type="ShapeCast2D" parent="." unique_id=1723331771]
+shape = SubResource("RectangleShape2D_5i68f")
+target_position = Vector2(0, 16)
+
+[node name="FloorPogoShapeCast2D" type="ShapeCast2D" parent="." unique_id=1466520454]
+shape = SubResource("RectangleShape2D_p2la0")
+target_position = Vector2(0, 16)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2082220831]
 z_index = 30
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_fhwcv")
-animation = &"Pogo_Inicio"
+animation = &"Cair_Final"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2049646420]
 position = Vector2(0, 3.5)
