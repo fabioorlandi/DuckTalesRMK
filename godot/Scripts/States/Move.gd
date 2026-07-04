@@ -5,6 +5,9 @@ class_name Move
 @export var animation = &"Caminhar"
  
 func update(_delta: float) -> void:
+	if player.get_damage_collision_with_enemy():
+		transitioned.emit(self, "damage")
+	
 	if Input.is_action_just_pressed("jump") and player.is_on_floor(): #Pula se pode pular
 		transitioned.emit(self, "jump")
  

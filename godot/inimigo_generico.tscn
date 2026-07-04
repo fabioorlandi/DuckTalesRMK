@@ -41,7 +41,7 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="Inimigo_Generico" type="CharacterBody2D" unique_id=403823545]
+[node name="Inimigo_Generico" type="CharacterBody2D" unique_id=403823545 groups=["Inimigos"]]
 collision_layer = 17
 collision_mask = 17
 script = ExtResource("1_x52ph")

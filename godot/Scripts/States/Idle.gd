@@ -4,6 +4,10 @@ class_name Idle
 @export var player: CharacterBody2D
 @export var animation = &"Parado"
 
+func update(_delta: float) -> void:
+	if player.get_damage_collision_with_enemy():
+		transitioned.emit(self, "damage")
+
 func physics_update(delta: float) -> void:
 	var direction := Input.get_axis("left", "right")
 	if direction != 0:

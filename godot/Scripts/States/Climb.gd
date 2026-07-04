@@ -27,6 +27,9 @@ func update(delta: float) -> void:
 		player.global_position.x = cordaX + offsetX
 	if Input.is_action_pressed("right"):
 		player.global_position.x = cordaX - offsetX
+		
+	if player.get_damage_collision_with_enemy():
+		transitioned.emit(self, "damage")
 	
 func physics_update(delta: float) -> void:
 	if Input.is_action_pressed("up"):

@@ -31,7 +31,8 @@ func exit() -> void:
 	attacking_state = AttackState.None
 
 func update(_delta: float) -> void:
-	pass
+	if player.get_damage_collision_with_enemy():
+		transitioned.emit(self, "damage")
 
 func physics_update(delta: float) -> void:
 	if attacking:

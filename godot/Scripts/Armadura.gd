@@ -17,6 +17,7 @@ func _physics_process(delta: float) -> void:
 		
 	if not is_falling:
 		is_falling = true
+		$RigidBodyElmo.add_to_group("Inimigos")
 		$RigidBodyElmo/CollisionShapeElmoEstatico.disabled = true
 		$RigidBodyElmo/CollisionShapeElmoCaido.disabled = false
 	
@@ -44,6 +45,7 @@ func _physics_process(delta: float) -> void:
 	if distance_ticks <= 0:
 		can_fall = false
 		is_falling = false
+		$RigidBodyElmo.remove_from_group("Inimigos")
 
 func fall_body(direction: Vector2):
 	fallen = true

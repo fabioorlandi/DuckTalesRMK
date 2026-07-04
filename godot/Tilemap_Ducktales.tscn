@@ -44,7 +44,7 @@ tile_set = SubResource("TileSet_63sgq")
 [node name="Patinhas" parent="." unique_id=917563206 instance=ExtResource("3_deayw")]
 position = Vector2(47, 370)
 
-[node name="Inimigo_Generico" parent="." unique_id=403823545 instance=ExtResource("15_ke5s7")]
+[node name="Inimigo_Generico" parent="." unique_id=403823545 groups=["Inimigos"] instance=ExtResource("15_ke5s7")]
 position = Vector2(747, 64)
 
 [node name="Area2D" type="StaticBody2D" parent="." unique_id=1296536085]

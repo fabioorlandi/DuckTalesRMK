@@ -10,6 +10,9 @@ func _ready():
 	actor = get_parent().get_parent()
 
 func enter() -> void:
+	var patinhas = get_tree().get_nodes_in_group("Patinhas")[0]
+	actor.add_collision_exception_with(patinhas)
+	
 	$"../../CollisionShape2D".disabled = true
 	$"../../IdleCollisionShape".disabled = false
 	finished = false
@@ -24,6 +27,7 @@ func enter() -> void:
 	tween.tween_property(actor, "position:y", actor.position.y, 0.25)
 
 	await tween.finished
+
 func update(_delta: float) -> void:
 	if finished:
 		return

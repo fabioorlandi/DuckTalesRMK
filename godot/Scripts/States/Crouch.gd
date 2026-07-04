@@ -11,7 +11,8 @@ func enter() -> void:
 	crouched = false
 
 func update(_delta: float) -> void:
-	pass
+	if player.get_damage_collision_with_enemy():
+		transitioned.emit(self, "damage")
 
 func physics_update(delta: float) -> void:
 	var direction := Input.get_axis("left", "right")
