@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c1s2b0locg3mw"
+path="res://.godot/imported/Duck Tales SFX (29).wav-31a8126d093d8ac70886f84c7b1b0171.sample"
+
+[deps]
+
+source_file="res://Sounds/SFX/Duck Tales SFX (29).wav"
+dest_files=["res://.godot/imported/Duck Tales SFX (29).wav-31a8126d093d8ac70886f84c7b1b0171.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
