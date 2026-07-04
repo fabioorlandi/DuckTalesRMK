@@ -13,6 +13,7 @@ func enter() -> void:
 	sprite.play("Caminhar")
 	$"../../CollisionShape2D".disabled = false
 	$"../../IdleCollisionShape".disabled = true
+
 func physics_update(_delta: float) -> void:
 	# movimento horizontal
 	if actor.collision_disabled:
@@ -32,5 +33,6 @@ func physics_update(_delta: float) -> void:
 			var body = collision.get_collider()
 			if body and body.has_signal("destroy_on_collision"):
 				body.emit_signal("destroy_on_collision", Vector2.ZERO)
-		
-		transitioned.emit(self, "desativado")
+				transitioned.emit(self, "desativado")
+			elif body and body.name != "Patinhas":
+				transitioned.emit(self, "desativado")

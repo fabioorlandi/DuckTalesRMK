@@ -86,7 +86,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Pato_Esqueleto" type="CharacterBody2D" unique_id=1090572787]
+[node name="Pato_Esqueleto" type="CharacterBody2D" unique_id=1090572787 groups=["Inimigos"]]
 script = ExtResource("1_h0573")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1528432573]

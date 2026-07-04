@@ -50,13 +50,17 @@ func fall_body(direction: Vector2):
 	fall_direction = direction
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
+	if is_falling and body.name == "Patinhas":
+		var currentState = body.get_node("FSM").current_state
+		currentState.transitioned.emit(currentState, "damage")
+	
 	if can_fall or body.name == "Patinhas":
 		return
 	
 	if not $RigidBodyElmo.projectile:
-		$RigidBodyElmo.remove_collision_exception_with(get_parent().get_parent().get_node("Patinhas"))
 		$RigidBodyElmo.freeze = true
 		$RigidBodyElmo.can_be_destroyed = true
+		$RigidBodyElmo.remove_collision_exception_with(get_parent().get_parent().get_node("Patinhas"))
 	else:
 		$RigidBodyElmo/AnimatedSprite2D.play("destroy_helmet")
 		await $RigidBodyElmo/AnimatedSprite2D.animation_finished

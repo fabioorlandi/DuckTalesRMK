@@ -5,42 +5,52 @@ class_name Pogo
 @export var animation = &"Pogo_Inicio"
 @export var animation_2 = &"Pogo_Final"
 
-const SPEED       := 80.0
-const GRAVITY     := 600.0
-const POGO_FORCE  := -280.0  #Força do quique 
+func enter() -> void:
+	player.onPogo = true
+
+func exit() -> void:
+	player.onPogo = false
 
 func update(_delta: float) -> void:
+	if player.get_damage_collision_with_enemy():
+		transitioned.emit(self, "damage")
+
 	if Input.is_action_just_released("pogo-attack") or Input.is_action_just_released("down"): #Soltou o botão de pogo volta a cair normalmente em fall
 		transitioned.emit(self, "fall")
  
 func physics_update(delta: float) -> void:
 	var direction := Input.get_axis("left", "right")
 	if direction != 0:
-		player.velocity.x = direction * SPEED
+		player.velocity.x = direction * player.SPEED
 	else:
-		player.velocity.x = move_toward(player.velocity.x, 0, SPEED)
+		player.velocity.x = move_toward(player.velocity.x, 0, player.SPEED)
  
-	player.velocity.y += GRAVITY * delta
+	player.velocity.y += player.POGO_GRAVITY * delta
 
 	player.animate(animation)
 	player.move_and_slide()
 
 	if Input.is_action_pressed("pogo-attack"):
-		player.pogo_raycast.force_raycast_update()
-		var collider = player.pogo_raycast.get_collider()
-		if collider:
-			if collider is PhysicsBody2D and collider.has_signal("destroy_on_collision"):
-				collider.emit_signal("destroy_on_collision", Vector2.ZERO)
-		
-			if collider is PhysicsBody2D and collider.has_signal("die_on_collision"):
-				collider.emit_signal("die_on_collision")
-
-			player.animate(animation_2)
-			await get_tree().create_timer(0.05).timeout
-
-			player.velocity.y = POGO_FORCE
-		elif player.is_on_floor():
-			transitioned.emit(self, "crouch")
+		var is_colliding = player.interactive_pogo_shapecast.is_colliding()
+		if is_colliding:
+			var collider_interative = player.interactive_pogo_shapecast.get_collider(0)
+			var collider_floor = player.floor_pogo_shapecast.get_collider(0)
+			if collider_interative:
+				if collider_interative is PhysicsBody2D and collider_interative.has_signal("destroy_on_collision"):
+					collider_interative.emit_signal("destroy_on_collision", Vector2.ZERO)
+			
+				if collider_interative is PhysicsBody2D and collider_interative.has_signal("die_on_collision"):
+					collider_interative.emit_signal("die_on_collision")
+	
+				if can_pogo_bounce(collider_interative) or collider_floor:
+					player.animate(animation_2)
+					await get_tree().create_timer(0.05).timeout
+	
+					player.velocity.y = player.POGO_FORCE
+				else:
+					transitioned.emit(self, "crouch")
+			elif player.is_on_floor():
+				transitioned.emit(self, "crouch")
 
 	#saveLastDir
 	if Input.is_action_pressed("left"):
@@ -49,6 +59,9 @@ func physics_update(delta: float) -> void:
 		player.lastDir = "right"
 	
 	if not Input.is_action_pressed("pogo-attack") or not Input.is_action_pressed("down"):
-		if player.velocity.y > 0: #Soltou enquanto estava no ar volta para fall
+		if player.velocity.y < 0: #Soltou enquanto estava no ar volta para fall
+			player.velocity.y = 0
 			transitioned.emit(self, "fall")
  
+func can_pogo_bounce(body: Object) -> bool:
+	return body.has_method("is_pogo_interactive") and body.is_pogo_interactive()

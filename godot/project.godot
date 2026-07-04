@@ -22,6 +22,11 @@ window/size/viewport_height=224
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 
+[global_group]
+
+Inimigos="Grupo com inimigos"
+Patinhas="Grupo para achar o Patinhas"
+
 [input]
 
 left={

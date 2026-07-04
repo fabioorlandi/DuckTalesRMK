@@ -4,6 +4,9 @@ signal destroy_on_collision
 var projectile = false
 var can_be_destroyed = false
 
+func is_pogo_interactive():
+	return true
+
 func _ready() -> void:
 	destroy_on_collision.connect(destroy_body)
 
