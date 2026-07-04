@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 signal invulnerability_ticks_finished
 signal invulnerability_ticks_started
+signal take_damage
 
 @export var canClimb: bool
 @export var lastDir = "right"
@@ -26,6 +27,7 @@ var ropeX: float
 func _ready() -> void:
 	invulnerability_ticks_started.connect(start_invulnerability)
 	invulnerability_ticks_finished.connect(end_invulnerability)
+	take_damage.connect(compute_hit)
 
 func _process(delta: float) -> void:
 	if lastDir == "left":
@@ -101,3 +103,15 @@ func end_invulnerability():
 	var enemies = get_tree().get_nodes_in_group("Inimigos")
 	for enemy in enemies:
 		self.remove_collision_exception_with(enemy)
+		
+func compute_hit():
+	self.emit_signal("invulnerability_ticks_started", 200)
+
+	var tween = create_tween()
+	var damage_recoil = self.position + Vector2(20, -20)\
+		if self.lastDir == "left"\
+		else self.position + Vector2(-20, -20)
+	tween.tween_property(self, "position", damage_recoil, 0.15)
+	
+	self.animate(&"Dano")
+	await $AnimatedSprite2D.animation_finished

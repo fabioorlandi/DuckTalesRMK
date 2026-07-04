@@ -17,7 +17,6 @@ func _physics_process(delta: float) -> void:
 		
 	if not is_falling:
 		is_falling = true
-		$RigidBodyElmo.add_to_group("Inimigos")
 		$RigidBodyElmo/CollisionShapeElmoEstatico.disabled = true
 		$RigidBodyElmo/CollisionShapeElmoCaido.disabled = false
 	
@@ -36,7 +35,7 @@ func _physics_process(delta: float) -> void:
 	
 		await tween_shake.finished
 	
-		$RigidBodyElmo.add_collision_exception_with(get_parent().get_parent().get_node("Patinhas"))
+		$RigidBodyElmo.add_to_group("Inimigos")
 		$RigidBodyElmo.apply_impulse(Vector2(-100, -200) * fall_direction)
 
 	if is_falling:
@@ -52,11 +51,14 @@ func fall_body(direction: Vector2):
 	fall_direction = direction
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
+	if is_falling and body.name == "Patinhas":
+		body.emit_signal("take_damage")
+		await get_tree().create_timer(0.18).timeout
+	
 	if can_fall or body.name == "Patinhas":
 		return
 	
 	if not $RigidBodyElmo.projectile:
-		$RigidBodyElmo.remove_collision_exception_with(get_parent().get_parent().get_node("Patinhas"))
 		$RigidBodyElmo.freeze = true
 		$RigidBodyElmo.can_be_destroyed = true
 	else:

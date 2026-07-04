@@ -9,16 +9,9 @@ func enter() -> void:
 	player.canClimb = false
 	taking_damage = true
 
-	player.emit_signal("invulnerability_ticks_started", 200)
+	player.emit_signal("take_damage")
+	await get_tree().create_timer(0.18).timeout
 	
-	var tween = create_tween()
-	var damage_recoil = player.position + Vector2(20, -20)\
-		if player.lastDir == "left"\
-		else player.position + Vector2(-20, -20)
-	tween.tween_property(player, "position", damage_recoil, 0.15)
-	
-	player.animate(animation)
-	await $"../../AnimatedSprite2D".animation_finished
 	taking_damage = false
 
 func update(_delta: float) -> void:
