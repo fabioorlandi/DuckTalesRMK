@@ -35,7 +35,7 @@ func _physics_process(delta: float) -> void:
 	
 		await tween_shake.finished
 	
-		$RigidBodyElmo.add_to_group("Inimigos")
+		$RigidBodyElmo.add_collision_exception_with(get_parent().get_parent().get_node("Patinhas"))
 		$RigidBodyElmo.apply_impulse(Vector2(-100, -200) * fall_direction)
 
 	if is_falling:
@@ -44,7 +44,6 @@ func _physics_process(delta: float) -> void:
 	if distance_ticks <= 0:
 		can_fall = false
 		is_falling = false
-		$RigidBodyElmo.remove_from_group("Inimigos")
 
 func fall_body(direction: Vector2):
 	fallen = true
@@ -52,8 +51,8 @@ func fall_body(direction: Vector2):
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if is_falling and body.name == "Patinhas":
-		body.emit_signal("take_damage")
-		await get_tree().create_timer(0.18).timeout
+		var currentState = body.get_node("FSM").current_state
+		currentState.transitioned.emit(currentState, "damage")
 	
 	if can_fall or body.name == "Patinhas":
 		return
@@ -61,6 +60,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if not $RigidBodyElmo.projectile:
 		$RigidBodyElmo.freeze = true
 		$RigidBodyElmo.can_be_destroyed = true
+		$RigidBodyElmo.remove_collision_exception_with(get_parent().get_parent().get_node("Patinhas"))
 	else:
 		$RigidBodyElmo/AnimatedSprite2D.play("destroy_helmet")
 		await $RigidBodyElmo/AnimatedSprite2D.animation_finished
