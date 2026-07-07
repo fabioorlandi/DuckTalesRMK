@@ -32,6 +32,7 @@ var timeLeft: int = 500
 #Falta timer == 500
 
 func _ready():
+	add_to_group("ui")
 	
 	ResetHealth()
 	ResetLifes()
@@ -46,6 +47,8 @@ func _ready():
 	timerLabel.text = str(timeLeft)
 	
 func _process(delta):
+	if Input.is_action_just_pressed("p"):
+		CauseDamage(1)
 	if Input.is_action_just_pressed("m"):
 		get_tree().reload_current_scene()
 
@@ -89,8 +92,12 @@ func ReceiveCure(cure: int) -> void:
 	
 	HealthSpritesUpdate()
 
+func GainHealth() -> void:
+	healthCap += 1
+	ResetHealth()
+
 func ResetHealth() -> void:
-	#health = healthCap
+	health = healthCap
 	HealthSpritesUpdate()
 
 func HealthSpritesUpdate() -> void:
@@ -120,6 +127,10 @@ func LoseLife() -> void:
 		lifesLabel.text = "P. " + str(lifes)
 		#RESET STAGE
 		pass
+
+func GainLife() -> void:
+	lifes += 1
+	lifesLabel.text = "P. " + str(lifes)
 
 func ResetLifes() -> void:
 	lifes = lifesCap

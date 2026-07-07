@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://cngw0b08a76xu"]
+
+[ext_resource type="Script" uid="uid://dgh43qwn17bt3" path="res://item_spawner.gd" id="1_u5r62"]
+[ext_resource type="Texture2D" uid="uid://chc6wwgjqdf7t" path="res://Assets/DuckTales_Itens.png" id="2_ardge"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bcui5"]
+atlas = ExtResource("2_ardge")
+region = Rect2(96, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7e5n6"]
+atlas = ExtResource("2_ardge")
+region = Rect2(112, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u5r62"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": 1,
+"name": &"empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bcui5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7e5n6")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": 0,
+"name": &"explode",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y8xgx"]
+
+[node name="Item Spawner" type="Area2D" unique_id=723129689]
+script = ExtResource("1_u5r62")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=250464864]
+sprite_frames = SubResource("SpriteFrames_u5r62")
+animation = &"empty"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1417536309]
+shape = SubResource("RectangleShape2D_y8xgx")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

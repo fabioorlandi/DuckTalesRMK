@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://vyeb81uavor6"]
+
+[ext_resource type="Script" uid="uid://bwnb23xe8esmc" path="res://Item.gd" id="1_id2yj"]
+[ext_resource type="Texture2D" uid="uid://chc6wwgjqdf7t" path="res://Assets/DuckTales_Itens.png" id="2_w5urj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_id2yj"]
+atlas = ExtResource("2_w5urj")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_udr8q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_id2yj")
+}],
+"loop": 1,
+"name": &"brilho",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_id2yj")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": 1,
+"name": &"fade",
+"speed": 16.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dfwst"]
+size = Vector2(1, 4)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h0spi"]
+radius = 9.0
+
+[node name="Ice Cream" type="CharacterBody2D" unique_id=106499222]
+script = ExtResource("1_id2yj")
+current_item = 6
+destroyable = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1282890572]
+sprite_frames = SubResource("SpriteFrames_udr8q")
+animation = &"fade"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1754361571]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_dfwst")
+
+[node name="Timer" type="Timer" parent="." unique_id=1235787125]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=975401053]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1923364113]
+shape = SubResource("CircleShape2D_h0spi")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
