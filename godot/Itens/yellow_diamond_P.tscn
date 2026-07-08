@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d3bwflp2ma6xu"]
 
-[ext_resource type="Script" uid="uid://bwnb23xe8esmc" path="res://Item.gd" id="1_y33gs"]
+[ext_resource type="Script" uid="uid://bwnb23xe8esmc" path="res://Scripts/Item.gd" id="1_y33gs"]
 [ext_resource type="Texture2D" uid="uid://chc6wwgjqdf7t" path="res://Assets/DuckTales_Itens.png" id="2_1l5d3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6xyhj"]

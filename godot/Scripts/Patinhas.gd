@@ -40,6 +40,18 @@ func _process(delta: float) -> void:
 		$AnimatedSprite2D.flip_h = false
 		attack_raycast.scale.x = scale.y * 1
 	
+	if Input.is_action_just_pressed("1"):
+		Teleport(Vector2(176,345), 312)
+	if Input.is_action_just_pressed("2"):
+		Teleport(Vector2(1875,574), 543)
+	if Input.is_action_just_pressed("3"):
+		Teleport(Vector2(1537,-115), -168)
+	if Input.is_action_just_pressed("4"):
+		Teleport(Vector2(1568,-355), -408)
+	if Input.is_action_just_pressed("5"):
+		Teleport(Vector2(1043,-726), -648)
+
+func _physics_process(delta: float) -> void:
 	if invulnerability_ticks > 0:
 		if invulnerability_ticks % 2 == 0:
 			self.modulate.a = 0
@@ -52,17 +64,6 @@ func _process(delta: float) -> void:
 		invulnerability_ticks = 0
 		
 		self.emit_signal("invulnerability_ticks_finished")
-	
-	if Input.is_action_just_pressed("1"):
-		Teleport(Vector2(176,345), 312)
-	if Input.is_action_just_pressed("2"):
-		Teleport(Vector2(1875,574), 543)
-	if Input.is_action_just_pressed("3"):
-		Teleport(Vector2(1537,-115), -168)
-	if Input.is_action_just_pressed("4"):
-		Teleport(Vector2(1568,-355), -408)
-	if Input.is_action_just_pressed("5"):
-		Teleport(Vector2(1043,-726), -648)
 
 func animate(animation: String):
 	$AnimatedSprite2D.animation = animation
@@ -109,17 +110,13 @@ func compute_hit():
 	await $AnimatedSprite2D.animation_finished
 
 func _on_collision_area_2d_body_entered(body: Node2D) -> void:
-	if body is PhysicsBody2D\
-		and body.is_in_group("Inimigos")\
-		and self.invulnerability_ticks == 0:
-		$CollisionArea2D.monitoring = false
-		self.takingDamage = true
-		self.collisionWithEnemy = true
-	elif body is PhysicsBody2D\
-		and body.is_in_group("Inimigos")\
-		and self.invulnerability_ticks > 0\
-		and self.kill_enemies_during_invulnerability:
-		body.emit_signal("die_on_collision")
+	if body is PhysicsBody2D and body.is_in_group("Inimigos") and body.canHit:
+		if self.invulnerability_ticks == 0:
+			$CollisionArea2D.monitoring = false
+			self.takingDamage = true
+			self.collisionWithEnemy = true
+		elif self.invulnerability_ticks > 0 and self.kill_enemies_during_invulnerability:
+			body.emit_signal("die_on_collision")
 
 func _on_collision_area_2d_body_exited(body: Node2D) -> void:
 	if body is PhysicsBody2D and body.is_in_group("Inimigos"):

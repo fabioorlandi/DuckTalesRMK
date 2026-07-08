@@ -10,8 +10,7 @@ func _ready():
 	actor = get_parent().get_parent()
 
 func enter() -> void:
-	var patinhas = get_tree().get_nodes_in_group("Patinhas")[0]
-	actor.remove_collision_exception_with(patinhas)
+	actor.canHit = true
 	
 	finished = false
 	$"../../CollisionShape2D".disabled = true

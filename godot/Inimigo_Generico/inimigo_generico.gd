@@ -5,8 +5,17 @@ signal die_on_collision
 var player_on_screen := false
 var direction := 1  
 var collision_disabled := false
+var canHit = true
+
 func _ready():
 	connect("die_on_collision", _on_die)
+	
+	var inimigos = get_tree().get_nodes_in_group("Inimigos")
+	for inimigo in inimigos:
+		self.add_collision_exception_with(inimigo)
+		
+	var patinhas = get_tree().get_nodes_in_group("Patinhas")[0]
+	self.add_collision_exception_with(patinhas)
 
 func _on_die() -> void:
 	$CollisionShape2D.set_deferred("disabled", true)
