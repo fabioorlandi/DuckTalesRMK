@@ -15,6 +15,9 @@
 [ext_resource type="Script" uid="uid://ct4tsbh2r3aw1" path="res://Scripts/States/Attack.gd" id="12_o5uhb"]
 [ext_resource type="Script" uid="uid://b0ndc0gw8amf1" path="res://Scripts/States/PrepareAttack.gd" id="13_p2la0"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrdvg"]
+size = Vector2(22, 23)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5i68f"]
 size = Vector2(16, 8)
 
@@ -254,6 +257,12 @@ size = Vector2(20, 21)
 [node name="Patinhas" type="CharacterBody2D" unique_id=917563206 groups=["Patinhas"]]
 script = ExtResource("1_rdkiu")
 
+[node name="CollisionArea2D" type="Area2D" parent="." unique_id=1477431879]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea2D" unique_id=36364626]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_xrdvg")
+
 [node name="AttackRayCast2D" type="RayCast2D" parent="." unique_id=1898229934]
 position = Vector2(0, 7.5)
 scale = Vector2(1, 2)
@@ -327,3 +336,6 @@ player = NodePath("../..")
 [node name="PREPARE_ATTACK" type="Node" parent="FSM" unique_id=1715685243 node_paths=PackedStringArray("player")]
 script = ExtResource("13_p2la0")
 player = NodePath("../..")
+
+[connection signal="body_entered" from="CollisionArea2D" to="." method="_on_collision_area_2d_body_entered"]
+[connection signal="body_exited" from="CollisionArea2D" to="." method="_on_collision_area_2d_body_exited"]

@@ -11,7 +11,7 @@ func update(_delta: float) -> void:
 	if Input.is_action_just_released("jump") and player.velocity.y < 0: #Pulo curto
 		player.velocity.y *= player.JUMP_CUT
 		
-	if player.get_damage_collision_with_enemy():
+	if player.collisionWithEnemy and player.takingDamage:
 		transitioned.emit(self, "damage")
  
 func physics_update(delta: float) -> void:

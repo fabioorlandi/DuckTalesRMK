@@ -50,7 +50,7 @@ func fall_body(direction: Vector2):
 	fall_direction = direction
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if is_falling and body.name == "Patinhas":
+	if is_falling and body.name == "Patinhas" and body.invulnerability_ticks == 0:
 		var currentState = body.get_node("FSM").current_state
 		currentState.transitioned.emit(currentState, "damage")
 	

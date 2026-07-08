@@ -11,7 +11,7 @@ signal take_damage
 @onready var floor_pogo_shapecast = $FloorPogoShapeCast2D
 
 @export var GRAVITY = 500.0
-@export var SPEED := 100.0
+@export var SPEED := 110.0
 @export var ROPE_SPEED := 50.0
 @export var JUMP_FORCE := -225.0
 @export var JUMP_CUT   := 0.25
@@ -19,9 +19,12 @@ signal take_damage
 @export var POGO_GRAVITY  := 600.0
 
 var invulnerability_ticks = 0
+var kill_enemies_during_invulnerability = false
 var attacking: bool = false
 var onPogo: bool = false
 var onRope: bool = false
+var takingDamage: bool = false
+var collisionWithEnemy: bool = false
 var ropeX: float
 
 func _ready() -> void:
@@ -37,6 +40,18 @@ func _process(delta: float) -> void:
 		$AnimatedSprite2D.flip_h = false
 		attack_raycast.scale.x = scale.y * 1
 	
+	if Input.is_action_just_pressed("1"):
+		Teleport(Vector2(176,345), 312)
+	if Input.is_action_just_pressed("2"):
+		Teleport(Vector2(1875,574), 543)
+	if Input.is_action_just_pressed("3"):
+		Teleport(Vector2(1537,-115), -168)
+	if Input.is_action_just_pressed("4"):
+		Teleport(Vector2(1568,-355), -408)
+	if Input.is_action_just_pressed("5"):
+		Teleport(Vector2(1043,-726), -648)
+
+func _physics_process(delta: float) -> void:
 	if invulnerability_ticks > 0:
 		if invulnerability_ticks % 2 == 0:
 			self.modulate.a = 0
@@ -49,17 +64,6 @@ func _process(delta: float) -> void:
 		invulnerability_ticks = 0
 		
 		self.emit_signal("invulnerability_ticks_finished")
-	
-	if Input.is_action_just_pressed("1"):
-		Teleport(Vector2(176,345), 312)
-	if Input.is_action_just_pressed("2"):
-		Teleport(Vector2(1875,574), 543)
-	if Input.is_action_just_pressed("3"):
-		Teleport(Vector2(1537,-115), -168)
-	if Input.is_action_just_pressed("4"):
-		Teleport(Vector2(1568,-355), -408)
-	if Input.is_action_just_pressed("5"):
-		Teleport(Vector2(1043,-726), -648)
 
 func animate(animation: String):
 	$AnimatedSprite2D.animation = animation
@@ -76,36 +80,25 @@ func Teleport(pos : Vector2, floor: float) -> void:
 	$"../Camera2D".fixed_y = floor
 	$"../Camera2D".global_position = temp
 	$"../Camera2D".follow_x = true
-	
-func get_damage_collision_with_enemy():
-	var is_colliding = self.interactive_pogo_shapecast.is_colliding()
-	if not is_colliding:
-		return false
-	
-	var collider_interative = self.interactive_pogo_shapecast.get_collider(0)
-	if onPogo and collider_interative and collider_interative.is_in_group("Inimigos"):
-		return false
-	
-	var collision = self.get_last_slide_collision()
-	if collision:
-		var collider = collision.get_collider() as PhysicsBody2D
-		if collider:
-			return collider.is_in_group("Inimigos")
 
-func start_invulnerability(ticks: int):
+func start_invulnerability(ticks: int, allow_kill_enemies: bool = false):
 	invulnerability_ticks = ticks
 	
+	kill_enemies_during_invulnerability = allow_kill_enemies
+
 	var enemies = get_tree().get_nodes_in_group("Inimigos")
 	for enemy in enemies:
 		self.add_collision_exception_with(enemy)
 
 func end_invulnerability():
+	$CollisionArea2D.monitoring = true
+	
 	var enemies = get_tree().get_nodes_in_group("Inimigos")
 	for enemy in enemies:
 		self.remove_collision_exception_with(enemy)
 		
 func compute_hit():
-	self.emit_signal("invulnerability_ticks_started", 200)
+	self.emit_signal("invulnerability_ticks_started", 80)
 
 	var tween = create_tween()
 	var damage_recoil = self.position + Vector2(20, -20)\
@@ -115,3 +108,16 @@ func compute_hit():
 	
 	self.animate(&"Dano")
 	await $AnimatedSprite2D.animation_finished
+
+func _on_collision_area_2d_body_entered(body: Node2D) -> void:
+	if body is PhysicsBody2D and body.is_in_group("Inimigos") and body.canHit:
+		if self.invulnerability_ticks == 0:
+			$CollisionArea2D.monitoring = false
+			self.takingDamage = true
+			self.collisionWithEnemy = true
+		elif self.invulnerability_ticks > 0 and self.kill_enemies_during_invulnerability:
+			body.emit_signal("die_on_collision")
+
+func _on_collision_area_2d_body_exited(body: Node2D) -> void:
+	if body is PhysicsBody2D and body.is_in_group("Inimigos"):
+		self.collisionWithEnemy = false

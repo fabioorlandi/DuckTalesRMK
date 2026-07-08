@@ -28,7 +28,7 @@ func update(delta: float) -> void:
 	if Input.is_action_pressed("right"):
 		player.global_position.x = cordaX - offsetX
 		
-	if player.get_damage_collision_with_enemy():
+	if player.collisionWithEnemy and player.takingDamage:
 		transitioned.emit(self, "damage")
 	
 func physics_update(delta: float) -> void:
@@ -54,4 +54,6 @@ func physics_update(delta: float) -> void:
 	if Input.is_action_pressed("jump") and not Input.is_action_pressed("up") and player.canClimb:
 		transitioned.emit(self, "fall")
 	if Input.is_action_pressed("down") and not player.canClimb:
+		transitioned.emit(self, "fall")
+	if not player.onRope:
 		transitioned.emit(self, "fall")
