@@ -6,7 +6,7 @@ class_name Fall
 @export var animation_final = &"Pular"
  
 func update(_delta: float) -> void:
-	if player.get_damage_collision_with_enemy():
+	if player.collisionWithEnemy and player.takingDamage:
 		transitioned.emit(self, "damage")
  
 func physics_update(delta: float) -> void:	

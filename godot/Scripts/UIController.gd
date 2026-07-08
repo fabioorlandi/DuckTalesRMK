@@ -47,8 +47,6 @@ func _ready():
 	timerLabel.text = str(timeLeft)
 	
 func _process(delta):
-	if Input.is_action_just_pressed("p"):
-		CauseDamage(1)
 	if Input.is_action_just_pressed("m"):
 		get_tree().reload_current_scene()
 

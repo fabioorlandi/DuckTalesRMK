@@ -5,7 +5,7 @@ class_name Move
 @export var animation = &"Caminhar"
  
 func update(_delta: float) -> void:
-	if player.get_damage_collision_with_enemy():
+	if player.collisionWithEnemy and player.takingDamage:
 		transitioned.emit(self, "damage")
 	
 	if Input.is_action_just_pressed("jump") and player.is_on_floor(): #Pula se pode pular
@@ -42,5 +42,5 @@ func physics_update(delta: float) -> void:
 
 	var collider_normal = player.attack_raycast.get_collision_normal()
 	var collider = player.attack_raycast.get_collider()
-	if collider and collider_normal.x == direction * -1:
+	if collider and collider_normal.x == direction * -1 and not collider.is_in_group("Inimigos"):
 		transitioned.emit(self, "prepare_attack")

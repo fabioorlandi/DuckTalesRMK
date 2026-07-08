@@ -5,7 +5,7 @@ class_name Idle
 @export var animation = &"Parado"
 
 func update(_delta: float) -> void:
-	if player.get_damage_collision_with_enemy():
+	if player.collisionWithEnemy and player.takingDamage:
 		transitioned.emit(self, "damage")
 
 func physics_update(delta: float) -> void:

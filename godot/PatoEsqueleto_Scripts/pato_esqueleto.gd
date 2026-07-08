@@ -10,8 +10,14 @@ var direction := -1
 
 func _ready():
 	connect("die_on_collision", _on_die)
+	var inimigos = get_tree().get_nodes_in_group("Inimigos")
+	for inimigo in inimigos:
+		self.add_collision_exception_with(inimigo)
 
 func _on_die() -> void:
+	var patinhas = get_tree().get_nodes_in_group("Patinhas")[0]
+	self.add_collision_exception_with(patinhas)
+	
 	if $FSM.current_state is IDLE:
 		return
 
@@ -42,4 +48,3 @@ func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	player_on_screen = false
-	

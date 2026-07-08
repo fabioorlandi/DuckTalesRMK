@@ -40,7 +40,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Patinhas":
-		DoFunction()
+		DoFunction(body)
 		queue_free()
 		
 func apply_tween() -> void:
@@ -55,7 +55,7 @@ func apply_tween() -> void:
 		0.15
 	)
 
-func DoFunction() -> void:
+func DoFunction(body: Node2D) -> void:
 	match  current_item:
 		Item.yellow_diamond_G:
 			ui.AddScore(10000)
@@ -66,8 +66,7 @@ func DoFunction() -> void:
 		Item.stage_trophy:
 			ui.AddScore(1000000)
 		Item.invulnerable:
-			#set player invulnerable per 8s
-			pass
+			body.emit_signal("invulnerability_ticks_started", 320, true)
 		Item.health_star:
 			ui.GainHealth()
 		Item.life_duck:
