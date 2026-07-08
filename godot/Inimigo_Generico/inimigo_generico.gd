@@ -5,7 +5,10 @@ signal die_on_collision
 var player_on_screen := false
 var direction := 1  
 var collision_disabled := false
-var canHit = true
+var can_hit_patinhas = true
+
+func is_pogo_interactive():
+	return true
 
 func _ready():
 	connect("die_on_collision", _on_die)

@@ -10,7 +10,7 @@ func _ready():
 	actor = get_parent().get_parent()
 
 func enter() -> void:
-	actor.canHit = true
+	actor.can_hit_patinhas = true
 	
 	finished = false
 	$"../../CollisionShape2D".disabled = true

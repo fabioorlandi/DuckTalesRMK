@@ -110,7 +110,7 @@ func compute_hit():
 	await $AnimatedSprite2D.animation_finished
 
 func _on_collision_area_2d_body_entered(body: Node2D) -> void:
-	if body is PhysicsBody2D and body.is_in_group("Inimigos") and body.canHit:
+	if body is PhysicsBody2D and body.is_in_group("Inimigos") and "can_hit_patinhas" in body and body.can_hit_patinhas:
 		if self.invulnerability_ticks == 0:
 			$CollisionArea2D.monitoring = false
 			self.takingDamage = true
