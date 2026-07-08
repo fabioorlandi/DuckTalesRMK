@@ -16,7 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://whihmuos5mw" path="res://inimigo_generico.tscn" id="15_ke5s7"]
 [ext_resource type="PackedScene" uid="uid://y0qr46lfx8x2" path="res://spawn_esqueleto.tscn" id="16_55obg"]
 [ext_resource type="PackedScene" uid="uid://cd1fwimvplkgl" path="res://Mirror.tscn" id="16_udr8q"]
-[ext_resource type="PackedScene" uid="uid://c683qceykov55" path="res://Itens/invulnerable.tscn" id="17_udr8q"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_deayw"]
 resource_name = "Cenário_Interativo"
@@ -520,9 +519,6 @@ ropeX = 384.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ropes/Corda6" unique_id=269217436]
 shape = SubResource("SegmentShape2D_pgjuh")
-
-[node name="Invulnerable" parent="." unique_id=106499222 instance=ExtResource("17_udr8q")]
-position = Vector2(86, 370)
 
 [connection signal="body_entered" from="CameraColliders/FollowXCol" to="CameraColliders/FollowXCol" method="_on_body_entered"]
 [connection signal="body_entered" from="CameraColliders/UnfollowXCol" to="CameraColliders/UnfollowXCol" method="_on_body_entered"]
