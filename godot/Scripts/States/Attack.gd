@@ -75,5 +75,7 @@ func can_attack(body: PhysicsBody2D) -> bool:
 	if body.has_signal("slide_on_collision") and body.can_slide:
 		body.emit_signal("slide_on_collision", Vector2(1, 0) if player.lastDir == "right" else Vector2(-1, 0))
 		can_attack = true
-		
+	if body.is_in_group("Chest"):
+		body.desactiveChest()
+		can_attack = true
 	return can_attack

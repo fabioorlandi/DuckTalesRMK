@@ -30,7 +30,7 @@ func physics_update(delta: float) -> void:
  
 	player.velocity.y += player.POGO_GRAVITY * delta
 
-	player.animate(animation)
+	player.animate(String(animation))
 	player.move_and_slide()
 	
 	if destroying_timer > 0:
@@ -52,6 +52,9 @@ func physics_update(delta: float) -> void:
 					if collider_interative is PhysicsBody2D and collider_interative.has_signal("die_on_collision"):
 						collider_interative.emit_signal("die_on_collision")
 	
+					if collider_interative.is_in_group("Chest") and collider_interative.has_method("desactiveChest"):
+						collider_interative.desactiveChest()
+					
 				if can_pogo_bounce(collider_interative) or collider_floor:
 					player.animate(animation_2)
 					await get_tree().create_timer(0.05).timeout

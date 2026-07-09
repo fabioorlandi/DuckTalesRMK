@@ -40,6 +40,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Patinhas":
+		await get_tree().create_timer(.3).timeout
 		DoFunction(body)
 		queue_free()
 		
