@@ -5,6 +5,8 @@ extends Area2D
 var already_obtained: bool = false
 @export var isChest: bool
 
+@export var canIPogoAndAttack: bool
+
 func _ready() -> void:
 	if isChest:
 		$CharacterBody2D.visible = true
