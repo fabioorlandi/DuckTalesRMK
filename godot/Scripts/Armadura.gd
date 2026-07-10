@@ -7,6 +7,10 @@ var is_falling = false
 var distance_ticks = 80;
 var fall_direction = Vector2.ZERO
 
+@export var dropHelmet: bool = true
+@export var spawnItem: bool
+@export var item: PackedScene
+
 func _ready() -> void:
 	$RigidBodyElmo/CollisionShapeElmoCaido.disabled = true
 	fall_on_collision.connect(fall_body)
@@ -17,26 +21,30 @@ func _physics_process(delta: float) -> void:
 		
 	if not is_falling:
 		is_falling = true
-		$RigidBodyElmo/CollisionShapeElmoEstatico.disabled = true
-		$RigidBodyElmo/CollisionShapeElmoCaido.disabled = false
-	
-		$RigidBodyElmo/AnimatedSprite2D.global_rotation_degrees = -90
-		$RigidBodyElmo/CollisionShapeElmoCaido.global_rotation_degrees = -90
 		
-		var tween_shake = create_tween()
-		var start_x = $RigidBodyElmo.position.x
-	
-		var shake_intensity = 2
-		for i in range(16):
-			var offset_x = randf_range(-shake_intensity, shake_intensity)
-			tween_shake.tween_property($RigidBodyElmo, "position:x", start_x + offset_x, 0.05)
-	
-		tween_shake.tween_property($RigidBodyElmo, "position:x", start_x, 0.05)
-	
-		await tween_shake.finished
-	
-		$RigidBodyElmo.add_collision_exception_with(get_parent().get_parent().get_node("Patinhas"))
-		$RigidBodyElmo.apply_impulse(Vector2(-100, -200) * fall_direction)
+		if dropHelmet:
+			$RigidBodyElmo/CollisionShapeElmoEstatico.disabled = true
+			$RigidBodyElmo/CollisionShapeElmoCaido.disabled = false
+		
+			$RigidBodyElmo/AnimatedSprite2D.global_rotation_degrees = -90
+			$RigidBodyElmo/CollisionShapeElmoCaido.global_rotation_degrees = -90
+			
+			var tween_shake = create_tween()
+			var start_x = $RigidBodyElmo.position.x
+		
+			var shake_intensity = 2
+			for i in range(16):
+				var offset_x = randf_range(-shake_intensity, shake_intensity)
+				tween_shake.tween_property($RigidBodyElmo, "position:x", start_x + offset_x, 0.05)
+		
+			tween_shake.tween_property($RigidBodyElmo, "position:x", start_x, 0.05)
+		
+			await tween_shake.finished
+		
+			$RigidBodyElmo.add_collision_exception_with(get_parent().get_parent().get_node("Patinhas"))
+			$RigidBodyElmo.apply_impulse(Vector2(-100, -200) * fall_direction)
+		elif spawnItem:
+			item.instantiate()
 
 	if is_falling:
 		distance_ticks -= 1
