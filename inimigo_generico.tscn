@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://whihmuos5mw"]
+
+[ext_resource type="Texture2D" uid="uid://njfi4doxwglu" path="res://Assets/Inimigo_Generico_Spritesheet.png" id="1_s8fcv"]
+[ext_resource type="Script" uid="uid://d2kc20yi84k1v" path="res://Inimigo_Generico/inimigo_generico.gd" id="1_x52ph"]
+[ext_resource type="Script" uid="uid://byq10t2yfih38" path="res://Inimigo_Generico/fsm_inimigo_generico.gd" id="2_pf64t"]
+[ext_resource type="Script" uid="uid://cehp3facp1sml" path="res://Inimigo_Generico/move_inimigo_generico.gd" id="3_fh3h5"]
+[ext_resource type="Script" uid="uid://rviwao4ikrwt" path="res://Inimigo_Generico/desativado_inimigo_generico.gd" id="5_xduj7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pf64t"]
+size = Vector2(26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fh3h5"]
+atlas = ExtResource("1_s8fcv")
+region = Rect2(26, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x52ph"]
+atlas = ExtResource("1_s8fcv")
+region = Rect2(0, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xduj7"]
+atlas = ExtResource("1_s8fcv")
+region = Rect2(52, 0, 26, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k8f6y"]
+animations = [{
+"frames": [{
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_fh3h5")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_x52ph")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_xduj7")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_x52ph")
+}],
+"loop": 1,
+"name": &"Inimigo_generico_caminhar",
+"speed": 8.0
+}]
+
+[node name="Inimigo_Generico" type="CharacterBody2D" unique_id=403823545]
+collision_layer = 17
+collision_mask = 17
+script = ExtResource("1_x52ph")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=807732150]
+shape = SubResource("RectangleShape2D_pf64t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1563512526]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_k8f6y")
+animation = &"Inimigo_generico_caminhar"
+frame_progress = 0.9165158
+
+[node name="Label_State" type="Label" parent="." unique_id=1371748296]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="FSM" type="Node" parent="." unique_id=1104170057 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_pf64t")
+initial_state = NodePath("DESATIVADO")
+
+[node name="MOVE" type="Node" parent="FSM" unique_id=624948675]
+script = ExtResource("3_fh3h5")
+
+[node name="DESATIVADO" type="Node" parent="FSM" unique_id=1734096457]
+script = ExtResource("5_xduj7")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1778270510]
+rect = Rect2(-13, -16, 26, 32)
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="FSM/MOVE" method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="FSM/DESATIVADO" method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="FSM/MOVE" method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="FSM/DESATIVADO" method="_on_visible_on_screen_notifier_2d_screen_exited"]

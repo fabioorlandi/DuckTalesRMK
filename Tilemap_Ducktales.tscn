@@ -1,0 +1,359 @@
+[gd_scene format=4 uid="uid://cl3qvaltijhv2"]
+
+[ext_resource type="PackedScene" uid="uid://bxkdtofu5c6li" path="res://tile_map_layer_background.tscn" id="2_55obg"]
+[ext_resource type="PackedScene" uid="uid://cogx0t83rjkoh" path="res://Patinhas_Animacoes.tscn" id="3_deayw"]
+[ext_resource type="PackedScene" uid="uid://u1rejandld05" path="res://Bloco_Destruivel.tscn" id="4_63sgq"]
+[ext_resource type="PackedScene" uid="uid://dmy14x3qhkdta" path="res://Bloco_Empurravel.tscn" id="4_fcfpr"]
+[ext_resource type="PackedScene" uid="uid://bqwigldj0fobp" path="res://Armadura.tscn" id="4_fu7tr"]
+[ext_resource type="Script" uid="uid://c10vnem3irjlw" path="res://Scripts/Corda.gd" id="6_4oyrw"]
+[ext_resource type="Script" uid="uid://cgnb3xww2ahjd" path="res://Scripts/CameraFollow.gd" id="7_1sa6h"]
+[ext_resource type="Texture2D" uid="uid://c3jqlf0xit1bo" path="res://Assets/UIBackground.png" id="7_fu7tr"]
+[ext_resource type="Script" uid="uid://cklkcqugwuar7" path="res://Scripts/UIController.gd" id="7_lek72"]
+[ext_resource type="FontFile" uid="uid://dtdqm04fcn0od" path="res://Pixelon.ttf" id="8_rf2pp"]
+[ext_resource type="Texture2D" uid="uid://byx22j1o1twia" path="res://Assets/hpImages.png" id="9_t4tih"]
+[ext_resource type="FontFile" uid="uid://bmvryxwvhho2k" path="res://Ducktales_Font2.ttf" id="13_55obg"]
+[ext_resource type="Script" uid="uid://duegq8tgxl7vr" path="res://Scripts/CameraCollider.gd" id="13_voubw"]
+[ext_resource type="PackedScene" uid="uid://whihmuos5mw" path="res://inimigo_generico.tscn" id="15_ke5s7"]
+[ext_resource type="PackedScene" uid="uid://y0qr46lfx8x2" path="res://spawn_esqueleto.tscn" id="16_55obg"]
+[ext_resource type="PackedScene" uid="uid://ceofs14kqndsd" path="res://spawn_mumia.tscn" id="17_mw0eb"]
+[ext_resource type="PackedScene" uid="uid://dr4b1dq8u1gqe" path="res://spawn_bola_mumia.tscn" id="18_gtvlv"]
+[ext_resource type="PackedScene" uid="uid://c8by4hv38u7kb" path="res://Inimigo_Fantasma.tscn" id="18_mw0eb"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_deayw"]
+resource_name = "Cenário_Interativo"
+scenes/1/scene = ExtResource("4_63sgq")
+scenes/2/scene = ExtResource("4_fcfpr")
+
+[sub_resource type="TileSet" id="TileSet_63sgq"]
+sources/0 = SubResource("TileSetScenesCollectionSource_deayw")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nkdbr"]
+size = Vector2(16, 7)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_pgjuh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1sa6h"]
+size = Vector2(5.6447678, 49.09293)
+
+[node name="MainNode" type="Node2D" unique_id=1058646140]
+
+[node name="TileMapLayerBackground" parent="." unique_id=1744038407 instance=ExtResource("2_55obg")]
+
+[node name="TileMapLayerForeground" type="TileMapLayer" parent="." unique_id=688610627]
+tile_map_data = PackedByteArray("AAAIABcAAAAAAAAAAQAJABcAAAAAAAAAAQAKABcAAAAAAAAAAQALABcAAAAAAAAAAQASABcAAAAAAAAAAQATABcAAAAAAAAAAQAUABcAAAAAAAAAAQAVABcAAAAAAAAAAQAWABcAAAAAAAAAAQAXABcAAAAAAAAAAQAAABYAAAAAAAAAAQAAABcAAAAAAAAAAQAXAAsAAAAAAAAAAQAYAAsAAAAAAAAAAQA/ABUAAAAAAAAAAQAuABIAAAAAAAAAAQAvABIAAAAAAAAAAQAwABIAAAAAAAAAAQAzABcAAAAAAAAAAQAyABcAAAAAAAAAAQAxABcAAAAAAAAAAQAwABcAAAAAAAAAAQAxAAQAAAAAAAAAAgA+ABUAAAAAAAAAAQA9ABUAAAAAAAAAAQA8ABUAAAAAAAAAAQA=")
+tile_set = SubResource("TileSet_63sgq")
+
+[node name="Patinhas" parent="." unique_id=917563206 instance=ExtResource("3_deayw")]
+position = Vector2(47, 370)
+
+[node name="Inimigo_Generico" parent="." unique_id=403823545 instance=ExtResource("15_ke5s7")]
+position = Vector2(747, 64)
+
+[node name="Area2D" type="StaticBody2D" parent="." unique_id=1296536085]
+position = Vector2(792, 70)
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2031131104]
+position = Vector2(0, 6.5)
+shape = SubResource("RectangleShape2D_nkdbr")
+
+[node name="Spawn_Mumia" parent="." unique_id=936495851 instance=ExtResource("17_mw0eb")]
+position = Vector2(336, 356)
+
+[node name="Spawn_Bola_Mumia" parent="." unique_id=581019664 instance=ExtResource("18_gtvlv")]
+position = Vector2(336, 355)
+
+[node name="Spawn" parent="." unique_id=1704297689 instance=ExtResource("16_55obg")]
+position = Vector2(435, 371)
+
+[node name="Spawn2" parent="." unique_id=1762905738 instance=ExtResource("16_55obg")]
+position = Vector2(819, 291)
+
+[node name="Spawn3" parent="." unique_id=447239704 instance=ExtResource("16_55obg")]
+position = Vector2(874, 371)
+
+[node name="Corda" type="Area2D" parent="." unique_id=1975783942]
+position = Vector2(896, 336)
+scale = Vector2(1, -31.600004)
+script = ExtResource("6_4oyrw")
+ropeX = 896.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Corda" unique_id=1584375562]
+shape = SubResource("SegmentShape2D_pgjuh")
+
+[node name="Corda2" type="Area2D" parent="." unique_id=1868219995]
+position = Vector2(1920, 528)
+scale = Vector2(0.858, -27.305)
+script = ExtResource("6_4oyrw")
+ropeX = 1920.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Corda2" unique_id=818096108]
+shape = SubResource("SegmentShape2D_pgjuh")
+
+[node name="Interacao_Cenario" type="Node2D" parent="." unique_id=326382331]
+
+[node name="Armadura01" parent="Interacao_Cenario" unique_id=635808693 instance=ExtResource("4_fu7tr")]
+position = Vector2(496, 350)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=356561041 node_paths=PackedStringArray("player")]
+position = Vector2(128, 312)
+script = ExtResource("7_1sa6h")
+player = NodePath("../Patinhas")
+speed = 250.0
+
+[node name="UI" type="Node2D" parent="Camera2D" unique_id=1631643127]
+position = Vector2(-38, -362)
+script = ExtResource("7_lek72")
+health = 3
+healthCap = 3
+lifesCap = 3
+
+[node name="Background" type="Sprite2D" parent="Camera2D/UI" unique_id=269774112]
+z_index = 10
+position = Vector2(38, 274)
+texture = ExtResource("7_fu7tr")
+region_enabled = true
+region_rect = Rect2(0, 146, 256, 48)
+
+[node name="Left" type="Sprite2D" parent="Camera2D/UI" unique_id=1922133915]
+z_index = 11
+position = Vector2(-34, 278)
+texture = ExtResource("7_fu7tr")
+region_enabled = true
+region_rect = Rect2(8, 4, 95, 39)
+
+[node name="Right" type="Sprite2D" parent="Camera2D/UI" unique_id=1952773466]
+z_index = 12
+position = Vector2(114, 278)
+texture = ExtResource("7_fu7tr")
+region_enabled = true
+region_rect = Rect2(161, 4, 87, 39)
+
+[node name="$Stage" type="Label" parent="Camera2D/UI" unique_id=735883775]
+z_index = 13
+texture_filter = 1
+offset_left = -69.0
+offset_top = 262.0
+offset_right = -29.0
+offset_bottom = 285.0
+theme_override_fonts/font = ExtResource("13_55obg")
+theme_override_font_sizes/font_size = 8
+text = "$"
+vertical_alignment = 1
+
+[node name="Points" type="Label" parent="Camera2D/UI/$Stage" unique_id=518924337]
+z_index = 13
+texture_filter = 1
+layout_mode = 0
+offset_left = 16.0
+offset_right = 56.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("13_55obg")
+theme_override_font_sizes/font_size = 8
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+autowrap_trim_flags = 128
+
+[node name="$Total" type="Label" parent="Camera2D/UI" unique_id=1072256964]
+z_index = 13
+offset_left = 22.0
+offset_top = 257.0
+offset_right = 62.0
+offset_bottom = 280.0
+theme_override_fonts/font = ExtResource("8_rf2pp")
+theme_override_font_sizes/font_size = 11
+text = "TOTAL"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="$" type="Label" parent="Camera2D/UI/$Total" unique_id=1778502307]
+z_index = 13
+layout_mode = 0
+offset_left = -16.0
+offset_top = 11.0
+offset_right = 24.0
+offset_bottom = 34.0
+theme_override_fonts/font = ExtResource("8_rf2pp")
+theme_override_font_sizes/font_size = 11
+text = "$"
+vertical_alignment = 1
+
+[node name="Points" type="Label" parent="Camera2D/UI/$Total" unique_id=1829704049]
+z_index = 13
+layout_mode = 0
+offset_left = 16.0
+offset_top = 11.0
+offset_right = 56.0
+offset_bottom = 34.0
+theme_override_fonts/font = ExtResource("8_rf2pp")
+theme_override_font_sizes/font_size = 11
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Lifes" type="Label" parent="Camera2D/UI" unique_id=793890336]
+z_index = 13
+offset_left = 22.0
+offset_top = 278.0
+offset_right = 62.0
+offset_bottom = 301.0
+theme_override_fonts/font = ExtResource("8_rf2pp")
+theme_override_font_sizes/font_size = 11
+text = "P. "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HP" type="Label" parent="Camera2D/UI" unique_id=1263364934]
+z_index = 13
+offset_left = -81.0
+offset_top = 276.0
+offset_right = -41.0
+offset_bottom = 299.0
+theme_override_fonts/font = ExtResource("8_rf2pp")
+theme_override_font_sizes/font_size = 11
+text = "HP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="hp1" type="Sprite2D" parent="Camera2D/UI/HP" unique_id=1508669766]
+position = Vector2(37, 10)
+texture = ExtResource("9_t4tih")
+region_enabled = true
+region_rect = Rect2(0, 0, 9, 9)
+
+[node name="hp2" type="Sprite2D" parent="Camera2D/UI/HP" unique_id=326713152]
+position = Vector2(46, 10)
+texture = ExtResource("9_t4tih")
+region_enabled = true
+region_rect = Rect2(0, 0, 9, 9)
+
+[node name="hp3" type="Sprite2D" parent="Camera2D/UI/HP" unique_id=938518976]
+position = Vector2(55, 10)
+texture = ExtResource("9_t4tih")
+region_enabled = true
+region_rect = Rect2(0, 0, 9, 9)
+
+[node name="hp4" type="Sprite2D" parent="Camera2D/UI/HP" unique_id=308396642]
+position = Vector2(64, 10)
+texture = ExtResource("9_t4tih")
+region_enabled = true
+region_rect = Rect2(0, 0, 9, 9)
+
+[node name="hp5" type="Sprite2D" parent="Camera2D/UI/HP" unique_id=376985193]
+position = Vector2(73, 10)
+texture = ExtResource("9_t4tih")
+region_enabled = true
+region_rect = Rect2(0, 0, 9, 9)
+
+[node name="Time" type="Label" parent="Camera2D/UI" unique_id=1887529692]
+z_index = 13
+offset_left = 86.0
+offset_top = 268.0
+offset_right = 126.0
+offset_bottom = 291.0
+theme_override_fonts/font = ExtResource("8_rf2pp")
+theme_override_font_sizes/font_size = 11
+text = "TIME"
+vertical_alignment = 1
+
+[node name="Timer" type="Label" parent="Camera2D/UI/Time" unique_id=587385360]
+z_index = 13
+layout_mode = 0
+offset_left = 23.0
+offset_right = 63.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("8_rf2pp")
+theme_override_font_sizes/font_size = 11
+text = "500"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="StageTimer" type="Timer" parent="Camera2D/UI/Time" unique_id=1099315288]
+
+[node name="CameraColliders" type="Node" parent="." unique_id=2093379251]
+
+[node name="FollowXCol" type="Area2D" parent="CameraColliders" unique_id=80427989]
+position = Vector2(139, 325)
+scale = Vector2(0.19999999, 1)
+script = ExtResource("13_voubw")
+FollowX = true
+
+[node name="Follow" type="CollisionShape2D" parent="CameraColliders/FollowXCol" unique_id=1679509600]
+position = Vector2(0, -1.0001221)
+scale = Vector2(1.771551, 4.0739007)
+shape = SubResource("RectangleShape2D_1sa6h")
+
+[node name="UnfollowXCol" type="Area2D" parent="CameraColliders" unique_id=1337491644]
+position = Vector2(120, 324)
+scale = Vector2(0.16000247, 1)
+script = ExtResource("13_voubw")
+UnfollowX = true
+
+[node name="Follow" type="CollisionShape2D" parent="CameraColliders/UnfollowXCol" unique_id=1573055993]
+position = Vector2(0, -1.0001221)
+scale = Vector2(1.771551, 4.0739007)
+shape = SubResource("RectangleShape2D_1sa6h")
+
+[node name="floor-312-To-72" type="Area2D" parent="CameraColliders" unique_id=396331675]
+position = Vector2(896, 203)
+scale = Vector2(3.2, 0.4)
+script = ExtResource("13_voubw")
+Transition = true
+TransitionPos = 72
+
+[node name="Follow" type="CollisionShape2D" parent="CameraColliders/floor-312-To-72" unique_id=1855719502]
+position = Vector2(0, -1.0001221)
+scale = Vector2(1.771551, 4.0739007)
+shape = SubResource("RectangleShape2D_1sa6h")
+
+[node name="floor-72-To-312" type="Area2D" parent="CameraColliders" unique_id=1651814085]
+position = Vector2(896, 200)
+scale = Vector2(3.2, 0.4)
+script = ExtResource("13_voubw")
+Transition = true
+TransitionPos = 312
+
+[node name="Follow" type="CollisionShape2D" parent="CameraColliders/floor-72-To-312" unique_id=671993920]
+position = Vector2(0, -1.0001221)
+scale = Vector2(1.771551, 4.0739007)
+shape = SubResource("RectangleShape2D_1sa6h")
+
+[node name="floor-543-To-312" type="Area2D" parent="CameraColliders" unique_id=876611780]
+position = Vector2(1920, 435)
+scale = Vector2(3.2, 0.4)
+script = ExtResource("13_voubw")
+Transition = true
+TransitionPos = 312
+
+[node name="Follow" type="CollisionShape2D" parent="CameraColliders/floor-543-To-312" unique_id=795171317]
+position = Vector2(0, -1.0001221)
+scale = Vector2(1.771551, 4.0739007)
+shape = SubResource("RectangleShape2D_1sa6h")
+
+[node name="floor-312-To-543" type="Area2D" parent="CameraColliders" unique_id=148663672]
+position = Vector2(1920, 432)
+scale = Vector2(3.2, 0.4)
+script = ExtResource("13_voubw")
+Transition = true
+TransitionPos = 543
+
+[node name="Follow" type="CollisionShape2D" parent="CameraColliders/floor-312-To-543" unique_id=606602405]
+position = Vector2(0, -1.0001221)
+scale = Vector2(1.771551, 4.0739007)
+shape = SubResource("RectangleShape2D_1sa6h")
+
+[node name="Fantasma" parent="." unique_id=184599053 instance=ExtResource("18_mw0eb")]
+position = Vector2(210, 350)
+
+[connection signal="body_entered" from="Corda" to="Corda" method="_on_body_entered"]
+[connection signal="body_exited" from="Corda" to="Corda" method="_on_body_exited"]
+[connection signal="body_entered" from="Corda2" to="Corda2" method="_on_body_entered"]
+[connection signal="body_exited" from="Corda2" to="Corda2" method="_on_body_exited"]
+[connection signal="body_entered" from="CameraColliders/FollowXCol" to="CameraColliders/FollowXCol" method="_on_body_entered"]
+[connection signal="body_entered" from="CameraColliders/UnfollowXCol" to="CameraColliders/UnfollowXCol" method="_on_body_entered"]
+[connection signal="body_entered" from="CameraColliders/floor-312-To-72" to="CameraColliders/floor-312-To-72" method="_on_body_entered"]
+[connection signal="body_entered" from="CameraColliders/floor-72-To-312" to="CameraColliders/floor-72-To-312" method="_on_body_entered"]
+[connection signal="body_entered" from="CameraColliders/floor-543-To-312" to="CameraColliders/floor-543-To-312" method="_on_body_entered"]
+[connection signal="body_entered" from="CameraColliders/floor-312-To-543" to="CameraColliders/floor-312-To-543" method="_on_body_entered"]

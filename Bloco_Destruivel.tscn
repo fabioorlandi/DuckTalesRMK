@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://u1rejandld05"]
+
+[ext_resource type="Script" uid="uid://bh4e6qjiy66rj" path="res://Scripts/BlocoDestruivel.gd" id="1_6ua7y"]
+[ext_resource type="Texture2D" uid="uid://bdxti27hvfdlj" path="res://Assets/Tilemap_Ducktales.png" id="1_ty2yn"]
+[ext_resource type="Texture2D" uid="uid://chc6wwgjqdf7t" path="res://Assets/DuckTales_Itens.png" id="2_g0kcy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0kcy"]
+atlas = ExtResource("1_ty2yn")
+region = Rect2(48, 192, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6yfk"]
+atlas = ExtResource("2_g0kcy")
+region = Rect2(96, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lnm2q"]
+atlas = ExtResource("2_g0kcy")
+region = Rect2(112, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aq36g"]
+atlas = ExtResource("2_g0kcy")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6ua7y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0kcy")
+}],
+"loop": 0,
+"name": &"block",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6yfk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lnm2q")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": 0,
+"name": &"destroy_block",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aq36g")
+}],
+"loop": 1,
+"name": &"destroy_block_projectile",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ty2yn"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ywsyg"]
+size = Vector2(18, 18)
+
+[node name="RigidBody2D" type="RigidBody2D" unique_id=2146730182]
+freeze_mode = 1
+script = ExtResource("1_6ua7y")
+metadata/_edit_group_ = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=771571931]
+rect = Rect2(-8, -8, 16, 16)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1730345579]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_6ua7y")
+animation = &"destroy_block_projectile"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1130057150]
+shape = SubResource("RectangleShape2D_ty2yn")
+
+[node name="DetectSorroundingObjects" type="Area2D" parent="." unique_id=1424185053]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectSorroundingObjects" unique_id=1623369254]
+shape = SubResource("RectangleShape2D_ywsyg")
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="body_entered" from="DetectSorroundingObjects" to="." method="_on_detect_sorrounding_objects_body_entered"]

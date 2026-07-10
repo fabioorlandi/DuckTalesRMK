@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://ceofs14kqndsd"]
+
+[ext_resource type="Script" uid="uid://ba6r3kbu5iv0c" path="res://spawn_mumia.gd" id="1_l38ej"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hdvu2"]
+
+[node name="Spawn_Mumia" type="Area2D" unique_id=936495851]
+script = ExtResource("1_l38ej")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=181253774]
+shape = SubResource("RectangleShape2D_hdvu2")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=2068430285]
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
