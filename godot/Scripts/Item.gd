@@ -23,6 +23,9 @@ func _ready() -> void:
 	if(destroyable):
 		timer.timeout.connect(_on_timer_timeout)
 		timer.start()
+	
+	await get_tree().create_timer(.2).timeout
+	$CollisionShape2D.disabled = false
 
 func _on_timer_timeout():
 	timeLeft -= 1
@@ -40,7 +43,6 @@ func _physics_process(delta: float) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Patinhas":
-		await get_tree().create_timer(.3).timeout
 		DoFunction(body)
 		queue_free()
 		

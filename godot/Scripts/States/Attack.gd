@@ -78,4 +78,8 @@ func can_attack(body: PhysicsBody2D) -> bool:
 	if body.is_in_group("Chest"):
 		body.desactiveChest()
 		can_attack = true
+	if body.is_in_group("Coffin"):
+		if !body.alreadyActive:
+			body.Active()
+			can_attack = true
 	return can_attack

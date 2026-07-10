@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://vyeb81uavor6" path="res://Itens/ice_cream.tscn" id="24_n1558"]
 [ext_resource type="PackedScene" uid="uid://dj0doqnic8div" path="res://Itens/life_duck.tscn" id="25_y5hv7"]
 [ext_resource type="PackedScene" uid="uid://10slnqn82k85" path="res://Itens/health_star.tscn" id="26_r1eh8"]
+[ext_resource type="PackedScene" uid="uid://dhxidj128h1r0" path="res://Coffin.tscn" id="27_piond"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_deayw"]
 resource_name = "Cenário_Interativo"
@@ -113,6 +114,66 @@ position = Vector2(114, 278)
 texture = ExtResource("7_fu7tr")
 region_enabled = true
 region_rect = Rect2(161, 4, 87, 39)
+
+[node name="Talk_Left" type="Sprite2D" parent="Camera2D/UI" unique_id=776982917]
+visible = false
+z_index = 11
+position = Vector2(-46, 278)
+texture = ExtResource("7_fu7tr")
+region_enabled = true
+region_rect = Rect2(8, 102, 71, 39)
+
+[node name="Label" type="Label" parent="Camera2D/UI/Talk_Left" unique_id=1826454261]
+offset_left = -28.000002
+offset_top = -16.0
+offset_right = 11.999998
+offset_bottom = 7.0
+scale = Vector2(1.4, 1.4)
+theme_override_font_sizes/font_size = 7
+text = "MESSAGE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Talk_Right" type="Sprite2D" parent="Camera2D/UI" unique_id=1295792654]
+visible = false
+z_index = 12
+position = Vector2(74, 278)
+texture = ExtResource("7_fu7tr")
+region_enabled = true
+region_rect = Rect2(81, 102, 167, 39)
+
+[node name="Label" type="Label" parent="Camera2D/UI/Talk_Right" unique_id=259188609]
+offset_left = -75.0
+offset_top = -12.0
+offset_right = -35.0
+offset_bottom = 11.0
+
+[node name="Pause_Left" type="Sprite2D" parent="Camera2D/UI" unique_id=1284352635]
+visible = false
+z_index = 11
+position = Vector2(-46, 278)
+texture = ExtResource("7_fu7tr")
+region_enabled = true
+region_rect = Rect2(8, 53, 63, 39)
+
+[node name="Label" type="Label" parent="Camera2D/UI/Pause_Left" unique_id=1531383481]
+offset_left = -30.000002
+offset_top = -14.0
+offset_right = 9.999998
+offset_bottom = 9.0
+scale = Vector2(1.52, 1.2)
+theme_override_font_sizes/font_size = 8
+text = "ITEM"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Pause_Right" type="Sprite2D" parent="Camera2D/UI" unique_id=2139882885]
+visible = false
+z_index = 12
+position = Vector2(74, 278)
+texture = ExtResource("7_fu7tr")
+region_enabled = true
+region_rect = Rect2(81, 102, 167, 39)
 
 [node name="$Stage" type="Label" parent="Camera2D/UI" unique_id=735883775]
 z_index = 13
@@ -738,6 +799,11 @@ isChest = true
 position = Vector2(1096, 57)
 item_to_spawn = ExtResource("20_5yvvo")
 isChest = true
+
+[node name="Coffin" parent="." unique_id=249903453 instance=ExtResource("27_piond")]
+position = Vector2(1840, 352)
+spawnItem = true
+item_to_spawn = ExtResource("24_n1558")
 
 [connection signal="body_entered" from="CameraColliders/FollowXCol" to="CameraColliders/FollowXCol" method="_on_body_entered"]
 [connection signal="body_entered" from="CameraColliders/UnfollowXCol" to="CameraColliders/UnfollowXCol" method="_on_body_entered"]
