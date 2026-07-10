@@ -62,6 +62,7 @@ frame_progress = 0.59841865
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1754361571]
 position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_dfwst")
+disabled = true
 
 [node name="Timer" type="Timer" parent="." unique_id=1235787125]
 

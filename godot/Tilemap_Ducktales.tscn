@@ -16,6 +16,17 @@
 [ext_resource type="PackedScene" uid="uid://whihmuos5mw" path="res://inimigo_generico.tscn" id="15_ke5s7"]
 [ext_resource type="PackedScene" uid="uid://y0qr46lfx8x2" path="res://spawn_esqueleto.tscn" id="16_55obg"]
 [ext_resource type="PackedScene" uid="uid://cd1fwimvplkgl" path="res://Mirror.tscn" id="16_udr8q"]
+[ext_resource type="PackedScene" uid="uid://ciu76gjltchq7" path="res://Patricia.tscn" id="17_mw0eb"]
+[ext_resource type="PackedScene" uid="uid://c683qceykov55" path="res://Itens/invulnerable.tscn" id="17_udr8q"]
+[ext_resource type="PackedScene" uid="uid://b4i584dk46f7w" path="res://Huguinho.tscn" id="18_gtvlv"]
+[ext_resource type="PackedScene" uid="uid://cngw0b08a76xu" path="res://item_spawner.tscn" id="19_uvku6"]
+[ext_resource type="PackedScene" uid="uid://cupbo0s5wtpur" path="res://Itens/yellow_diamond_G.tscn" id="20_5yvvo"]
+[ext_resource type="PackedScene" uid="uid://cnh4dsac87c5a" path="res://Itens/red_diamond_G.tscn" id="21_uvku6"]
+[ext_resource type="PackedScene" uid="uid://d3bwflp2ma6xu" path="res://Itens/yellow_diamond_P.tscn" id="23_bn6rm"]
+[ext_resource type="PackedScene" uid="uid://vyeb81uavor6" path="res://Itens/ice_cream.tscn" id="24_n1558"]
+[ext_resource type="PackedScene" uid="uid://dj0doqnic8div" path="res://Itens/life_duck.tscn" id="25_y5hv7"]
+[ext_resource type="PackedScene" uid="uid://10slnqn82k85" path="res://Itens/health_star.tscn" id="26_r1eh8"]
+[ext_resource type="PackedScene" uid="uid://dhxidj128h1r0" path="res://Coffin.tscn" id="27_piond"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_deayw"]
 resource_name = "Cenário_Interativo"
@@ -103,6 +114,66 @@ position = Vector2(114, 278)
 texture = ExtResource("7_fu7tr")
 region_enabled = true
 region_rect = Rect2(161, 4, 87, 39)
+
+[node name="Talk_Left" type="Sprite2D" parent="Camera2D/UI" unique_id=776982917]
+visible = false
+z_index = 11
+position = Vector2(-46, 278)
+texture = ExtResource("7_fu7tr")
+region_enabled = true
+region_rect = Rect2(8, 102, 71, 39)
+
+[node name="Label" type="Label" parent="Camera2D/UI/Talk_Left" unique_id=1826454261]
+offset_left = -28.000002
+offset_top = -16.0
+offset_right = 11.999998
+offset_bottom = 7.0
+scale = Vector2(1.4, 1.4)
+theme_override_font_sizes/font_size = 7
+text = "MESSAGE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Talk_Right" type="Sprite2D" parent="Camera2D/UI" unique_id=1295792654]
+visible = false
+z_index = 12
+position = Vector2(74, 278)
+texture = ExtResource("7_fu7tr")
+region_enabled = true
+region_rect = Rect2(81, 102, 167, 39)
+
+[node name="Label" type="Label" parent="Camera2D/UI/Talk_Right" unique_id=259188609]
+offset_left = -75.0
+offset_top = -12.0
+offset_right = -35.0
+offset_bottom = 11.0
+
+[node name="Pause_Left" type="Sprite2D" parent="Camera2D/UI" unique_id=1284352635]
+visible = false
+z_index = 11
+position = Vector2(-46, 278)
+texture = ExtResource("7_fu7tr")
+region_enabled = true
+region_rect = Rect2(8, 53, 63, 39)
+
+[node name="Label" type="Label" parent="Camera2D/UI/Pause_Left" unique_id=1531383481]
+offset_left = -30.000002
+offset_top = -14.0
+offset_right = 9.999998
+offset_bottom = 9.0
+scale = Vector2(1.52, 1.2)
+theme_override_font_sizes/font_size = 8
+text = "ITEM"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Pause_Right" type="Sprite2D" parent="Camera2D/UI" unique_id=2139882885]
+visible = false
+z_index = 12
+position = Vector2(74, 278)
+texture = ExtResource("7_fu7tr")
+region_enabled = true
+region_rect = Rect2(81, 102, 167, 39)
 
 [node name="$Stage" type="Label" parent="Camera2D/UI" unique_id=735883775]
 z_index = 13
@@ -519,6 +590,220 @@ ropeX = 384.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ropes/Corda6" unique_id=269217436]
 shape = SubResource("SegmentShape2D_pgjuh")
+
+[node name="NPC\'s" type="Node" parent="." unique_id=638987697]
+
+[node name="Patrícia" parent="NPC\'s" unique_id=265802063 instance=ExtResource("17_mw0eb")]
+position = Vector2(640, 278)
+
+[node name="Huguinho" parent="NPC\'s" unique_id=2086296186 instance=ExtResource("18_gtvlv")]
+position = Vector2(696, 53)
+
+[node name="ItensInWorld" type="Node" parent="." unique_id=109911603]
+
+[node name="Item Spawner" parent="ItensInWorld" unique_id=723129689 instance=ExtResource("19_uvku6")]
+position = Vector2(440, 265)
+item_to_spawn = ExtResource("20_5yvvo")
+
+[node name="Item Spawner2" parent="ItensInWorld" unique_id=1915513071 instance=ExtResource("19_uvku6")]
+position = Vector2(936, 265)
+item_to_spawn = ExtResource("20_5yvvo")
+
+[node name="Item Spawner3" parent="ItensInWorld" unique_id=581503873 instance=ExtResource("19_uvku6")]
+position = Vector2(968, 265)
+item_to_spawn = ExtResource("20_5yvvo")
+
+[node name="Item Spawner4" parent="ItensInWorld" unique_id=1965524702 instance=ExtResource("19_uvku6")]
+position = Vector2(1560, 216)
+item_to_spawn = ExtResource("20_5yvvo")
+
+[node name="Item Spawner5" parent="ItensInWorld" unique_id=1608314254 instance=ExtResource("19_uvku6")]
+position = Vector2(1144, -119)
+item_to_spawn = ExtResource("20_5yvvo")
+
+[node name="Item Spawner6" parent="ItensInWorld" unique_id=376309038 instance=ExtResource("19_uvku6")]
+position = Vector2(1288, -215)
+item_to_spawn = ExtResource("20_5yvvo")
+
+[node name="Item Spawner7" parent="ItensInWorld" unique_id=1033302832 instance=ExtResource("19_uvku6")]
+position = Vector2(456, -200)
+item_to_spawn = ExtResource("20_5yvvo")
+
+[node name="Item Spawner8" parent="ItensInWorld" unique_id=1247105143 instance=ExtResource("19_uvku6")]
+position = Vector2(312, -201)
+item_to_spawn = ExtResource("20_5yvvo")
+
+[node name="Item Spawner9" parent="ItensInWorld" unique_id=1003232083 instance=ExtResource("19_uvku6")]
+position = Vector2(1671, -423)
+item_to_spawn = ExtResource("20_5yvvo")
+
+[node name="Item Spawner10" parent="ItensInWorld" unique_id=1442681401 instance=ExtResource("19_uvku6")]
+position = Vector2(1880, -455)
+item_to_spawn = ExtResource("20_5yvvo")
+
+[node name="Item Spawner11" parent="ItensInWorld" unique_id=1994605075 instance=ExtResource("19_uvku6")]
+position = Vector2(1832, -439)
+item_to_spawn = ExtResource("20_5yvvo")
+
+[node name="Item Spawner12" parent="ItensInWorld" unique_id=63548011 instance=ExtResource("19_uvku6")]
+position = Vector2(1656, -344)
+item_to_spawn = ExtResource("20_5yvvo")
+
+[node name="Item Spawner13" parent="ItensInWorld" unique_id=2064061609 instance=ExtResource("19_uvku6")]
+position = Vector2(1672, -344)
+item_to_spawn = ExtResource("20_5yvvo")
+
+[node name="Item Spawner14" parent="ItensInWorld" unique_id=646054206 instance=ExtResource("19_uvku6")]
+position = Vector2(1656, 216)
+item_to_spawn = ExtResource("21_uvku6")
+
+[node name="Item Spawner15" parent="ItensInWorld" unique_id=303453385 instance=ExtResource("19_uvku6")]
+position = Vector2(1992, -183)
+item_to_spawn = ExtResource("21_uvku6")
+
+[node name="Item Spawner16" parent="ItensInWorld" unique_id=1242585066 instance=ExtResource("19_uvku6")]
+position = Vector2(552, 57)
+item_to_spawn = ExtResource("17_udr8q")
+
+[node name="Item Spawner17" parent="ItensInWorld" unique_id=1080463096 instance=ExtResource("19_uvku6")]
+position = Vector2(520, 329)
+item_to_spawn = ExtResource("23_bn6rm")
+
+[node name="Item Spawner18" parent="ItensInWorld" unique_id=529228225 instance=ExtResource("19_uvku6")]
+position = Vector2(696, 313)
+item_to_spawn = ExtResource("23_bn6rm")
+
+[node name="Item Spawner19" parent="ItensInWorld" unique_id=35231026 instance=ExtResource("19_uvku6")]
+position = Vector2(728, 345)
+item_to_spawn = ExtResource("23_bn6rm")
+
+[node name="Item Spawner20" parent="ItensInWorld" unique_id=1103661252 instance=ExtResource("19_uvku6")]
+position = Vector2(1752, 217)
+item_to_spawn = ExtResource("23_bn6rm")
+
+[node name="Item Spawner21" parent="ItensInWorld" unique_id=210311514 instance=ExtResource("19_uvku6")]
+position = Vector2(1864, 537)
+item_to_spawn = ExtResource("23_bn6rm")
+
+[node name="Item Spawner22" parent="ItensInWorld" unique_id=47939475 instance=ExtResource("19_uvku6")]
+position = Vector2(968, 121)
+item_to_spawn = ExtResource("23_bn6rm")
+
+[node name="Item Spawner23" parent="ItensInWorld" unique_id=1364603106 instance=ExtResource("19_uvku6")]
+position = Vector2(984, 121)
+item_to_spawn = ExtResource("23_bn6rm")
+
+[node name="Item Spawner24" parent="ItensInWorld" unique_id=1678144645 instance=ExtResource("19_uvku6")]
+position = Vector2(1992, -375)
+item_to_spawn = ExtResource("23_bn6rm")
+
+[node name="Item Spawner25" parent="ItensInWorld" unique_id=1876196512 instance=ExtResource("19_uvku6")]
+position = Vector2(1000, 265)
+item_to_spawn = ExtResource("24_n1558")
+
+[node name="Item Spawner26" parent="ItensInWorld" unique_id=1820785273 instance=ExtResource("19_uvku6")]
+position = Vector2(1928, -361)
+item_to_spawn = ExtResource("24_n1558")
+
+[node name="Item Spawner27" parent="ItensInWorld" unique_id=295922033 instance=ExtResource("19_uvku6")]
+position = Vector2(1832, -345)
+item_to_spawn = ExtResource("24_n1558")
+
+[node name="Item Spawner28" parent="ItensInWorld" unique_id=1738028262 instance=ExtResource("19_uvku6")]
+position = Vector2(1736, -360)
+item_to_spawn = ExtResource("24_n1558")
+
+[node name="ItensInChests" type="Node" parent="." unique_id=1952884907]
+
+[node name="Item Spawner" parent="ItensInChests" unique_id=1191239241 instance=ExtResource("19_uvku6")]
+position = Vector2(536, 281)
+item_to_spawn = ExtResource("17_udr8q")
+isChest = true
+
+[node name="Item Spawner2" parent="ItensInChests" unique_id=138234321 instance=ExtResource("19_uvku6")]
+position = Vector2(1672, 519)
+item_to_spawn = ExtResource("24_n1558")
+isChest = true
+
+[node name="Item Spawner3" parent="ItensInChests" unique_id=26332525 instance=ExtResource("19_uvku6")]
+position = Vector2(1160, 569)
+item_to_spawn = ExtResource("24_n1558")
+isChest = true
+
+[node name="Item Spawner4" parent="ItensInChests" unique_id=1939017004 instance=ExtResource("19_uvku6")]
+position = Vector2(1176, 569)
+item_to_spawn = ExtResource("24_n1558")
+isChest = true
+
+[node name="Item Spawner5" parent="ItensInChests" unique_id=867401129 instance=ExtResource("19_uvku6")]
+position = Vector2(1144, 617)
+item_to_spawn = ExtResource("20_5yvvo")
+isChest = true
+
+[node name="Item Spawner6" parent="ItensInChests" unique_id=152354421 instance=ExtResource("19_uvku6")]
+position = Vector2(1240, 553)
+item_to_spawn = ExtResource("20_5yvvo")
+isChest = true
+
+[node name="Item Spawner7" parent="ItensInChests" unique_id=304040262 instance=ExtResource("19_uvku6")]
+position = Vector2(1112, 553)
+item_to_spawn = ExtResource("21_uvku6")
+isChest = true
+
+[node name="Item Spawner8" parent="ItensInChests" unique_id=227862562 instance=ExtResource("19_uvku6")]
+position = Vector2(1208, 616)
+item_to_spawn = ExtResource("21_uvku6")
+isChest = true
+
+[node name="Item Spawner9" parent="ItensInChests" unique_id=1035418450 instance=ExtResource("19_uvku6")]
+position = Vector2(312, -120)
+item_to_spawn = ExtResource("21_uvku6")
+isChest = true
+
+[node name="Item Spawner10" parent="ItensInChests" unique_id=1203312195 instance=ExtResource("19_uvku6")]
+position = Vector2(456, -120)
+item_to_spawn = ExtResource("21_uvku6")
+isChest = true
+
+[node name="Item Spawner11" parent="ItensInChests" unique_id=360617929 instance=ExtResource("19_uvku6")]
+position = Vector2(648, -344)
+item_to_spawn = ExtResource("24_n1558")
+isChest = true
+
+[node name="Item Spawner12" parent="ItensInChests" unique_id=473672511 instance=ExtResource("19_uvku6")]
+position = Vector2(680, -344)
+item_to_spawn = ExtResource("21_uvku6")
+isChest = true
+
+[node name="Item Spawner13" parent="ItensInChests" unique_id=2053294809 instance=ExtResource("19_uvku6")]
+position = Vector2(984, -392)
+item_to_spawn = ExtResource("25_y5hv7")
+isChest = true
+
+[node name="Item Spawner14" parent="ItensInChests" unique_id=1586269706 instance=ExtResource("19_uvku6")]
+position = Vector2(1464, -215)
+item_to_spawn = ExtResource("25_y5hv7")
+isChest = true
+
+[node name="Item Spawner15" parent="ItensInChests" unique_id=2024167700 instance=ExtResource("19_uvku6")]
+position = Vector2(1911, 104)
+item_to_spawn = ExtResource("26_r1eh8")
+isChest = true
+
+[node name="Item Spawner16" parent="ItensInChests" unique_id=22476699 instance=ExtResource("19_uvku6")]
+position = Vector2(1096, 73)
+item_to_spawn = ExtResource("20_5yvvo")
+isChest = true
+
+[node name="Item Spawner17" parent="ItensInChests" unique_id=1845407820 instance=ExtResource("19_uvku6")]
+position = Vector2(1096, 57)
+item_to_spawn = ExtResource("20_5yvvo")
+isChest = true
+
+[node name="Coffin" parent="." unique_id=249903453 instance=ExtResource("27_piond")]
+position = Vector2(1840, 352)
+spawnItem = true
+item_to_spawn = ExtResource("24_n1558")
 
 [connection signal="body_entered" from="CameraColliders/FollowXCol" to="CameraColliders/FollowXCol" method="_on_body_entered"]
 [connection signal="body_entered" from="CameraColliders/UnfollowXCol" to="CameraColliders/UnfollowXCol" method="_on_body_entered"]

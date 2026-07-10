@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://ciu76gjltchq7"]
+
+[ext_resource type="Script" uid="uid://b82mceow7lul1" path="res://NPC.gd" id="1_y4lgk"]
+[ext_resource type="Texture2D" uid="uid://dir0grv2tvjhl" path="res://Assets/npcs.png" id="2_7u3np"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y8xgx"]
+size = Vector2(13, 21)
+
+[node name="Patrícia" type="Area2D" unique_id=265802063]
+script = ExtResource("1_y4lgk")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1082873539]
+z_index = 8
+texture = ExtResource("2_7u3np")
+region_enabled = true
+region_rect = Rect2(1, 0, 18, 24)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2045518162]
+position = Vector2(-1.5, -0.5)
+shape = SubResource("RectangleShape2D_y8xgx")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

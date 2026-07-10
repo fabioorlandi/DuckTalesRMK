@@ -1,32 +1,33 @@
 [gd_scene format=3 uid="uid://cngw0b08a76xu"]
 
-[ext_resource type="Script" uid="uid://dgh43qwn17bt3" path="res://item_spawner.gd" id="1_u5r62"]
+[ext_resource type="Script" uid="uid://dgh43qwn17bt3" path="res://Scripts/item_spawner.gd" id="1_u5r62"]
 [ext_resource type="Texture2D" uid="uid://chc6wwgjqdf7t" path="res://Assets/DuckTales_Itens.png" id="2_ardge"]
+[ext_resource type="Script" uid="uid://bdnpss2c3x1jq" path="res://Chest.gd" id="3_bcui5"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bcui5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ardge"]
 atlas = ExtResource("2_ardge")
 region = Rect2(96, 32, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7e5n6"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bcui5"]
 atlas = ExtResource("2_ardge")
 region = Rect2(112, 32, 16, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_u5r62"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_ardge"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": null
 }],
-"loop": 1,
+"loop": 0,
 "name": &"empty",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bcui5")
+"texture": SubResource("AtlasTexture_ardge")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7e5n6")
+"texture": SubResource("AtlasTexture_bcui5")
 }, {
 "duration": 1.0,
 "texture": null
@@ -37,15 +38,77 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y8xgx"]
+size = Vector2(16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7e5n6"]
+atlas = ExtResource("2_ardge")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hv0w"]
+atlas = ExtResource("2_ardge")
+region = Rect2(96, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kg3pf"]
+atlas = ExtResource("2_ardge")
+region = Rect2(112, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bcui5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7e5n6")
+}],
+"loop": 1,
+"name": &"closed",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": 0,
+"name": &"empty",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0hv0w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kg3pf")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": 0,
+"name": &"explode",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ardge"]
+size = Vector2(16, 16)
 
 [node name="Item Spawner" type="Area2D" unique_id=723129689]
 script = ExtResource("1_u5r62")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=250464864]
-sprite_frames = SubResource("SpriteFrames_u5r62")
-animation = &"empty"
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2063095069]
+sprite_frames = SubResource("SpriteFrames_ardge")
+animation = &"explode"
+frame = 2
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1417536309]
+scale = Vector2(0.75, 0.75)
 shape = SubResource("RectangleShape2D_y8xgx")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=540417021 groups=["Chest"]]
+script = ExtResource("3_bcui5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=1773927886]
+sprite_frames = SubResource("SpriteFrames_bcui5")
+animation = &"closed"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=2101210468]
+shape = SubResource("RectangleShape2D_ardge")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

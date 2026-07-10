@@ -31,11 +31,10 @@ var timeLeft: int = 500
 #Falta score central
 #Falta timer == 500
 
-func _ready():
-	add_to_group("ui")
+func _ready():	
+	loadFromGamePoints()
 	
-	ResetHealth()
-	ResetLifes()
+	add_to_group("ui")
 	
 	stagePointsLabel.text = str(score)
 	totalPointsLabel.text = str(totalScore)
@@ -70,6 +69,8 @@ func ResetScore() -> void:
 func AddToTotalScore() -> void:
 	totalScore += score
 	totalPointsLabel.text = str(totalScore)
+	
+	GamePoints.totalScore = totalScore
 
 func CauseDamage(damage: int) -> void:
 	var tempHealth = health - damage
@@ -158,3 +159,16 @@ func _on_timer_timeout():
 		timer.stop()
 		timerLabel.text = "0"
 		#GAMEOVER
+
+func loadFromGamePoints() -> void:
+	healthCap = GamePoints.healthCap
+	lifesCap = GamePoints.lifesCap
+	
+	totalScore = GamePoints.totalScore
+	lifes = GamePoints.lifes
+	
+	health = GamePoints.health #se mantem vida entre fases
+	
+	lifesLabel.text = "P. " + str(lifes)
+	HealthSpritesUpdate()
+	ResetScore()
