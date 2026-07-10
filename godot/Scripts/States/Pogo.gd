@@ -52,7 +52,7 @@ func physics_update(delta: float) -> void:
 					if collider_interative is PhysicsBody2D and collider_interative.has_signal("die_on_collision"):
 						collider_interative.emit_signal("die_on_collision")
 	
-					if collider_interative.is_in_group("Chest") and collider_interative.has_method("desactiveChest"):
+					if collider_interative.is_in_group("Chest") and collider_interative.has_method("desactiveChest") and collider_interative.canIPogoAndAttack:
 						collider_interative.desactiveChest()
 					
 				if can_pogo_bounce(collider_interative) or collider_floor:
