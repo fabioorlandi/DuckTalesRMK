@@ -719,9 +719,16 @@ item_to_spawn = ExtResource("24_n1558")
 position = Vector2(536, 281)
 item_to_spawn = ExtResource("17_udr8q")
 isChest = true
+canIPogoAndAttack = true
 
 [node name="Item Spawner2" parent="ItensInChests" unique_id=138234321 instance=ExtResource("19_uvku6")]
 position = Vector2(1672, 519)
+item_to_spawn = ExtResource("24_n1558")
+isChest = true
+canIPogoAndAttack = true
+
+[node name="Item Spawner18" parent="ItensInChests" unique_id=335274338 instance=ExtResource("19_uvku6")]
+position = Vector2(1760, 519)
 item_to_spawn = ExtResource("24_n1558")
 isChest = true
 
@@ -729,76 +736,91 @@ isChest = true
 position = Vector2(1160, 569)
 item_to_spawn = ExtResource("24_n1558")
 isChest = true
+canIPogoAndAttack = true
 
 [node name="Item Spawner4" parent="ItensInChests" unique_id=1939017004 instance=ExtResource("19_uvku6")]
 position = Vector2(1176, 569)
 item_to_spawn = ExtResource("24_n1558")
 isChest = true
+canIPogoAndAttack = true
 
 [node name="Item Spawner5" parent="ItensInChests" unique_id=867401129 instance=ExtResource("19_uvku6")]
 position = Vector2(1144, 617)
 item_to_spawn = ExtResource("20_5yvvo")
 isChest = true
+canIPogoAndAttack = true
 
 [node name="Item Spawner6" parent="ItensInChests" unique_id=152354421 instance=ExtResource("19_uvku6")]
 position = Vector2(1240, 553)
 item_to_spawn = ExtResource("20_5yvvo")
 isChest = true
+canIPogoAndAttack = true
 
 [node name="Item Spawner7" parent="ItensInChests" unique_id=304040262 instance=ExtResource("19_uvku6")]
 position = Vector2(1112, 553)
 item_to_spawn = ExtResource("21_uvku6")
 isChest = true
+canIPogoAndAttack = true
 
 [node name="Item Spawner8" parent="ItensInChests" unique_id=227862562 instance=ExtResource("19_uvku6")]
 position = Vector2(1208, 616)
 item_to_spawn = ExtResource("21_uvku6")
 isChest = true
+canIPogoAndAttack = true
 
 [node name="Item Spawner9" parent="ItensInChests" unique_id=1035418450 instance=ExtResource("19_uvku6")]
 position = Vector2(312, -120)
 item_to_spawn = ExtResource("21_uvku6")
 isChest = true
+canIPogoAndAttack = true
 
 [node name="Item Spawner10" parent="ItensInChests" unique_id=1203312195 instance=ExtResource("19_uvku6")]
 position = Vector2(456, -120)
 item_to_spawn = ExtResource("21_uvku6")
 isChest = true
+canIPogoAndAttack = true
 
 [node name="Item Spawner11" parent="ItensInChests" unique_id=360617929 instance=ExtResource("19_uvku6")]
 position = Vector2(648, -344)
 item_to_spawn = ExtResource("24_n1558")
 isChest = true
+canIPogoAndAttack = true
 
 [node name="Item Spawner12" parent="ItensInChests" unique_id=473672511 instance=ExtResource("19_uvku6")]
 position = Vector2(680, -344)
 item_to_spawn = ExtResource("21_uvku6")
 isChest = true
+canIPogoAndAttack = true
 
 [node name="Item Spawner13" parent="ItensInChests" unique_id=2053294809 instance=ExtResource("19_uvku6")]
 position = Vector2(984, -392)
 item_to_spawn = ExtResource("25_y5hv7")
 isChest = true
+canIPogoAndAttack = true
 
 [node name="Item Spawner14" parent="ItensInChests" unique_id=1586269706 instance=ExtResource("19_uvku6")]
 position = Vector2(1464, -215)
 item_to_spawn = ExtResource("25_y5hv7")
 isChest = true
+canIPogoAndAttack = true
 
 [node name="Item Spawner15" parent="ItensInChests" unique_id=2024167700 instance=ExtResource("19_uvku6")]
 position = Vector2(1911, 104)
 item_to_spawn = ExtResource("26_r1eh8")
 isChest = true
+canIPogoAndAttack = true
 
 [node name="Item Spawner16" parent="ItensInChests" unique_id=22476699 instance=ExtResource("19_uvku6")]
 position = Vector2(1096, 73)
 item_to_spawn = ExtResource("20_5yvvo")
 isChest = true
+canIPogoAndAttack = true
 
 [node name="Item Spawner17" parent="ItensInChests" unique_id=1845407820 instance=ExtResource("19_uvku6")]
 position = Vector2(1096, 57)
 item_to_spawn = ExtResource("20_5yvvo")
 isChest = true
+canIPogoAndAttack = true
 
 [node name="Coffin" parent="." unique_id=249903453 instance=ExtResource("27_piond")]
 position = Vector2(1840, 352)
