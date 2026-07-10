@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dr4b1dq8u1gqe"]
+
+[ext_resource type="Script" uid="uid://dbx3xw8fud4mm" path="res://spawn_bola_mumia.gd" id="1_5rxiy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nkdbr"]
+size = Vector2(24, 24)
+
+[node name="Spawn_Bola_Mumia" type="Area2D" unique_id=1704297689]
+script = ExtResource("1_5rxiy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1734115550]
+shape = SubResource("RectangleShape2D_nkdbr")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=2028219603]
+rect = Rect2(-13, -13, 26, 26)
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
