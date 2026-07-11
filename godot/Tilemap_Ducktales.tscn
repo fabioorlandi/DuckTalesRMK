@@ -29,7 +29,8 @@
 [ext_resource type="PackedScene" uid="uid://dj0doqnic8div" path="res://Itens/life_duck.tscn" id="25_y5hv7"]
 [ext_resource type="PackedScene" uid="uid://10slnqn82k85" path="res://Itens/health_star.tscn" id="26_r1eh8"]
 [ext_resource type="PackedScene" uid="uid://dhxidj128h1r0" path="res://Coffin.tscn" id="27_piond"]
-[ext_resource type="PackedScene" uid="uid://c8by4hv38u7kb" path="res://Inimigo_Fantasma.tscn" id="30_spb85"]
+[ext_resource type="PackedScene" uid="uid://c0no7wuq2en61" path="res://spawn_fantasma.tscn" id="30_spb85"]
+[ext_resource type="PackedScene" uid="uid://c8by4hv38u7kb" path="res://Inimigo_Fantasma.tscn" id="31_txsse"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_deayw"]
 resource_name = "Cenário_Interativo"
@@ -334,56 +335,68 @@ position = Vector2(976, -348)
 [node name="Spawn_Mumia" parent="Inimigos" unique_id=936495851 instance=ExtResource("6_up6mq")]
 position = Vector2(1036, 134)
 
+[node name="Spawn_Mumia2" parent="Inimigos" unique_id=583372320 instance=ExtResource("6_up6mq")]
+position = Vector2(1152, 86)
+
+[node name="Spawn_Mumia3" parent="Inimigos" unique_id=996323887 instance=ExtResource("6_up6mq")]
+position = Vector2(1303, 54)
+
+[node name="Spawn_Mumia4" parent="Inimigos" unique_id=243087015 instance=ExtResource("6_up6mq")]
+position = Vector2(1452, 102)
+
+[node name="Spawn_Mumia5" parent="Inimigos" unique_id=1750408784 instance=ExtResource("6_up6mq")]
+position = Vector2(1567, 134)
+
+[node name="Spawn_Mumia6" parent="Inimigos" unique_id=1807317800 instance=ExtResource("6_up6mq")]
+position = Vector2(1482, -106)
+
+[node name="Spawn_Mumia7" parent="Inimigos" unique_id=982192621 instance=ExtResource("6_up6mq")]
+position = Vector2(1300, -138)
+
+[node name="Spawn_Mumia8" parent="Inimigos" unique_id=1052410626 instance=ExtResource("6_up6mq")]
+position = Vector2(1195, -186)
+
+[node name="Spawn_Mumia9" parent="Inimigos" unique_id=533967187 instance=ExtResource("6_up6mq")]
+position = Vector2(1035, -154)
+
 [node name="Spawn_Bola_Mumia" parent="Inimigos" unique_id=799859136 instance=ExtResource("7_spb85")]
 position = Vector2(1036, 136)
 
 [node name="Spawn_Bola_Mumia2" parent="Inimigos" unique_id=1224824191 instance=ExtResource("7_spb85")]
 position = Vector2(1152, 88)
 
-[node name="Spawn_Mumia2" parent="Inimigos" unique_id=583372320 instance=ExtResource("6_up6mq")]
-position = Vector2(1152, 86)
-
 [node name="Spawn_Bola_Mumia3" parent="Inimigos" unique_id=518408897 instance=ExtResource("7_spb85")]
 position = Vector2(1303, 56)
-
-[node name="Spawn_Mumia3" parent="Inimigos" unique_id=996323887 instance=ExtResource("6_up6mq")]
-position = Vector2(1303, 54)
 
 [node name="Spawn_Bola_Mumia4" parent="Inimigos" unique_id=2113199230 instance=ExtResource("7_spb85")]
 position = Vector2(1452, 104)
 
-[node name="Spawn_Mumia4" parent="Inimigos" unique_id=243087015 instance=ExtResource("6_up6mq")]
-position = Vector2(1452, 102)
-
 [node name="Spawn_Bola_Mumia5" parent="Inimigos" unique_id=412964329 instance=ExtResource("7_spb85")]
 position = Vector2(1567, 136)
-
-[node name="Spawn_Mumia5" parent="Inimigos" unique_id=1750408784 instance=ExtResource("6_up6mq")]
-position = Vector2(1567, 134)
 
 [node name="Spawn_Bola_Mumia6" parent="Inimigos" unique_id=920311518 instance=ExtResource("7_spb85")]
 position = Vector2(1482, -104)
 
-[node name="Spawn_Mumia6" parent="Inimigos" unique_id=1807317800 instance=ExtResource("6_up6mq")]
-position = Vector2(1482, -106)
-
 [node name="Spawn_Bola_Mumia7" parent="Inimigos" unique_id=2062601288 instance=ExtResource("7_spb85")]
 position = Vector2(1300, -136)
-
-[node name="Spawn_Mumia7" parent="Inimigos" unique_id=982192621 instance=ExtResource("6_up6mq")]
-position = Vector2(1300, -138)
 
 [node name="Spawn_Bola_Mumia8" parent="Inimigos" unique_id=1806569684 instance=ExtResource("7_spb85")]
 position = Vector2(1195, -184)
 
-[node name="Spawn_Mumia8" parent="Inimigos" unique_id=1052410626 instance=ExtResource("6_up6mq")]
-position = Vector2(1195, -186)
-
 [node name="Spawn_Bola_Mumia9" parent="Inimigos" unique_id=1985960938 instance=ExtResource("7_spb85")]
 position = Vector2(1035, -152)
 
-[node name="Spawn_Mumia9" parent="Inimigos" unique_id=533967187 instance=ExtResource("6_up6mq")]
-position = Vector2(1035, -154)
+[node name="Spawn_Fantasma" parent="Inimigos" unique_id=1068482614 instance=ExtResource("30_spb85")]
+position = Vector2(1282, 245)
+
+[node name="Spawn_Fantasma2" parent="Inimigos" unique_id=1375088408 instance=ExtResource("30_spb85")]
+position = Vector2(1408, 245)
+
+[node name="Spawn_Fantasma3" parent="Inimigos" unique_id=1463173360 instance=ExtResource("30_spb85")]
+position = Vector2(1560, 215)
+
+[node name="Spawn_Fantasma4" parent="Inimigos" unique_id=1120060897 instance=ExtResource("30_spb85")]
+position = Vector2(1752, 215)
 
 [node name="Inimigo_Generico" parent="Inimigos" unique_id=403823545 instance=ExtResource("15_ke5s7")]
 position = Vector2(747, 64)
@@ -907,8 +920,10 @@ position = Vector2(1840, 352)
 spawnItem = true
 item_to_spawn = ExtResource("24_n1558")
 
-[node name="Fantasma" parent="." unique_id=184599053 instance=ExtResource("30_spb85")]
-position = Vector2(234, 336)
+[node name="Coffin2" parent="." unique_id=1071481417 instance=ExtResource("27_piond")]
+position = Vector2(1744, 352)
+spawnGhost = true
+ghost = ExtResource("31_txsse")
 
 [connection signal="body_entered" from="CameraColliders/FollowXCol" to="CameraColliders/FollowXCol" method="_on_body_entered"]
 [connection signal="body_entered" from="CameraColliders/UnfollowXCol" to="CameraColliders/UnfollowXCol" method="_on_body_entered"]

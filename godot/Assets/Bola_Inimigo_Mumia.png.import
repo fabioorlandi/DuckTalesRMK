@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dutcmj72bgan3"
-path="res://.godot/imported/Inimigo_Fantasma.png-7325a3450eb166cb4633def9bce8b8bd.ctex"
+uid="uid://gt1v2ybrwx6u"
+path="res://.godot/imported/Bola_Inimigo_Mumia.png-f9349fddd800a3731664767ba6b14297.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Inimigo_Fantasma.png"
-dest_files=["res://.godot/imported/Inimigo_Fantasma.png-7325a3450eb166cb4633def9bce8b8bd.ctex"]
+source_file="res://Assets/Bola_Inimigo_Mumia.png"
+dest_files=["res://.godot/imported/Bola_Inimigo_Mumia.png-f9349fddd800a3731664767ba6b14297.ctex"]
 
 [params]
 

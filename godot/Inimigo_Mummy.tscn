@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://dk8uxrf3ew60t"]
 
 [ext_resource type="Script" uid="uid://bwjyq5ou7c883" path="res://Mumia_Scripts/inimigo_mummy.gd" id="1_dx7rg"]
-[ext_resource type="Texture2D" uid="uid://eyckrs081bgs" path="res://Inimigo_Mumia.png" id="2_epufl"]
+[ext_resource type="Texture2D" uid="uid://eyckrs081bgs" path="res://Assets/Inimigo_Mumia.png" id="2_epufl"]
 [ext_resource type="Script" uid="uid://btx64rff6hb07" path="res://Mumia_Scripts/fsm_Inimigo_Mumia.gd" id="3_k4o33"]
-[ext_resource type="Texture2D" uid="uid://gt1v2ybrwx6u" path="res://Bola_Inimigo_Mumia.png" id="3_kvpv3"]
+[ext_resource type="Texture2D" uid="uid://gt1v2ybrwx6u" path="res://Assets/Bola_Inimigo_Mumia.png" id="3_kvpv3"]
 [ext_resource type="Script" uid="uid://cpqatuhian43e" path="res://Mumia_Scripts/Idle_Mumia.gd" id="4_tepjr"]
 [ext_resource type="Script" uid="uid://d3s84xdmpjy46" path="res://Mumia_Scripts/walk_mummy.gd" id="5_s43cp"]
 [ext_resource type="Script" uid="uid://1tgqheeuod50" path="res://Mumia_Scripts/return_from_right.gd" id="6_iui0h"]

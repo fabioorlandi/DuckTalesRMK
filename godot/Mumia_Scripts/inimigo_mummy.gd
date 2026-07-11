@@ -6,7 +6,7 @@ signal die_on_collision
 var collision_disabled := false
 var player_on_screen := false
 var is_dead: bool = false
-
+var can_hit_patinhas = true
 
 func _ready():
 	
