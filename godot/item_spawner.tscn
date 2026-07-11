@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dgh43qwn17bt3" path="res://Scripts/item_spawner.gd" id="1_u5r62"]
 [ext_resource type="Texture2D" uid="uid://chc6wwgjqdf7t" path="res://Assets/DuckTales_Itens.png" id="2_ardge"]
-[ext_resource type="Script" uid="uid://bdnpss2c3x1jq" path="res://Chest.gd" id="3_bcui5"]
+[ext_resource type="Script" uid="uid://bdnpss2c3x1jq" path="res://Scripts/Chest.gd" id="3_bcui5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ardge"]
 atlas = ExtResource("2_ardge")

@@ -55,6 +55,8 @@ freeze = true
 script = ExtResource("1_kxvc7")
 metadata/_edit_group_ = true
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1824182377]
+
 [node name="CollisionShapeArmadura" type="CollisionShape2D" parent="." unique_id=1247080618]
 position = Vector2(0, 18)
 shape = SubResource("RectangleShape2D_l102d")
@@ -84,5 +86,6 @@ shape = SubResource("RectangleShape2D_u8vg3")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBodyElmo/Area2D" unique_id=848189366]
 shape = SubResource("RectangleShape2D_f0asi")
 
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
 [connection signal="screen_exited" from="RigidBodyElmo/VisibleOnScreenNotifier2D" to="RigidBodyElmo" method="_on_visible_on_screen_notifier_2d_screen_exited"]
 [connection signal="body_entered" from="RigidBodyElmo/Area2D" to="." method="_on_area_2d_body_entered"]

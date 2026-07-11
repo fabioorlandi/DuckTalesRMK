@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://cklkcqugwuar7" path="res://Scripts/UIController.gd" id="7_lek72"]
 [ext_resource type="FontFile" uid="uid://dtdqm04fcn0od" path="res://Pixelon.ttf" id="8_rf2pp"]
 [ext_resource type="Texture2D" uid="uid://byx22j1o1twia" path="res://Assets/hpImages.png" id="9_t4tih"]
+[ext_resource type="PackedScene" uid="uid://3l1di1euah7" path="res://Itens/cake.tscn" id="9_xc2wj"]
 [ext_resource type="FontFile" uid="uid://bmvryxwvhho2k" path="res://Ducktales_Font2.ttf" id="13_55obg"]
 [ext_resource type="Script" uid="uid://duegq8tgxl7vr" path="res://Scripts/CameraCollider.gd" id="13_voubw"]
 [ext_resource type="PackedScene" uid="uid://whihmuos5mw" path="res://inimigo_generico.tscn" id="15_ke5s7"]
@@ -80,6 +81,56 @@ position = Vector2(874, 371)
 
 [node name="Armadura01" parent="Interacao_Cenario" unique_id=635808693 instance=ExtResource("4_fu7tr")]
 position = Vector2(496, 350)
+
+[node name="Armadura02" parent="Interacao_Cenario" unique_id=1334151859 instance=ExtResource("4_fu7tr")]
+position = Vector2(2000, 558)
+dropHelmet = false
+spawnChest = true
+chest = ExtResource("19_uvku6")
+item = ExtResource("9_xc2wj")
+
+[node name="Armadura03" parent="Interacao_Cenario" unique_id=981039600 instance=ExtResource("4_fu7tr")]
+position = Vector2(816, -370)
+
+[node name="Armadura04" parent="Interacao_Cenario" unique_id=755991594 instance=ExtResource("4_fu7tr")]
+position = Vector2(624, -130)
+dropHelmet = false
+spawnChest = true
+chest = ExtResource("19_uvku6")
+item = ExtResource("9_xc2wj")
+
+[node name="Armadura05" parent="Interacao_Cenario" unique_id=1740919923 instance=ExtResource("4_fu7tr")]
+position = Vector2(624, -194)
+
+[node name="Armadura06" parent="Interacao_Cenario" unique_id=1872941566 instance=ExtResource("4_fu7tr")]
+position = Vector2(720, -130)
+
+[node name="Armadura07" parent="Interacao_Cenario" unique_id=1154696029 instance=ExtResource("4_fu7tr")]
+position = Vector2(720, -226)
+dropHelmet = false
+spawnChest = true
+chest = ExtResource("19_uvku6")
+item = ExtResource("9_xc2wj")
+
+[node name="Armadura08" parent="Interacao_Cenario" unique_id=1385120640 instance=ExtResource("4_fu7tr")]
+position = Vector2(752, -226)
+
+[node name="Armadura09" parent="Interacao_Cenario" unique_id=1806515092 instance=ExtResource("4_fu7tr")]
+position = Vector2(880, -130)
+
+[node name="Armadura10" parent="Interacao_Cenario" unique_id=376139604 instance=ExtResource("4_fu7tr")]
+position = Vector2(944, -210)
+dropHelmet = false
+spawnChest = true
+chest = ExtResource("19_uvku6")
+item = ExtResource("9_xc2wj")
+
+[node name="Armadura11" parent="Interacao_Cenario" unique_id=766916825 instance=ExtResource("4_fu7tr")]
+position = Vector2(944, -130)
+dropHelmet = false
+spawnChest = true
+chest = ExtResource("19_uvku6")
+item = ExtResource("9_xc2wj")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=356561041 node_paths=PackedStringArray("player")]
 position = Vector2(128, 312)
@@ -824,7 +875,6 @@ canIPogoAndAttack = true
 
 [node name="Coffin" parent="." unique_id=249903453 instance=ExtResource("27_piond")]
 position = Vector2(1840, 352)
-spawnItem = true
 item_to_spawn = ExtResource("24_n1558")
 
 [connection signal="body_entered" from="CameraColliders/FollowXCol" to="CameraColliders/FollowXCol" method="_on_body_entered"]
