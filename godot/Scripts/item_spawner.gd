@@ -7,6 +7,11 @@ var already_obtained: bool = false
 
 @export var canIPogoAndAttack: bool
 
+func SetChest() -> void:
+	isChest = true
+	$CharacterBody2D.visible = true
+	$CharacterBody2D/CollisionShape2D.disabled = false
+
 func _ready() -> void:
 	if isChest:
 		$CharacterBody2D.visible = true

@@ -3,7 +3,7 @@ extends CharacterBody2D
 var alreadyActive: bool = false
 
 @export var spawnGhost: bool
-@export var spawnItem: bool
+@export var spawnChest: bool
 
 @export var ghost: PackedScene
 @export var item_to_spawn: PackedScene
@@ -11,7 +11,7 @@ var alreadyActive: bool = false
 func Active() -> void:
 	if spawnGhost:
 		alreadyActive = true
-	if spawnItem:
+	if spawnChest:
 		alreadyActive = true
 		var obj = item_to_spawn.instantiate()
 		var pos = Vector2(global_position.x, global_position.y - 20)

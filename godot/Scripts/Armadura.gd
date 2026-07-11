@@ -1,11 +1,19 @@
 extends RigidBody2D
 signal fall_on_collision
+signal free_helmet_chest
 
 var can_fall = true
 var fallen = false
 var is_falling = false
 var distance_ticks = 80;
 var fall_direction = Vector2.ZERO
+
+@export var dropHelmet: bool = true
+@export var spawnChest: bool
+@export var chest: PackedScene
+@export var item: PackedScene
+
+var chestObj
 
 func _ready() -> void:
 	$RigidBodyElmo/CollisionShapeElmoCaido.disabled = true
@@ -17,26 +25,44 @@ func _physics_process(delta: float) -> void:
 		
 	if not is_falling:
 		is_falling = true
-		$RigidBodyElmo/CollisionShapeElmoEstatico.disabled = true
-		$RigidBodyElmo/CollisionShapeElmoCaido.disabled = false
-	
-		$RigidBodyElmo/AnimatedSprite2D.global_rotation_degrees = -90
-		$RigidBodyElmo/CollisionShapeElmoCaido.global_rotation_degrees = -90
 		
-		var tween_shake = create_tween()
-		var start_x = $RigidBodyElmo.position.x
-	
-		var shake_intensity = 2
-		for i in range(16):
-			var offset_x = randf_range(-shake_intensity, shake_intensity)
-			tween_shake.tween_property($RigidBodyElmo, "position:x", start_x + offset_x, 0.05)
-	
-		tween_shake.tween_property($RigidBodyElmo, "position:x", start_x, 0.05)
-	
-		await tween_shake.finished
-	
-		$RigidBodyElmo.add_collision_exception_with(get_parent().get_parent().get_node("Patinhas"))
-		$RigidBodyElmo.apply_impulse(Vector2(-100, -200) * fall_direction)
+		if dropHelmet:
+			$RigidBodyElmo/CollisionShapeElmoEstatico.disabled = true
+			$RigidBodyElmo/CollisionShapeElmoCaido.disabled = false
+		
+			$RigidBodyElmo/AnimatedSprite2D.global_rotation_degrees = -90
+			$RigidBodyElmo/CollisionShapeElmoCaido.global_rotation_degrees = -90
+			
+			var tween_shake = create_tween()
+			var start_x = $RigidBodyElmo.position.x
+		
+			var shake_intensity = 2
+			for i in range(16):
+				var offset_x = randf_range(-shake_intensity, shake_intensity)
+				tween_shake.tween_property($RigidBodyElmo, "position:x", start_x + offset_x, 0.05)
+		
+			tween_shake.tween_property($RigidBodyElmo, "position:x", start_x, 0.05)
+		
+			await tween_shake.finished
+		
+			$RigidBodyElmo.add_collision_exception_with(get_parent().get_parent().get_node("Patinhas"))
+			$RigidBodyElmo.apply_impulse(Vector2(-100, -200) * fall_direction)
+		elif spawnChest:
+			$RigidBodyElmo/AnimatedSprite2D.play("destroy_helmet")
+			await $RigidBodyElmo/AnimatedSprite2D.animation_finished
+		
+			chestObj = chest.instantiate()
+			chestObj.SetChest()
+			chestObj.item_to_spawn = item
+			chestObj.global_position = $RigidBodyElmo.global_position
+			chestObj.connect("free_helmet_chest", _on_visible_on_screen_notifier_2d_screen_exited)
+			get_tree().current_scene.add_child(chestObj)
+		
+			$RigidBodyElmo/CollisionShapeElmoEstatico.disabled = true
+			$RigidBodyElmo/CollisionShapeElmoCaido.disabled = true
+			$RigidBodyElmo/CollisionShapeElmoEstatico.visible = false
+			$RigidBodyElmo/CollisionShapeElmoEstatico.visible = false
+			$RigidBodyElmo/AnimatedSprite2D.visible = false
 
 	if is_falling:
 		distance_ticks -= 1
@@ -50,6 +76,9 @@ func fall_body(direction: Vector2):
 	fall_direction = direction
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
+	if not dropHelmet:
+		return
+	
 	if is_falling and body.name == "Patinhas" and body.invulnerability_ticks == 0:
 		var currentState = body.get_node("FSM").current_state
 		currentState.transitioned.emit(currentState, "damage")
@@ -70,3 +99,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		$RigidBodyElmo/CollisionShapeElmoEstatico.visible = false
 		$RigidBodyElmo/CollisionShapeElmoEstatico.visible = false
 		$RigidBodyElmo/AnimatedSprite2D.visible = false
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	if chestObj:
+		chestObj.queue_free()
