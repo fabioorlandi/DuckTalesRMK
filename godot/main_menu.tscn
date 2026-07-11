@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b7tdbhtqt5du8"]
 
 [ext_resource type="Texture2D" uid="uid://dwq4fjmhy2ktq" path="res://Assets/NES - DuckTales - Miscellaneous - Title & Level Select.png" id="1_06t4h"]
-[ext_resource type="Script" uid="uid://dh8sbh22v3uwr" path="res://Main_menu.gd" id="1_7vrkn"]
+[ext_resource type="Script" uid="uid://dh8sbh22v3uwr" path="res://Scripts/Main_menu.gd" id="1_7vrkn"]
 [ext_resource type="Texture2D" uid="uid://q031a1djguse" path="res://Assets/scroogeHead.png" id="3_fu7sn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jix8l"]
