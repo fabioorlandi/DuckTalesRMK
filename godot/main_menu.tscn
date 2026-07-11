@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://b7tdbhtqt5du8"]
+
+[ext_resource type="Texture2D" uid="uid://dwq4fjmhy2ktq" path="res://Assets/NES - DuckTales - Miscellaneous - Title & Level Select.png" id="1_06t4h"]
+[ext_resource type="Script" uid="uid://dh8sbh22v3uwr" path="res://Main_menu.gd" id="1_7vrkn"]
+[ext_resource type="Texture2D" uid="uid://q031a1djguse" path="res://Assets/scroogeHead.png" id="3_fu7sn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jix8l"]
+atlas = ExtResource("3_fu7sn")
+region = Rect2(0, 50, 37, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_glbon"]
+atlas = ExtResource("3_fu7sn")
+region = Rect2(0, 0, 37, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y8xgx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jix8l")
+}],
+"loop": 0,
+"name": &"blink",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_glbon")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="MainMenu" type="Node2D" unique_id=1252900650]
+script = ExtResource("1_7vrkn")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1959772927]
+position = Vector2(128, 112)
+texture = ExtResource("1_06t4h")
+region_enabled = true
+region_rect = Rect2(1, 1, 256, 224)
+
+[node name="Arrow" type="Sprite2D" parent="." unique_id=181756338]
+position = Vector2(82, 133)
+texture = ExtResource("1_06t4h")
+region_enabled = true
+region_rect = Rect2(257, 110, 7, 10)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=762894427]
+position = Vector2(86, 43)
+sprite_frames = SubResource("SpriteFrames_y8xgx")
+
+[node name="Timer" type="Timer" parent="." unique_id=2028746452]
+wait_time = 7.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
