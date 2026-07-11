@@ -3,6 +3,7 @@ extends CharacterBody2D
 signal invulnerability_ticks_finished
 signal invulnerability_ticks_started
 signal take_damage
+signal patinhas_death
 
 @export var canClimb: bool
 @export var lastDir = "right"
@@ -18,6 +19,8 @@ signal take_damage
 @export var POGO_FORCE  := -280.0
 @export var POGO_GRAVITY  := 600.0
 
+var health = 3
+
 var invulnerability_ticks = 0
 var kill_enemies_during_invulnerability = false
 var attacking: bool = false
@@ -31,6 +34,7 @@ func _ready() -> void:
 	invulnerability_ticks_started.connect(start_invulnerability)
 	invulnerability_ticks_finished.connect(end_invulnerability)
 	take_damage.connect(compute_hit)
+	patinhas_death.connect(on_die)
 
 func _process(delta: float) -> void:
 	if lastDir == "left":
@@ -81,6 +85,13 @@ func Teleport(pos : Vector2, floor: float) -> void:
 	$"../Camera2D".global_position = temp
 	$"../Camera2D".follow_x = true
 
+func on_die():
+	self.emit_signal("invulnerability_ticks_started", 9999)
+	$CollisionShape2D.disabled = true
+
+	self.animate(&"Morte")
+	await $AnimatedSprite2D.animation_finished
+
 func start_invulnerability(ticks: int, allow_kill_enemies: bool = false):
 	invulnerability_ticks = ticks
 	
@@ -98,6 +109,8 @@ func end_invulnerability():
 		self.remove_collision_exception_with(enemy)
 		
 func compute_hit():
+	health = health - 1
+
 	self.emit_signal("invulnerability_ticks_started", 80)
 
 	var tween = create_tween()

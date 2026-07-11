@@ -24,6 +24,9 @@ func physics_update(delta: float) -> void:
 	if takingDamage:
 		return
 
+	if player.health <= 0:
+		transitioned.emit(self, "death")
+
 	if not player.is_on_floor():
 		transitioned.emit(self, "fall")
 	else:

@@ -72,11 +72,12 @@ func AddToTotalScore() -> void:
 	
 	GamePoints.totalScore = totalScore
 
-func CauseDamage(damage: int) -> void:
-	var tempHealth = health - damage
+func CauseDamage() -> void:
+	var tempHealth = health - 1
 	if health <= 0:
-		#CALL DEATH
 		pass
+		#get_tree().get_nodes_in_group("Patinhas")[0].emit_signal("patinhas_death")
+		#Input.action_press("m")
 	else:
 		health = tempHealth
 	
