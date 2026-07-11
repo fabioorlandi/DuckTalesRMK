@@ -3,6 +3,7 @@ extends CharacterBody2D
 signal invulnerability_ticks_finished
 signal invulnerability_ticks_started
 signal take_damage
+signal patinhas_death
 
 @export var canClimb: bool
 @export var lastDir = "right"
@@ -18,6 +19,8 @@ signal take_damage
 @export var POGO_FORCE  := -280.0
 @export var POGO_GRAVITY  := 600.0
 
+@onready var health = $"../Camera2D/UI".health
+
 var invulnerability_ticks = 0
 var kill_enemies_during_invulnerability = false
 var attacking: bool = false
@@ -31,6 +34,7 @@ func _ready() -> void:
 	invulnerability_ticks_started.connect(start_invulnerability)
 	invulnerability_ticks_finished.connect(end_invulnerability)
 	take_damage.connect(compute_hit)
+	patinhas_death.connect(on_die)
 
 func _process(delta: float) -> void:
 	if lastDir == "left":
@@ -81,6 +85,35 @@ func Teleport(pos : Vector2, floor: float) -> void:
 	$"../Camera2D".global_position = temp
 	$"../Camera2D".follow_x = true
 
+func on_die():
+	$"../Camera2D".follow_x = false
+	$"../Camera2D".follow_y = false
+	
+	self.emit_signal("invulnerability_ticks_started", 9999)
+	$CollisionShape2D.disabled = true
+
+	var tween = create_tween()
+	var death_recoil = self.position + Vector2(50, 150)\
+		if self.lastDir == "left"\
+		else self.position + Vector2(-50, 150)
+	
+	var start_pos = self.position
+	var end_pos = death_recoil
+	var height = 60
+	
+	tween.tween_method(
+		func(progress):
+			var x = lerp(start_pos.x, end_pos.x, progress)
+			var y = lerp(start_pos.y, end_pos.y, progress) - height * sin(progress * PI)
+			self.position = Vector2(x, y),
+		0.0, 1.0, 0.75
+	)
+
+	self.animate(&"Morte")
+	await $AnimatedSprite2D.animation_finished
+
+	Input.action_press("m")
+
 func start_invulnerability(ticks: int, allow_kill_enemies: bool = false):
 	invulnerability_ticks = ticks
 	
@@ -98,6 +131,9 @@ func end_invulnerability():
 		self.remove_collision_exception_with(enemy)
 		
 func compute_hit():
+	$"../Camera2D/UI".CauseDamage()
+	health = $"../Camera2D/UI".health
+
 	self.emit_signal("invulnerability_ticks_started", 80)
 
 	var tween = create_tween()

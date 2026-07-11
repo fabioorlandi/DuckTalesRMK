@@ -141,7 +141,7 @@ speed = 250.0
 [node name="UI" type="Node2D" parent="Camera2D" unique_id=1631643127]
 position = Vector2(-38, -362)
 script = ExtResource("7_lek72")
-health = 3
+health = 2
 healthCap = 3
 lifesCap = 3
 

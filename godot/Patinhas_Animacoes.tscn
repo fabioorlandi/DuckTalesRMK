@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://g4ew8y8kl3ch" path="res://Scripts/States/Pogo.gd" id="6_cccv5"]
 [ext_resource type="Script" uid="uid://by2ko6m230ksk" path="res://Scripts/States/Damage.gd" id="8_5i68f"]
 [ext_resource type="Script" uid="uid://bmxi842rayekn" path="res://Scripts/States/Idle.gd" id="9_cccv5"]
+[ext_resource type="Script" uid="uid://se8ljbkifo2r" path="res://Scripts/States/Death.gd" id="9_j00mn"]
 [ext_resource type="Script" uid="uid://cjboqhctab4pw" path="res://Scripts/States/Crouch.gd" id="9_t4a7s"]
 [ext_resource type="Script" uid="uid://bd4f5mer07g23" path="res://Scripts/States/Climb.gd" id="10_rdkiu"]
 [ext_resource type="Script" uid="uid://ct4tsbh2r3aw1" path="res://Scripts/States/Attack.gd" id="12_o5uhb"]
@@ -164,6 +165,29 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_cccv5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cccv5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cccv5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cccv5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cccv5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cccv5")
+}],
+"loop": 0,
+"name": &"Morte",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_fhwcv")
 }],
 "loop": 1,
@@ -280,7 +304,7 @@ target_position = Vector2(0, 16)
 z_index = 30
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_fhwcv")
-animation = &"Pular"
+animation = &"Morte"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2049646420]
 position = Vector2(0, 3.5)
@@ -310,6 +334,10 @@ player = NodePath("../..")
 
 [node name="DAMAGE" type="Node" parent="FSM" unique_id=1938637525 node_paths=PackedStringArray("player")]
 script = ExtResource("8_5i68f")
+player = NodePath("../..")
+
+[node name="DEATH" type="Node" parent="FSM" unique_id=1632427559 node_paths=PackedStringArray("player")]
+script = ExtResource("9_j00mn")
 player = NodePath("../..")
 
 [node name="FALL" type="Node" parent="FSM" unique_id=1771207371 node_paths=PackedStringArray("player")]

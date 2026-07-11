@@ -72,14 +72,9 @@ func AddToTotalScore() -> void:
 	
 	GamePoints.totalScore = totalScore
 
-func CauseDamage(damage: int) -> void:
-	var tempHealth = health - damage
-	if health <= 0:
-		#CALL DEATH
-		pass
-	else:
-		health = tempHealth
-	
+func CauseDamage() -> void:
+	health = health - 1
+
 	HealthSpritesUpdate()
 	
 func ReceiveCure(cure: int) -> void:
