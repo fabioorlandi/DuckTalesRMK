@@ -166,6 +166,21 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cccv5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cccv5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cccv5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cccv5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cccv5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cccv5")
 }],
 "loop": 0,
 "name": &"Morte",

@@ -73,14 +73,8 @@ func AddToTotalScore() -> void:
 	GamePoints.totalScore = totalScore
 
 func CauseDamage() -> void:
-	var tempHealth = health - 1
-	if health <= 0:
-		pass
-		#get_tree().get_nodes_in_group("Patinhas")[0].emit_signal("patinhas_death")
-		#Input.action_press("m")
-	else:
-		health = tempHealth
-	
+	health = health - 1
+
 	HealthSpritesUpdate()
 	
 func ReceiveCure(cure: int) -> void:

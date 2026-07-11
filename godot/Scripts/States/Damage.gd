@@ -37,5 +37,5 @@ func physics_update(delta: float) -> void:
 		player.lastDir = "left"
 	elif Input.is_action_pressed("right"):
 		player.lastDir = "right"
- 
+
 	player.move_and_slide()
