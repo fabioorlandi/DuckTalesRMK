@@ -52,7 +52,7 @@ func _on_detect_sorrounding_objects_body_entered(body: Node2D) -> void:
 	freeze = true
 	projectile = false
 
-	$AnimatedSprite2D.play("destroy_block")
+	$AnimatedSprite2D.play("destroy_block_projectile_explosion")
 	await $AnimatedSprite2D.animation_finished
 
 	$DetectSorroundingObjects/CollisionShape2D.disabled = true
