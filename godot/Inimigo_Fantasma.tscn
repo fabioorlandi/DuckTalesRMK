@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://c8by4hv38u7kb"]
 
-[ext_resource type="Script" uid="uid://c8nw8r6jueoyf" path="res://inimigo_fantasma.gd" id="1_4kdwh"]
-[ext_resource type="Texture2D" uid="uid://dutcmj72bgan3" path="res://Assets/Inimigo_Fantasma.png" id="1_l7ebl"]
-[ext_resource type="Script" uid="uid://cpkay3c01tmlb" path="res://fsm_fantasma.gd" id="3_guvq8"]
-[ext_resource type="Script" uid="uid://jk20n0q3oj2s" path="res://fantasma_ativado.gd" id="4_uymrm"]
-[ext_resource type="Script" uid="uid://npuibjgrq0pb" path="res://fantasma_movendo.gd" id="5_8trad"]
+[ext_resource type="Script" uid="uid://c8nw8r6jueoyf" path="res://Scripts_Fantasma/inimigo_fantasma.gd" id="1_4kdwh"]
+[ext_resource type="Texture2D" uid="uid://dutcmj72bgan3" path="res://Inimigo_Fantasma.png" id="1_l7ebl"]
+[ext_resource type="Script" uid="uid://cpkay3c01tmlb" path="res://Scripts_Fantasma/fsm_fantasma.gd" id="3_guvq8"]
+[ext_resource type="Script" uid="uid://jk20n0q3oj2s" path="res://Scripts_Fantasma/fantasma_ativado.gd" id="4_uymrm"]
+[ext_resource type="Script" uid="uid://npuibjgrq0pb" path="res://Scripts_Fantasma/fantasma_movendo.gd" id="5_8trad"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hdvu2"]
 size = Vector2(24, 24)

@@ -33,6 +33,7 @@ Inimigos="Grupo com inimigos"
 Patinhas="Grupo para achar o Patinhas"
 Chest=""
 Coffin=""
+Bola=""
 
 [input]
 

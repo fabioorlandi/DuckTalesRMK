@@ -29,6 +29,8 @@ func update(delta):
 		return
 
 	timer = 0.0
-
-	var next_state = ["walk_mummy_left", "walk_mummy_right"].pick_random()
-	transitioned.emit(self, next_state)
+	
+	
+	if actor.player_on_screen:
+		var next_state = ["walk_mummy_left", "walk_mummy_right"].pick_random()
+		transitioned.emit(self, next_state)

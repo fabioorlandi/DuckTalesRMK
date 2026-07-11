@@ -27,7 +27,7 @@ func enter() -> void:
 	
 	var area = actor.get_node("MonitorarBola")
 	for b in area.get_overlapping_bodies():
-		if b.is_in_group("bola"):
+		if b.is_in_group("Bola"):
 			actor.get_node("Chain_Right").visible = true
 
 	

@@ -9,14 +9,21 @@ var is_dead: bool = false
 
 
 func _ready():
+	
+			
+			
 	connect("die_on_collision", _on_die)
 	var inimigos = get_tree().get_nodes_in_group("Inimigos")
 	for inimigo in inimigos:
 		self.add_collision_exception_with(inimigo)
+	
+	var bolas = get_tree().get_nodes_in_group("Bola")
+	for bola in bolas:
+		self.add_collision_exception_with(bola)
 		
-	#var patinhas = get_tree().get_nodes_in_group("Patinhas")[0]
-	#self.add_collision_exception_with(patinhas)
-
+	var patinhas = get_tree().get_nodes_in_group("Patinhas")[0]
+	self.add_collision_exception_with(patinhas)
+	
 
 
 
@@ -53,7 +60,12 @@ func _physics_process(delta):
 	
 	
 	move_and_slide()
-
+	
+	
+	var area = self.get_node("ColisãoBola")
+	for b in area.get_overlapping_bodies():
+		if b.is_in_group("Bola") and b.projectile == true:
+			emit_signal("die_on_collision")
 
 
 func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
