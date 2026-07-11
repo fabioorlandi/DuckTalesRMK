@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://diouwj08sugn7"]
+
+[ext_resource type="Script" uid="uid://d0tqfmofvvjm6" path="res://Scripts/espinhos.gd" id="1_qfjho"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f0asi"]
+
+[node name="Espinhos" type="Area2D" unique_id=36259678]
+script = ExtResource("1_qfjho")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1451642683]
+shape = SubResource("RectangleShape2D_f0asi")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

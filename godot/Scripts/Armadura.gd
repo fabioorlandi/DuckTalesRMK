@@ -1,6 +1,5 @@
 extends RigidBody2D
 signal fall_on_collision
-signal free_helmet_chest
 
 var can_fall = true
 var fallen = false
@@ -55,7 +54,6 @@ func _physics_process(delta: float) -> void:
 			chestObj.SetChest()
 			chestObj.item_to_spawn = item
 			chestObj.global_position = $RigidBodyElmo.global_position
-			chestObj.connect("free_helmet_chest", _on_visible_on_screen_notifier_2d_screen_exited)
 			get_tree().current_scene.add_child(chestObj)
 		
 			$RigidBodyElmo/CollisionShapeElmoEstatico.disabled = true
