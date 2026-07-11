@@ -4,7 +4,7 @@
 
 [node name="GamePoints" type="Node" unique_id=1110629967]
 script = ExtResource("1_oo6y4")
-health = 2
-healthCap = 3
-lifes = 5
-lifesCap = 3
+health = 6
+healthCap = 6
+lifes = 2
+lifesCap = 2
