@@ -75,7 +75,7 @@ func AddToTotalScore() -> void:
 	GamePoints.totalScore = totalScore
 
 func CauseDamage() -> void:
-	var healthDamage
+	var healthDamage = 0
 	if GamePoints.actualDifficulty == "easy":
 		healthDamage = 1;
 	elif GamePoints.actualDifficulty == "normal":

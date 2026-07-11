@@ -369,7 +369,7 @@ collision_mask = 16
 position = Vector2(0, 6.5)
 shape = SubResource("RectangleShape2D_nkdbr")
 
-[node name="Espinhos" parent="LevelInteraction" unique_id=36259678 instance=ExtResource("16_up6mq")]
+[node name="Espinhos" parent="LevelInteraction" unique_id=1361436132 instance=ExtResource("16_up6mq")]
 position = Vector2(1520, 636)
 scale = Vector2(24, 2)
 
