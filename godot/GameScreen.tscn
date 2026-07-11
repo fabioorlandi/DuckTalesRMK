@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://de3c60tnlc561"]
 
+[ext_resource type="Script" uid="uid://vk3qku28mk4v" path="res://Scripts/game_screen.gd" id="1_620js"]
 [ext_resource type="PackedScene" uid="uid://bxkdtofu5c6li" path="res://tile_map_layer_background.tscn" id="2_55obg"]
 [ext_resource type="PackedScene" uid="uid://cogx0t83rjkoh" path="res://Patinhas.tscn" id="3_deayw"]
 [ext_resource type="PackedScene" uid="uid://u1rejandld05" path="res://Bloco_Destruivel.tscn" id="4_63sgq"]
@@ -47,6 +48,7 @@ size = Vector2(5.6447678, 49.09293)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_pgjuh"]
 
 [node name="MainNode" type="Node2D" unique_id=1058646140]
+script = ExtResource("1_620js")
 
 [node name="TileMapLayerBackground" parent="." unique_id=1744038407 instance=ExtResource("2_55obg")]
 
@@ -55,7 +57,7 @@ tile_map_data = PackedByteArray("AAAIABcAAAAAAAAAAQAJABcAAAAAAAAAAQAKABcAAAAAAAA
 tile_set = SubResource("TileSet_63sgq")
 
 [node name="Patinhas" parent="." unique_id=917563206 instance=ExtResource("3_deayw")]
-position = Vector2(47, 370)
+position = Vector2(62, 340)
 
 [node name="Inimigo_Generico" parent="." unique_id=403823545 instance=ExtResource("15_ke5s7")]
 position = Vector2(747, 64)
@@ -68,6 +70,10 @@ position = Vector2(819, 291)
 
 [node name="Spawn3" parent="." unique_id=447239704 instance=ExtResource("16_55obg")]
 position = Vector2(874, 371)
+
+[node name="Coffin" parent="." unique_id=249903453 instance=ExtResource("27_piond")]
+position = Vector2(1840, 352)
+item_to_spawn = ExtResource("24_n1558")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=356561041 node_paths=PackedStringArray("player")]
 position = Vector2(128, 312)
@@ -877,10 +883,6 @@ position = Vector2(1096, 57)
 item_to_spawn = ExtResource("20_5yvvo")
 isChest = true
 canIPogoAndAttack = true
-
-[node name="Coffin" parent="." unique_id=249903453 instance=ExtResource("27_piond")]
-position = Vector2(1840, 352)
-item_to_spawn = ExtResource("24_n1558")
 
 [connection signal="body_entered" from="CameraColliders/FollowXCol" to="CameraColliders/FollowXCol" method="_on_body_entered"]
 [connection signal="body_entered" from="CameraColliders/UnfollowXCol" to="CameraColliders/UnfollowXCol" method="_on_body_entered"]

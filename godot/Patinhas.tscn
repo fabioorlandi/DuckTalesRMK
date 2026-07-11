@@ -258,10 +258,19 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_yekqw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yekqw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_skccd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yekqw")
 }],
 "loop": 0,
 "name": &"Tacada_Falha",
-"speed": 8.0
+"speed": 16.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -304,7 +313,7 @@ target_position = Vector2(0, 16)
 z_index = 30
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_fhwcv")
-animation = &"Parado"
+animation = &"Tacada_Falha"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2049646420]
 position = Vector2(0, 3.5)

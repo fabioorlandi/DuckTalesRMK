@@ -16,7 +16,7 @@ func _ready() -> void:
 	if isChest:
 		$CharacterBody2D.visible = true
 		$CharacterBody2D/CollisionShape2D.disabled = false
-	else:		
+	else:
 		$CharacterBody2D.visible = false
 		$CharacterBody2D/CollisionShape2D.disabled = true
 
@@ -33,8 +33,8 @@ func _on_body_entered(body: Node2D) -> void:
 		obj.apply_tween()
 
 func active_from_chest() -> void:
-		already_obtained = true
-		var obj = item_to_spawn.instantiate()
-		obj.global_position = global_position
-		get_tree().current_scene.add_child(obj)
-		obj.apply_tween()
+	already_obtained = true
+	var obj = item_to_spawn.instantiate()
+	obj.global_position = global_position
+	get_tree().current_scene.add_child(obj)
+	obj.apply_tween()
