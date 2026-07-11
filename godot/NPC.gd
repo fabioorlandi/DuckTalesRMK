@@ -3,10 +3,19 @@ extends Area2D
 @export var alreadyTalk: bool = false
 #fazer que quando npc sair da tela, ativa denovo o alreadyTalk
 
+@export var entrou_na_tela: bool = false
 
+@export var margem_de_exclusao: float = 220.0
+
+func _process(delta: float) -> void:
+	var pos = $"../../Patinhas".global_position
+	
+	# Verifica se afastou demais do player
+	if pos.x < global_position.x - margem_de_exclusao or pos.x > global_position.x + margem_de_exclusao:	   
+		alreadyTalk = false
 
 func _on_body_entered(body: Node2D) -> void:
-	if body.name == "Patinhas":
+	if body.name == "Patinhas" and !alreadyTalk:
 		self.alreadyTalk = true
 	#freeze game
 	#faz o dialogo

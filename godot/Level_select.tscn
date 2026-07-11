@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://q2xjygl6il5y"]
+
+[ext_resource type="Texture2D" uid="uid://bcty6414r6str" path="res://Assets/NES - DuckTales - Miscellaneous - Title & Level Select.png" id="1_pp8g0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s6pbk"]
+
+[node name="LevelSelect" type="Node" unique_id=162204698]
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1764688287]
+position = Vector2(128, 112)
+texture = ExtResource("1_pp8g0")
+region_enabled = true
+region_rect = Rect2(301, 0, 256, 224)
+
+[node name="hideLevelsUp" type="Sprite2D" parent="." unique_id=1273724219]
+position = Vector2(126, 108)
+scale = Vector2(0.9546547, 1.1679857)
+texture = ExtResource("1_pp8g0")
+region_enabled = true
+region_rect = Rect2(374, 97, 110, 7)
+
+[node name="hideLevelsDown" type="Sprite2D" parent="." unique_id=42754366]
+position = Vector2(131, 135.00002)
+scale = Vector2(0.95, 4.088)
+texture = ExtResource("1_pp8g0")
+region_enabled = true
+region_rect = Rect2(374, 97, 110, 7)
+
+[node name="Arrow" type="AnimatedSprite2D" parent="." unique_id=2063688712]
+sprite_frames = SubResource("SpriteFrames_s6pbk")
+
+[node name="levelItem" type="AnimatedSprite2D" parent="." unique_id=655472493]
+sprite_frames = SubResource("SpriteFrames_s6pbk")

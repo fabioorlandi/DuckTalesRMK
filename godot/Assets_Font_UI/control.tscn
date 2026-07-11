@@ -22,4 +22,5 @@ offset_top = 6.0
 offset_right = 248.0
 offset_bottom = 223.0
 bbcode_enabled = true
+text = "aaraseae"
 script = ExtResource("1_0fbet")

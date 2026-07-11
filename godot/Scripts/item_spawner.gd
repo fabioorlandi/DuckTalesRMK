@@ -11,7 +11,7 @@ func _ready() -> void:
 	if isChest:
 		$CharacterBody2D.visible = true
 		$CharacterBody2D/CollisionShape2D.disabled = false
-	else:		
+	else:
 		$CharacterBody2D.visible = false
 		$CharacterBody2D/CollisionShape2D.disabled = true
 

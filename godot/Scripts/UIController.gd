@@ -31,7 +31,7 @@ var timeLeft: int = 500
 #Falta score central
 #Falta timer == 500
 
-func _ready():	
+func _ready():
 	loadFromGamePoints()
 	
 	add_to_group("ui")
@@ -46,8 +46,8 @@ func _ready():
 	timerLabel.text = str(timeLeft)
 	
 func _process(delta):
-	if Input.is_action_just_pressed("m"):
-		get_tree().reload_current_scene()
+	if Input.is_action_just_pressed("pause"):
+		alternar_pausa()
 
 func AddScore(points: int) -> void:
 	score += points
@@ -172,3 +172,6 @@ func loadFromGamePoints() -> void:
 	lifesLabel.text = "P. " + str(lifes)
 	HealthSpritesUpdate()
 	ResetScore()
+
+func alternar_pausa() -> void:
+	get_tree().paused = !get_tree().paused

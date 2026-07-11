@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://b7tdbhtqt5du8"]
+
+[ext_resource type="Texture2D" uid="uid://bcty6414r6str" path="res://Assets/NES - DuckTales - Miscellaneous - Title & Level Select.png" id="1_06t4h"]
+[ext_resource type="Script" uid="uid://de5irxctk3wp7" path="res://Main_menu.gd" id="1_7vrkn"]
+
+[node name="MainMenu" type="Node" unique_id=1223546303]
+script = ExtResource("1_7vrkn")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1959772927]
+position = Vector2(128, 112)
+texture = ExtResource("1_06t4h")
+region_enabled = true
+region_rect = Rect2(1, 1, 256, 224)
+
+[node name="Arrow" type="Node2D" parent="." unique_id=29449538]
+
+[node name="Sprite2D" type="Sprite2D" parent="Arrow" unique_id=181756338]
+position = Vector2(35, 133)
+texture = ExtResource("1_06t4h")
+region_enabled = true
+region_rect = Rect2(257, 110, 7, 10)

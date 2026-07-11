@@ -82,6 +82,7 @@ position = Vector2(874, 371)
 position = Vector2(496, 350)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=356561041 node_paths=PackedStringArray("player")]
+process_mode = 3
 position = Vector2(128, 312)
 script = ExtResource("7_1sa6h")
 player = NodePath("../Patinhas")
@@ -726,11 +727,6 @@ position = Vector2(1672, 519)
 item_to_spawn = ExtResource("24_n1558")
 isChest = true
 canIPogoAndAttack = true
-
-[node name="Item Spawner18" parent="ItensInChests" unique_id=335274338 instance=ExtResource("19_uvku6")]
-position = Vector2(1760, 519)
-item_to_spawn = ExtResource("24_n1558")
-isChest = true
 
 [node name="Item Spawner3" parent="ItensInChests" unique_id=26332525 instance=ExtResource("19_uvku6")]
 position = Vector2(1160, 569)
