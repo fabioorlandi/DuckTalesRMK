@@ -370,7 +370,7 @@ position = Vector2(0, 6.5)
 shape = SubResource("RectangleShape2D_nkdbr")
 
 [node name="Espinhos" parent="LevelInteraction" unique_id=1361436132 instance=ExtResource("16_up6mq")]
-position = Vector2(1520, 636)
+position = Vector2(1526, 639)
 scale = Vector2(24, 2)
 
 [node name="CameraColliders" type="Node" parent="." unique_id=2093379251]
