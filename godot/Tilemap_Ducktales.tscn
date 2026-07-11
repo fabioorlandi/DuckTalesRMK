@@ -305,7 +305,7 @@ vertical_alignment = 1
 
 [node name="StageTimer" type="Timer" parent="Camera2D/UI/Time" unique_id=1099315288]
 
-[node name="LevelInteraction" type="Node" parent="." unique_id=336144599]
+[node name="LevelInteraction" type="Node" parent="." unique_id=1943546591]
 
 [node name="Armadura01" parent="LevelInteraction" unique_id=635808693 instance=ExtResource("4_fu7tr")]
 position = Vector2(496, 350)
