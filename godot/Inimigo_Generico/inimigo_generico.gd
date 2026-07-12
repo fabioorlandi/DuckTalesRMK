@@ -21,6 +21,8 @@ func _ready():
 	self.add_collision_exception_with(patinhas)
 
 func _on_die() -> void:
+	AudioManager.play_sound_effect(load("res://Sounds/SFX/Duck Tales SFX (28).wav"))
+	
 	$CollisionShape2D.set_deferred("disabled", true)
 	collision_disabled = true
 	$AnimatedSprite2D.pause()

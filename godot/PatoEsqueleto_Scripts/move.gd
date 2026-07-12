@@ -35,4 +35,5 @@ func physics_update(_delta: float) -> void:
 				body.emit_signal("destroy_on_collision", Vector2.ZERO)
 				transitioned.emit(self, "desativado")
 			elif body and body.name != "Patinhas":
+				AudioManager.play_sound_effect(load("res://Sounds/SFX/Duck Tales SFX (5).wav"))
 				transitioned.emit(self, "desativado")

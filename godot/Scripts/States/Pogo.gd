@@ -58,7 +58,6 @@ func physics_update(delta: float) -> void:
 				if can_pogo_bounce(collider_interative) or collider_floor:
 					player.animate(animation_2)
 					await get_tree().create_timer(0.05).timeout
-					AudioManager.play_sound_effect(load("res://Sounds/SFX/Duck Tales SFX (27).wav"), false)
 	
 					player.velocity.y = player.POGO_FORCE
 				else:

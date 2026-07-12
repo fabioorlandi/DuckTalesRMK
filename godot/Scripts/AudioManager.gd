@@ -1,22 +1,19 @@
 extends Node
 
-@onready var bgm_streamer := $BackgroundMusic
+@onready var bgm_streamer : AudioStreamPlayer = $BackgroundMusic
 
 func stop_background_music():
 	bgm_streamer.stop()
 	bgm_streamer.stream = null
 
-func play_background_music(stream: AudioStream, play_previous_music_on_end: bool = false) -> void:
+func play_background_music(stream: AudioStream) -> void:
 	if bgm_streamer.stream == stream and bgm_streamer.playing:
 		return
 
-	if play_previous_music_on_end:
-		bgm_streamer.finished.connect(restart_background_music.bind(bgm_streamer.stream))
-	else:
-		bgm_streamer.finished.connect(restart_background_music.bind(stream))
-
 	bgm_streamer.stream = stream
 	bgm_streamer.play()
+	bgm_streamer.finished.disconnect(restart_background_music)
+	bgm_streamer.finished.connect(restart_background_music.bind(stream))
 	
 func restart_background_music(stream: AudioStream):
 	play_background_music(stream)

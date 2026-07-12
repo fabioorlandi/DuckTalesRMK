@@ -5,14 +5,11 @@ class_name Fall
 @export var animation = &"Cair_Final"
 @export var animation_final = &"Pular"
  
-func exit() -> void:
-	AudioManager.play_sound_effect(load("res://Sounds/SFX/Duck Tales SFX (1).wav"))
-
 func update(_delta: float) -> void:
 	if player.collisionWithEnemy and player.takingDamage:
 		transitioned.emit(self, "damage")
  
-func physics_update(delta: float) -> void:	
+func physics_update(delta: float) -> void:
 	var direction := Input.get_axis("left", "right") #Movimento horizontal durante a queda
 	if direction != 0:
 		player.velocity.x = direction * player.SPEED

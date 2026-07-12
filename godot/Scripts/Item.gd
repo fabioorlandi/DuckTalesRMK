@@ -7,7 +7,6 @@ enum Item { yellow_diamond_G, yellow_diamond_P, red_diamond_G, stage_trophy, ske
 @onready var ui = get_tree().get_first_node_in_group("ui")
 
 var on_fade: bool = false
-var invulnerable_music = "res://Sounds/09_-_DuckTales_-_NES_-_Magic_Coin.ogg"
 var collect_item_sfx = "res://Sounds/SFX/Duck Tales SFX (13).wav"
 
 @onready var timer: Timer = $Timer
@@ -72,7 +71,6 @@ func DoFunction(body: Node2D) -> void:
 		Item.stage_trophy:
 			ui.AddScore(1000000)
 		Item.invulnerable:
-			AudioManager.play_background_music(load(invulnerable_music), true)
 			body.emit_signal("invulnerability_ticks_started", 320, true)
 		Item.health_star:
 			ui.GainHealth()
