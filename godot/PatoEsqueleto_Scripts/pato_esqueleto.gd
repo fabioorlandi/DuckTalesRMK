@@ -40,10 +40,11 @@ func _on_die() -> void:
 		global_position.y - 25,
 		0.15
 	)
+
 func _physics_process(delta: float) -> void:
 	velocity.y += 200 * delta
 	
-	if self.global_position.y >= 1110:
+	if self.global_position.y >= 500:
 		print("caíiii")
 		queue_free()
 	

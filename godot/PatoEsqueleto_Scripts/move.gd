@@ -23,6 +23,8 @@ func physics_update(_delta: float) -> void:
 	
 	actor.move_and_slide()
 	
+	AudioManager.play_sound_effect(load("res://Sounds/SFX/Duck Tales SFX (9).wav"), false)
+	
 	# flip
 	var sprite: AnimatedSprite2D = actor.get_node("AnimatedSprite2D")
 	sprite.flip_h = actor.direction > 0

@@ -39,7 +39,7 @@ func _physics_process(delta: float) -> void:
 	# gravidade sempre
 	velocity.y += 200 * delta
 	move_and_slide()
-	if self.global_position.y >= 1110:
+	if self.global_position.y >= 500:
 		print("caíiii")
 		queue_free()
 

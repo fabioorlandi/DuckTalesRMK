@@ -21,7 +21,7 @@ func restart_background_music(stream: AudioStream):
 func play_sound_effect(stream: AudioStream, allow_multiples: bool = true, bus: String = "Master") -> void:
 	var existing_player: AudioStreamPlayer = null
 	for child in get_children():
-		if child is AudioStreamPlayer and child.stream == stream:
+		if child is AudioStreamPlayer and  child != bgm_streamer and child.stream == stream:
 			existing_player = child
 			break
 	
