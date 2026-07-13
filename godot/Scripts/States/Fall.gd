@@ -23,6 +23,8 @@ func physics_update(delta: float) -> void:
 	if player.is_on_floor(): #Voltou para o chão
 		player.animate(animation)
 		
+		AudioManager.play_sound_effect(load("res://Sounds/SFX/Duck Tales SFX (1).wav"), false)
+		
 		if direction != 0:
 			transitioned.emit(self, "move")
 		elif Input.is_action_pressed("down"):

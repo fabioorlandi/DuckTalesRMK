@@ -109,13 +109,23 @@ func on_die():
 		0.0, 1.0, 0.75
 	)
 
-	AudioManager.play_sound_effect(load("res://Sounds/12_-_DuckTales_-_NES_-_Dead.ogg"), false)
+	AudioManager.play_background_music(load("res://Sounds/12_-_DuckTales_-_NES_-_Dead.ogg"))
 
 	self.animate(&"Morte")
 	await $AnimatedSprite2D.animation_finished
 
-	await get_tree().create_timer(1).timeout
-	Input.action_press("m")
+	await get_tree().create_timer(1.3).timeout
+	
+	var press_event = InputEventAction.new()
+	press_event.action = "m"
+	press_event.pressed = true
+	Input.parse_input_event(press_event)
+	await get_tree().process_frame
+	
+	var release_event = InputEventAction.new()
+	release_event.action = "m"
+	release_event.pressed = false
+	Input.parse_input_event(release_event)
 
 func start_invulnerability(ticks: int, allow_kill_enemies: bool = false):
 	if allow_kill_enemies:

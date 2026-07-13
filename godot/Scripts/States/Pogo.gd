@@ -45,6 +45,7 @@ func physics_update(delta: float) -> void:
 				
 				if not destroying_timer > 0:
 					destroying_timer = 10
+					AudioManager.play_sound_effect(load("res://Sounds/SFX/Duck Tales SFX (27).wav"))
 
 					if collider_interative is PhysicsBody2D and collider_interative.has_signal("destroy_on_collision"):
 						collider_interative.emit_signal("destroy_on_collision", Vector2.ZERO)
