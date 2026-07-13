@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://bvx65v6wnq6t2" path="res://PatoEsqueleto_Scripts/desativado.gd" id="7_im06y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qvwdq"]
-size = Vector2(23, 24)
+size = Vector2(23, 23)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nkdbr"]
 size = Vector2(20, 1)
@@ -90,7 +90,7 @@ animations = [{
 script = ExtResource("1_h0573")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1528432573]
-position = Vector2(0.5, 1)
+position = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_qvwdq")
 
 [node name="IdleCollisionShape" type="CollisionShape2D" parent="." unique_id=457361946]
@@ -102,7 +102,7 @@ debug_color = Color(0.8296411, 0.6198923, 0.13814053, 0.41960785)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1465435755]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_wyc2n")
-animation = &"Desativado"
+animation = &"Caminhar"
 
 [node name="Label_State" type="Label" parent="." unique_id=174796275]
 visible = false

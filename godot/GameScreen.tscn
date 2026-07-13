@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://vk3qku28mk4v" path="res://Scripts/game_screen.gd" id="1_620js"]
 [ext_resource type="PackedScene" uid="uid://bxkdtofu5c6li" path="res://tile_map_layer_background.tscn" id="2_55obg"]
+[ext_resource type="Texture2D" uid="uid://bdxti27hvfdlj" path="res://Assets/Tilemap_Ducktales.png" id="3_620js"]
 [ext_resource type="PackedScene" uid="uid://cogx0t83rjkoh" path="res://Patinhas.tscn" id="3_deayw"]
 [ext_resource type="PackedScene" uid="uid://u1rejandld05" path="res://Bloco_Destruivel.tscn" id="4_63sgq"]
 [ext_resource type="PackedScene" uid="uid://dmy14x3qhkdta" path="res://Bloco_Empurravel.tscn" id="4_fcfpr"]
@@ -31,6 +32,16 @@
 [ext_resource type="PackedScene" uid="uid://10slnqn82k85" path="res://Itens/health_star.tscn" id="26_r1eh8"]
 [ext_resource type="PackedScene" uid="uid://dhxidj128h1r0" path="res://Coffin.tscn" id="27_piond"]
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_enhxt"]
+texture = ExtResource("3_620js")
+2:14/0 = 0
+2:14/0/z_index = 31
+3:14/0 = 0
+3:14/0/z_index = 31
+
+[sub_resource type="TileSet" id="TileSet_1f106"]
+sources/0 = SubResource("TileSetAtlasSource_enhxt")
+
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_deayw"]
 resource_name = "Cenário_Interativo"
 scenes/1/scene = ExtResource("4_63sgq")
@@ -51,6 +62,10 @@ size = Vector2(5.6447678, 49.09293)
 script = ExtResource("1_620js")
 
 [node name="TileMapLayerBackground" parent="." unique_id=1744038407 instance=ExtResource("2_55obg")]
+
+[node name="TileMapLayerInvisibleBackground" type="TileMapLayer" parent="." unique_id=1709796596]
+tile_map_data = PackedByteArray("AABiAPf/AAACAA4AAABjAPf/AAADAA4AAABiAPj/AAACAA4AAABjAPj/AAADAA4AAABiAPn/AAACAA4AAABjAPn/AAADAA4AAABkAPn/AAACAA4AAABlAPn/AAADAA4AAABkAPj/AAACAA4AAABlAPj/AAADAA4AAABkAPf/AAACAA4AAABlAPf/AAADAA4AAABmAPf/AAACAA4AAABnAPf/AAADAA4AAABmAPj/AAACAA4AAABnAPj/AAADAA4AAABmAPn/AAACAA4AAABnAPn/AAADAA4AAABoAPn/AAACAA4AAABpAPn/AAADAA4AAABoAPj/AAACAA4AAABpAPj/AAADAA4AAABoAPf/AAACAA4AAABpAPf/AAADAA4AAABoAAQAAAACAA4AAABpAAQAAAADAA4AAABoAAMAAAACAA4AAABpAAMAAAADAA4AAABqAAMAAAACAA4AAABrAAMAAAADAA4AAABqAAQAAAACAA4AAABrAAQAAAADAA4AAABsAAQAAAACAA4AAABtAAQAAAADAA4AAABsAAMAAAACAA4AAABtAAMAAAADAA4AAABuAAMAAAACAA4AAABvAAMAAAADAA4AAABuAAQAAAACAA4AAABvAAQAAAADAA4AAAA=")
+tile_set = SubResource("TileSet_1f106")
 
 [node name="TileMapLayerForeground" type="TileMapLayer" parent="." unique_id=688610627]
 tile_map_data = PackedByteArray("AAAIABcAAAAAAAAAAQAJABcAAAAAAAAAAQAKABcAAAAAAAAAAQALABcAAAAAAAAAAQASABcAAAAAAAAAAQATABcAAAAAAAAAAQAUABcAAAAAAAAAAQAVABcAAAAAAAAAAQAWABcAAAAAAAAAAQAXABcAAAAAAAAAAQAAABYAAAAAAAAAAQAAABcAAAAAAAAAAQA/ABUAAAAAAAAAAQAuABIAAAAAAAAAAQAvABIAAAAAAAAAAQAwABIAAAAAAAAAAQAzABcAAAAAAAAAAQAyABcAAAAAAAAAAQAxABcAAAAAAAAAAQAwABcAAAAAAAAAAQAxAAQAAAAAAAAAAgA+ABUAAAAAAAAAAQA9ABUAAAAAAAAAAQA8ABUAAAAAAAAAAQA=")
