@@ -33,9 +33,13 @@ func update(delta: float) -> void:
 	
 func physics_update(delta: float) -> void:
 	if Input.is_action_pressed("up"):
+		AudioManager.play_sound_effect(load("res://Sounds/SFX/Duck Tales SFX (4).wav"), false)
+		
 		player.velocity.y = -1 * player.ROPE_SPEED
 		animated.speed_scale = 1
 	elif Input.is_action_pressed("down"):
+		AudioManager.play_sound_effect(load("res://Sounds/SFX/Duck Tales SFX (4).wav"), false)
+		
 		player.velocity.y  = 1 * player.ROPE_SPEED
 		animated.speed_scale = 1
 	elif Input.is_action_just_released("up") or Input.is_action_just_released("down"):

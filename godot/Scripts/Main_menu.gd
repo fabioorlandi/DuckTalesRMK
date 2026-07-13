@@ -8,6 +8,8 @@ var selectedDifficulty: String
 var arrowPosX: float = 82.0
 
 func _ready() -> void:
+	AudioManager.play_background_music(load("res://Sounds/01_-_DuckTales_-_NES_-_DuckTales_Theme.ogg"))
+	
 	arrowPosX = 82.0
 	selectedDifficulty = "normal"
 	$Arrow.global_position = Vector2(82.0, 133.0)
@@ -15,6 +17,10 @@ func _ready() -> void:
 	timer.start()
 
 func _process(delta: float) -> void:
+	if (Input.is_action_just_pressed("left") or Input.is_action_just_pressed("right"))\
+		and canChangeDifficulty:
+		AudioManager.play_sound_effect(load("res://Sounds/SFX/Duck Tales SFX (16).wav"))
+	
 	if Input.is_action_just_pressed("left") and canChangeDifficulty:
 		if arrowPosX == 82.0:
 			$Arrow.global_position = Vector2(34.0, 133.0)
@@ -39,6 +45,7 @@ func _process(delta: float) -> void:
 		GamePoints.actualDifficulty = selectedDifficulty
 		GamePoints.ResetGamepoints()
 		
+		AudioManager.stop_background_music()
 		get_tree().change_scene_to_file("res://Level_select.tscn")
 
 func _on_timer_timeout() -> void:

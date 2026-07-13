@@ -5,4 +5,4 @@
 [node name="AudioManager" type="Node" unique_id=572142319]
 script = ExtResource("1_jisk1")
 
-[node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="." unique_id=1699538258]
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=1883509307]

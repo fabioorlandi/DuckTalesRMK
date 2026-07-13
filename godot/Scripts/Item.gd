@@ -4,10 +4,10 @@ enum Item { yellow_diamond_G, yellow_diamond_P, red_diamond_G, stage_trophy, ske
 			cake, ice_cream, invulnerable, health_star, life_duck  }
 			
 @export var current_item: Item
-
 @onready var ui = get_tree().get_first_node_in_group("ui")
 
 var on_fade: bool = false
+var collect_item_sfx = "res://Sounds/SFX/Duck Tales SFX (13).wav"
 
 @onready var timer: Timer = $Timer
 var timeLeft: int = 6
@@ -20,7 +20,7 @@ const y_force := -50.0
 func _ready() -> void:
 	$AnimatedSprite2D.play("brilho")
 	
-	if(destroyable):
+	if (destroyable):
 		timer.timeout.connect(_on_timer_timeout)
 		timer.start()
 	
@@ -59,7 +59,9 @@ func apply_tween() -> void:
 	)
 
 func DoFunction(body: Node2D) -> void:
-	match  current_item:
+	AudioManager.play_sound_effect(load(collect_item_sfx))
+	
+	match current_item:
 		Item.yellow_diamond_G:
 			ui.AddScore(10000)
 		Item.yellow_diamond_P:

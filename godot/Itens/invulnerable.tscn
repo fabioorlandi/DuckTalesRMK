@@ -56,8 +56,6 @@ destroyable = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1282890572]
 sprite_frames = SubResource("SpriteFrames_365d2")
 animation = &"brilho"
-frame = 1
-frame_progress = 0.59841865
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1754361571]
 position = Vector2(0, 5)

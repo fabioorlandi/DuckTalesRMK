@@ -25,6 +25,8 @@ func _on_die() -> void:
 	if $FSM.current_state is IDLE:
 		return
 
+	AudioManager.play_sound_effect(load("res://Sounds/SFX/Duck Tales SFX (28).wav"))
+
 	$CollisionShape2D.set_deferred("disabled", true)
 	$IdleCollisionShape.set_deferred("disabled", true)
 	collision_disabled = true
@@ -38,10 +40,11 @@ func _on_die() -> void:
 		global_position.y - 25,
 		0.15
 	)
+
 func _physics_process(delta: float) -> void:
 	velocity.y += 200 * delta
 	
-	if self.global_position.y >= 1110:
+	if self.global_position.y >= 500:
 		print("caíiii")
 		queue_free()
 	

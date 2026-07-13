@@ -21,8 +21,10 @@ func enter() -> void:
 		var collider = player.attack_raycast.get_collider()
 		if can_attack(collider as PhysicsBody2D):
 			attacking_state = AttackState.Success
+			AudioManager.play_sound_effect(load("res://Sounds/SFX/Duck Tales SFX (12).wav"))
 		else:
 			attacking_state = AttackState.Failure
+			AudioManager.play_sound_effect(load("res://Sounds/SFX/Duck Tales SFX (24).wav"))
 			
 		attacking = false
 

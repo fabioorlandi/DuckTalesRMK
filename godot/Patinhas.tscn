@@ -166,21 +166,6 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cccv5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cccv5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cccv5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cccv5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cccv5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cccv5")
 }],
 "loop": 0,
 "name": &"Morte",
@@ -258,10 +243,19 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_yekqw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yekqw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_skccd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yekqw")
 }],
 "loop": 0,
 "name": &"Tacada_Falha",
-"speed": 8.0
+"speed": 16.0
 }, {
 "frames": [{
 "duration": 1.0,

@@ -109,12 +109,28 @@ func on_die():
 		0.0, 1.0, 0.75
 	)
 
+	AudioManager.play_background_music(load("res://Sounds/12_-_DuckTales_-_NES_-_Dead.ogg"))
+
 	self.animate(&"Morte")
 	await $AnimatedSprite2D.animation_finished
 
-	Input.action_press("m")
+	await get_tree().create_timer(1.3).timeout
+	
+	var press_event = InputEventAction.new()
+	press_event.action = "m"
+	press_event.pressed = true
+	Input.parse_input_event(press_event)
+	await get_tree().process_frame
+	
+	var release_event = InputEventAction.new()
+	release_event.action = "m"
+	release_event.pressed = false
+	Input.parse_input_event(release_event)
 
 func start_invulnerability(ticks: int, allow_kill_enemies: bool = false):
+	if allow_kill_enemies:
+		AudioManager.play_background_music(load("res://Sounds/09_-_DuckTales_-_NES_-_Magic_Coin.ogg"))
+	
 	invulnerability_ticks = ticks
 	
 	kill_enemies_during_invulnerability = allow_kill_enemies
@@ -124,6 +140,8 @@ func start_invulnerability(ticks: int, allow_kill_enemies: bool = false):
 		self.add_collision_exception_with(enemy)
 
 func end_invulnerability():
+	AudioManager.play_background_music(load(get_parent().currentLevelSong))
+	
 	$CollisionArea2D.monitoring = true
 	
 	var enemies = get_tree().get_nodes_in_group("Inimigos")
@@ -135,6 +153,7 @@ func compute_hit():
 	health = $"../Camera2D/UI".health
 
 	self.emit_signal("invulnerability_ticks_started", 80)
+	AudioManager.play_sound_effect(load("res://Sounds/SFX/Duck Tales SFX (11).wav"), false)
 
 	var tween = create_tween()
 	var damage_recoil = self.position + Vector2(20, -20)\
