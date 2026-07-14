@@ -62,7 +62,8 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	if dead or dead_on_death_area:
 		$CollisionShape2D.disabled = true
-	
+		$CrouchCollisionShape2D.disabled = true
+
 	if invulnerability_ticks > 0:
 		if invulnerability_ticks % 2 == 0:
 			self.modulate.a = 0

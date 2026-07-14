@@ -3,9 +3,6 @@
 [ext_resource type="Script" uid="uid://beqqocmdiokhd" path="res://Scripts/minecart.gd" id="1_4ni4e"]
 [ext_resource type="Texture2D" uid="uid://c6aq4wchoc7ve" path="res://Assets/minecart.png" id="1_jh0t6"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_k1fek"]
-size = Vector2(30, 31)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_4ni4e"]
 atlas = ExtResource("1_jh0t6")
 region = Rect2(0, 0, 60, 62)
@@ -42,15 +39,26 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f0asi"]
+size = Vector2(19.0625, 3)
+
 [node name="Minecart" type="CharacterBody2D" unique_id=594445490]
 script = ExtResource("1_4ni4e")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1466781810]
-position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_k1fek")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=445239023]
+polygon = PackedVector2Array(-14, -11, -14, 14, 14, 14, 14, -11, 10, -11, 10, 1, -12, 1, -12, -11)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1728839935]
+z_index = 32
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_f0asi")
 animation = &"minecart"
 autoplay = "minecart"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1307215445]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1268050787]
+position = Vector2(-1, -1)
+shape = SubResource("RectangleShape2D_f0asi")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
