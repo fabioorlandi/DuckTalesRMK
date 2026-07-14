@@ -5,3 +5,6 @@ class_name Death
 
 func enter() -> void:
 	player.emit_signal("patinhas_death")
+
+func update(delta: float) -> void:
+	player.velocity.y += player.GRAVITY * delta
