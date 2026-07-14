@@ -12,14 +12,24 @@ func _ready() -> void:
 	start_shake()
 
 func _physics_process(delta: float) -> void:
-	move_and_slide()
-	
 	if moving and patinhas:
+		var lastCollision = patinhas.get_last_slide_collision()
+		
+		if lastCollision:
+			var collider = lastCollision.get_collider()
+			if (patinhas.is_on_ceiling() or patinhas.is_on_wall()) and collider is TileMapLayer:
+				var currentState = patinhas.get_node("FSM").current_state
+				currentState.transitioned.emit(currentState, "damage")
+		
 		if is_on_floor():
-			velocity.x = -1 * patinhas.SPEED
+			velocity.x = patinhas.SPEED * -1
 		else:
 			velocity.x = 0
 			velocity.y += patinhas.GRAVITY * delta
+	else:
+		velocity.x = 0
+			
+	move_and_slide()
 
 func start_shake() -> void:
 	if shake_tween and shake_tween.is_valid():
