@@ -4,6 +4,7 @@ signal invulnerability_ticks_finished
 signal invulnerability_ticks_started
 signal take_damage
 signal patinhas_death
+signal on_death_area
 
 @export var canClimb: bool
 @export var lastDir = "right"
@@ -29,12 +30,15 @@ var onRope: bool = false
 var takingDamage: bool = false
 var collisionWithEnemy: bool = false
 var ropeX: float
+var dead: bool
+var dead_on_death_area: bool
 
 func _ready() -> void:
 	invulnerability_ticks_started.connect(start_invulnerability)
 	invulnerability_ticks_finished.connect(end_invulnerability)
 	take_damage.connect(compute_hit)
 	patinhas_death.connect(on_die)
+	on_death_area.connect(on_die_death_area)
 
 func _process(delta: float) -> void:
 	if lastDir == "left":
@@ -56,6 +60,9 @@ func _process(delta: float) -> void:
 		Teleport(Vector2(1043,-726), -648)
 
 func _physics_process(delta: float) -> void:
+	if dead or dead_on_death_area:
+		$CollisionShape2D.disabled = true
+	
 	if invulnerability_ticks > 0:
 		if invulnerability_ticks % 2 == 0:
 			self.modulate.a = 0
@@ -86,35 +93,43 @@ func Teleport(pos : Vector2, floor: float) -> void:
 	$"../Camera2D".follow_x = true
 
 func on_die():
+	dead = true
+	
 	$"../Camera2D".follow_x = false
-	$"../Camera2D".follow_y = false
+	AudioManager.play_background_music(load("res://Sounds/12_-_DuckTales_-_NES_-_Dead.ogg"), false)
 	
-	self.emit_signal("invulnerability_ticks_started", 9999)
-	$CollisionShape2D.disabled = true
+	if not dead_on_death_area:
+		self.emit_signal("invulnerability_ticks_started", 9999)
+		var tween = create_tween()
+		var death_recoil = self.position + Vector2(50, 200)\
+			if self.lastDir == "left"\
+			else self.position + Vector2(-50, 200)
+		
+		var start_pos = self.position
+		var end_pos = death_recoil
+		var height = 60
+		
+		tween.tween_method(
+			func(progress):
+				var x = lerp(start_pos.x, end_pos.x, progress)
+				var y = lerp(start_pos.y, end_pos.y, progress) - height * sin(progress * PI)
+				self.position = Vector2(x, y),
+			0.0, 1.0, 0.75
+		)
+		self.animate(&"Morte")
+		await $AnimatedSprite2D.animation_finished
+	else:
+		var death_area_position = self.position.y + 200
+		var start_y = self.position.y
+		var tween = create_tween()
+		
+		tween.tween_method(
+			func(progress):
+				self.position.y = lerp(start_y, death_area_position, progress),
+			0.0, 1.0, 0.75
+		)
 
-	var tween = create_tween()
-	var death_recoil = self.position + Vector2(50, 150)\
-		if self.lastDir == "left"\
-		else self.position + Vector2(-50, 150)
-	
-	var start_pos = self.position
-	var end_pos = death_recoil
-	var height = 60
-	
-	tween.tween_method(
-		func(progress):
-			var x = lerp(start_pos.x, end_pos.x, progress)
-			var y = lerp(start_pos.y, end_pos.y, progress) - height * sin(progress * PI)
-			self.position = Vector2(x, y),
-		0.0, 1.0, 0.75
-	)
-
-	AudioManager.play_background_music(load("res://Sounds/12_-_DuckTales_-_NES_-_Dead.ogg"))
-
-	self.animate(&"Morte")
-	await $AnimatedSprite2D.animation_finished
-
-	await get_tree().create_timer(1.3).timeout
+	await get_tree().create_timer(3).timeout
 	
 	var press_event = InputEventAction.new()
 	press_event.action = "m"
@@ -126,6 +141,10 @@ func on_die():
 	release_event.action = "m"
 	release_event.pressed = false
 	Input.parse_input_event(release_event)
+
+func on_die_death_area():
+	dead_on_death_area = true
+	$FSM.on_child_transition($FSM.current_state, "death")
 
 func start_invulnerability(ticks: int, allow_kill_enemies: bool = false):
 	if allow_kill_enemies:
@@ -140,7 +159,8 @@ func start_invulnerability(ticks: int, allow_kill_enemies: bool = false):
 		self.add_collision_exception_with(enemy)
 
 func end_invulnerability():
-	AudioManager.play_background_music(load(get_parent().currentLevelSong))
+	if not dead:
+		AudioManager.play_background_music(load(get_parent().currentLevelSong))
 	
 	$CollisionArea2D.monitoring = true
 	

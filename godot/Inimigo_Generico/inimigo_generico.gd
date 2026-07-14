@@ -6,6 +6,7 @@ var player_on_screen := false
 var direction := 1  
 var collision_disabled := false
 var can_hit_patinhas = true
+var dying: bool = false
 
 func is_pogo_interactive():
 	return true
@@ -21,7 +22,10 @@ func _ready():
 	self.add_collision_exception_with(patinhas)
 
 func _on_die() -> void:
-	AudioManager.play_sound_effect(load("res://Sounds/SFX/Duck Tales SFX (28).wav"))
+	if not dying:
+		AudioManager.play_sound_effect(load("res://Sounds/SFX/Duck Tales SFX (28).wav"))
+	
+	dying = true
 	
 	$CollisionShape2D.set_deferred("disabled", true)
 	collision_disabled = true
