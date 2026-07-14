@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://dotj5inrkn8lk"]
+
+[ext_resource type="Script" uid="uid://beqqocmdiokhd" path="res://Scripts/minecart.gd" id="1_4ni4e"]
+[ext_resource type="Texture2D" uid="uid://c6aq4wchoc7ve" path="res://Assets/minecart.png" id="1_jh0t6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k1fek"]
+size = Vector2(30, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ni4e"]
+atlas = ExtResource("1_jh0t6")
+region = Rect2(0, 0, 60, 62)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2n3d"]
+atlas = ExtResource("1_jh0t6")
+region = Rect2(61, 0, 60, 62)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_717ro"]
+atlas = ExtResource("1_jh0t6")
+region = Rect2(122, 0, 60, 62)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5t1p2"]
+atlas = ExtResource("1_jh0t6")
+region = Rect2(183, 0, 60, 62)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f0asi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ni4e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b2n3d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_717ro")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5t1p2")
+}],
+"loop": 1,
+"name": &"minecart",
+"speed": 6.0
+}]
+
+[node name="Minecart" type="CharacterBody2D" unique_id=594445490]
+script = ExtResource("1_4ni4e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1466781810]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_k1fek")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1728839935]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_f0asi")
+animation = &"minecart"
+autoplay = "minecart"

@@ -40,8 +40,8 @@ func physics_update(delta: float) -> void:
 		var is_colliding = player.interactive_pogo_shapecast.is_colliding()
 		if is_colliding:
 			var collider_interative = player.interactive_pogo_shapecast.get_collider(0)
-			var collider_floor = player.floor_pogo_shapecast.get_collider(0)
 			if collider_interative:
+				var collider_floor = player.floor_pogo_shapecast.get_collider(0)
 				
 				if not destroying_timer > 0:
 					destroying_timer = 10
@@ -64,6 +64,8 @@ func physics_update(delta: float) -> void:
 				else:
 					transitioned.emit(self, "crouch")
 			elif player.is_on_floor():
+				transitioned.emit(self, "crouch")
+		elif player.is_on_floor():
 				transitioned.emit(self, "crouch")
 
 	#saveLastDir

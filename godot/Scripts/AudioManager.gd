@@ -12,7 +12,10 @@ func play_background_music(stream: AudioStream) -> void:
 
 	bgm_streamer.stream = stream
 	bgm_streamer.play()
-	bgm_streamer.finished.disconnect(restart_background_music)
+	
+	if bgm_streamer.finished.is_connected(restart_background_music):
+		bgm_streamer.finished.disconnect(restart_background_music)
+
 	bgm_streamer.finished.connect(restart_background_music.bind(stream))
 	
 func restart_background_music(stream: AudioStream):

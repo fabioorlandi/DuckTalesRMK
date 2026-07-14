@@ -20,12 +20,14 @@
 [ext_resource type="PackedScene" uid="uid://y0qr46lfx8x2" path="res://spawn_esqueleto.tscn" id="16_55obg"]
 [ext_resource type="PackedScene" uid="uid://cd1fwimvplkgl" path="res://Mirror.tscn" id="16_udr8q"]
 [ext_resource type="PackedScene" uid="uid://diouwj08sugn7" path="res://espinhos.tscn" id="16_up6mq"]
+[ext_resource type="PackedScene" uid="uid://dotj5inrkn8lk" path="res://minecart.tscn" id="17_enhxt"]
 [ext_resource type="PackedScene" uid="uid://ciu76gjltchq7" path="res://Patricia.tscn" id="17_mw0eb"]
 [ext_resource type="PackedScene" uid="uid://c683qceykov55" path="res://Itens/invulnerable.tscn" id="17_udr8q"]
 [ext_resource type="PackedScene" uid="uid://b4i584dk46f7w" path="res://Huguinho.tscn" id="18_gtvlv"]
 [ext_resource type="PackedScene" uid="uid://cngw0b08a76xu" path="res://item_spawner.tscn" id="19_uvku6"]
 [ext_resource type="PackedScene" uid="uid://cupbo0s5wtpur" path="res://Itens/yellow_diamond_G.tscn" id="20_5yvvo"]
 [ext_resource type="PackedScene" uid="uid://cnh4dsac87c5a" path="res://Itens/red_diamond_G.tscn" id="21_uvku6"]
+[ext_resource type="PackedScene" uid="uid://bvdfja30frw6n" path="res://death_area.tscn" id="22_75g3y"]
 [ext_resource type="PackedScene" uid="uid://d3bwflp2ma6xu" path="res://Itens/yellow_diamond_P.tscn" id="23_bn6rm"]
 [ext_resource type="PackedScene" uid="uid://vyeb81uavor6" path="res://Itens/ice_cream.tscn" id="24_n1558"]
 [ext_resource type="PackedScene" uid="uid://dj0doqnic8div" path="res://Itens/life_duck.tscn" id="25_y5hv7"]
@@ -327,6 +329,27 @@ vertical_alignment = 1
 [node name="StageTimer" type="Timer" parent="Camera2D/UI/Time" unique_id=1099315288]
 
 [node name="LevelInteraction" type="Node" parent="." unique_id=1943546591]
+
+[node name="DeathArea" parent="LevelInteraction" unique_id=807182718 instance=ExtResource("22_75g3y")]
+position = Vector2(776, -545)
+scale = Vector2(2.3, 1)
+
+[node name="DeathArea2" parent="LevelInteraction" unique_id=1402415393 instance=ExtResource("22_75g3y")]
+position = Vector2(560, -543)
+scale = Vector2(1.5, 1)
+
+[node name="DeathArea3" parent="LevelInteraction" unique_id=650647592 instance=ExtResource("22_75g3y")]
+position = Vector2(488.00006, -542)
+scale = Vector2(2.3, 1)
+
+[node name="Minecart01" parent="LevelInteraction" unique_id=594445490 instance=ExtResource("17_enhxt")]
+position = Vector2(977, -685)
+
+[node name="Minecart02" parent="LevelInteraction" unique_id=1766441458 instance=ExtResource("17_enhxt")]
+position = Vector2(593, -654)
+
+[node name="Minecart03" parent="LevelInteraction" unique_id=2034850490 instance=ExtResource("17_enhxt")]
+position = Vector2(528, -590)
 
 [node name="Armadura01" parent="LevelInteraction" unique_id=635808693 instance=ExtResource("4_fu7tr")]
 position = Vector2(496, 350)
