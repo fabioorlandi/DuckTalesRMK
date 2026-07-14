@@ -62,7 +62,10 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	if dead or dead_on_death_area:
 		$CollisionShape2D.disabled = true
+		$CrouchCollisionShape2D.disabled = true
+		
 	
+
 	if invulnerability_ticks > 0:
 		if invulnerability_ticks % 2 == 0:
 			self.modulate.a = 0
@@ -101,9 +104,9 @@ func on_die():
 	if not dead_on_death_area:
 		self.emit_signal("invulnerability_ticks_started", 9999)
 		var tween = create_tween()
-		var death_recoil = self.position + Vector2(50, 200)\
+		var death_recoil = self.position + Vector2(50, 250)\
 			if self.lastDir == "left"\
-			else self.position + Vector2(-50, 200)
+			else self.position + Vector2(-50, 250)
 		
 		var start_pos = self.position
 		var end_pos = death_recoil

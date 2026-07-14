@@ -272,6 +272,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iwqf0"]
 size = Vector2(20, 21)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f0asi"]
+size = Vector2(20, 13)
+
 [node name="Patinhas" type="CharacterBody2D" unique_id=917563206 groups=["Patinhas"]]
 script = ExtResource("1_rdkiu")
 
@@ -298,11 +301,18 @@ target_position = Vector2(0, 16)
 z_index = 30
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_fhwcv")
-animation = &"Parado"
+animation = &"Abaixar"
+frame = 1
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2049646420]
 position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_iwqf0")
+
+[node name="CrouchCollisionShape2D" type="CollisionShape2D" parent="." unique_id=21935433]
+position = Vector2(0, 7.5)
+shape = SubResource("RectangleShape2D_f0asi")
+disabled = true
 
 [node name="Label_State" type="Label" parent="." unique_id=1786105537]
 visible = false

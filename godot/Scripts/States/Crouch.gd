@@ -7,8 +7,14 @@ class_name Crouch
 var crouched = false
 
 func enter() -> void:
+	$"../../CollisionShape2D".disabled = true
+	$"../../CrouchCollisionShape2D".disabled = false
 	player.velocity.x = 0
 	crouched = false
+
+func exit() -> void:
+	$"../../CrouchCollisionShape2D".disabled = true
+	$"../../CollisionShape2D".disabled = false
 
 func update(_delta: float) -> void:
 	if player.collisionWithEnemy and player.takingDamage:
