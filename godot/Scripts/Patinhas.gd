@@ -31,6 +31,7 @@ var takingDamage: bool = false
 var collisionWithEnemy: bool = false
 var ropeX: float
 var dead: bool
+var dead_on_death_area: bool
 
 func _ready() -> void:
 	invulnerability_ticks_started.connect(start_invulnerability)
@@ -59,7 +60,7 @@ func _process(delta: float) -> void:
 		Teleport(Vector2(1043,-726), -648)
 
 func _physics_process(delta: float) -> void:
-	if dead:
+	if dead or dead_on_death_area:
 		$CollisionShape2D.disabled = true
 	
 	if invulnerability_ticks > 0:
@@ -91,19 +92,18 @@ func Teleport(pos : Vector2, floor: float) -> void:
 	$"../Camera2D".global_position = temp
 	$"../Camera2D".follow_x = true
 
-func on_die(death_with_animation: bool = true):
+func on_die():
 	dead = true
 	
 	$"../Camera2D".follow_x = false
-
 	AudioManager.play_background_music(load("res://Sounds/12_-_DuckTales_-_NES_-_Dead.ogg"), false)
 	
-	if death_with_animation:
+	if not dead_on_death_area:
 		self.emit_signal("invulnerability_ticks_started", 9999)
 		var tween = create_tween()
-		var death_recoil = self.position + Vector2(50, 150)\
+		var death_recoil = self.position + Vector2(50, 200)\
 			if self.lastDir == "left"\
-			else self.position + Vector2(-50, 150)
+			else self.position + Vector2(-50, 200)
 		
 		var start_pos = self.position
 		var end_pos = death_recoil
@@ -116,9 +116,18 @@ func on_die(death_with_animation: bool = true):
 				self.position = Vector2(x, y),
 			0.0, 1.0, 0.75
 		)
-	
 		self.animate(&"Morte")
 		await $AnimatedSprite2D.animation_finished
+	else:
+		var death_area_position = self.position.y + 200
+		var start_y = self.position.y
+		var tween = create_tween()
+		
+		tween.tween_method(
+			func(progress):
+				self.position.y = lerp(start_y, death_area_position, progress),
+			0.0, 1.0, 0.75
+		)
 
 	await get_tree().create_timer(3).timeout
 	
@@ -134,7 +143,8 @@ func on_die(death_with_animation: bool = true):
 	Input.parse_input_event(release_event)
 
 func on_die_death_area():
-	on_die(false)
+	dead_on_death_area = true
+	$FSM.on_child_transition($FSM.current_state, "death")
 
 func start_invulnerability(ticks: int, allow_kill_enemies: bool = false):
 	if allow_kill_enemies:
