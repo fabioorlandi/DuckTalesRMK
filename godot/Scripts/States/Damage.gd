@@ -10,7 +10,7 @@ func enter() -> void:
 	takingDamage = true
 
 	player.emit_signal("take_damage")
-	await get_tree().create_timer(0.18).timeout
+	await get_tree().create_timer(0.2).timeout
 	
 	takingDamage = false
 

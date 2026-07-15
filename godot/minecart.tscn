@@ -3,6 +3,16 @@
 [ext_resource type="Script" uid="uid://beqqocmdiokhd" path="res://Scripts/minecart.gd" id="1_4ni4e"]
 [ext_resource type="Texture2D" uid="uid://c6aq4wchoc7ve" path="res://Assets/minecart.png" id="1_jh0t6"]
 
+[sub_resource type="GDScript" id="GDScript_4ni4e"]
+script/source = "extends Marker2D
+
+func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
+	$Minecart/Area2D.monitoring = true
+	$Minecart/CollisionPolygon2D.disabled = false
+	$Minecart/AnimatedSprite2D.visible = true
+	$Minecart.global_position = position
+"
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_4ni4e"]
 atlas = ExtResource("1_jh0t6")
 region = Rect2(0, 0, 60, 62)
@@ -42,23 +52,30 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f0asi"]
 size = Vector2(19.0625, 3)
 
-[node name="Minecart" type="CharacterBody2D" unique_id=594445490]
+[node name="MinecartSpawn" type="Marker2D" unique_id=1685654381]
+script = SubResource("GDScript_4ni4e")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1063296648]
+
+[node name="Minecart" type="CharacterBody2D" parent="." unique_id=1510886980]
 script = ExtResource("1_4ni4e")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=445239023]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Minecart" unique_id=391772409]
 polygon = PackedVector2Array(-14, -11, -14, 14, 14, 14, 14, -11, 10, -11, 10, 1, -12, 1, -12, -11)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1728839935]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Minecart" unique_id=1600003434]
 z_index = 32
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_f0asi")
 animation = &"minecart"
 autoplay = "minecart"
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1307215445]
+[node name="Area2D" type="Area2D" parent="Minecart" unique_id=2086199152]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1268050787]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Minecart/Area2D" unique_id=36928397]
 position = Vector2(-1, -1)
 shape = SubResource("RectangleShape2D_f0asi")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="body_entered" from="Minecart/Area2D" to="Minecart" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Minecart/Area2D" to="Minecart" method="_on_area_2d_body_exited"]
