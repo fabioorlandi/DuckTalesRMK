@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://dd885wbwnvvlx"]
+
+[ext_resource type="Script" uid="uid://u4ebiiageaq3" path="res://Mumia_Scripts/bola_mumia.gd" id="1_pnnne"]
+[ext_resource type="Texture2D" uid="uid://j82k3v1fss60" path="res://Assets/Bola_Inimigo_Mumia_animated.png" id="3_r0q71"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kvpv3"]
+size = Vector2(16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68vs2"]
+atlas = ExtResource("3_r0q71")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0kd8u"]
+atlas = ExtResource("3_r0q71")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gb7b2"]
+atlas = ExtResource("3_r0q71")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hdvu2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_68vs2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0kd8u")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": 0,
+"name": &"Explosão",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gb7b2")
+}],
+"loop": 1,
+"name": &"Idle",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hdvu2"]
+size = Vector2(8, 16)
+
+[node name="Bola_Mumia" type="RigidBody2D" unique_id=876991902 groups=["Bola"]]
+z_index = 1
+script = ExtResource("1_pnnne")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=234819235]
+shape = SubResource("RectangleShape2D_kvpv3")
+
+[node name="Ball Sprite" type="AnimatedSprite2D" parent="." unique_id=1532609287]
+sprite_frames = SubResource("SpriteFrames_hdvu2")
+animation = &"Idle"
+
+[node name="MonitorarMumia" type="Area2D" parent="." unique_id=1725198387]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MonitorarMumia" unique_id=1821896468]
+shape = SubResource("RectangleShape2D_hdvu2")

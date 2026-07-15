@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://c8by4hv38u7kb"]
+
+[ext_resource type="Script" uid="uid://c8nw8r6jueoyf" path="res://Scripts_Fantasma/inimigo_fantasma.gd" id="1_4kdwh"]
+[ext_resource type="Texture2D" uid="uid://dutcmj72bgan3" path="res://Assets/Inimigo_Fantasma.png" id="1_l7ebl"]
+[ext_resource type="Script" uid="uid://cpkay3c01tmlb" path="res://Scripts_Fantasma/fsm_fantasma.gd" id="3_guvq8"]
+[ext_resource type="Script" uid="uid://jk20n0q3oj2s" path="res://Scripts_Fantasma/fantasma_ativado.gd" id="4_uymrm"]
+[ext_resource type="Script" uid="uid://npuibjgrq0pb" path="res://Scripts_Fantasma/fantasma_movendo.gd" id="5_8trad"]
+[ext_resource type="Script" uid="uid://ulgeagrjf5jm" path="res://fantasma_desativado.gd" id="6_uymrm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nkdbr"]
+size = Vector2(24, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hdvu2"]
+size = Vector2(24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4kdwh"]
+atlas = ExtResource("1_l7ebl")
+region = Rect2(0, 0, 23, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_upl6j"]
+atlas = ExtResource("1_l7ebl")
+region = Rect2(23, 0, 23, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hdvu2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4kdwh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_upl6j")
+}],
+"loop": 1,
+"name": &"Move",
+"speed": 5.0
+}]
+
+[node name="Fantasma" type="CharacterBody2D" unique_id=184599053 groups=["Inimigos"]]
+script = ExtResource("1_4kdwh")
+
+[node name="DetectorColisão" type="Area2D" parent="." unique_id=1214937787]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectorColisão" unique_id=1753321711]
+shape = SubResource("RectangleShape2D_nkdbr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1757005640]
+shape = SubResource("RectangleShape2D_hdvu2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1913521434]
+sprite_frames = SubResource("SpriteFrames_hdvu2")
+animation = &"Move"
+frame_progress = 0.53636557
+
+[node name="Label_State" type="Label" parent="." unique_id=606962122]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="FSM" type="Node" parent="." unique_id=2118001444 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_guvq8")
+initial_state = NodePath("DESATIVADO")
+
+[node name="ATIVADO" type="Node" parent="FSM" unique_id=1483765053]
+script = ExtResource("4_uymrm")
+
+[node name="MOVENDO" type="Node" parent="FSM" unique_id=1508527078]
+script = ExtResource("5_8trad")
+
+[node name="DESATIVADO" type="Node" parent="FSM" unique_id=647334625]
+script = ExtResource("6_uymrm")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=832283244]
+rect = Rect2(-12, -12, 24, 24)
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="FSM/DESATIVADO" method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="FSM/MOVENDO" method="_on_visible_on_screen_notifier_2d_screen_exited"]

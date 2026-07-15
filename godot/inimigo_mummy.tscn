@@ -1,0 +1,171 @@
+[gd_scene format=3 uid="uid://dk8uxrf3ew60t"]
+
+[ext_resource type="Script" uid="uid://bwjyq5ou7c883" path="res://Mumia_Scripts/inimigo_mummy.gd" id="1_dx7rg"]
+[ext_resource type="Texture2D" uid="uid://eyckrs081bgs" path="res://Assets/Inimigo_Mumia.png" id="2_epufl"]
+[ext_resource type="Script" uid="uid://btx64rff6hb07" path="res://Mumia_Scripts/fsm_Inimigo_Mumia.gd" id="3_k4o33"]
+[ext_resource type="Texture2D" uid="uid://gt1v2ybrwx6u" path="res://Assets/Bola_Inimigo_Mumia.png" id="3_kvpv3"]
+[ext_resource type="Script" uid="uid://cpqatuhian43e" path="res://Mumia_Scripts/Idle_Mumia.gd" id="4_tepjr"]
+[ext_resource type="Script" uid="uid://d3s84xdmpjy46" path="res://Mumia_Scripts/walk_mummy.gd" id="5_s43cp"]
+[ext_resource type="Script" uid="uid://1tgqheeuod50" path="res://Mumia_Scripts/return_from_right.gd" id="6_iui0h"]
+[ext_resource type="Script" uid="uid://carkkg162w1ry" path="res://Mumia_Scripts/walk_mummy_left.gd" id="7_l21nl"]
+[ext_resource type="Script" uid="uid://bujxrh3thh3s6" path="res://Mumia_Scripts/return_from_left.gd" id="8_0occg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kdjip"]
+size = Vector2(24, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfgdg"]
+atlas = ExtResource("2_epufl")
+region = Rect2(104, 0, 24, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5n7u"]
+atlas = ExtResource("2_epufl")
+region = Rect2(130, 0, 24, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5qvjo"]
+atlas = ExtResource("2_epufl")
+region = Rect2(156, 0, 24, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6aen"]
+atlas = ExtResource("2_epufl")
+region = Rect2(0, 0, 24, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1rjv"]
+atlas = ExtResource("2_epufl")
+region = Rect2(78, 0, 24, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ls7r7"]
+atlas = ExtResource("2_epufl")
+region = Rect2(26, 0, 24, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hygu2"]
+atlas = ExtResource("2_epufl")
+region = Rect2(52, 0, 24, 33)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xo88k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfgdg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m5n7u")
+}],
+"loop": 1,
+"name": &"Die_Mummy",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5qvjo")
+}],
+"loop": 1,
+"name": &"Fall_Mummy",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6aen")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e1rjv")
+}],
+"loop": 1,
+"name": &"Idle_Mummy",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ls7r7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hygu2")
+}],
+"loop": 1,
+"name": &"Walk_Mummy",
+"speed": 8.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ksb4e"]
+atlas = ExtResource("3_kvpv3")
+region = Rect2(21, 9, 6, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nkdbr"]
+size = Vector2(84, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hdvu2"]
+size = Vector2(24, 31)
+
+[node name="Inimigo_mummy" type="CharacterBody2D" unique_id=1622208230 groups=["Inimigos"]]
+script = ExtResource("1_dx7rg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=711778305]
+shape = SubResource("RectangleShape2D_kdjip")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1339402221]
+sprite_frames = SubResource("SpriteFrames_xo88k")
+animation = &"Idle_Mummy"
+
+[node name="Chain_Right" type="Node2D" parent="." unique_id=1665479585]
+visible = false
+position = Vector2(3, 0)
+
+[node name="Chain_Sprite" type="Sprite2D" parent="Chain_Right" unique_id=1542543862]
+position = Vector2(11, 12)
+texture = SubResource("AtlasTexture_ksb4e")
+
+[node name="Chain_Sprite2" type="Sprite2D" parent="Chain_Right" unique_id=1669412344]
+position = Vector2(18, 12)
+texture = SubResource("AtlasTexture_ksb4e")
+
+[node name="Chain_Left" type="Node2D" parent="." unique_id=2038995086]
+visible = false
+position = Vector2(-32, 0)
+
+[node name="Chain_Sprite" type="Sprite2D" parent="Chain_Left" unique_id=970653810]
+position = Vector2(11, 12)
+texture = SubResource("AtlasTexture_ksb4e")
+
+[node name="Chain_Sprite2" type="Sprite2D" parent="Chain_Left" unique_id=1809271229]
+position = Vector2(18, 12)
+texture = SubResource("AtlasTexture_ksb4e")
+
+[node name="Label_State" type="Label" parent="." unique_id=928522347]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="FSM" type="Node" parent="." unique_id=213337848 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_k4o33")
+initial_state = NodePath("Idle_Mummy")
+
+[node name="Idle_Mummy" type="Node" parent="FSM" unique_id=1754085877]
+script = ExtResource("4_tepjr")
+
+[node name="Walk_Mummy_Right" type="Node" parent="FSM" unique_id=1001465619]
+script = ExtResource("5_s43cp")
+
+[node name="Return_From_Right" type="Node" parent="FSM" unique_id=777988172]
+script = ExtResource("6_iui0h")
+
+[node name="Walk_Mummy_Left" type="Node" parent="FSM" unique_id=738097416]
+script = ExtResource("7_l21nl")
+
+[node name="Return_From_Left" type="Node" parent="FSM" unique_id=353009723]
+script = ExtResource("8_0occg")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=117598070]
+
+[node name="MonitorarBola" type="Area2D" parent="." unique_id=31725661]
+
+[node name="MonitorBola" type="CollisionShape2D" parent="MonitorarBola" unique_id=883484077]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_nkdbr")
+
+[node name="ColisãoBola" type="Area2D" parent="." unique_id=1418536747]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ColisãoBola" unique_id=763800623]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_hdvu2")
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

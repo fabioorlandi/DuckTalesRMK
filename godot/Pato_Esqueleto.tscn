@@ -53,7 +53,7 @@ animations = [{
 }],
 "loop": 0,
 "name": &"Ativado",
-"speed": 1.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -102,7 +102,7 @@ debug_color = Color(0.8296411, 0.6198923, 0.13814053, 0.41960785)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1465435755]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_wyc2n")
-animation = &"Caminhar"
+animation = &"Ativado"
 
 [node name="Label_State" type="Label" parent="." unique_id=174796275]
 visible = false
