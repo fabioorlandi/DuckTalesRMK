@@ -31,6 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://dhxidj128h1r0" path="res://Coffin.tscn" id="27_piond"]
 [ext_resource type="PackedScene" uid="uid://c0no7wuq2en61" path="res://spawn_fantasma.tscn" id="30_spb85"]
 [ext_resource type="PackedScene" uid="uid://c8by4hv38u7kb" path="res://Inimigo_Fantasma.tscn" id="31_txsse"]
+[ext_resource type="PackedScene" uid="uid://dteuqmbjdu3ta" path="res://boss_1.tscn" id="32_l5rbu"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_deayw"]
 resource_name = "Cenário_Interativo"
@@ -924,6 +925,9 @@ item_to_spawn = ExtResource("24_n1558")
 position = Vector2(1744, 352)
 spawnGhost = true
 ghost = ExtResource("31_txsse")
+
+[node name="Boss_1" parent="." unique_id=1845184148 instance=ExtResource("32_l5rbu")]
+position = Vector2(1333, -351)
 
 [connection signal="body_entered" from="CameraColliders/FollowXCol" to="CameraColliders/FollowXCol" method="_on_body_entered"]
 [connection signal="body_entered" from="CameraColliders/UnfollowXCol" to="CameraColliders/UnfollowXCol" method="_on_body_entered"]
