@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://d3h4lkr8h5cl8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k1fek"]
+
+[node name="InvisibleBarrier" type="StaticBody2D" unique_id=1618907823 groups=["Barrier"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1304355161]
+shape = SubResource("RectangleShape2D_k1fek")

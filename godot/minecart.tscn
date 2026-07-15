@@ -70,7 +70,7 @@ sprite_frames = SubResource("SpriteFrames_f0asi")
 animation = &"minecart"
 autoplay = "minecart"
 
-[node name="Area2D" type="Area2D" parent="Minecart" unique_id=2086199152]
+[node name="Area2D" type="Area2D" parent="Minecart" unique_id=2086199152 groups=["Minecart"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Minecart/Area2D" unique_id=36928397]
 position = Vector2(-1, -1)
