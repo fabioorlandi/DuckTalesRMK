@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://bujxrh3thh3s6" path="res://Mumia_Scripts/return_from_left.gd" id="8_0occg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kdjip"]
-size = Vector2(24, 30)
+size = Vector2(24, 31)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rfgdg"]
 atlas = ExtResource("2_epufl")
@@ -99,6 +99,7 @@ size = Vector2(24, 31)
 script = ExtResource("1_dx7rg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=711778305]
+position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_kdjip")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1339402221]

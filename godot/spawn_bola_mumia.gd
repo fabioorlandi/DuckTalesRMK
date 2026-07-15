@@ -3,11 +3,8 @@ extends Area2D
 var enemy_scene = preload("res://bola_mumia.tscn")
 var current_enemy: BolaMumia = null
 
-
-	
 func _ready() -> void:
 	$VisibleOnScreenNotifier2D.screen_entered.connect(_on_screen_entered)
-	
 	
 func spawn_enemy() -> void:
 	var enemy = enemy_scene.instantiate()
@@ -15,8 +12,8 @@ func spawn_enemy() -> void:
 	get_parent().add_child(enemy)
 	current_enemy = enemy
 	current_enemy.tree_exited.connect(_on_enemy_destroyed)
+
 func _on_enemy_destroyed() -> void:
-	# Clear the reference so the spawner knows it can spawn again
 	current_enemy = null
 
 func _on_screen_entered() -> void:
