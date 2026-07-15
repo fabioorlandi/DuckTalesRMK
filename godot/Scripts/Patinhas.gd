@@ -49,15 +49,15 @@ func _process(delta: float) -> void:
 		attack_raycast.scale.x = scale.y * 1
 	
 	if Input.is_action_just_pressed("1"):
-		Teleport(Vector2(176,345), 312)
+		Teleport(Vector2(176,345), 312, 0)
 	if Input.is_action_just_pressed("2"):
-		Teleport(Vector2(1875,574), 543)
+		Teleport(Vector2(1875,574), 543, 2)
 	if Input.is_action_just_pressed("3"):
-		Teleport(Vector2(1537,-115), -168)
+		Teleport(Vector2(1537,-115), -168, 2)
 	if Input.is_action_just_pressed("4"):
-		Teleport(Vector2(1568,-355), -408)
+		Teleport(Vector2(1568,-355), -408, 2)
 	if Input.is_action_just_pressed("5"):
-		Teleport(Vector2(1043,-726), -648)
+		Teleport(Vector2(1043,-726), -648, 1)
 
 func _physics_process(delta: float) -> void:
 	if dead or dead_on_death_area:
@@ -85,18 +85,16 @@ func SetClimb(status: bool, posX: float) -> void:
 	canClimb = status
 	ropeX = posX
 
-func Teleport(pos : Vector2, floor: float) -> void:
+func Teleport(pos : Vector2, floor: float, layer: int) -> void:
 	self.global_position = pos
 	var temp = Vector2(pos.x , floor)
-	$"../Camera2D".futurePos = floor
-	$"../Camera2D".fixed_y = floor
 	$"../Camera2D".global_position = temp
-	$"../Camera2D".follow_x = true
+	$"../Camera2D".floorY = floor
+	$"../Camera2D".screenLayer = layer
 
 func on_die():
 	dead = true
 	
-	$"../Camera2D".follow_x = false
 	AudioManager.play_background_music(load("res://Sounds/12_-_DuckTales_-_NES_-_Dead.ogg"), false)
 	
 	if not dead_on_death_area:
