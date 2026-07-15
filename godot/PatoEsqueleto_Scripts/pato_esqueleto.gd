@@ -8,6 +8,7 @@ var player_on_screen := false
 var can_hit_patinhas = false
 
 var direction := -1
+var dying: bool = false
 
 func is_pogo_interactive():
 	return true
@@ -24,6 +25,11 @@ func _ready():
 func _on_die() -> void:
 	if $FSM.current_state is IDLE:
 		return
+	
+	if not dying:
+		AudioManager.play_sound_effect(load("res://Sounds/SFX/Duck Tales SFX (28).wav"))
+
+	dying = true
 
 	$CollisionShape2D.set_deferred("disabled", true)
 	$IdleCollisionShape.set_deferred("disabled", true)
@@ -38,10 +44,11 @@ func _on_die() -> void:
 		global_position.y - 25,
 		0.15
 	)
+
 func _physics_process(delta: float) -> void:
 	velocity.y += 200 * delta
 	
-	if self.global_position.y >= 1110:
+	if self.global_position.y >= 500:
 		print("caíiii")
 		queue_free()
 	

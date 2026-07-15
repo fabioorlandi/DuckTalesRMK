@@ -1,7 +1,9 @@
-[gd_scene format=4 uid="uid://cl3qvaltijhv2"]
+[gd_scene format=4 uid="uid://de3c60tnlc561"]
 
+[ext_resource type="Script" uid="uid://vk3qku28mk4v" path="res://Scripts/game_screen.gd" id="1_620js"]
 [ext_resource type="PackedScene" uid="uid://bxkdtofu5c6li" path="res://tile_map_layer_background.tscn" id="2_55obg"]
-[ext_resource type="PackedScene" uid="uid://cogx0t83rjkoh" path="res://Patinhas_Animacoes.tscn" id="3_deayw"]
+[ext_resource type="Texture2D" uid="uid://bdxti27hvfdlj" path="res://Assets/Tilemap_Ducktales.png" id="3_620js"]
+[ext_resource type="PackedScene" uid="uid://cogx0t83rjkoh" path="res://Patinhas.tscn" id="3_deayw"]
 [ext_resource type="PackedScene" uid="uid://u1rejandld05" path="res://Bloco_Destruivel.tscn" id="4_63sgq"]
 [ext_resource type="PackedScene" uid="uid://dmy14x3qhkdta" path="res://Bloco_Empurravel.tscn" id="4_fcfpr"]
 [ext_resource type="PackedScene" uid="uid://bqwigldj0fobp" path="res://Armadura.tscn" id="4_fu7tr"]
@@ -13,17 +15,21 @@
 [ext_resource type="PackedScene" uid="uid://dr4b1dq8u1gqe" path="res://spawn_bola_mumia.tscn" id="7_spb85"]
 [ext_resource type="FontFile" uid="uid://dtdqm04fcn0od" path="res://Pixelon.ttf" id="8_rf2pp"]
 [ext_resource type="Texture2D" uid="uid://byx22j1o1twia" path="res://Assets/hpImages.png" id="9_t4tih"]
+[ext_resource type="PackedScene" uid="uid://3l1di1euah7" path="res://Itens/cake.tscn" id="9_xc2wj"]
 [ext_resource type="FontFile" uid="uid://bmvryxwvhho2k" path="res://Ducktales_Font2.ttf" id="13_55obg"]
 [ext_resource type="Script" uid="uid://duegq8tgxl7vr" path="res://Scripts/CameraCollider.gd" id="13_voubw"]
 [ext_resource type="PackedScene" uid="uid://whihmuos5mw" path="res://inimigo_generico.tscn" id="15_ke5s7"]
 [ext_resource type="PackedScene" uid="uid://y0qr46lfx8x2" path="res://spawn_esqueleto.tscn" id="16_55obg"]
 [ext_resource type="PackedScene" uid="uid://cd1fwimvplkgl" path="res://Mirror.tscn" id="16_udr8q"]
+[ext_resource type="PackedScene" uid="uid://diouwj08sugn7" path="res://espinhos.tscn" id="16_up6mq"]
+[ext_resource type="PackedScene" uid="uid://dotj5inrkn8lk" path="res://minecart.tscn" id="17_enhxt"]
 [ext_resource type="PackedScene" uid="uid://ciu76gjltchq7" path="res://Patricia.tscn" id="17_mw0eb"]
 [ext_resource type="PackedScene" uid="uid://c683qceykov55" path="res://Itens/invulnerable.tscn" id="17_udr8q"]
 [ext_resource type="PackedScene" uid="uid://b4i584dk46f7w" path="res://Huguinho.tscn" id="18_gtvlv"]
 [ext_resource type="PackedScene" uid="uid://cngw0b08a76xu" path="res://item_spawner.tscn" id="19_uvku6"]
 [ext_resource type="PackedScene" uid="uid://cupbo0s5wtpur" path="res://Itens/yellow_diamond_G.tscn" id="20_5yvvo"]
 [ext_resource type="PackedScene" uid="uid://cnh4dsac87c5a" path="res://Itens/red_diamond_G.tscn" id="21_uvku6"]
+[ext_resource type="PackedScene" uid="uid://bvdfja30frw6n" path="res://death_area.tscn" id="22_75g3y"]
 [ext_resource type="PackedScene" uid="uid://d3bwflp2ma6xu" path="res://Itens/yellow_diamond_P.tscn" id="23_bn6rm"]
 [ext_resource type="PackedScene" uid="uid://vyeb81uavor6" path="res://Itens/ice_cream.tscn" id="24_n1558"]
 [ext_resource type="PackedScene" uid="uid://dj0doqnic8div" path="res://Itens/life_duck.tscn" id="25_y5hv7"]
@@ -31,6 +37,16 @@
 [ext_resource type="PackedScene" uid="uid://dhxidj128h1r0" path="res://Coffin.tscn" id="27_piond"]
 [ext_resource type="PackedScene" uid="uid://c0no7wuq2en61" path="res://spawn_fantasma.tscn" id="30_spb85"]
 [ext_resource type="PackedScene" uid="uid://c8by4hv38u7kb" path="res://Inimigo_Fantasma.tscn" id="31_txsse"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_enhxt"]
+texture = ExtResource("3_620js")
+2:14/0 = 0
+2:14/0/z_index = 31
+3:14/0 = 0
+3:14/0/z_index = 31
+
+[sub_resource type="TileSet" id="TileSet_1f106"]
+sources/0 = SubResource("TileSetAtlasSource_enhxt")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_deayw"]
 resource_name = "Cenário_Interativo"
@@ -49,20 +65,36 @@ size = Vector2(5.6447678, 49.09293)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_pgjuh"]
 
 [node name="MainNode" type="Node2D" unique_id=1058646140]
+script = ExtResource("1_620js")
 
 [node name="TileMapLayerBackground" parent="." unique_id=1744038407 instance=ExtResource("2_55obg")]
+
+[node name="TileMapLayerInvisibleBackground" type="TileMapLayer" parent="." unique_id=1709796596]
+tile_map_data = PackedByteArray("AABiAPf/AAACAA4AAABjAPf/AAADAA4AAABiAPj/AAACAA4AAABjAPj/AAADAA4AAABiAPn/AAACAA4AAABjAPn/AAADAA4AAABkAPn/AAACAA4AAABlAPn/AAADAA4AAABkAPj/AAACAA4AAABlAPj/AAADAA4AAABkAPf/AAACAA4AAABlAPf/AAADAA4AAABmAPf/AAACAA4AAABnAPf/AAADAA4AAABmAPj/AAACAA4AAABnAPj/AAADAA4AAABmAPn/AAACAA4AAABnAPn/AAADAA4AAABoAPn/AAACAA4AAABpAPn/AAADAA4AAABoAPj/AAACAA4AAABpAPj/AAADAA4AAABoAPf/AAACAA4AAABpAPf/AAADAA4AAABoAAQAAAACAA4AAABpAAQAAAADAA4AAABoAAMAAAACAA4AAABpAAMAAAADAA4AAABqAAMAAAACAA4AAABrAAMAAAADAA4AAABqAAQAAAACAA4AAABrAAQAAAADAA4AAABsAAQAAAACAA4AAABtAAQAAAADAA4AAABsAAMAAAACAA4AAABtAAMAAAADAA4AAABuAAMAAAACAA4AAABvAAMAAAADAA4AAABuAAQAAAACAA4AAABvAAQAAAADAA4AAAA=")
+tile_set = SubResource("TileSet_1f106")
 
 [node name="TileMapLayerForeground" type="TileMapLayer" parent="." unique_id=688610627]
 tile_map_data = PackedByteArray("AAAIABcAAAAAAAAAAQAJABcAAAAAAAAAAQAKABcAAAAAAAAAAQALABcAAAAAAAAAAQASABcAAAAAAAAAAQATABcAAAAAAAAAAQAUABcAAAAAAAAAAQAVABcAAAAAAAAAAQAWABcAAAAAAAAAAQAXABcAAAAAAAAAAQAAABYAAAAAAAAAAQAAABcAAAAAAAAAAQA/ABUAAAAAAAAAAQAuABIAAAAAAAAAAQAvABIAAAAAAAAAAQAwABIAAAAAAAAAAQAzABcAAAAAAAAAAQAyABcAAAAAAAAAAQAxABcAAAAAAAAAAQAwABcAAAAAAAAAAQAxAAQAAAAAAAAAAgA+ABUAAAAAAAAAAQA9ABUAAAAAAAAAAQA8ABUAAAAAAAAAAQBxACQAAAAAAAAAAQByACQAAAAAAAAAAQA5AOr/AAAAAAAAAQA6AOr/AAAAAAAAAQAqAOj/AAAAAAAAAQArAOj/AAAAAAAAAQAiAOf/AAAAAAAAAQAjAOf/AAAAAAAAAQAkAOf/AAAAAAAAAQAlAOf/AAAAAAAAAQAcAOr/AAAAAAAAAQAdAOr/AAAAAAAAAQAeAOr/AAAAAAAAAQAfAOr/AAAAAAAAAQBkAOn/AAAAAAAAAQBkAOj/AAAAAAAAAQBrAOn/AAAAAAAAAQBrAOj/AAAAAAAAAQBxAOj/AAAAAAAAAQB3AOn/AAAAAAAAAQB3AOj/AAAAAAAAAQB3AOf/AAAAAAAAAQA=")
 tile_set = SubResource("TileSet_63sgq")
 
 [node name="Patinhas" parent="." unique_id=917563206 instance=ExtResource("3_deayw")]
-position = Vector2(47, 370)
+position = Vector2(62, 340)
 
-[node name="Interacao_Cenario" type="Node2D" parent="." unique_id=326382331]
+[node name="Inimigo_Generico" parent="." unique_id=403823545 instance=ExtResource("15_ke5s7")]
+position = Vector2(747, 64)
 
-[node name="Armadura01" parent="Interacao_Cenario" unique_id=635808693 instance=ExtResource("4_fu7tr")]
-position = Vector2(496, 350)
+[node name="Spawn" parent="." unique_id=1704297689 instance=ExtResource("16_55obg")]
+position = Vector2(245, 371)
+
+[node name="Spawn2" parent="." unique_id=1762905738 instance=ExtResource("16_55obg")]
+position = Vector2(819, 291)
+
+[node name="Spawn3" parent="." unique_id=447239704 instance=ExtResource("16_55obg")]
+position = Vector2(874, 371)
+
+[node name="Coffin" parent="." unique_id=249903453 instance=ExtResource("27_piond")]
+position = Vector2(1840, 352)
+item_to_spawn = ExtResource("24_n1558")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=356561041 node_paths=PackedStringArray("player")]
 position = Vector2(128, 312)
@@ -73,7 +105,7 @@ speed = 250.0
 [node name="UI" type="Node2D" parent="Camera2D" unique_id=1631643127]
 position = Vector2(-38, -362)
 script = ExtResource("7_lek72")
-health = 3
+health = 2
 healthCap = 3
 lifesCap = 3
 
@@ -409,6 +441,95 @@ collision_mask = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Inimigos/Inimigo_Generico/Area2D" unique_id=2031131104]
 position = Vector2(0, 6.5)
 shape = SubResource("RectangleShape2D_nkdbr")
+
+[node name="LevelInteraction" type="Node" parent="." unique_id=1943546591]
+
+[node name="DeathArea" parent="LevelInteraction" unique_id=807182718 instance=ExtResource("22_75g3y")]
+position = Vector2(776, -545)
+scale = Vector2(2.3, 1)
+
+[node name="DeathArea2" parent="LevelInteraction" unique_id=1402415393 instance=ExtResource("22_75g3y")]
+position = Vector2(560, -543)
+scale = Vector2(1.5, 1)
+
+[node name="DeathArea3" parent="LevelInteraction" unique_id=650647592 instance=ExtResource("22_75g3y")]
+position = Vector2(488.00006, -542)
+scale = Vector2(2.3, 1)
+
+[node name="Minecart01" parent="LevelInteraction" unique_id=594445490 instance=ExtResource("17_enhxt")]
+position = Vector2(977, -685)
+
+[node name="Minecart02" parent="LevelInteraction" unique_id=1766441458 instance=ExtResource("17_enhxt")]
+position = Vector2(593, -654)
+
+[node name="Minecart03" parent="LevelInteraction" unique_id=2034850490 instance=ExtResource("17_enhxt")]
+position = Vector2(528, -590)
+
+[node name="Armadura01" parent="LevelInteraction" unique_id=635808693 instance=ExtResource("4_fu7tr")]
+position = Vector2(496, 350)
+
+[node name="Armadura02" parent="LevelInteraction" unique_id=1334151859 instance=ExtResource("4_fu7tr")]
+position = Vector2(2000, 558)
+dropHelmet = false
+spawnChest = true
+chest = ExtResource("19_uvku6")
+item = ExtResource("9_xc2wj")
+
+[node name="Armadura03" parent="LevelInteraction" unique_id=981039600 instance=ExtResource("4_fu7tr")]
+position = Vector2(816, -370)
+
+[node name="Armadura04" parent="LevelInteraction" unique_id=755991594 instance=ExtResource("4_fu7tr")]
+position = Vector2(624, -130)
+dropHelmet = false
+spawnChest = true
+chest = ExtResource("19_uvku6")
+item = ExtResource("9_xc2wj")
+
+[node name="Armadura05" parent="LevelInteraction" unique_id=1740919923 instance=ExtResource("4_fu7tr")]
+position = Vector2(624, -194)
+
+[node name="Armadura06" parent="LevelInteraction" unique_id=1872941566 instance=ExtResource("4_fu7tr")]
+position = Vector2(720, -130)
+
+[node name="Armadura07" parent="LevelInteraction" unique_id=1154696029 instance=ExtResource("4_fu7tr")]
+position = Vector2(720, -226)
+dropHelmet = false
+spawnChest = true
+chest = ExtResource("19_uvku6")
+item = ExtResource("9_xc2wj")
+
+[node name="Armadura08" parent="LevelInteraction" unique_id=1385120640 instance=ExtResource("4_fu7tr")]
+position = Vector2(752, -226)
+
+[node name="Armadura09" parent="LevelInteraction" unique_id=1806515092 instance=ExtResource("4_fu7tr")]
+position = Vector2(880, -130)
+
+[node name="Armadura10" parent="LevelInteraction" unique_id=376139604 instance=ExtResource("4_fu7tr")]
+position = Vector2(944, -210)
+dropHelmet = false
+spawnChest = true
+chest = ExtResource("19_uvku6")
+item = ExtResource("9_xc2wj")
+
+[node name="Armadura11" parent="LevelInteraction" unique_id=766916825 instance=ExtResource("4_fu7tr")]
+position = Vector2(944, -130)
+dropHelmet = false
+spawnChest = true
+chest = ExtResource("19_uvku6")
+item = ExtResource("9_xc2wj")
+
+[node name="BlocoEmpurravel" type="StaticBody2D" parent="LevelInteraction" unique_id=1296536085]
+position = Vector2(792, 70)
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelInteraction/BlocoEmpurravel" unique_id=2031131104]
+position = Vector2(0, 6.5)
+shape = SubResource("RectangleShape2D_nkdbr")
+
+[node name="Espinhos" parent="LevelInteraction" unique_id=1361436132 instance=ExtResource("16_up6mq")]
+position = Vector2(1526, 639)
+scale = Vector2(24, 2)
 
 [node name="CameraColliders" type="Node" parent="." unique_id=2093379251]
 
@@ -914,11 +1035,6 @@ position = Vector2(1096, 57)
 item_to_spawn = ExtResource("20_5yvvo")
 isChest = true
 canIPogoAndAttack = true
-
-[node name="Coffin" parent="." unique_id=249903453 instance=ExtResource("27_piond")]
-position = Vector2(1840, 352)
-spawnItem = true
-item_to_spawn = ExtResource("24_n1558")
 
 [node name="Coffin2" parent="." unique_id=1071481417 instance=ExtResource("27_piond")]
 position = Vector2(1744, 352)

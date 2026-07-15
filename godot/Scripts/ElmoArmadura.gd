@@ -12,6 +12,8 @@ func _ready() -> void:
 
 func destroy_body(direction: Vector2):
 	if $"..".fallen and not $"..".is_falling:
+		AudioManager.play_sound_effect(load("res://Sounds/SFX/Duck Tales SFX (20).wav"))
+		
 		if direction == Vector2.ZERO:
 			$AnimatedSprite2D.play("destroy_helmet")
 			await $AnimatedSprite2D.animation_finished

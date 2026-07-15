@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://rviwao4ikrwt" path="res://Inimigo_Generico/desativado_inimigo_generico.gd" id="5_xduj7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pf64t"]
-size = Vector2(26, 32)
+size = Vector2(26, 31)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fh3h5"]
 atlas = ExtResource("1_s8fcv")
@@ -47,6 +47,7 @@ collision_mask = 17
 script = ExtResource("1_x52ph")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=807732150]
+position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_pf64t")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1563512526]

@@ -1,0 +1,150 @@
+[gd_scene format=3 uid="uid://q2xjygl6il5y"]
+
+[ext_resource type="Script" uid="uid://cgs7u2sg3arbr" path="res://Scripts/Level_select.gd" id="1_1p1nw"]
+[ext_resource type="Texture2D" uid="uid://dwq4fjmhy2ktq" path="res://Assets/NES - DuckTales - Miscellaneous - Title & Level Select.png" id="1_pp8g0"]
+[ext_resource type="Texture2D" uid="uid://bsvy2642a7orb" path="res://Assets/arrow_up.png" id="2_uj4yf"]
+[ext_resource type="Texture2D" uid="uid://bkb4k5jagkaap" path="res://Assets/coin.png" id="3_s7job"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7job"]
+atlas = ExtResource("2_uj4yf")
+region = Rect2(0, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1p1nw"]
+atlas = ExtResource("2_uj4yf")
+region = Rect2(10, 0, 10, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s6pbk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s7job")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1p1nw")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xjh5"]
+atlas = ExtResource("3_s7job")
+region = Rect2(0, 0, 20, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p02mv"]
+atlas = ExtResource("3_s7job")
+region = Rect2(20, 0, 20, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vg7nh"]
+atlas = ExtResource("3_s7job")
+region = Rect2(40, 0, 20, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8qgw"]
+atlas = ExtResource("3_s7job")
+region = Rect2(60, 0, 20, 19)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uj4yf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xjh5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p02mv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vg7nh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8qgw")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 4.0
+}]
+
+[node name="LevelSelect" type="Node2D" unique_id=1181523828]
+script = ExtResource("1_1p1nw")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1764688287]
+z_index = 10
+position = Vector2(128, 112)
+texture = ExtResource("1_pp8g0")
+region_enabled = true
+region_rect = Rect2(301, 0, 256, 224)
+
+[node name="hideLevelsUp" type="Sprite2D" parent="." unique_id=1273724219]
+z_index = 11
+position = Vector2(126, 108)
+scale = Vector2(0.9546547, 1.1679857)
+texture = ExtResource("1_pp8g0")
+region_enabled = true
+region_rect = Rect2(374, 97, 110, 7)
+
+[node name="hideLevelsDown" type="Sprite2D" parent="." unique_id=42754366]
+z_index = 11
+position = Vector2(131, 135.00002)
+scale = Vector2(0.95, 4.088)
+texture = ExtResource("1_pp8g0")
+region_enabled = true
+region_rect = Rect2(374, 97, 110, 7)
+
+[node name="hideBackground" type="Sprite2D" parent="." unique_id=1833513788]
+position = Vector2(128, 112.00001)
+scale = Vector2(2.4300013, 33.568)
+texture = ExtResource("1_pp8g0")
+region_enabled = true
+region_rect = Rect2(374, 97, 110, 7)
+
+[node name="ArrowMap" type="AnimatedSprite2D" parent="." unique_id=2063688712]
+z_index = 12
+position = Vector2(100, 29)
+sprite_frames = SubResource("SpriteFrames_s6pbk")
+frame_progress = 0.18303275
+
+[node name="levelItem" type="AnimatedSprite2D" parent="." unique_id=655472493]
+z_index = 5
+position = Vector2(48, 143)
+sprite_frames = SubResource("SpriteFrames_uj4yf")
+frame_progress = 0.056641284
+
+[node name="levelItem2" type="AnimatedSprite2D" parent="." unique_id=1168100564]
+z_index = 5
+position = Vector2(208, 143)
+sprite_frames = SubResource("SpriteFrames_uj4yf")
+frame_progress = 0.62718725
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1380117530]
+z_index = 20
+position = Vector2(76, 117)
+texture = ExtResource("1_pp8g0")
+region_enabled = true
+region_rect = Rect2(257, 110, 7, 10)
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1517041087]
+z_index = 20
+position = Vector2(128, 178)
+texture = ExtResource("1_pp8g0")
+region_enabled = true
+region_rect = Rect2(302, 230, 22, 20)
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=1814132620]
+z_index = 20
+position = Vector2(151.47054, 206)
+texture = ExtResource("1_pp8g0")
+region_enabled = true
+region_rect = Rect2(325, 225, 19, 24)
+
+[node name="Sprite2D4" type="Sprite2D" parent="." unique_id=923935617]
+z_index = 20
+position = Vector2(207.51578, 190)
+texture = ExtResource("1_pp8g0")
+region_enabled = true
+region_rect = Rect2(325, 225, 19, 24)
+
+[node name="Sprite2D5" type="Sprite2D" parent="." unique_id=973815367]
+z_index = 20
+position = Vector2(167.50098, 206)
+texture = ExtResource("1_pp8g0")
+region_enabled = true
+region_rect = Rect2(345, 225, 19, 24)

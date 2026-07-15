@@ -17,8 +17,10 @@ func _physics_process(delta: float) -> void:
 func destroy_body(direction: Vector2):
 	var areas = $DetectSorroundingObjects.get_overlapping_areas().filter(\
 		func(area): return area.get_parent() is RigidBody2D and area.monitoring and area.monitorable)
-
+	
 	if areas.size() >= 1 or direction == Vector2.ZERO:
+		AudioManager.play_sound_effect(load("res://Sounds/SFX/Duck Tales SFX (20).wav"))
+		
 		$AnimatedSprite2D.play("destroy_block")
 		
 		$DetectSorroundingObjects/CollisionShape2D.disabled = true
@@ -46,13 +48,19 @@ func _on_detect_sorrounding_objects_body_entered(body: Node2D) -> void:
 	if not projectile:
 		return
 
+	AudioManager.play_sound_effect(load("res://Sounds/SFX/Duck Tales SFX (20).wav"))
+
 	if body.has_signal("die_on_collision"):
 		body.emit_signal("die_on_collision")
 
 	freeze = true
 	projectile = false
+	
+	if body.has_signal("die_on_collision"):
+		$AnimatedSprite2D.play("destroy_block_projectile_explosion")
+	else:
+		$AnimatedSprite2D.play("destroy_block")
 
-	$AnimatedSprite2D.play("destroy_block")
 	await $AnimatedSprite2D.animation_finished
 
 	$DetectSorroundingObjects/CollisionShape2D.disabled = true

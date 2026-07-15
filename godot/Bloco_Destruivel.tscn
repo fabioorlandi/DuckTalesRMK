@@ -20,6 +20,10 @@ region = Rect2(112, 32, 16, 16)
 atlas = ExtResource("2_g0kcy")
 region = Rect2(0, 32, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_d67ak"]
+atlas = ExtResource("2_g0kcy")
+region = Rect2(80, 16, 16, 16)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_6ua7y"]
 animations = [{
 "frames": [{
@@ -51,6 +55,17 @@ animations = [{
 "loop": 1,
 "name": &"destroy_block_projectile",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d67ak")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": 0,
+"name": &"destroy_block_projectile_explosion",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ty2yn"]
@@ -70,7 +85,7 @@ rect = Rect2(-8, -8, 16, 16)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1730345579]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_6ua7y")
-animation = &"destroy_block_projectile"
+animation = &"block"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1130057150]
 shape = SubResource("RectangleShape2D_ty2yn")

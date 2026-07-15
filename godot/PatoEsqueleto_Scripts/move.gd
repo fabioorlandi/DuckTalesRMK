@@ -23,6 +23,9 @@ func physics_update(_delta: float) -> void:
 	
 	actor.move_and_slide()
 	
+	if not actor.dying:
+		AudioManager.play_sound_effect(load("res://Sounds/SFX/Duck Tales SFX (9).wav"), false)
+	
 	# flip
 	var sprite: AnimatedSprite2D = actor.get_node("AnimatedSprite2D")
 	sprite.flip_h = actor.direction > 0
@@ -35,4 +38,5 @@ func physics_update(_delta: float) -> void:
 				body.emit_signal("destroy_on_collision", Vector2.ZERO)
 				transitioned.emit(self, "desativado")
 			elif body and body.name != "Patinhas":
+				AudioManager.play_sound_effect(load("res://Sounds/SFX/Duck Tales SFX (5).wav"))
 				transitioned.emit(self, "desativado")

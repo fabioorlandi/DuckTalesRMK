@@ -7,6 +7,9 @@
 [node name="Mirror" type="Area2D" unique_id=166940864]
 scale = Vector2(0.8, 1)
 script = ExtResource("1_i0d4c")
+canTravel = null
+positionTo = null
+floorPos = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1022854102]
 shape = SubResource("RectangleShape2D_y8xgx")

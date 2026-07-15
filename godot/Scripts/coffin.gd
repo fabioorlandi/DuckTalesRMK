@@ -3,7 +3,7 @@ extends CharacterBody2D
 var alreadyActive: bool = false
 
 @export var spawnGhost: bool
-@export var spawnItem: bool
+@export var spawnChest: bool
 
 @export var ghost: PackedScene
 @export var item_to_spawn: PackedScene

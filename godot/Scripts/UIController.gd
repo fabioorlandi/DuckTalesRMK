@@ -31,7 +31,7 @@ var timeLeft: int = 500
 #Falta score central
 #Falta timer == 500
 
-func _ready():	
+func _ready():
 	loadFromGamePoints()
 	
 	add_to_group("ui")
@@ -48,6 +48,8 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_pressed("m"):
 		get_tree().reload_current_scene()
+	if Input.is_action_just_pressed("pause"):
+		get_tree().paused = !get_tree().paused
 
 func AddScore(points: int) -> void:
 	score += points
@@ -72,14 +74,17 @@ func AddToTotalScore() -> void:
 	
 	GamePoints.totalScore = totalScore
 
-func CauseDamage(damage: int) -> void:
-	var tempHealth = health - damage
-	if health <= 0:
-		#CALL DEATH
-		pass
-	else:
-		health = tempHealth
+func CauseDamage() -> void:
+	var healthDamage = 0
+	if GamePoints.actualDifficulty == "easy":
+		healthDamage = 1;
+	elif GamePoints.actualDifficulty == "normal":
+		healthDamage = 2;
+	elif GamePoints.actualDifficulty == "hard":
+		healthDamage = 4;
 	
+	health = health - healthDamage
+
 	HealthSpritesUpdate()
 	
 func ReceiveCure(cure: int) -> void:
@@ -92,21 +97,21 @@ func ReceiveCure(cure: int) -> void:
 	HealthSpritesUpdate()
 
 func GainHealth() -> void:
-	healthCap += 1
+	healthCap += 2
 	ResetHealth()
 
 func ResetHealth() -> void:
 	health = healthCap
 	HealthSpritesUpdate()
 
-func HealthSpritesUpdate() -> void:
+func HealthSpritesUpdate() -> void:	
 	for i in range(sprites.size()):
-		if i < healthCap:
-			if i < health:
+		if i * 2 < healthCap:
+			if i * 2 < health:
 				HealthToSprite(i, 9)
 			else:
 				HealthToSprite(i, 0)
-		elif i >= healthCap:
+		elif i * 2 >= healthCap:
 			HealthToSprite(i, 18)
 
 func HealthToSprite(index: int, position: int) -> void:

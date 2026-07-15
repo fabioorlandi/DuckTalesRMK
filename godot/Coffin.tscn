@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dhxidj128h1r0"]
 
-[ext_resource type="Script" uid="uid://dgh7hldj0auj4" path="res://coffin.gd" id="1_h6u1k"]
+[ext_resource type="Script" uid="uid://dgh7hldj0auj4" path="res://Scripts/coffin.gd" id="1_h6u1k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y8xgx"]
 

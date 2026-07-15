@@ -21,8 +21,10 @@ func enter() -> void:
 		var collider = player.attack_raycast.get_collider()
 		if can_attack(collider as PhysicsBody2D):
 			attacking_state = AttackState.Success
+			AudioManager.play_sound_effect(load("res://Sounds/SFX/Duck Tales SFX (12).wav"))
 		else:
 			attacking_state = AttackState.Failure
+			AudioManager.play_sound_effect(load("res://Sounds/SFX/Duck Tales SFX (24).wav"))
 			
 		attacking = false
 
@@ -68,6 +70,9 @@ func can_attack(body: PhysicsBody2D) -> bool:
 	
 	if body.has_signal("destroy_on_collision") and body.can_be_destroyed:
 		body.emit_signal("destroy_on_collision", Vector2(1, -1) if player.lastDir == "right" else Vector2(-1, -1))
+		can_attack = true
+	if "chestObj" in body and body.chestObj and "already_obtained" in body.chestObj and not body.chestObj.already_obtained:
+		body.chestObj.get_node("CharacterBody2D").desactiveChest()
 		can_attack = true
 	if body.has_signal("fall_on_collision") and body.can_fall:
 		body.emit_signal("fall_on_collision", Vector2(1, 1) if player.lastDir == "right" else Vector2(-1, 1))
