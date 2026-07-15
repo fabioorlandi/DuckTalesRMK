@@ -60,6 +60,9 @@ sources/0 = SubResource("TileSetScenesCollectionSource_deayw")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nkdbr"]
 size = Vector2(16, 7)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8bd05"]
+size = Vector2(112, 20)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1sa6h"]
 size = Vector2(5.6447678, 49.09293)
 
@@ -422,6 +425,9 @@ position = Vector2(1560, 215)
 [node name="Spawn_Fantasma4" parent="Inimigos" unique_id=1120060897 instance=ExtResource("30_spb85")]
 position = Vector2(1752, 215)
 
+[node name="Boss_1" parent="Inimigos" unique_id=1845184148 instance=ExtResource("32_l5rbu")]
+position = Vector2(1333, -351)
+
 [node name="Inimigo_Generico" parent="Inimigos" unique_id=348211218 instance=ExtResource("15_ke5s7")]
 position = Vector2(747, 64)
 
@@ -433,6 +439,13 @@ collision_mask = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Inimigos/Inimigo_Generico/Area2D" unique_id=2031131104]
 position = Vector2(0, 6.5)
 shape = SubResource("RectangleShape2D_nkdbr")
+
+[node name="Area_Boss" type="Area2D" parent="Inimigos" unique_id=748952039]
+position = Vector2(1305, -471)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Inimigos/Area_Boss" unique_id=744101248]
+position = Vector2(47, 125)
+shape = SubResource("RectangleShape2D_8bd05")
 
 [node name="LevelInteraction" type="Node" parent="." unique_id=1943546591]
 
@@ -1032,9 +1045,6 @@ canIPogoAndAttack = true
 position = Vector2(1744, 352)
 spawnGhost = true
 ghost = ExtResource("31_txsse")
-
-[node name="Boss_1" parent="." unique_id=1845184148 instance=ExtResource("32_l5rbu")]
-position = Vector2(1333, -351)
 
 [connection signal="body_entered" from="CameraColliders/FollowXCol" to="CameraColliders/FollowXCol" method="_on_body_entered"]
 [connection signal="body_entered" from="CameraColliders/UnfollowXCol" to="CameraColliders/UnfollowXCol" method="_on_body_entered"]

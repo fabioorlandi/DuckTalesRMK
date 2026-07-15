@@ -9,7 +9,8 @@ func _ready():
 
 
 func enter():
-
+	$"../../AnimatedSprite2D".play("Voar")
+	tempo = 0.0
 	tween = create_tween()
 	tween.set_loops()
 	
@@ -25,7 +26,7 @@ func enter():
 func physics_update(delta):
 	tempo += delta
 	
-	actor.velocity.x = actor.direction * 60
+	actor.velocity.x = actor.direction * 80
 	actor.move_and_slide()
 	
 	# troca direção nas bordas (exemplo)
@@ -35,7 +36,7 @@ func physics_update(delta):
 	var sprite: AnimatedSprite2D = actor.get_node("AnimatedSprite2D")
 	sprite.flip_h = actor.direction < 0
 	# depois de um tempo, pousa
-	if tempo > 8.0:
+	if tempo > [8.0, 8.0, 8.0, 6.0, 4.0].pick_random():
 		transitioned.emit(self, "pousando")
 		
 func exit():
