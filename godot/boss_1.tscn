@@ -1,0 +1,141 @@
+[gd_scene format=3 uid="uid://dteuqmbjdu3ta"]
+
+[ext_resource type="Script" uid="uid://dlgbe4530veth" path="res://boss_1.gd" id="1_tyqv6"]
+[ext_resource type="Texture2D" uid="uid://wyldscegavnr" path="res://Assets/Boss_1_Spritesheet_1.png" id="1_y66il"]
+[ext_resource type="Texture2D" uid="uid://bujdiefofy5g7" path="res://Assets/Boss_1_Spritesheet_2.png" id="2_p7pij"]
+[ext_resource type="Script" uid="uid://dhyi667t80174" path="res://fsm_boss_1.gd" id="3_mgxgb"]
+[ext_resource type="Script" uid="uid://bj7pu8hlkbml7" path="res://boss_voando.gd" id="4_iv5oi"]
+[ext_resource type="Script" uid="uid://b8hkgcm0x1ncy" path="res://boss_pousando.gd" id="5_o831q"]
+[ext_resource type="Script" uid="uid://ceiaej8ebyobj" path="res://boss_atirando.gd" id="6_tyqv6"]
+[ext_resource type="Script" uid="uid://b0yr8d6b62tm1" path="res://boss_decolando.gd" id="7_o831q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nkdbr"]
+size = Vector2(28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iv5oi"]
+atlas = ExtResource("1_y66il")
+region = Rect2(0, 0, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o831q"]
+atlas = ExtResource("1_y66il")
+region = Rect2(28, 0, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y66il"]
+atlas = ExtResource("1_y66il")
+region = Rect2(0, 0, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tyqv6"]
+atlas = ExtResource("2_p7pij")
+region = Rect2(66, 0, 33, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vioas"]
+atlas = ExtResource("2_p7pij")
+region = Rect2(99, 0, 33, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xtf87"]
+atlas = ExtResource("2_p7pij")
+region = Rect2(0, 0, 33, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7pij"]
+atlas = ExtResource("1_y66il")
+region = Rect2(0, 0, 28, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a51b5"]
+atlas = ExtResource("2_p7pij")
+region = Rect2(0, 0, 33, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_my2bk"]
+atlas = ExtResource("2_p7pij")
+region = Rect2(33, 0, 33, 33)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f35cj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iv5oi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o831q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iv5oi")
+}],
+"loop": 0,
+"name": &"Atirar",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y66il")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tyqv6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vioas")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xtf87")
+}],
+"loop": 0,
+"name": &"Decolar",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xtf87")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tyqv6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vioas")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p7pij")
+}],
+"loop": 0,
+"name": &"Pousar",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a51b5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_my2bk")
+}],
+"loop": 1,
+"name": &"Voar",
+"speed": 8.0
+}]
+
+[node name="Boss_1" type="CharacterBody2D" unique_id=1845184148]
+script = ExtResource("1_tyqv6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=862346417]
+shape = SubResource("RectangleShape2D_nkdbr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=306079627]
+sprite_frames = SubResource("SpriteFrames_f35cj")
+animation = &"Decolar"
+
+[node name="Label_State" type="Label" parent="." unique_id=1528068200]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="FSM" type="Node" parent="." unique_id=1424209649 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_mgxgb")
+initial_state = NodePath("DECOLANDO")
+
+[node name="VOANDO" type="Node" parent="FSM" unique_id=169308294]
+script = ExtResource("4_iv5oi")
+
+[node name="POUSANDO" type="Node" parent="FSM" unique_id=386417280]
+script = ExtResource("5_o831q")
+
+[node name="ATIRANDO" type="Node" parent="FSM" unique_id=630399301]
+script = ExtResource("6_tyqv6")
+
+[node name="DECOLANDO" type="Node" parent="FSM" unique_id=1537558888]
+script = ExtResource("7_o831q")
