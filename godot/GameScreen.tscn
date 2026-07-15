@@ -82,7 +82,6 @@ tile_set = SubResource("TileSet_63sgq")
 [node name="InvisibleBarrier" parent="." unique_id=1618907823 instance=ExtResource("6_t4jw2")]
 position = Vector2(-2, 369)
 scale = Vector2(1, 1.5)
-script = null
 
 [node name="Patinhas" parent="." unique_id=917563206 instance=ExtResource("3_deayw")]
 position = Vector2(62, 340)
@@ -574,192 +573,107 @@ item_to_spawn = ExtResource("20_5yvvo")
 
 [node name="CameraColliders" type="Node" parent="." unique_id=2093379251]
 
-[node name="FollowXCol" type="Area2D" parent="CameraColliders" unique_id=80427989]
-position = Vector2(139, 325)
-scale = Vector2(0.19999999, 1)
+[node name="camCol" type="Area2D" parent="CameraColliders" unique_id=80427989]
+position = Vector2(1920, 431)
+scale = Vector2(3.17281, 0.15445848)
 script = ExtResource("13_voubw")
-FollowX = true
+posUp = 312.0
+posDown = 543.0
 
-[node name="Follow" type="CollisionShape2D" parent="CameraColliders/FollowXCol" unique_id=1679509600]
+[node name="Follow" type="CollisionShape2D" parent="CameraColliders/camCol" unique_id=1679509600]
 position = Vector2(0, -1.0001221)
 scale = Vector2(1.771551, 4.0739007)
 shape = SubResource("RectangleShape2D_1sa6h")
 
-[node name="UnfollowXCol" type="Area2D" parent="CameraColliders" unique_id=1337491644]
-position = Vector2(120, 324)
-scale = Vector2(0.16000247, 1)
+[node name="camCol2" type="Area2D" parent="CameraColliders" unique_id=1063993445]
+position = Vector2(896.00006, 202)
+scale = Vector2(3.17281, 0.15445848)
 script = ExtResource("13_voubw")
-UnfollowX = true
+posUp = 72.0
+posDown = 312.0
+screenLayer = 2
 
-[node name="Follow" type="CollisionShape2D" parent="CameraColliders/UnfollowXCol" unique_id=1573055993]
+[node name="Follow" type="CollisionShape2D" parent="CameraColliders/camCol2" unique_id=583294584]
 position = Vector2(0, -1.0001221)
 scale = Vector2(1.771551, 4.0739007)
 shape = SubResource("RectangleShape2D_1sa6h")
 
-[node name="floor-543-To-312" type="Area2D" parent="CameraColliders" unique_id=876611780]
-position = Vector2(1920, 435)
-scale = Vector2(3.2, 0.4)
+[node name="camCol3" type="Area2D" parent="CameraColliders" unique_id=448478077]
+position = Vector2(384.00006, 157)
+scale = Vector2(3.17281, 0.15445848)
 script = ExtResource("13_voubw")
-Transition = true
-TransitionPos = 312
+posUp = 72.0
+posDown = 312.0
+screenLayer = 1
 
-[node name="Follow" type="CollisionShape2D" parent="CameraColliders/floor-543-To-312" unique_id=795171317]
+[node name="Follow" type="CollisionShape2D" parent="CameraColliders/camCol3" unique_id=75956813]
 position = Vector2(0, -1.0001221)
 scale = Vector2(1.771551, 4.0739007)
 shape = SubResource("RectangleShape2D_1sa6h")
 
-[node name="floor-312-To-543" type="Area2D" parent="CameraColliders" unique_id=148663672]
-position = Vector2(1920, 432)
-scale = Vector2(3.2, 0.4)
+[node name="camCol4" type="Area2D" parent="CameraColliders" unique_id=980029966]
+position = Vector2(383, -34.99997)
+scale = Vector2(3.17281, 0.15445848)
 script = ExtResource("13_voubw")
-Transition = true
-TransitionPos = 543
+posUp = -168.0
+posDown = 72.0
+screenLayer = 1
 
-[node name="Follow" type="CollisionShape2D" parent="CameraColliders/floor-312-To-543" unique_id=606602405]
+[node name="Follow" type="CollisionShape2D" parent="CameraColliders/camCol4" unique_id=1066720333]
 position = Vector2(0, -1.0001221)
 scale = Vector2(1.771551, 4.0739007)
 shape = SubResource("RectangleShape2D_1sa6h")
 
-[node name="floor-312-To-72 - right" type="Area2D" parent="CameraColliders" unique_id=396331675]
-position = Vector2(896, 203)
-scale = Vector2(3.2, 0.4)
+[node name="camCol5" type="Area2D" parent="CameraColliders" unique_id=1277764385]
+position = Vector2(384.00003, -258)
+scale = Vector2(3.17281, 0.15445848)
 script = ExtResource("13_voubw")
-Transition = true
-TransitionPos = 72
+posUp = -408.0
+posDown = -168.0
+screenLayer = 1
 
-[node name="Follow" type="CollisionShape2D" parent="CameraColliders/floor-312-To-72 - right" unique_id=1855719502]
+[node name="Follow" type="CollisionShape2D" parent="CameraColliders/camCol5" unique_id=1595671780]
 position = Vector2(0, -1.0001221)
 scale = Vector2(1.771551, 4.0739007)
 shape = SubResource("RectangleShape2D_1sa6h")
 
-[node name="floor-72-To-312 - right" type="Area2D" parent="CameraColliders" unique_id=1651814085]
-position = Vector2(896, 200)
-scale = Vector2(3.2, 0.4)
+[node name="camCol7" type="Area2D" parent="CameraColliders" unique_id=2008616639]
+position = Vector2(384, -484)
+scale = Vector2(3.895684, 0.028718757)
 script = ExtResource("13_voubw")
-Transition = true
-TransitionPos = 312
+posUp = -648.0
+posDown = -408.0
+screenLayer = 1
+blockDownToUp = true
 
-[node name="Follow" type="CollisionShape2D" parent="CameraColliders/floor-72-To-312 - right" unique_id=671993920]
+[node name="Follow" type="CollisionShape2D" parent="CameraColliders/camCol7" unique_id=1549394071]
 position = Vector2(0, -1.0001221)
 scale = Vector2(1.771551, 4.0739007)
 shape = SubResource("RectangleShape2D_1sa6h")
 
-[node name="floor-312-To-72 - left" type="Area2D" parent="CameraColliders" unique_id=1146254360]
-position = Vector2(384, 155)
-scale = Vector2(3.2, 0.12000242)
+[node name="camCol8" type="Area2D" parent="CameraColliders" unique_id=987653136]
+position = Vector2(897.99994, -255)
+scale = Vector2(3.895684, 0.028718757)
 script = ExtResource("13_voubw")
-Transition = true
-TransitionPos = 72
+posUp = -408.0
+posDown = -168.0
+screenLayer = 2
+blockDownToUp = true
 
-[node name="Follow" type="CollisionShape2D" parent="CameraColliders/floor-312-To-72 - left" unique_id=971010173]
+[node name="Follow" type="CollisionShape2D" parent="CameraColliders/camCol8" unique_id=456039901]
 position = Vector2(0, -1.0001221)
 scale = Vector2(1.771551, 4.0739007)
 shape = SubResource("RectangleShape2D_1sa6h")
 
-[node name="floor-72-To-312 - left" type="Area2D" parent="CameraColliders" unique_id=1305761540]
-position = Vector2(384, 152)
-scale = Vector2(3.2, 0.12000242)
+[node name="camCol6" type="Area2D" parent="CameraColliders" unique_id=1769097319]
+position = Vector2(1408, -49)
+scale = Vector2(3.3695202, 0.15919667)
 script = ExtResource("13_voubw")
-Transition = true
-TransitionPos = 312
+posUp = -168.0
+posDown = 72.0
+screenLayer = 2
 
-[node name="Follow" type="CollisionShape2D" parent="CameraColliders/floor-72-To-312 - left" unique_id=761859310]
-position = Vector2(0, -1.0001221)
-scale = Vector2(1.771551, 4.0739007)
-shape = SubResource("RectangleShape2D_1sa6h")
-
-[node name="floor-72-To- -168 - left" type="Area2D" parent="CameraColliders" unique_id=247762335]
-position = Vector2(384, -37)
-scale = Vector2(3.2, 0.12000242)
-script = ExtResource("13_voubw")
-Transition = true
-TransitionPos = -168
-
-[node name="Follow" type="CollisionShape2D" parent="CameraColliders/floor-72-To- -168 - left" unique_id=2013563637]
-position = Vector2(0, -1.0001221)
-scale = Vector2(1.771551, 4.0739007)
-shape = SubResource("RectangleShape2D_1sa6h")
-
-[node name="floor--168-To- 72 - left" type="Area2D" parent="CameraColliders" unique_id=1856685793]
-position = Vector2(384, -40)
-scale = Vector2(3.2, 0.12000242)
-script = ExtResource("13_voubw")
-Transition = true
-TransitionPos = 72
-
-[node name="Follow" type="CollisionShape2D" parent="CameraColliders/floor--168-To- 72 - left" unique_id=1007252897]
-position = Vector2(0, -1.0001221)
-scale = Vector2(1.771551, 4.0739007)
-shape = SubResource("RectangleShape2D_1sa6h")
-
-[node name="floor--168 -To- -408 - left" type="Area2D" parent="CameraColliders" unique_id=426687097]
-position = Vector2(384, -279)
-scale = Vector2(3.2, 0.3600024)
-script = ExtResource("13_voubw")
-Transition = true
-TransitionPos = -408
-
-[node name="Follow" type="CollisionShape2D" parent="CameraColliders/floor--168 -To- -408 - left" unique_id=1169622897]
-position = Vector2(0, -1.0001221)
-scale = Vector2(1.771551, 4.0739007)
-shape = SubResource("RectangleShape2D_1sa6h")
-
-[node name="floor- -408-To- -168 - left" type="Area2D" parent="CameraColliders" unique_id=1217952647]
-position = Vector2(384, -282)
-scale = Vector2(3.2, 0.3600024)
-script = ExtResource("13_voubw")
-Transition = true
-TransitionPos = -168
-
-[node name="Follow" type="CollisionShape2D" parent="CameraColliders/floor- -408-To- -168 - left" unique_id=925241054]
-position = Vector2(0, -1.0001221)
-scale = Vector2(1.771551, 4.0739007)
-shape = SubResource("RectangleShape2D_1sa6h")
-
-[node name="floor- -408-To- -168 - fall" type="Area2D" parent="CameraColliders" unique_id=1533478671]
-position = Vector2(896, -267)
-scale = Vector2(3.2, 0.0800024)
-script = ExtResource("13_voubw")
-Transition = true
-TransitionPos = -168
-
-[node name="Follow" type="CollisionShape2D" parent="CameraColliders/floor- -408-To- -168 - fall" unique_id=1560740780]
-position = Vector2(0, -1.0001221)
-scale = Vector2(1.771551, 4.0739007)
-shape = SubResource("RectangleShape2D_1sa6h")
-
-[node name="floor- -648-To- -408 - fall" type="Area2D" parent="CameraColliders" unique_id=1065240544]
-position = Vector2(384, -497)
-scale = Vector2(3.2, 0.0800024)
-script = ExtResource("13_voubw")
-Transition = true
-TransitionPos = -408
-
-[node name="Follow" type="CollisionShape2D" parent="CameraColliders/floor- -648-To- -408 - fall" unique_id=58658416]
-position = Vector2(0, -1.0001221)
-scale = Vector2(1.771551, 4.0739007)
-shape = SubResource("RectangleShape2D_1sa6h")
-
-[node name="floor-72-To--168 - right" type="Area2D" parent="CameraColliders" unique_id=131587611]
-position = Vector2(1408, -40)
-scale = Vector2(3.2, 0.4)
-script = ExtResource("13_voubw")
-Transition = true
-TransitionPos = -168
-
-[node name="Follow" type="CollisionShape2D" parent="CameraColliders/floor-72-To--168 - right" unique_id=1470253269]
-position = Vector2(0, -1.0001221)
-scale = Vector2(1.771551, 4.0739007)
-shape = SubResource("RectangleShape2D_1sa6h")
-
-[node name="floor--168-To-72 - right" type="Area2D" parent="CameraColliders" unique_id=1801262641]
-position = Vector2(1408, -43)
-scale = Vector2(3.2, 0.4)
-script = ExtResource("13_voubw")
-Transition = true
-TransitionPos = 72
-
-[node name="Follow" type="CollisionShape2D" parent="CameraColliders/floor--168-To-72 - right" unique_id=1787054833]
+[node name="Follow" type="CollisionShape2D" parent="CameraColliders/camCol6" unique_id=1420103480]
 position = Vector2(0, -1.0001221)
 scale = Vector2(1.771551, 4.0739007)
 shape = SubResource("RectangleShape2D_1sa6h")
@@ -893,11 +807,11 @@ position = Vector2(1671, -423)
 item_to_spawn = ExtResource("20_5yvvo")
 
 [node name="Item Spawner10" parent="ItensInWorld" unique_id=1442681401 instance=ExtResource("19_uvku6")]
-position = Vector2(1880, -455)
+position = Vector2(1880, -451)
 item_to_spawn = ExtResource("20_5yvvo")
 
 [node name="Item Spawner11" parent="ItensInWorld" unique_id=1994605075 instance=ExtResource("19_uvku6")]
-position = Vector2(1832, -439)
+position = Vector2(1832, -437)
 item_to_spawn = ExtResource("20_5yvvo")
 
 [node name="Item Spawner12" parent="ItensInWorld" unique_id=63548011 instance=ExtResource("19_uvku6")]
@@ -981,11 +895,6 @@ position = Vector2(1672, 519)
 item_to_spawn = ExtResource("24_n1558")
 isChest = true
 canIPogoAndAttack = true
-
-[node name="Item Spawner18" parent="ItensInChests" unique_id=335274338 instance=ExtResource("19_uvku6")]
-position = Vector2(1760, 519)
-item_to_spawn = ExtResource("24_n1558")
-isChest = true
 
 [node name="Item Spawner3" parent="ItensInChests" unique_id=26332525 instance=ExtResource("19_uvku6")]
 position = Vector2(1160, 569)
@@ -1080,22 +989,14 @@ canIPogoAndAttack = true
 [node name="Boss_1" parent="." unique_id=1845184148 instance=ExtResource("32_l5rbu")]
 position = Vector2(1333, -351)
 
-[connection signal="body_entered" from="CameraColliders/FollowXCol" to="CameraColliders/FollowXCol" method="_on_body_entered"]
-[connection signal="body_entered" from="CameraColliders/UnfollowXCol" to="CameraColliders/UnfollowXCol" method="_on_body_entered"]
-[connection signal="body_entered" from="CameraColliders/floor-543-To-312" to="CameraColliders/floor-543-To-312" method="_on_body_entered"]
-[connection signal="body_entered" from="CameraColliders/floor-312-To-543" to="CameraColliders/floor-312-To-543" method="_on_body_entered"]
-[connection signal="body_entered" from="CameraColliders/floor-312-To-72 - right" to="CameraColliders/floor-312-To-72 - right" method="_on_body_entered"]
-[connection signal="body_entered" from="CameraColliders/floor-72-To-312 - right" to="CameraColliders/floor-72-To-312 - right" method="_on_body_entered"]
-[connection signal="body_entered" from="CameraColliders/floor-312-To-72 - left" to="CameraColliders/floor-312-To-72 - left" method="_on_body_entered"]
-[connection signal="body_entered" from="CameraColliders/floor-72-To-312 - left" to="CameraColliders/floor-72-To-312 - left" method="_on_body_entered"]
-[connection signal="body_entered" from="CameraColliders/floor-72-To- -168 - left" to="CameraColliders/floor-72-To- -168 - left" method="_on_body_entered"]
-[connection signal="body_entered" from="CameraColliders/floor--168-To- 72 - left" to="CameraColliders/floor--168-To- 72 - left" method="_on_body_entered"]
-[connection signal="body_entered" from="CameraColliders/floor--168 -To- -408 - left" to="CameraColliders/floor--168 -To- -408 - left" method="_on_body_entered"]
-[connection signal="body_entered" from="CameraColliders/floor- -408-To- -168 - left" to="CameraColliders/floor- -408-To- -168 - left" method="_on_body_entered"]
-[connection signal="body_entered" from="CameraColliders/floor- -408-To- -168 - fall" to="CameraColliders/floor- -408-To- -168 - fall" method="_on_body_entered"]
-[connection signal="body_entered" from="CameraColliders/floor- -648-To- -408 - fall" to="CameraColliders/floor- -648-To- -408 - fall" method="_on_body_entered"]
-[connection signal="body_entered" from="CameraColliders/floor-72-To--168 - right" to="CameraColliders/floor-72-To--168 - right" method="_on_body_entered"]
-[connection signal="body_entered" from="CameraColliders/floor--168-To-72 - right" to="CameraColliders/floor--168-To-72 - right" method="_on_body_entered"]
+[connection signal="body_entered" from="CameraColliders/camCol" to="CameraColliders/camCol" method="_on_body_entered"]
+[connection signal="body_entered" from="CameraColliders/camCol2" to="CameraColliders/camCol2" method="_on_body_entered"]
+[connection signal="body_entered" from="CameraColliders/camCol3" to="CameraColliders/camCol3" method="_on_body_entered"]
+[connection signal="body_entered" from="CameraColliders/camCol4" to="CameraColliders/camCol4" method="_on_body_entered"]
+[connection signal="body_entered" from="CameraColliders/camCol5" to="CameraColliders/camCol5" method="_on_body_entered"]
+[connection signal="body_entered" from="CameraColliders/camCol7" to="CameraColliders/camCol7" method="_on_body_entered"]
+[connection signal="body_entered" from="CameraColliders/camCol8" to="CameraColliders/camCol8" method="_on_body_entered"]
+[connection signal="body_entered" from="CameraColliders/camCol6" to="CameraColliders/camCol6" method="_on_body_entered"]
 [connection signal="body_entered" from="Ropes/Corda" to="Ropes/Corda" method="_on_body_entered"]
 [connection signal="body_exited" from="Ropes/Corda" to="Ropes/Corda" method="_on_body_exited"]
 [connection signal="body_entered" from="Ropes/Corda2" to="Ropes/Corda2" method="_on_body_entered"]
