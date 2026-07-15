@@ -71,7 +71,7 @@ func DoFunction(body: Node2D) -> void:
 		Item.stage_trophy:
 			ui.AddScore(1000000)
 		Item.invulnerable:
-			body.emit_signal("invulnerability_ticks_started", 320, true)
+			body.emit_signal("invulnerability_ticks_started", 480, true)
 		Item.health_star:
 			ui.GainHealth()
 		Item.life_duck:

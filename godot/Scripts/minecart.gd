@@ -4,6 +4,7 @@ extends CharacterBody2D
 
 var shake_tween: Tween
 var moving: bool
+var ejecting_player: bool
 signal free_on_death_area
 
 func _ready() -> void:
@@ -13,13 +14,18 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if moving and patinhas:
-		var lastCollision = patinhas.get_last_slide_collision()
+		if patinhas.get_node("CrouchCollisionShape2D").disabled:
+			var lastCollision = patinhas.get_last_slide_collision()
 		
-		if lastCollision:
-			var collider = lastCollision.get_collider()
-			if (patinhas.is_on_ceiling() or patinhas.is_on_wall()) and collider is TileMapLayer:
-				var currentState = patinhas.get_node("FSM").current_state
-				currentState.transitioned.emit(currentState, "damage")
+			if lastCollision:
+				var collider = lastCollision.get_collider()
+				if (patinhas.is_on_ceiling() or patinhas.is_on_wall())\
+					and collider is TileMapLayer:
+					
+					var currentState = patinhas.get_node("FSM").current_state
+					if not ejecting_player:
+						ejecting_player = true
+						currentState.transitioned.emit(currentState, "damage")
 		
 		if is_on_floor():
 			velocity.x = patinhas.SPEED * -1
@@ -43,15 +49,22 @@ func start_shake() -> void:
 	shake_tween.set_loops()
 	
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if moving:
-		return
-	
 	if body.is_in_group("Patinhas"):
+		ejecting_player = false
 		patinhas = body
 		moving = true
+		$Area2D.monitoring = false
 		if shake_tween and shake_tween.is_valid():
 			shake_tween.kill()
 			shake_tween = null
 
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if body.is_in_group("Patinhas"):
+		ejecting_player = true
+		$Area2D.monitoring = true
+
 func queue_free_minecart():
-	queue_free()
+	moving = false
+	$Area2D.monitoring = false
+	$AnimatedSprite2D.visible = false
+	$CollisionPolygon2D.disabled = true
