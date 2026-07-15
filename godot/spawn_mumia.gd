@@ -12,14 +12,13 @@ func spawn_enemy() -> void:
 	get_parent().add_child(enemy)
 	current_enemy = enemy
 	current_enemy.tree_exited.connect(_on_enemy_destroyed)
+
 func _on_enemy_destroyed() -> void:
-	# Clear the reference so the spawner knows it can spawn again
 	current_enemy = null
 
 func _on_screen_entered() -> void:
 	if current_enemy == null:
 		spawn_enemy()
 
-
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	pass # Replace with function body.
+	pass

@@ -19,6 +19,10 @@ func _ready():
 	for inimigo in inimigos:
 		self.add_collision_exception_with(inimigo)
 		
+	var barreiras = get_tree().get_nodes_in_group("Barrier")
+	for barreira in barreiras:
+		self.add_collision_exception_with(barreira)
+		
 	var patinhas = get_tree().get_nodes_in_group("Patinhas")[0]
 	self.add_collision_exception_with(patinhas)
 

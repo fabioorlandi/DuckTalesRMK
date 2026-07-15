@@ -23,7 +23,8 @@ func _physics_process(delta: float) -> void:
 					and collider is TileMapLayer:
 					
 					var currentState = patinhas.get_node("FSM").current_state
-					if not ejecting_player:
+					if currentState != Damage and not ejecting_player and not patinhas.takingDamage:
+						await get_tree().create_timer(0.05).timeout
 						ejecting_player = true
 						currentState.transitioned.emit(currentState, "damage")
 		
