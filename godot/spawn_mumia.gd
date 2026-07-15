@@ -2,13 +2,10 @@ extends Area2D
 
 var enemy_scene = preload("res://inimigo_mummy.tscn")
 var current_enemy: PatoMumia = null
-
-
 	
 func _ready() -> void:
 	$VisibleOnScreenNotifier2D.screen_entered.connect(_on_screen_entered)
-	
-	
+
 func spawn_enemy() -> void:
 	var enemy = enemy_scene.instantiate()
 	enemy.global_position = global_position

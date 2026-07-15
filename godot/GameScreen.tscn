@@ -334,16 +334,7 @@ vertical_alignment = 1
 
 [node name="Inimigos" type="Node" parent="." unique_id=788197644]
 
-[node name="Spawn" parent="Inimigos" unique_id=1186885199 instance=ExtResource("16_55obg")]
-position = Vector2(245, 371)
-
-[node name="Spawn2" parent="Inimigos" unique_id=1762905738 instance=ExtResource("16_55obg")]
-position = Vector2(819, 291)
-
-[node name="Spawn3" parent="Inimigos" unique_id=447239704 instance=ExtResource("16_55obg")]
-position = Vector2(874, 371)
-
-[node name="Spawn4" parent="Inimigos" unique_id=1704297689 instance=ExtResource("16_55obg")]
+[node name="Spawn4" parent="Inimigos" unique_id=894969266 instance=ExtResource("16_55obg")]
 position = Vector2(1072, 340)
 
 [node name="Spawn5" parent="Inimigos" unique_id=1120235689 instance=ExtResource("16_55obg")]
@@ -430,7 +421,7 @@ position = Vector2(1560, 215)
 [node name="Spawn_Fantasma4" parent="Inimigos" unique_id=1120060897 instance=ExtResource("30_spb85")]
 position = Vector2(1752, 215)
 
-[node name="Inimigo_Generico" parent="Inimigos" unique_id=403823545 instance=ExtResource("15_ke5s7")]
+[node name="Inimigo_Generico" parent="Inimigos" unique_id=348211218 instance=ExtResource("15_ke5s7")]
 position = Vector2(747, 64)
 
 [node name="Area2D" type="StaticBody2D" parent="Inimigos/Inimigo_Generico" unique_id=1296536085]
@@ -518,12 +509,12 @@ spawnChest = true
 chest = ExtResource("19_uvku6")
 item = ExtResource("9_xc2wj")
 
-[node name="BlocoEmpurravel" type="StaticBody2D" parent="LevelInteraction" unique_id=1296536085]
+[node name="BlocoEmpurravel" type="StaticBody2D" parent="LevelInteraction" unique_id=1206281225]
 position = Vector2(792, 70)
 collision_layer = 16
 collision_mask = 16
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelInteraction/BlocoEmpurravel" unique_id=2031131104]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelInteraction/BlocoEmpurravel" unique_id=540040559]
 position = Vector2(0, 6.5)
 shape = SubResource("RectangleShape2D_nkdbr")
 
