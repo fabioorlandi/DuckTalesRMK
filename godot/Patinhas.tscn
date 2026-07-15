@@ -369,5 +369,7 @@ player = NodePath("../..")
 script = ExtResource("13_p2la0")
 player = NodePath("../..")
 
+[connection signal="area_entered" from="CollisionArea2D" to="." method="_on_collision_area_2d_area_entered"]
+[connection signal="area_exited" from="CollisionArea2D" to="." method="_on_collision_area_2d_area_exited"]
 [connection signal="body_entered" from="CollisionArea2D" to="." method="_on_collision_area_2d_body_entered"]
 [connection signal="body_exited" from="CollisionArea2D" to="." method="_on_collision_area_2d_body_exited"]

@@ -197,6 +197,23 @@ func _on_collision_area_2d_body_entered(body: Node2D) -> void:
 		elif self.invulnerability_ticks > 0 and self.kill_enemies_during_invulnerability:
 			body.emit_signal("die_on_collision")
 
+func _on_collision_area_2d_area_entered(area: Area2D) -> void:
+	var parent = area.get_parent()
+	
+	if parent is PhysicsBody2D and parent.is_in_group("Inimigos")\
+		and "can_hit_patinhas" in parent\
+		and parent.can_hit_patinhas:
+		if self.invulnerability_ticks == 0:
+			$CollisionArea2D.monitoring = false
+			self.takingDamage = true
+			self.collisionWithEnemy = true
+		elif self.invulnerability_ticks > 0 and self.kill_enemies_during_invulnerability:
+			parent.emit_signal("die_on_collision")
+
 func _on_collision_area_2d_body_exited(body: Node2D) -> void:
 	if body is PhysicsBody2D and body.is_in_group("Inimigos"):
+		self.collisionWithEnemy = false
+
+func _on_collision_area_2d_area_exited(area: Area2D) -> void:
+	if area.get_parent() is PhysicsBody2D and area.get_parent().is_in_group("Inimigos"):
 		self.collisionWithEnemy = false
