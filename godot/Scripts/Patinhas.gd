@@ -201,6 +201,8 @@ func _on_collision_area_2d_area_entered(area: Area2D) -> void:
 	var parent = area.get_parent()
 	
 	if parent is PhysicsBody2D and parent.is_in_group("Inimigos")\
+		and "can_area_hit_patinhas" in parent\
+		and parent.can_area_hit_patinhas\
 		and "can_hit_patinhas" in parent\
 		and parent.can_hit_patinhas:
 		if self.invulnerability_ticks == 0:
