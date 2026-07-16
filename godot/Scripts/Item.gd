@@ -23,13 +23,10 @@ var direction: int = 1
 @export var max_fall_speed: float = 600.0
 
 func _ready() -> void:
-	var patinhas = get_tree().get_nodes_in_group("Patinhas")[0]	
+	var patinhas = get_tree().get_nodes_in_group("Patinhas")[0]
 	self.add_collision_exception_with(patinhas)
 	
 	$AnimatedSprite2D.play("brilho")
-	
-	var patinhas = get_tree().get_nodes_in_group("Patinhas")[0]
-	self.add_collision_exception_with(patinhas)
 	
 	if (destroyable):
 		timer.timeout.connect(_on_timer_timeout)
