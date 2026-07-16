@@ -94,8 +94,14 @@ func Teleport(pos : Vector2, floor: float, layer: int) -> void:
 
 func on_die():
 	dead = true
+	var wait_timer_to_reset = 0
 	
-	AudioManager.play_background_music(load("res://Sounds/12_-_DuckTales_-_NES_-_Dead.ogg"), false)
+	if $"../Camera2D/UI".lifes <= 0:
+		wait_timer_to_reset = 3
+		AudioManager.play_background_music(load("res://Sounds/13_-_DuckTales_-_NES_-_Game_Over.ogg"), false)
+	else:
+		wait_timer_to_reset = 2
+		AudioManager.play_background_music(load("res://Sounds/12_-_DuckTales_-_NES_-_Dead.ogg"), false)
 	
 	if not dead_on_death_area:
 		self.emit_signal("invulnerability_ticks_started", 9999)
@@ -106,14 +112,14 @@ func on_die():
 		
 		var start_pos = self.position
 		var end_pos = death_recoil
-		var height = 60
+		var height = 100
 		
 		tween.tween_method(
 			func(progress):
 				var x = lerp(start_pos.x, end_pos.x, progress)
 				var y = lerp(start_pos.y, end_pos.y, progress) - height * sin(progress * PI)
 				self.position = Vector2(x, y),
-			0.0, 1.0, 0.75
+			0.0, 1.0, 1
 		)
 		self.animate(&"Morte")
 		await $AnimatedSprite2D.animation_finished
@@ -127,7 +133,7 @@ func on_die():
 				self.position.y = lerp(start_y, death_area_position, progress),
 			0.0, 1.0, 0.75
 		)
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(wait_timer_to_reset).timeout
 	
 	$"../Fade".DoFadeIn(true)
 	queue_free()

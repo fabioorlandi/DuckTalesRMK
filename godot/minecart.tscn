@@ -57,7 +57,7 @@ script = SubResource("GDScript_4ni4e")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1063296648]
 
-[node name="Minecart" type="CharacterBody2D" parent="." unique_id=1510886980]
+[node name="Minecart" type="CharacterBody2D" parent="." unique_id=1510886980 groups=["Minecart"]]
 script = ExtResource("1_4ni4e")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Minecart" unique_id=391772409]

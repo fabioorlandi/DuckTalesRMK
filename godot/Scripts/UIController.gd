@@ -164,7 +164,9 @@ func _on_timer_timeout():
 		timerLabel.text = "0"
 		health = 0
 		HealthSpritesUpdate()
-		player.on_die()
+
+		var currentState = player.get_node("FSM").current_state
+		player.get_node("FSM").on_child_transition(currentState, "death")
 
 func loadFromGamePoints() -> void:
 	healthCap = GamePoints.healthCap
