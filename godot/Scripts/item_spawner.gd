@@ -7,6 +7,8 @@ var already_obtained: bool = false
 
 @export var canIPogoAndAttack: bool
 
+@export var isStatic: bool = false
+
 func SetChest() -> void:
 	isChest = true
 	$CharacterBody2D.visible = true
@@ -29,12 +31,15 @@ func _on_body_entered(body: Node2D) -> void:
 		$AnimatedSprite2D.play("empty")
 		var obj = item_to_spawn.instantiate()
 		obj.global_position = global_position
+		obj.isStatic = isStatic         
 		get_tree().current_scene.add_child(obj)
-		obj.apply_tween()
+		if isStatic:                   
+			obj.apply_tween()
 
 func active_from_chest() -> void:
 	already_obtained = true
 	var obj = item_to_spawn.instantiate()
 	obj.global_position = global_position
+	obj.isStatic = isStatic          
 	get_tree().current_scene.add_child(obj)
 	obj.apply_tween()
