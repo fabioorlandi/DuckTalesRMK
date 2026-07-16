@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cgs7u2sg3arbr" path="res://Scripts/Level_select.gd" id="1_1p1nw"]
 [ext_resource type="Texture2D" uid="uid://dwq4fjmhy2ktq" path="res://Assets/NES - DuckTales - Miscellaneous - Title & Level Select.png" id="1_pp8g0"]
+[ext_resource type="PackedScene" uid="uid://dnxtbxch2goom" path="res://Fade.tscn" id="2_8xjh5"]
 [ext_resource type="Texture2D" uid="uid://bsvy2642a7orb" path="res://Assets/arrow_up.png" id="2_uj4yf"]
 [ext_resource type="Texture2D" uid="uid://bkb4k5jagkaap" path="res://Assets/coin.png" id="3_s7job"]
 
@@ -64,7 +65,12 @@ animations = [{
 }]
 
 [node name="LevelSelect" type="Node2D" unique_id=1181523828]
+process_mode = 3
 script = ExtResource("1_1p1nw")
+
+[node name="Fade" parent="." unique_id=2112622473 instance=ExtResource("2_8xjh5")]
+process_mode = 3
+position = Vector2(128, 113)
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1764688287]
 z_index = 10

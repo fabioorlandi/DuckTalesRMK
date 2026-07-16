@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dnxtbxch2goom"]
+
+[ext_resource type="Texture2D" uid="uid://bdxti27hvfdlj" path="res://Assets/Tilemap_Ducktales.png" id="1_2eu0j"]
+[ext_resource type="Script" uid="uid://xm8kv68duqkx" path="res://Fade.gd" id="1_7ah53"]
+
+[node name="Fade" type="Node2D" unique_id=2112622473]
+z_index = 200
+script = ExtResource("1_7ah53")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1643903818]
+scale = Vector2(19.528751, 25.685349)
+texture = ExtResource("1_2eu0j")
+region_enabled = true
+region_rect = Rect2(82, 24, 15, 10)

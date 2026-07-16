@@ -28,8 +28,7 @@ extends Node
 
 var timeLeft: int = 500
 
-#Falta score central
-#Falta timer == 500
+@onready var player = $"../../Patinhas"
 
 func _ready():
 	loadFromGamePoints()
@@ -157,13 +156,17 @@ func AddTime(amount: int) -> void:
 	timerLabel.text = str(timeLeft)
 
 func _on_timer_timeout():
-	timeLeft -= 1	
+	timeLeft -= 1
 	timerLabel.text = str(timeLeft)
 	
 	if timeLeft <= 0:
 		timer.stop()
 		timerLabel.text = "0"
-		#GAMEOVER
+		health = 0
+		HealthSpritesUpdate()
+
+		var currentState = player.get_node("FSM").current_state
+		player.get_node("FSM").on_child_transition(currentState, "death")
 
 func loadFromGamePoints() -> void:
 	healthCap = GamePoints.healthCap
@@ -177,3 +180,6 @@ func loadFromGamePoints() -> void:
 	lifesLabel.text = "P. " + str(lifes)
 	HealthSpritesUpdate()
 	ResetScore()
+	
+func ReloadPlayer() -> void:
+	pass

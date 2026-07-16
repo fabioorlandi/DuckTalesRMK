@@ -8,10 +8,15 @@ class_name Climb
 var cordaX: float
 var offsetX: float = 4
 
+@onready var camera = $"../../../Camera2D"
+
 func enter() -> void:
 	player.velocity = Vector2.ZERO
 	player.onRope = true
-	cordaX = player.ropeX	
+	cordaX = player.ropeX
+	
+	camera.isFixedCamera = true
+	
 	if player.lastDir == "left":
 		player.global_position.x = cordaX + offsetX
 	elif player.lastDir == "right":
@@ -20,6 +25,8 @@ func enter() -> void:
 func exit() -> void:
 	animated.speed_scale = 1
 	player.onRope = false
+	
+	camera.isFixedCamera = false
 	
 func update(delta: float) -> void:
 	#seta o jogador com a posição x da corda -/+ offset

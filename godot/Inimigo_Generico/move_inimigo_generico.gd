@@ -27,8 +27,6 @@ func physics_update(_delta: float) -> void:
 		await get_tree().create_timer(2).timeout
 		actor.direction *= -1
 		is_turning = false
-		
-
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	self.transitioned.emit(self, "desativado")

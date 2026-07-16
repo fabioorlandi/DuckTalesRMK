@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://de3c60tnlc561"]
 
 [ext_resource type="Script" uid="uid://vk3qku28mk4v" path="res://Scripts/game_screen.gd" id="1_620js"]
+[ext_resource type="PackedScene" uid="uid://dnxtbxch2goom" path="res://Fade.tscn" id="2_4t8am"]
 [ext_resource type="PackedScene" uid="uid://bxkdtofu5c6li" path="res://tile_map_layer_background.tscn" id="2_55obg"]
 [ext_resource type="Texture2D" uid="uid://bdxti27hvfdlj" path="res://Assets/Tilemap_Ducktales.png" id="3_620js"]
 [ext_resource type="PackedScene" uid="uid://cogx0t83rjkoh" path="res://Patinhas.tscn" id="3_deayw"]
@@ -8,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dmy14x3qhkdta" path="res://Bloco_Empurravel.tscn" id="4_fcfpr"]
 [ext_resource type="PackedScene" uid="uid://bqwigldj0fobp" path="res://Armadura.tscn" id="4_fu7tr"]
 [ext_resource type="Script" uid="uid://c10vnem3irjlw" path="res://Scripts/Corda.gd" id="6_4oyrw"]
+[ext_resource type="PackedScene" uid="uid://d3h4lkr8h5cl8" path="res://invisible_barrier.tscn" id="6_t4jw2"]
 [ext_resource type="PackedScene" uid="uid://ceofs14kqndsd" path="res://spawn_mumia.tscn" id="6_up6mq"]
 [ext_resource type="Script" uid="uid://cgnb3xww2ahjd" path="res://Scripts/CameraFollow.gd" id="7_1sa6h"]
 [ext_resource type="Texture2D" uid="uid://c3jqlf0xit1bo" path="res://Assets/UIBackground.png" id="7_fu7tr"]
@@ -69,7 +71,14 @@ size = Vector2(5.6447678, 49.09293)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_pgjuh"]
 
 [node name="MainNode" type="Node2D" unique_id=1058646140]
+process_mode = 3
 script = ExtResource("1_620js")
+player = ExtResource("3_deayw")
+checkpoints = PackedVector2Array(62, 340)
+
+[node name="Fade" parent="." unique_id=2112622473 instance=ExtResource("2_4t8am")]
+process_mode = 3
+position = Vector2(128, 312)
 
 [node name="TileMapLayerBackground" parent="." unique_id=1744038407 instance=ExtResource("2_55obg")]
 
@@ -78,24 +87,15 @@ tile_map_data = PackedByteArray("AABiAPf/AAACAA4AAABjAPf/AAADAA4AAABiAPj/AAACAA4
 tile_set = SubResource("TileSet_1f106")
 
 [node name="TileMapLayerForeground" type="TileMapLayer" parent="." unique_id=688610627]
-tile_map_data = PackedByteArray("AAAIABcAAAAAAAAAAQAJABcAAAAAAAAAAQAKABcAAAAAAAAAAQALABcAAAAAAAAAAQASABcAAAAAAAAAAQATABcAAAAAAAAAAQAUABcAAAAAAAAAAQAVABcAAAAAAAAAAQAWABcAAAAAAAAAAQAXABcAAAAAAAAAAQAAABYAAAAAAAAAAQAAABcAAAAAAAAAAQA/ABUAAAAAAAAAAQAuABIAAAAAAAAAAQAvABIAAAAAAAAAAQAwABIAAAAAAAAAAQAzABcAAAAAAAAAAQAyABcAAAAAAAAAAQAxABcAAAAAAAAAAQAwABcAAAAAAAAAAQAxAAQAAAAAAAAAAgA+ABUAAAAAAAAAAQA9ABUAAAAAAAAAAQA8ABUAAAAAAAAAAQBxACQAAAAAAAAAAQByACQAAAAAAAAAAQA5AOr/AAAAAAAAAQA6AOr/AAAAAAAAAQAqAOj/AAAAAAAAAQArAOj/AAAAAAAAAQAiAOf/AAAAAAAAAQAjAOf/AAAAAAAAAQAkAOf/AAAAAAAAAQAlAOf/AAAAAAAAAQAcAOr/AAAAAAAAAQAdAOr/AAAAAAAAAQAeAOr/AAAAAAAAAQAfAOr/AAAAAAAAAQBkAOn/AAAAAAAAAQBkAOj/AAAAAAAAAQBrAOn/AAAAAAAAAQBrAOj/AAAAAAAAAQBxAOj/AAAAAAAAAQB3AOn/AAAAAAAAAQB3AOj/AAAAAAAAAQB3AOf/AAAAAAAAAQA=")
+tile_map_data = PackedByteArray("AAAIABcAAAAAAAAAAQAJABcAAAAAAAAAAQAKABcAAAAAAAAAAQALABcAAAAAAAAAAQASABcAAAAAAAAAAQATABcAAAAAAAAAAQAUABcAAAAAAAAAAQAVABcAAAAAAAAAAQAWABcAAAAAAAAAAQAXABcAAAAAAAAAAQA/ABUAAAAAAAAAAQAuABIAAAAAAAAAAQAvABIAAAAAAAAAAQAwABIAAAAAAAAAAQAzABcAAAAAAAAAAQAyABcAAAAAAAAAAQAxABcAAAAAAAAAAQAwABcAAAAAAAAAAQAxAAQAAAAAAAAAAgA+ABUAAAAAAAAAAQA9ABUAAAAAAAAAAQA8ABUAAAAAAAAAAQBxACQAAAAAAAAAAQByACQAAAAAAAAAAQA5AOr/AAAAAAAAAQA6AOr/AAAAAAAAAQAqAOj/AAAAAAAAAQArAOj/AAAAAAAAAQAiAOf/AAAAAAAAAQAjAOf/AAAAAAAAAQAkAOf/AAAAAAAAAQAlAOf/AAAAAAAAAQAcAOr/AAAAAAAAAQAdAOr/AAAAAAAAAQAeAOr/AAAAAAAAAQAfAOr/AAAAAAAAAQBkAOn/AAAAAAAAAQBkAOj/AAAAAAAAAQBrAOn/AAAAAAAAAQBrAOj/AAAAAAAAAQBxAOj/AAAAAAAAAQB3AOn/AAAAAAAAAQB3AOj/AAAAAAAAAQB3AOf/AAAAAAAAAQA=")
 tile_set = SubResource("TileSet_63sgq")
+
+[node name="InvisibleBarrier" parent="." unique_id=1618907823 instance=ExtResource("6_t4jw2")]
+position = Vector2(-2, 369)
+scale = Vector2(1, 1.5)
 
 [node name="Patinhas" parent="." unique_id=917563206 instance=ExtResource("3_deayw")]
 position = Vector2(62, 340)
-
-[node name="Spawn" parent="." unique_id=1704297689 instance=ExtResource("16_55obg")]
-position = Vector2(245, 371)
-
-[node name="Spawn2" parent="." unique_id=1762905738 instance=ExtResource("16_55obg")]
-position = Vector2(819, 291)
-
-[node name="Spawn3" parent="." unique_id=447239704 instance=ExtResource("16_55obg")]
-position = Vector2(874, 371)
-
-[node name="Coffin" parent="." unique_id=249903453 instance=ExtResource("27_piond")]
-position = Vector2(1840, 352)
-item_to_spawn = ExtResource("24_n1558")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=356561041 node_paths=PackedStringArray("player")]
 position = Vector2(128, 312)
@@ -333,7 +333,16 @@ vertical_alignment = 1
 
 [node name="StageTimer" type="Timer" parent="Camera2D/UI/Time" unique_id=1099315288]
 
-[node name="Inimigos" type="Node" parent="." unique_id=788197644]
+[node name="Inimigos" type="Node2D" parent="." unique_id=1893847391]
+
+[node name="Spawn" parent="Inimigos" unique_id=1704297689 instance=ExtResource("16_55obg")]
+position = Vector2(245, 371)
+
+[node name="Spawn2" parent="Inimigos" unique_id=1762905738 instance=ExtResource("16_55obg")]
+position = Vector2(819, 291)
+
+[node name="Spawn3" parent="Inimigos" unique_id=447239704 instance=ExtResource("16_55obg")]
+position = Vector2(874, 371)
 
 [node name="Spawn4" parent="Inimigos" unique_id=894969266 instance=ExtResource("16_55obg")]
 position = Vector2(1072, 340)
@@ -435,7 +444,7 @@ shape = SubResource("RectangleShape2D_8bd05")
 [node name="Spawn_Inimigo_Generico" parent="Inimigos" unique_id=1843823969 instance=ExtResource("21_t4jw2")]
 position = Vector2(747, 69)
 
-[node name="LevelInteraction" type="Node" parent="." unique_id=1943546591]
+[node name="LevelInteraction" type="Node2D" parent="." unique_id=1607798104]
 
 [node name="DeathArea" parent="LevelInteraction" unique_id=807182718 instance=ExtResource("22_75g3y")]
 position = Vector2(776, -545)
@@ -524,199 +533,160 @@ shape = SubResource("RectangleShape2D_nkdbr")
 position = Vector2(1526, 639)
 scale = Vector2(24, 2)
 
-[node name="CameraColliders" type="Node" parent="." unique_id=2093379251]
+[node name="Coffin" parent="LevelInteraction" unique_id=249903453 instance=ExtResource("27_piond")]
+position = Vector2(1840, 352)
+spawnChest = true
+item_to_spawn = ExtResource("20_5yvvo")
 
-[node name="FollowXCol" type="Area2D" parent="CameraColliders" unique_id=80427989]
-position = Vector2(139, 325)
-scale = Vector2(0.19999999, 1)
+[node name="Coffin2" parent="LevelInteraction" unique_id=1071481417 instance=ExtResource("27_piond")]
+position = Vector2(1744, 352)
+spawnGhost = true
+ghost = ExtResource("31_txsse")
+
+[node name="Coffin3" parent="LevelInteraction" unique_id=233200055 instance=ExtResource("27_piond")]
+position = Vector2(1648, 352)
+spawnChest = true
+item_to_spawn = ExtResource("20_5yvvo")
+
+[node name="Coffin4" parent="LevelInteraction" unique_id=1299454421 instance=ExtResource("27_piond")]
+position = Vector2(1552, 352)
+spawnChest = true
+item_to_spawn = ExtResource("20_5yvvo")
+
+[node name="Coffin5" parent="LevelInteraction" unique_id=1706179727 instance=ExtResource("27_piond")]
+position = Vector2(2000, 352)
+spawnGhost = true
+ghost = ExtResource("31_txsse")
+
+[node name="Coffin6" parent="LevelInteraction" unique_id=2093357350 instance=ExtResource("27_piond")]
+position = Vector2(1264, 112)
+spawnGhost = true
+ghost = ExtResource("31_txsse")
+
+[node name="Coffin7" parent="LevelInteraction" unique_id=1822776118 instance=ExtResource("27_piond")]
+position = Vector2(1360, 112)
+spawnGhost = true
+ghost = ExtResource("31_txsse")
+
+[node name="Coffin8" parent="LevelInteraction" unique_id=274856271 instance=ExtResource("27_piond")]
+position = Vector2(1808, 112)
+spawnGhost = true
+ghost = ExtResource("31_txsse")
+
+[node name="Coffin9" parent="LevelInteraction" unique_id=197994283 instance=ExtResource("27_piond")]
+position = Vector2(2000, 112)
+spawnGhost = true
+ghost = ExtResource("31_txsse")
+
+[node name="Coffin10" parent="LevelInteraction" unique_id=165859156 instance=ExtResource("27_piond")]
+position = Vector2(1648, 112)
+spawnChest = true
+item_to_spawn = ExtResource("20_5yvvo")
+
+[node name="CameraColliders" type="Node2D" parent="." unique_id=2126482727]
+
+[node name="camCol" type="Area2D" parent="CameraColliders" unique_id=80427989]
+position = Vector2(1920.0001, 450)
+scale = Vector2(3.17281, 0.2744585)
 script = ExtResource("13_voubw")
-FollowX = true
+posUp = 312.0
+posDown = 543.0
 
-[node name="Follow" type="CollisionShape2D" parent="CameraColliders/FollowXCol" unique_id=1679509600]
+[node name="Follow" type="CollisionShape2D" parent="CameraColliders/camCol" unique_id=1679509600]
 position = Vector2(0, -1.0001221)
 scale = Vector2(1.771551, 4.0739007)
 shape = SubResource("RectangleShape2D_1sa6h")
 
-[node name="UnfollowXCol" type="Area2D" parent="CameraColliders" unique_id=1337491644]
-position = Vector2(120, 324)
-scale = Vector2(0.16000247, 1)
+[node name="camCol2" type="Area2D" parent="CameraColliders" unique_id=1063993445]
+position = Vector2(896.00006, 212.00002)
+scale = Vector2(3.17281, 0.15445848)
 script = ExtResource("13_voubw")
-UnfollowX = true
+posUp = 72.0
+posDown = 312.0
+screenLayer = 2
 
-[node name="Follow" type="CollisionShape2D" parent="CameraColliders/UnfollowXCol" unique_id=1573055993]
+[node name="Follow" type="CollisionShape2D" parent="CameraColliders/camCol2" unique_id=583294584]
+scale = Vector2(1.771551, 6.9225626)
+shape = SubResource("RectangleShape2D_1sa6h")
+
+[node name="camCol3" type="Area2D" parent="CameraColliders" unique_id=448478077]
+position = Vector2(384, 164.00002)
+scale = Vector2(3.17281, 0.11445359)
+script = ExtResource("13_voubw")
+posUp = 72.0
+posDown = 312.0
+screenLayer = 1
+
+[node name="Follow" type="CollisionShape2D" parent="CameraColliders/camCol3" unique_id=75956813]
 position = Vector2(0, -1.0001221)
 scale = Vector2(1.771551, 4.0739007)
 shape = SubResource("RectangleShape2D_1sa6h")
 
-[node name="floor-543-To-312" type="Area2D" parent="CameraColliders" unique_id=876611780]
-position = Vector2(1920, 435)
-scale = Vector2(3.2, 0.4)
+[node name="camCol4" type="Area2D" parent="CameraColliders" unique_id=980029966]
+position = Vector2(384, -33)
+scale = Vector2(3.17281, 0.15445848)
 script = ExtResource("13_voubw")
-Transition = true
-TransitionPos = 312
+posUp = -168.0
+posDown = 72.0
+screenLayer = 1
 
-[node name="Follow" type="CollisionShape2D" parent="CameraColliders/floor-543-To-312" unique_id=795171317]
+[node name="Follow" type="CollisionShape2D" parent="CameraColliders/camCol4" unique_id=1066720333]
+scale = Vector2(1.771551, 5.8866854)
+shape = SubResource("RectangleShape2D_1sa6h")
+
+[node name="camCol5" type="Area2D" parent="CameraColliders" unique_id=1277764385]
+position = Vector2(384.00003, -264)
+scale = Vector2(3.17281, 0.23422012)
+script = ExtResource("13_voubw")
+posUp = -408.0
+posDown = -168.0
+screenLayer = 1
+
+[node name="Follow" type="CollisionShape2D" parent="CameraColliders/camCol5" unique_id=1595671780]
 position = Vector2(0, -1.0001221)
 scale = Vector2(1.771551, 4.0739007)
 shape = SubResource("RectangleShape2D_1sa6h")
 
-[node name="floor-312-To-543" type="Area2D" parent="CameraColliders" unique_id=148663672]
-position = Vector2(1920, 432)
-scale = Vector2(3.2, 0.4)
+[node name="camCol7" type="Area2D" parent="CameraColliders" unique_id=2008616639]
+position = Vector2(383.99997, -487.99997)
+scale = Vector2(3.895684, 0.028718757)
 script = ExtResource("13_voubw")
-Transition = true
-TransitionPos = 543
+posUp = -648.0
+posDown = -408.0
+screenLayer = 1
+blockDownToUp = true
 
-[node name="Follow" type="CollisionShape2D" parent="CameraColliders/floor-312-To-543" unique_id=606602405]
+[node name="Follow" type="CollisionShape2D" parent="CameraColliders/camCol7" unique_id=1549394071]
+scale = Vector2(1.7715511, 4.0739007)
+shape = SubResource("RectangleShape2D_1sa6h")
+
+[node name="camCol8" type="Area2D" parent="CameraColliders" unique_id=987653136]
+position = Vector2(896.99994, -255.00002)
+scale = Vector2(3.895684, 0.028718757)
+script = ExtResource("13_voubw")
+posUp = -408.0
+posDown = -168.0
+screenLayer = 2
+blockDownToUp = true
+
+[node name="Follow" type="CollisionShape2D" parent="CameraColliders/camCol8" unique_id=456039901]
 position = Vector2(0, -1.0001221)
 scale = Vector2(1.771551, 4.0739007)
 shape = SubResource("RectangleShape2D_1sa6h")
 
-[node name="floor-312-To-72 - right" type="Area2D" parent="CameraColliders" unique_id=396331675]
-position = Vector2(896, 203)
-scale = Vector2(3.2, 0.4)
+[node name="camCol6" type="Area2D" parent="CameraColliders" unique_id=1769097319]
+position = Vector2(1408.0001, -30.000002)
+scale = Vector2(3.3695202, 0.15919667)
 script = ExtResource("13_voubw")
-Transition = true
-TransitionPos = 72
+posUp = -168.0
+posDown = 72.0
+screenLayer = 2
 
-[node name="Follow" type="CollisionShape2D" parent="CameraColliders/floor-312-To-72 - right" unique_id=1855719502]
-position = Vector2(0, -1.0001221)
-scale = Vector2(1.771551, 4.0739007)
+[node name="Follow" type="CollisionShape2D" parent="CameraColliders/camCol6" unique_id=1420103480]
+scale = Vector2(1.771551, 6.303652)
 shape = SubResource("RectangleShape2D_1sa6h")
 
-[node name="floor-72-To-312 - right" type="Area2D" parent="CameraColliders" unique_id=1651814085]
-position = Vector2(896, 200)
-scale = Vector2(3.2, 0.4)
-script = ExtResource("13_voubw")
-Transition = true
-TransitionPos = 312
-
-[node name="Follow" type="CollisionShape2D" parent="CameraColliders/floor-72-To-312 - right" unique_id=671993920]
-position = Vector2(0, -1.0001221)
-scale = Vector2(1.771551, 4.0739007)
-shape = SubResource("RectangleShape2D_1sa6h")
-
-[node name="floor-312-To-72 - left" type="Area2D" parent="CameraColliders" unique_id=1146254360]
-position = Vector2(384, 155)
-scale = Vector2(3.2, 0.12000242)
-script = ExtResource("13_voubw")
-Transition = true
-TransitionPos = 72
-
-[node name="Follow" type="CollisionShape2D" parent="CameraColliders/floor-312-To-72 - left" unique_id=971010173]
-position = Vector2(0, -1.0001221)
-scale = Vector2(1.771551, 4.0739007)
-shape = SubResource("RectangleShape2D_1sa6h")
-
-[node name="floor-72-To-312 - left" type="Area2D" parent="CameraColliders" unique_id=1305761540]
-position = Vector2(384, 152)
-scale = Vector2(3.2, 0.12000242)
-script = ExtResource("13_voubw")
-Transition = true
-TransitionPos = 312
-
-[node name="Follow" type="CollisionShape2D" parent="CameraColliders/floor-72-To-312 - left" unique_id=761859310]
-position = Vector2(0, -1.0001221)
-scale = Vector2(1.771551, 4.0739007)
-shape = SubResource("RectangleShape2D_1sa6h")
-
-[node name="floor-72-To- -168 - left" type="Area2D" parent="CameraColliders" unique_id=247762335]
-position = Vector2(384, -37)
-scale = Vector2(3.2, 0.12000242)
-script = ExtResource("13_voubw")
-Transition = true
-TransitionPos = -168
-
-[node name="Follow" type="CollisionShape2D" parent="CameraColliders/floor-72-To- -168 - left" unique_id=2013563637]
-position = Vector2(0, -1.0001221)
-scale = Vector2(1.771551, 4.0739007)
-shape = SubResource("RectangleShape2D_1sa6h")
-
-[node name="floor--168-To- 72 - left" type="Area2D" parent="CameraColliders" unique_id=1856685793]
-position = Vector2(384, -40)
-scale = Vector2(3.2, 0.12000242)
-script = ExtResource("13_voubw")
-Transition = true
-TransitionPos = 72
-
-[node name="Follow" type="CollisionShape2D" parent="CameraColliders/floor--168-To- 72 - left" unique_id=1007252897]
-position = Vector2(0, -1.0001221)
-scale = Vector2(1.771551, 4.0739007)
-shape = SubResource("RectangleShape2D_1sa6h")
-
-[node name="floor--168 -To- -408 - left" type="Area2D" parent="CameraColliders" unique_id=426687097]
-position = Vector2(384, -279)
-scale = Vector2(3.2, 0.3600024)
-script = ExtResource("13_voubw")
-Transition = true
-TransitionPos = -408
-
-[node name="Follow" type="CollisionShape2D" parent="CameraColliders/floor--168 -To- -408 - left" unique_id=1169622897]
-position = Vector2(0, -1.0001221)
-scale = Vector2(1.771551, 4.0739007)
-shape = SubResource("RectangleShape2D_1sa6h")
-
-[node name="floor- -408-To- -168 - left" type="Area2D" parent="CameraColliders" unique_id=1217952647]
-position = Vector2(384, -282)
-scale = Vector2(3.2, 0.3600024)
-script = ExtResource("13_voubw")
-Transition = true
-TransitionPos = -168
-
-[node name="Follow" type="CollisionShape2D" parent="CameraColliders/floor- -408-To- -168 - left" unique_id=925241054]
-position = Vector2(0, -1.0001221)
-scale = Vector2(1.771551, 4.0739007)
-shape = SubResource("RectangleShape2D_1sa6h")
-
-[node name="floor- -408-To- -168 - fall" type="Area2D" parent="CameraColliders" unique_id=1533478671]
-position = Vector2(896, -267)
-scale = Vector2(3.2, 0.0800024)
-script = ExtResource("13_voubw")
-Transition = true
-TransitionPos = -168
-
-[node name="Follow" type="CollisionShape2D" parent="CameraColliders/floor- -408-To- -168 - fall" unique_id=1560740780]
-position = Vector2(0, -1.0001221)
-scale = Vector2(1.771551, 4.0739007)
-shape = SubResource("RectangleShape2D_1sa6h")
-
-[node name="floor- -648-To- -408 - fall" type="Area2D" parent="CameraColliders" unique_id=1065240544]
-position = Vector2(384, -497)
-scale = Vector2(3.2, 0.0800024)
-script = ExtResource("13_voubw")
-Transition = true
-TransitionPos = -408
-
-[node name="Follow" type="CollisionShape2D" parent="CameraColliders/floor- -648-To- -408 - fall" unique_id=58658416]
-position = Vector2(0, -1.0001221)
-scale = Vector2(1.771551, 4.0739007)
-shape = SubResource("RectangleShape2D_1sa6h")
-
-[node name="floor-72-To--168 - right" type="Area2D" parent="CameraColliders" unique_id=131587611]
-position = Vector2(1408, -40)
-scale = Vector2(3.2, 0.4)
-script = ExtResource("13_voubw")
-Transition = true
-TransitionPos = -168
-
-[node name="Follow" type="CollisionShape2D" parent="CameraColliders/floor-72-To--168 - right" unique_id=1470253269]
-position = Vector2(0, -1.0001221)
-scale = Vector2(1.771551, 4.0739007)
-shape = SubResource("RectangleShape2D_1sa6h")
-
-[node name="floor--168-To-72 - right" type="Area2D" parent="CameraColliders" unique_id=1801262641]
-position = Vector2(1408, -43)
-scale = Vector2(3.2, 0.4)
-script = ExtResource("13_voubw")
-Transition = true
-TransitionPos = 72
-
-[node name="Follow" type="CollisionShape2D" parent="CameraColliders/floor--168-To-72 - right" unique_id=1787054833]
-position = Vector2(0, -1.0001221)
-scale = Vector2(1.771551, 4.0739007)
-shape = SubResource("RectangleShape2D_1sa6h")
-
-[node name="Mirrors" type="Node" parent="." unique_id=886873331]
+[node name="Mirrors" type="Node2D" parent="." unique_id=1383626705]
 
 [node name="Mirror-Spikes" parent="Mirrors" unique_id=166940864 instance=ExtResource("16_udr8q")]
 position = Vector2(1068, 608)
@@ -742,7 +712,7 @@ canTravel = true
 positionTo = Vector2(2000, -416)
 floorPos = -408.0
 
-[node name="Ropes" type="Node" parent="." unique_id=81944688]
+[node name="Ropes" type="Node2D" parent="." unique_id=795542849]
 
 [node name="Corda" type="Area2D" parent="Ropes" unique_id=1975783942]
 position = Vector2(896, 336)
@@ -798,7 +768,7 @@ ropeX = 384.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ropes/Corda6" unique_id=269217436]
 shape = SubResource("SegmentShape2D_pgjuh")
 
-[node name="NPC\'s" type="Node" parent="." unique_id=638987697]
+[node name="NPC\'s" type="Node2D" parent="." unique_id=480255272]
 
 [node name="Patrícia" parent="NPC\'s" unique_id=265802063 instance=ExtResource("17_mw0eb")]
 position = Vector2(640, 278)
@@ -806,7 +776,7 @@ position = Vector2(640, 278)
 [node name="Huguinho" parent="NPC\'s" unique_id=2086296186 instance=ExtResource("18_gtvlv")]
 position = Vector2(696, 53)
 
-[node name="ItensInWorld" type="Node" parent="." unique_id=109911603]
+[node name="ItensInWorld" type="Node2D" parent="." unique_id=1965688229]
 
 [node name="Item Spawner" parent="ItensInWorld" unique_id=723129689 instance=ExtResource("19_uvku6")]
 position = Vector2(440, 265)
@@ -845,11 +815,11 @@ position = Vector2(1671, -423)
 item_to_spawn = ExtResource("20_5yvvo")
 
 [node name="Item Spawner10" parent="ItensInWorld" unique_id=1442681401 instance=ExtResource("19_uvku6")]
-position = Vector2(1880, -455)
+position = Vector2(1880, -451)
 item_to_spawn = ExtResource("20_5yvvo")
 
 [node name="Item Spawner11" parent="ItensInWorld" unique_id=1994605075 instance=ExtResource("19_uvku6")]
-position = Vector2(1832, -439)
+position = Vector2(1832, -437)
 item_to_spawn = ExtResource("20_5yvvo")
 
 [node name="Item Spawner12" parent="ItensInWorld" unique_id=63548011 instance=ExtResource("19_uvku6")]
@@ -920,7 +890,7 @@ item_to_spawn = ExtResource("24_n1558")
 position = Vector2(1736, -360)
 item_to_spawn = ExtResource("24_n1558")
 
-[node name="ItensInChests" type="Node" parent="." unique_id=1952884907]
+[node name="ItensInChests" type="Node2D" parent="." unique_id=235759435]
 
 [node name="Item Spawner" parent="ItensInChests" unique_id=1191239241 instance=ExtResource("19_uvku6")]
 position = Vector2(536, 281)
@@ -933,11 +903,6 @@ position = Vector2(1672, 519)
 item_to_spawn = ExtResource("24_n1558")
 isChest = true
 canIPogoAndAttack = true
-
-[node name="Item Spawner18" parent="ItensInChests" unique_id=335274338 instance=ExtResource("19_uvku6")]
-position = Vector2(1760, 519)
-item_to_spawn = ExtResource("24_n1558")
-isChest = true
 
 [node name="Item Spawner3" parent="ItensInChests" unique_id=26332525 instance=ExtResource("19_uvku6")]
 position = Vector2(1160, 569)
@@ -1029,27 +994,17 @@ item_to_spawn = ExtResource("20_5yvvo")
 isChest = true
 canIPogoAndAttack = true
 
-[node name="Coffin2" parent="." unique_id=1071481417 instance=ExtResource("27_piond")]
-position = Vector2(1744, 352)
-spawnGhost = true
-ghost = ExtResource("31_txsse")
+[node name="Boss_1" parent="." unique_id=1845184148 instance=ExtResource("32_l5rbu")]
+position = Vector2(1333, -351)
 
-[connection signal="body_entered" from="CameraColliders/FollowXCol" to="CameraColliders/FollowXCol" method="_on_body_entered"]
-[connection signal="body_entered" from="CameraColliders/UnfollowXCol" to="CameraColliders/UnfollowXCol" method="_on_body_entered"]
-[connection signal="body_entered" from="CameraColliders/floor-543-To-312" to="CameraColliders/floor-543-To-312" method="_on_body_entered"]
-[connection signal="body_entered" from="CameraColliders/floor-312-To-543" to="CameraColliders/floor-312-To-543" method="_on_body_entered"]
-[connection signal="body_entered" from="CameraColliders/floor-312-To-72 - right" to="CameraColliders/floor-312-To-72 - right" method="_on_body_entered"]
-[connection signal="body_entered" from="CameraColliders/floor-72-To-312 - right" to="CameraColliders/floor-72-To-312 - right" method="_on_body_entered"]
-[connection signal="body_entered" from="CameraColliders/floor-312-To-72 - left" to="CameraColliders/floor-312-To-72 - left" method="_on_body_entered"]
-[connection signal="body_entered" from="CameraColliders/floor-72-To-312 - left" to="CameraColliders/floor-72-To-312 - left" method="_on_body_entered"]
-[connection signal="body_entered" from="CameraColliders/floor-72-To- -168 - left" to="CameraColliders/floor-72-To- -168 - left" method="_on_body_entered"]
-[connection signal="body_entered" from="CameraColliders/floor--168-To- 72 - left" to="CameraColliders/floor--168-To- 72 - left" method="_on_body_entered"]
-[connection signal="body_entered" from="CameraColliders/floor--168 -To- -408 - left" to="CameraColliders/floor--168 -To- -408 - left" method="_on_body_entered"]
-[connection signal="body_entered" from="CameraColliders/floor- -408-To- -168 - left" to="CameraColliders/floor- -408-To- -168 - left" method="_on_body_entered"]
-[connection signal="body_entered" from="CameraColliders/floor- -408-To- -168 - fall" to="CameraColliders/floor- -408-To- -168 - fall" method="_on_body_entered"]
-[connection signal="body_entered" from="CameraColliders/floor- -648-To- -408 - fall" to="CameraColliders/floor- -648-To- -408 - fall" method="_on_body_entered"]
-[connection signal="body_entered" from="CameraColliders/floor-72-To--168 - right" to="CameraColliders/floor-72-To--168 - right" method="_on_body_entered"]
-[connection signal="body_entered" from="CameraColliders/floor--168-To-72 - right" to="CameraColliders/floor--168-To-72 - right" method="_on_body_entered"]
+[connection signal="body_entered" from="CameraColliders/camCol" to="CameraColliders/camCol" method="_on_body_entered"]
+[connection signal="body_entered" from="CameraColliders/camCol2" to="CameraColliders/camCol2" method="_on_body_entered"]
+[connection signal="body_entered" from="CameraColliders/camCol3" to="CameraColliders/camCol3" method="_on_body_entered"]
+[connection signal="body_entered" from="CameraColliders/camCol4" to="CameraColliders/camCol4" method="_on_body_entered"]
+[connection signal="body_entered" from="CameraColliders/camCol5" to="CameraColliders/camCol5" method="_on_body_entered"]
+[connection signal="body_entered" from="CameraColliders/camCol7" to="CameraColliders/camCol7" method="_on_body_entered"]
+[connection signal="body_entered" from="CameraColliders/camCol8" to="CameraColliders/camCol8" method="_on_body_entered"]
+[connection signal="body_entered" from="CameraColliders/camCol6" to="CameraColliders/camCol6" method="_on_body_entered"]
 [connection signal="body_entered" from="Ropes/Corda" to="Ropes/Corda" method="_on_body_entered"]
 [connection signal="body_exited" from="Ropes/Corda" to="Ropes/Corda" method="_on_body_exited"]
 [connection signal="body_entered" from="Ropes/Corda2" to="Ropes/Corda2" method="_on_body_entered"]

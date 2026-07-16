@@ -49,15 +49,15 @@ func _process(delta: float) -> void:
 		attack_raycast.scale.x = scale.y * 1
 	
 	if Input.is_action_just_pressed("1"):
-		Teleport(Vector2(176,345), 312)
+		Teleport(Vector2(62,370), 312, 0)
 	if Input.is_action_just_pressed("2"):
-		Teleport(Vector2(1875,574), 543)
+		Teleport(Vector2(1875,578), 543, 2)
 	if Input.is_action_just_pressed("3"):
-		Teleport(Vector2(1537,-115), -168)
+		Teleport(Vector2(1540,-110), -168, 2)
 	if Input.is_action_just_pressed("4"):
-		Teleport(Vector2(1568,-355), -408)
+		Teleport(Vector2(1101,-655), -648, 1)
 	if Input.is_action_just_pressed("5"):
-		Teleport(Vector2(1043,-726), -648)
+		Teleport(Vector2(1966,-351), -408, 2)
 
 func _physics_process(delta: float) -> void:
 	if dead or dead_on_death_area:
@@ -85,19 +85,23 @@ func SetClimb(status: bool, posX: float) -> void:
 	canClimb = status
 	ropeX = posX
 
-func Teleport(pos : Vector2, floor: float) -> void:
+func Teleport(pos : Vector2, floor: float, layer: int) -> void:
 	self.global_position = pos
 	var temp = Vector2(pos.x , floor)
-	$"../Camera2D".futurePos = floor
-	$"../Camera2D".fixed_y = floor
 	$"../Camera2D".global_position = temp
-	$"../Camera2D".follow_x = true
+	$"../Camera2D".floorY = floor
+	$"../Camera2D".screenLayer = layer
 
 func on_die():
 	dead = true
+	var wait_timer_to_reset = 0
 	
-	$"../Camera2D".follow_x = false
-	AudioManager.play_background_music(load("res://Sounds/12_-_DuckTales_-_NES_-_Dead.ogg"), false)
+	if $"../Camera2D/UI".lifes <= 0:
+		wait_timer_to_reset = 3
+		AudioManager.play_background_music(load("res://Sounds/13_-_DuckTales_-_NES_-_Game_Over.ogg"), false)
+	else:
+		wait_timer_to_reset = 2
+		AudioManager.play_background_music(load("res://Sounds/12_-_DuckTales_-_NES_-_Dead.ogg"), false)
 	
 	if not dead_on_death_area:
 		self.emit_signal("invulnerability_ticks_started", 9999)
@@ -108,14 +112,14 @@ func on_die():
 		
 		var start_pos = self.position
 		var end_pos = death_recoil
-		var height = 60
+		var height = 100
 		
 		tween.tween_method(
 			func(progress):
 				var x = lerp(start_pos.x, end_pos.x, progress)
 				var y = lerp(start_pos.y, end_pos.y, progress) - height * sin(progress * PI)
 				self.position = Vector2(x, y),
-			0.0, 1.0, 0.75
+			0.0, 1.0, 1
 		)
 		self.animate(&"Morte")
 		await $AnimatedSprite2D.animation_finished
@@ -129,20 +133,11 @@ func on_die():
 				self.position.y = lerp(start_y, death_area_position, progress),
 			0.0, 1.0, 0.75
 		)
-
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(wait_timer_to_reset).timeout
 	
-	var press_event = InputEventAction.new()
-	press_event.action = "m"
-	press_event.pressed = true
-	Input.parse_input_event(press_event)
-	await get_tree().process_frame
+	$"../Fade".DoFadeIn(true)
+	queue_free()
 	
-	var release_event = InputEventAction.new()
-	release_event.action = "m"
-	release_event.pressed = false
-	Input.parse_input_event(release_event)
-
 func on_die_death_area():
 	dead_on_death_area = true
 	$FSM.on_child_transition($FSM.current_state, "death")
@@ -186,7 +181,10 @@ func compute_hit():
 	await $AnimatedSprite2D.animation_finished
 
 func _on_collision_area_2d_body_entered(body: Node2D) -> void:
-	if body is PhysicsBody2D and body.is_in_group("Inimigos") and "can_hit_patinhas" in body and body.can_hit_patinhas:
+	if body is PhysicsBody2D\
+		and body.is_in_group("Inimigos")\
+		and "can_hit_patinhas" in body\
+		and body.can_hit_patinhas:
 		if self.invulnerability_ticks == 0:
 			$CollisionArea2D.monitoring = false
 			self.takingDamage = true
@@ -194,6 +192,25 @@ func _on_collision_area_2d_body_entered(body: Node2D) -> void:
 		elif self.invulnerability_ticks > 0 and self.kill_enemies_during_invulnerability:
 			body.emit_signal("die_on_collision")
 
+func _on_collision_area_2d_area_entered(area: Area2D) -> void:
+	var parent = area.get_parent()
+	
+	if parent is PhysicsBody2D and parent.is_in_group("Inimigos")\
+		and "can_area_hit_patinhas" in parent\
+		and parent.can_area_hit_patinhas\
+		and "can_hit_patinhas" in parent\
+		and parent.can_hit_patinhas:
+		if self.invulnerability_ticks == 0:
+			$CollisionArea2D.monitoring = false
+			self.takingDamage = true
+			self.collisionWithEnemy = true
+		elif self.invulnerability_ticks > 0 and self.kill_enemies_during_invulnerability:
+			parent.emit_signal("die_on_collision")
+
 func _on_collision_area_2d_body_exited(body: Node2D) -> void:
 	if body is PhysicsBody2D and body.is_in_group("Inimigos"):
+		self.collisionWithEnemy = false
+
+func _on_collision_area_2d_area_exited(area: Area2D) -> void:
+	if area.get_parent() is PhysicsBody2D and area.get_parent().is_in_group("Inimigos"):
 		self.collisionWithEnemy = false

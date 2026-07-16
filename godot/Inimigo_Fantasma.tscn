@@ -52,6 +52,7 @@ animation = &"Move"
 frame_progress = 0.53636557
 
 [node name="Label_State" type="Label" parent="." unique_id=606962122]
+visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 

@@ -42,5 +42,8 @@ func physics_update(delta: float) -> void:
 
 	var collider_normal = player.attack_raycast.get_collision_normal()
 	var collider = player.attack_raycast.get_collider()
-	if collider and collider_normal.x == direction * -1 and not collider.is_in_group("Inimigos"):
+	if collider and round(collider_normal.x) == direction * -1\
+		and not collider.is_in_group("Inimigos")\
+		and not collider.is_in_group("Barrier")\
+		and not collider.is_in_group("Minecart"):
 		transitioned.emit(self, "prepare_attack")
