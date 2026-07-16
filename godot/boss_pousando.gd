@@ -7,7 +7,7 @@ func _ready():
 	actor = get_parent().get_parent()
 
 func enter():
-	actor.velocity = Vector2(0, 100)
+	actor.velocity = Vector2(0, 150)
 func _physics_process(delta: float) -> void:
 	if actor.morrendo:
 		return

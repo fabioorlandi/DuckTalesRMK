@@ -23,12 +23,14 @@ func _ready():
 func _on_die():
 	if vidas >= 1:
 		vidas -= 1
-		modulate_boss()
+		if vidas > 0:
+			modulate_boss()
 	else:
 		pass
 		
 	if vidas == 0:
 		morrendo = true
+		
 		
 		$CollisionShape2D.set_deferred("disabled", true)
 		$AnimatedSprite2D.pause()
@@ -58,11 +60,11 @@ func _physics_process(delta: float) -> void:
 func modulate_boss():
 	
 	var tween = create_tween()
-	for i in range(6):
+	for i in range(24):
 		tween.tween_callback(func(): modulate.a = 0)
-		tween.tween_interval(0.05)
+		tween.tween_interval(0.02)
 		tween.tween_callback(func(): modulate.a = 1)
-		tween.tween_interval(0.05)
+		tween.tween_interval(0.02)
 
 func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 	player_on_screen = true

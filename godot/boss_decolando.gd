@@ -17,7 +17,7 @@ func enter():
 	target_y = [actor.global_position.y - 40, actor.global_position.y - 80, actor.global_position.y - 100].pick_random()
 	
 	
-	actor.velocity = Vector2(0, -120)
+	actor.velocity = Vector2(0, -150)
 func _physics_process(delta: float) -> void:
 	if actor.morrendo:
 		return
