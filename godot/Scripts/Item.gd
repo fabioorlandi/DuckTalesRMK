@@ -12,17 +12,29 @@ var collect_item_sfx = "res://Sounds/SFX/Duck Tales SFX (13).wav"
 @onready var timer: Timer = $Timer
 var timeLeft: int = 6
 
-const gravity = -400.0
 const y_force := -50.0
 
 @export var destroyable: bool
 
+@export var isStatic: bool = true
+var direction: int = 1
+@export var speed: float = 80.0
+@export var gravity: float 
+@export var max_fall_speed: float = 600.0
+
 func _ready() -> void:
+	var patinhas = get_tree().get_nodes_in_group("Patinhas")[0]	
+	self.add_collision_exception_with(patinhas)
+	
 	$AnimatedSprite2D.play("brilho")
 	
 	if (destroyable):
 		timer.timeout.connect(_on_timer_timeout)
 		timer.start()
+	
+	gravity = 900.0
+	if not isStatic:
+		direction = _get_initial_direction()
 	
 	await get_tree().create_timer(.1).timeout
 	$CollisionShape2D.disabled = false
@@ -38,8 +50,21 @@ func _on_timer_timeout():
 		$AnimatedSprite2D.play("fade")
 
 func _physics_process(delta: float) -> void:
-	velocity.y += 400 * delta
-	move_and_slide()
+	if isStatic == true:
+		velocity.y += 400 * delta
+		move_and_slide()
+	else:
+		if not is_on_floor():
+			velocity.y += gravity * delta
+			velocity.y = min(velocity.y, max_fall_speed)
+		else:
+			velocity.y = 0
+
+		velocity.x = speed * direction
+
+		move_and_slide()
+
+		_check_wall_collision()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Patinhas":
@@ -80,3 +105,23 @@ func DoFunction(body: Node2D) -> void:
 			ui.ResetHealth()
 		Item.ice_cream:
 			ui.ReceiveCure(1)
+
+
+func _check_wall_collision() -> void:
+	for i in range(get_slide_collision_count()):
+		var collision = get_slide_collision(i)
+		var normal = collision.get_normal()
+		
+		if abs(normal.x) > 0.5:
+			direction *= -1
+			break
+
+func _get_initial_direction() -> int:
+	var player = get_tree().get_first_node_in_group("player")
+	if player == null:
+		return -1
+
+	if player.global_position.x < global_position.x:
+		return -1 
+	else:
+		return 1 
