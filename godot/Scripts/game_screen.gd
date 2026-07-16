@@ -26,6 +26,7 @@ func ResetPlayer() -> void:
 			obj.global_position = checkpoints[actualCheckpoint]
 			get_tree().current_scene.add_child(obj)
 			$Camera2D.player = obj
+			$Camera2D.floorY = 312
 			$Fade.player = obj
 			$Camera2D/UI.player = obj
 			

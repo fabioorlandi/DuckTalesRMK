@@ -15,13 +15,18 @@ var onTransition: bool = false
 
 @export var screenLayer: int
 
+var onBoss: bool = false
+var alreadyCameraOnBoss: bool = false
+
+@export var smooth_speed: float = 5.0
+
 func _ready():
 	isFixedCamera = false
 
 func _process(delta):
 	CheckMinMax()
 	
-	if player:
+	if player and not onBoss:
 		# Camera follow in X
 		if isFixedCamera == false and onTransition == false:
 			if player.global_position.x < minX:
@@ -40,6 +45,15 @@ func _process(delta):
 				onTransition = false
 				floorY = global_position.y
 				isFixedCamera = false
+				
+	if onBoss and not alreadyCameraOnBoss:
+		var target_x = 1408.0
+		var new_X = lerp(global_position.x, target_x, smooth_speed * delta)
+		global_position.x = new_X
+		if global_position.x == 1408.0:
+			alreadyCameraOnBoss = true
+			floorY = -408.0
+			screenLayer = 3
 
 func CheckMinMax() -> void:
 	match floorY:
@@ -95,3 +109,6 @@ func TransitionCam(posUp: float, posDown: float, layer: int, block: bool) -> voi
 	
 	isFixedCamera = true
 	onTransition = true
+	
+func TransitionBossSite() -> void:
+	onBoss = true
