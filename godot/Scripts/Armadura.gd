@@ -45,7 +45,17 @@ func _physics_process(delta: float) -> void:
 			await tween_shake.finished
 		
 			$RigidBodyElmo.add_collision_exception_with(get_parent().get_parent().get_node("Patinhas"))
+
+			var original_collision_layer = collision_layer
+			var original_collision_mask = collision_mask
+			$RigidBodyElmo.set_deferred("collision_layer", 0)
+			$RigidBodyElmo.set_deferred("collision_mask", 0)
+
 			$RigidBodyElmo.apply_impulse(Vector2(-100, -200) * fall_direction)
+
+			await get_tree().create_timer(0.3).timeout
+			$RigidBodyElmo.set_deferred("collision_layer", original_collision_layer)
+			$RigidBodyElmo.set_deferred("collision_mask", original_collision_mask)
 		elif spawnChest:
 			$RigidBodyElmo/AnimatedSprite2D.play("destroy_helmet")
 			await $RigidBodyElmo/AnimatedSprite2D.animation_finished

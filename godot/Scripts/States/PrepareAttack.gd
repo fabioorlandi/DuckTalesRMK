@@ -17,7 +17,7 @@ func physics_update(delta: float) -> void:
 	if collision:
 		var body = collision.get_collider()
 		#Garante que está se movendo em direção à colisão
-		if body and collider_normal != Vector2.ZERO and collider_normal.x == direction * -1  and not body.is_in_group("Inimigos"):
+		if body and collider_normal != Vector2.ZERO and round(collider_normal.x) == direction * -1  and not body.is_in_group("Inimigos"):
 			if Input.is_action_just_pressed("pogo-attack"):
 				transitioned.emit(self, "attack")
 			else:
