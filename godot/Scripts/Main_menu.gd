@@ -46,7 +46,8 @@ func _process(delta: float) -> void:
 		GamePoints.ResetGamepoints()
 		
 		AudioManager.stop_background_music()
-		get_tree().change_scene_to_file("res://Level_select.tscn")
+		
+		$Fade.DoFadeOutToScene("res://Level_select.tscn")
 
 func _on_timer_timeout() -> void:
 	$AnimatedSprite2D.play("blink")

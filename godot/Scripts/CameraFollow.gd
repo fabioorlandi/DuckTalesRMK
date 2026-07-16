@@ -21,24 +21,25 @@ func _ready():
 func _process(delta):
 	CheckMinMax()
 	
-	# Camera follow in X
-	if isFixedCamera == false and onTransition == false:
-		if player.global_position.x < minX:
-			global_position.x = minX
-		elif player.global_position.x > maxX:
-			global_position.x = maxX
-		else:
-			global_position.x = player.global_position.x
-	elif isFixedCamera == true:
-		global_position.x = fixedX
-	
-	# Camera follow in Y
-	if onTransition == true:
-		global_position.y = move_toward(global_position.y, floorY, speed * delta)
-		if global_position.y == floorY:
-			onTransition = false
-			floorY = global_position.y
-			isFixedCamera = false
+	if player:
+		# Camera follow in X
+		if isFixedCamera == false and onTransition == false:
+			if player.global_position.x < minX:
+				global_position.x = minX
+			elif player.global_position.x > maxX:
+				global_position.x = maxX
+			else:
+				global_position.x = player.global_position.x
+		elif isFixedCamera == true:
+			global_position.x = fixedX
+		
+		# Camera follow in Y
+		if onTransition == true:
+			global_position.y = move_toward(global_position.y, floorY, speed * delta)
+			if global_position.y == floorY:
+				onTransition = false
+				floorY = global_position.y
+				isFixedCamera = false
 
 func CheckMinMax() -> void:
 	match floorY:

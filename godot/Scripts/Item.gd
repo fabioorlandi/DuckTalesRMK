@@ -24,7 +24,7 @@ func _ready() -> void:
 		timer.timeout.connect(_on_timer_timeout)
 		timer.start()
 	
-	await get_tree().create_timer(.2).timeout
+	await get_tree().create_timer(.1).timeout
 	$CollisionShape2D.disabled = false
 
 func _on_timer_timeout():

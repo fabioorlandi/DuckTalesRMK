@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://de3c60tnlc561"]
 
 [ext_resource type="Script" uid="uid://vk3qku28mk4v" path="res://Scripts/game_screen.gd" id="1_620js"]
+[ext_resource type="PackedScene" uid="uid://dnxtbxch2goom" path="res://Fade.tscn" id="2_4t8am"]
 [ext_resource type="PackedScene" uid="uid://bxkdtofu5c6li" path="res://tile_map_layer_background.tscn" id="2_55obg"]
 [ext_resource type="Texture2D" uid="uid://bdxti27hvfdlj" path="res://Assets/Tilemap_Ducktales.png" id="3_620js"]
 [ext_resource type="PackedScene" uid="uid://cogx0t83rjkoh" path="res://Patinhas.tscn" id="3_deayw"]
@@ -67,7 +68,14 @@ size = Vector2(5.6447678, 49.09293)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_pgjuh"]
 
 [node name="MainNode" type="Node2D" unique_id=1058646140]
+process_mode = 3
 script = ExtResource("1_620js")
+player = ExtResource("3_deayw")
+checkpoints = PackedVector2Array(62, 340)
+
+[node name="Fade" parent="." unique_id=2112622473 instance=ExtResource("2_4t8am")]
+process_mode = 3
+position = Vector2(128, 312)
 
 [node name="TileMapLayerBackground" parent="." unique_id=1744038407 instance=ExtResource("2_55obg")]
 
@@ -322,7 +330,7 @@ vertical_alignment = 1
 
 [node name="StageTimer" type="Timer" parent="Camera2D/UI/Time" unique_id=1099315288]
 
-[node name="Inimigos" type="Node" parent="." unique_id=788197644]
+[node name="Inimigos" type="Node2D" parent="." unique_id=1893847391]
 
 [node name="Spawn" parent="Inimigos" unique_id=1704297689 instance=ExtResource("16_55obg")]
 position = Vector2(245, 371)
@@ -432,7 +440,7 @@ collision_mask = 16
 position = Vector2(0, 6.5)
 shape = SubResource("RectangleShape2D_nkdbr")
 
-[node name="LevelInteraction" type="Node" parent="." unique_id=1943546591]
+[node name="LevelInteraction" type="Node2D" parent="." unique_id=1607798104]
 
 [node name="DeathArea" parent="LevelInteraction" unique_id=807182718 instance=ExtResource("22_75g3y")]
 position = Vector2(776, -545)
@@ -571,11 +579,11 @@ position = Vector2(1648, 112)
 spawnChest = true
 item_to_spawn = ExtResource("20_5yvvo")
 
-[node name="CameraColliders" type="Node" parent="." unique_id=2093379251]
+[node name="CameraColliders" type="Node2D" parent="." unique_id=2126482727]
 
 [node name="camCol" type="Area2D" parent="CameraColliders" unique_id=80427989]
-position = Vector2(1920, 431)
-scale = Vector2(3.17281, 0.15445848)
+position = Vector2(1920.0001, 450)
+scale = Vector2(3.17281, 0.2744585)
 script = ExtResource("13_voubw")
 posUp = 312.0
 posDown = 543.0
@@ -586,7 +594,7 @@ scale = Vector2(1.771551, 4.0739007)
 shape = SubResource("RectangleShape2D_1sa6h")
 
 [node name="camCol2" type="Area2D" parent="CameraColliders" unique_id=1063993445]
-position = Vector2(896.00006, 202)
+position = Vector2(896.00006, 212.00002)
 scale = Vector2(3.17281, 0.15445848)
 script = ExtResource("13_voubw")
 posUp = 72.0
@@ -594,13 +602,12 @@ posDown = 312.0
 screenLayer = 2
 
 [node name="Follow" type="CollisionShape2D" parent="CameraColliders/camCol2" unique_id=583294584]
-position = Vector2(0, -1.0001221)
-scale = Vector2(1.771551, 4.0739007)
+scale = Vector2(1.771551, 6.9225626)
 shape = SubResource("RectangleShape2D_1sa6h")
 
 [node name="camCol3" type="Area2D" parent="CameraColliders" unique_id=448478077]
-position = Vector2(384.00006, 157)
-scale = Vector2(3.17281, 0.15445848)
+position = Vector2(384, 164.00002)
+scale = Vector2(3.17281, 0.11445359)
 script = ExtResource("13_voubw")
 posUp = 72.0
 posDown = 312.0
@@ -612,7 +619,7 @@ scale = Vector2(1.771551, 4.0739007)
 shape = SubResource("RectangleShape2D_1sa6h")
 
 [node name="camCol4" type="Area2D" parent="CameraColliders" unique_id=980029966]
-position = Vector2(383, -34.99997)
+position = Vector2(384, -33)
 scale = Vector2(3.17281, 0.15445848)
 script = ExtResource("13_voubw")
 posUp = -168.0
@@ -620,13 +627,12 @@ posDown = 72.0
 screenLayer = 1
 
 [node name="Follow" type="CollisionShape2D" parent="CameraColliders/camCol4" unique_id=1066720333]
-position = Vector2(0, -1.0001221)
-scale = Vector2(1.771551, 4.0739007)
+scale = Vector2(1.771551, 5.8866854)
 shape = SubResource("RectangleShape2D_1sa6h")
 
 [node name="camCol5" type="Area2D" parent="CameraColliders" unique_id=1277764385]
-position = Vector2(384.00003, -258)
-scale = Vector2(3.17281, 0.15445848)
+position = Vector2(384.00003, -264)
+scale = Vector2(3.17281, 0.23422012)
 script = ExtResource("13_voubw")
 posUp = -408.0
 posDown = -168.0
@@ -638,7 +644,7 @@ scale = Vector2(1.771551, 4.0739007)
 shape = SubResource("RectangleShape2D_1sa6h")
 
 [node name="camCol7" type="Area2D" parent="CameraColliders" unique_id=2008616639]
-position = Vector2(384, -484)
+position = Vector2(383.99997, -487.99997)
 scale = Vector2(3.895684, 0.028718757)
 script = ExtResource("13_voubw")
 posUp = -648.0
@@ -647,12 +653,11 @@ screenLayer = 1
 blockDownToUp = true
 
 [node name="Follow" type="CollisionShape2D" parent="CameraColliders/camCol7" unique_id=1549394071]
-position = Vector2(0, -1.0001221)
-scale = Vector2(1.771551, 4.0739007)
+scale = Vector2(1.7715511, 4.0739007)
 shape = SubResource("RectangleShape2D_1sa6h")
 
 [node name="camCol8" type="Area2D" parent="CameraColliders" unique_id=987653136]
-position = Vector2(897.99994, -255)
+position = Vector2(896.99994, -255.00002)
 scale = Vector2(3.895684, 0.028718757)
 script = ExtResource("13_voubw")
 posUp = -408.0
@@ -666,7 +671,7 @@ scale = Vector2(1.771551, 4.0739007)
 shape = SubResource("RectangleShape2D_1sa6h")
 
 [node name="camCol6" type="Area2D" parent="CameraColliders" unique_id=1769097319]
-position = Vector2(1408, -49)
+position = Vector2(1408.0001, -30.000002)
 scale = Vector2(3.3695202, 0.15919667)
 script = ExtResource("13_voubw")
 posUp = -168.0
@@ -674,11 +679,10 @@ posDown = 72.0
 screenLayer = 2
 
 [node name="Follow" type="CollisionShape2D" parent="CameraColliders/camCol6" unique_id=1420103480]
-position = Vector2(0, -1.0001221)
-scale = Vector2(1.771551, 4.0739007)
+scale = Vector2(1.771551, 6.303652)
 shape = SubResource("RectangleShape2D_1sa6h")
 
-[node name="Mirrors" type="Node" parent="." unique_id=886873331]
+[node name="Mirrors" type="Node2D" parent="." unique_id=1383626705]
 
 [node name="Mirror-Spikes" parent="Mirrors" unique_id=166940864 instance=ExtResource("16_udr8q")]
 position = Vector2(1068, 608)
@@ -704,7 +708,7 @@ canTravel = true
 positionTo = Vector2(2000, -416)
 floorPos = -408.0
 
-[node name="Ropes" type="Node" parent="." unique_id=81944688]
+[node name="Ropes" type="Node2D" parent="." unique_id=795542849]
 
 [node name="Corda" type="Area2D" parent="Ropes" unique_id=1975783942]
 position = Vector2(896, 336)
@@ -760,7 +764,7 @@ ropeX = 384.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ropes/Corda6" unique_id=269217436]
 shape = SubResource("SegmentShape2D_pgjuh")
 
-[node name="NPC\'s" type="Node" parent="." unique_id=638987697]
+[node name="NPC\'s" type="Node2D" parent="." unique_id=480255272]
 
 [node name="Patrícia" parent="NPC\'s" unique_id=265802063 instance=ExtResource("17_mw0eb")]
 position = Vector2(640, 278)
@@ -768,7 +772,7 @@ position = Vector2(640, 278)
 [node name="Huguinho" parent="NPC\'s" unique_id=2086296186 instance=ExtResource("18_gtvlv")]
 position = Vector2(696, 53)
 
-[node name="ItensInWorld" type="Node" parent="." unique_id=109911603]
+[node name="ItensInWorld" type="Node2D" parent="." unique_id=1965688229]
 
 [node name="Item Spawner" parent="ItensInWorld" unique_id=723129689 instance=ExtResource("19_uvku6")]
 position = Vector2(440, 265)
@@ -882,7 +886,7 @@ item_to_spawn = ExtResource("24_n1558")
 position = Vector2(1736, -360)
 item_to_spawn = ExtResource("24_n1558")
 
-[node name="ItensInChests" type="Node" parent="." unique_id=1952884907]
+[node name="ItensInChests" type="Node2D" parent="." unique_id=235759435]
 
 [node name="Item Spawner" parent="ItensInChests" unique_id=1191239241 instance=ExtResource("19_uvku6")]
 position = Vector2(536, 281)
