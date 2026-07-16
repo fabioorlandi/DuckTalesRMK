@@ -49,15 +49,15 @@ func _process(delta: float) -> void:
 		attack_raycast.scale.x = scale.y * 1
 	
 	if Input.is_action_just_pressed("1"):
-		Teleport(Vector2(176,345), 312, 0)
+		Teleport(Vector2(62,370), 312, 0)
 	if Input.is_action_just_pressed("2"):
-		Teleport(Vector2(1875,574), 543, 2)
+		Teleport(Vector2(1875,578), 543, 2)
 	if Input.is_action_just_pressed("3"):
-		Teleport(Vector2(1537,-115), -168, 2)
+		Teleport(Vector2(1540,-110), -168, 2)
 	if Input.is_action_just_pressed("4"):
-		Teleport(Vector2(1568,-355), -408, 2)
+		Teleport(Vector2(1101,-655), -648, 1)
 	if Input.is_action_just_pressed("5"):
-		Teleport(Vector2(1043,-726), -648, 1)
+		Teleport(Vector2(1966,-351), -408, 2)
 
 func _physics_process(delta: float) -> void:
 	if dead or dead_on_death_area:
@@ -127,20 +127,11 @@ func on_die():
 				self.position.y = lerp(start_y, death_area_position, progress),
 			0.0, 1.0, 0.75
 		)
-
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(1).timeout
 	
-	var press_event = InputEventAction.new()
-	press_event.action = "m"
-	press_event.pressed = true
-	Input.parse_input_event(press_event)
-	await get_tree().process_frame
+	$"../Fade".DoFadeIn(true)
+	queue_free()
 	
-	var release_event = InputEventAction.new()
-	release_event.action = "m"
-	release_event.pressed = false
-	Input.parse_input_event(release_event)
-
 func on_die_death_area():
 	dead_on_death_area = true
 	$FSM.on_child_transition($FSM.current_state, "death")

@@ -6,4 +6,5 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump"):
 		AudioManager.stop_background_music()
-		get_tree().change_scene_to_file("res://GameScreen.tscn")
+		
+		$Fade.DoFadeOutToScene("res://GameScreen.tscn")
