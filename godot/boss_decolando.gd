@@ -18,8 +18,13 @@ func enter():
 	
 	
 	actor.velocity = Vector2(0, -120)
-
+func _physics_process(delta: float) -> void:
+	if actor.morrendo:
+		return
 func physics_update(delta):
+	
+	if actor.morrendo:
+		return
 	if target_y == null:
 		return
 	

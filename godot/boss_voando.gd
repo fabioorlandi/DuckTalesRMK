@@ -7,7 +7,11 @@ var tween
 func _ready():
 	actor = get_parent().get_parent()
 
-
+func _physics_process(delta: float) -> void:
+	if actor.morrendo:
+		if tween:
+			tween.kill()
+		return
 func enter():
 	$"../../AnimatedSprite2D".play("Voar")
 	tempo = 0.0
@@ -24,6 +28,8 @@ func enter():
 	actor.can_hit_patinhas = true
 
 func physics_update(delta):
+	if actor.morrendo:
+		return
 	tempo += delta
 	
 	actor.velocity.x = actor.direction * 80

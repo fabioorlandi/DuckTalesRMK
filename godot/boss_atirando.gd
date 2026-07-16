@@ -7,13 +7,18 @@ var actor
 func _ready():
 	actor = get_parent().get_parent()
 	spawn_point = actor.get_node("SpawnRaio")
+func _physics_process(delta: float) -> void:
+	if actor.morrendo:
+		return
 func enter():
 	
 	actor.velocity = Vector2.ZERO
 	$"../../AnimatedSprite2D".play("Pousar")
 	await get_tree().create_timer(0.8).timeout
 	shoot_sequence()
-
+func physics_update(delta):
+	if actor.morrendo:
+		return
 func shoot_sequence():
 	$"../../AnimatedSprite2D".play("Atirar")
 	

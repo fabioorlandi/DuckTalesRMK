@@ -8,8 +8,12 @@ func _ready():
 
 func enter():
 	actor.velocity = Vector2(0, 100)
-
+func _physics_process(delta: float) -> void:
+	if actor.morrendo:
+		return
 func physics_update(delta):
+	if actor.morrendo:
+		return
 	actor.move_and_slide()
 	
 	if actor.is_on_floor():
