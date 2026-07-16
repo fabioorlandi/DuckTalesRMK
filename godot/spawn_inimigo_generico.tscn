@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://ctktdpn0xdjmu"]
+
+[ext_resource type="Script" uid="uid://c65edsceegxda" path="res://spawn_inimigo_generico.gd" id="1_sfxqn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nkdbr"]
+
+[node name="Spawn_Inimigo_Generico" type="Area2D" unique_id=1843823969]
+script = ExtResource("1_sfxqn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1503872519]
+shape = SubResource("RectangleShape2D_nkdbr")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1215551961]
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

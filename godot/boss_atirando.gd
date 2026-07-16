@@ -19,9 +19,17 @@ func enter():
 func physics_update(delta):
 	if actor.morrendo:
 		return
+		
+	var sprite: AnimatedSprite2D = actor.get_node("AnimatedSprite2D")
+	
+	if metade_area.overlaps_body(actor):
+		sprite.flip_h = false
+	else:
+		sprite.flip_h = true
+
 func shoot_sequence():
 	$"../../AnimatedSprite2D".play("Atirar")
-	
+	await get_tree().create_timer(0.2).timeout
 	atirar_1()
 	atirar_2()
 	atirar_3()

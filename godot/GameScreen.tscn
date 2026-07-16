@@ -18,7 +18,6 @@
 [ext_resource type="PackedScene" uid="uid://3l1di1euah7" path="res://Itens/cake.tscn" id="9_xc2wj"]
 [ext_resource type="FontFile" uid="uid://bmvryxwvhho2k" path="res://Ducktales_Font2.ttf" id="13_55obg"]
 [ext_resource type="Script" uid="uid://duegq8tgxl7vr" path="res://Scripts/CameraCollider.gd" id="13_voubw"]
-[ext_resource type="PackedScene" uid="uid://whihmuos5mw" path="res://inimigo_generico.tscn" id="15_ke5s7"]
 [ext_resource type="PackedScene" uid="uid://y0qr46lfx8x2" path="res://spawn_esqueleto.tscn" id="16_55obg"]
 [ext_resource type="PackedScene" uid="uid://cd1fwimvplkgl" path="res://Mirror.tscn" id="16_udr8q"]
 [ext_resource type="PackedScene" uid="uid://diouwj08sugn7" path="res://espinhos.tscn" id="16_up6mq"]
@@ -28,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://b4i584dk46f7w" path="res://Huguinho.tscn" id="18_gtvlv"]
 [ext_resource type="PackedScene" uid="uid://cngw0b08a76xu" path="res://item_spawner.tscn" id="19_uvku6"]
 [ext_resource type="PackedScene" uid="uid://cupbo0s5wtpur" path="res://Itens/yellow_diamond_G.tscn" id="20_5yvvo"]
+[ext_resource type="PackedScene" uid="uid://ctktdpn0xdjmu" path="res://spawn_inimigo_generico.tscn" id="21_t4jw2"]
 [ext_resource type="PackedScene" uid="uid://cnh4dsac87c5a" path="res://Itens/red_diamond_G.tscn" id="21_uvku6"]
 [ext_resource type="PackedScene" uid="uid://bvdfja30frw6n" path="res://death_area.tscn" id="22_75g3y"]
 [ext_resource type="PackedScene" uid="uid://d3bwflp2ma6xu" path="res://Itens/yellow_diamond_P.tscn" id="23_bn6rm"]
@@ -57,11 +57,11 @@ scenes/2/scene = ExtResource("4_fcfpr")
 [sub_resource type="TileSet" id="TileSet_63sgq"]
 sources/0 = SubResource("TileSetScenesCollectionSource_deayw")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8bd05"]
+size = Vector2(107, 20)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nkdbr"]
 size = Vector2(16, 7)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8bd05"]
-size = Vector2(112, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1sa6h"]
 size = Vector2(5.6447678, 49.09293)
@@ -83,9 +83,6 @@ tile_set = SubResource("TileSet_63sgq")
 
 [node name="Patinhas" parent="." unique_id=917563206 instance=ExtResource("3_deayw")]
 position = Vector2(62, 340)
-
-[node name="Inimigo_Generico" parent="." unique_id=403823545 instance=ExtResource("15_ke5s7")]
-position = Vector2(747, 64)
 
 [node name="Spawn" parent="." unique_id=1704297689 instance=ExtResource("16_55obg")]
 position = Vector2(245, 371)
@@ -428,24 +425,15 @@ position = Vector2(1752, 215)
 [node name="Boss_1" parent="Inimigos" unique_id=1845184148 instance=ExtResource("32_l5rbu")]
 position = Vector2(1333, -351)
 
-[node name="Inimigo_Generico" parent="Inimigos" unique_id=348211218 instance=ExtResource("15_ke5s7")]
-position = Vector2(747, 64)
-
-[node name="Area2D" type="StaticBody2D" parent="Inimigos/Inimigo_Generico" unique_id=1296536085]
-position = Vector2(45, 6)
-collision_layer = 16
-collision_mask = 16
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inimigos/Inimigo_Generico/Area2D" unique_id=2031131104]
-position = Vector2(0, 6.5)
-shape = SubResource("RectangleShape2D_nkdbr")
-
 [node name="Area_Boss" type="Area2D" parent="Inimigos" unique_id=748952039]
 position = Vector2(1305, -471)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Inimigos/Area_Boss" unique_id=744101248]
-position = Vector2(47, 125)
+position = Vector2(44.5, 125)
 shape = SubResource("RectangleShape2D_8bd05")
+
+[node name="Spawn_Inimigo_Generico" parent="Inimigos" unique_id=1843823969 instance=ExtResource("21_t4jw2")]
+position = Vector2(747, 69)
 
 [node name="LevelInteraction" type="Node" parent="." unique_id=1943546591]
 

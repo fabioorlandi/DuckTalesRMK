@@ -7,6 +7,7 @@
 size = Vector2(20, 14)
 
 [node name="Raio_Boss" type="CharacterBody2D" unique_id=1355893610 groups=["Inimigos"]]
+z_index = 1
 script = ExtResource("1_41bf4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=202350606]

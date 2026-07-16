@@ -18,7 +18,7 @@ func _ready():
 	var patinhas = get_tree().get_nodes_in_group("Patinhas")[0]
 	self.add_collision_exception_with(patinhas)
 	
-	vidas = 1
+	vidas = 3
 
 func _on_die():
 	if vidas >= 1:
