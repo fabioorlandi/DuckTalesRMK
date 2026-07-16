@@ -28,6 +28,9 @@ func _ready() -> void:
 	
 	$AnimatedSprite2D.play("brilho")
 	
+	var patinhas = get_tree().get_nodes_in_group("Patinhas")[0]
+	self.add_collision_exception_with(patinhas)
+	
 	if (destroyable):
 		timer.timeout.connect(_on_timer_timeout)
 		timer.start()
