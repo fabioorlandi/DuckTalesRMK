@@ -7,9 +7,14 @@ var tween
 func _ready():
 	actor = get_parent().get_parent()
 
-
+func _physics_process(delta: float) -> void:
+	if actor.morrendo:
+		if tween:
+			tween.kill()
+		return
 func enter():
-
+	$"../../AnimatedSprite2D".play("Voar")
+	tempo = 0.0
 	tween = create_tween()
 	tween.set_loops()
 	
@@ -23,9 +28,11 @@ func enter():
 	actor.can_hit_patinhas = true
 
 func physics_update(delta):
+	if actor.morrendo:
+		return
 	tempo += delta
 	
-	actor.velocity.x = actor.direction * 60
+	actor.velocity.x = actor.direction * 80
 	actor.move_and_slide()
 	
 	# troca direção nas bordas (exemplo)
@@ -35,7 +42,7 @@ func physics_update(delta):
 	var sprite: AnimatedSprite2D = actor.get_node("AnimatedSprite2D")
 	sprite.flip_h = actor.direction < 0
 	# depois de um tempo, pousa
-	if tempo > 8.0:
+	if tempo > [8.0, 8.0, 8.0, 6.0, 6.0, 4.0, 10].pick_random():
 		transitioned.emit(self, "pousando")
 		
 func exit():

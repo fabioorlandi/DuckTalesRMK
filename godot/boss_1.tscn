@@ -8,6 +8,8 @@
 [ext_resource type="Script" uid="uid://b8hkgcm0x1ncy" path="res://boss_pousando.gd" id="5_o831q"]
 [ext_resource type="Script" uid="uid://ceiaej8ebyobj" path="res://boss_atirando.gd" id="6_tyqv6"]
 [ext_resource type="Script" uid="uid://b0yr8d6b62tm1" path="res://boss_decolando.gd" id="7_o831q"]
+[ext_resource type="PackedScene" uid="uid://ctsyvgwghfmq" path="res://raio_boss.tscn" id="8_xtf87"]
+[ext_resource type="Script" uid="uid://k3mdg3awspd2" path="res://boss_desativado.gd" id="9_vioas"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nkdbr"]
 size = Vector2(28, 28)
@@ -62,7 +64,7 @@ animations = [{
 }],
 "loop": 0,
 "name": &"Atirar",
-"speed": 8.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -110,7 +112,7 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="Boss_1" type="CharacterBody2D" unique_id=1845184148]
+[node name="Boss_1" type="CharacterBody2D" unique_id=1845184148 groups=["Inimigos"]]
 script = ExtResource("1_tyqv6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=862346417]
@@ -118,7 +120,7 @@ shape = SubResource("RectangleShape2D_nkdbr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=306079627]
 sprite_frames = SubResource("SpriteFrames_f35cj")
-animation = &"Decolar"
+animation = &"Atirar"
 
 [node name="Label_State" type="Label" parent="." unique_id=1528068200]
 offset_right = 40.0
@@ -126,7 +128,7 @@ offset_bottom = 23.0
 
 [node name="FSM" type="Node" parent="." unique_id=1424209649 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_mgxgb")
-initial_state = NodePath("DECOLANDO")
+initial_state = NodePath("DESATIVADO")
 
 [node name="VOANDO" type="Node" parent="FSM" unique_id=169308294]
 script = ExtResource("4_iv5oi")
@@ -136,6 +138,18 @@ script = ExtResource("5_o831q")
 
 [node name="ATIRANDO" type="Node" parent="FSM" unique_id=630399301]
 script = ExtResource("6_tyqv6")
+raio_scene = ExtResource("8_xtf87")
 
 [node name="DECOLANDO" type="Node" parent="FSM" unique_id=1537558888]
 script = ExtResource("7_o831q")
+
+[node name="DESATIVADO" type="Node" parent="FSM" unique_id=1459341306]
+script = ExtResource("9_vioas")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=554395434]
+rect = Rect2(-14, -14, 28, 28)
+
+[node name="SpawnRaio" type="Marker2D" parent="." unique_id=352888570]
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

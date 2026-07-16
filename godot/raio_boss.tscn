@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://ctsyvgwghfmq"]
+
+[ext_resource type="Script" uid="uid://d2k1546jq30a0" path="res://raio_boss.gd" id="1_41bf4"]
+[ext_resource type="Texture2D" uid="uid://wyldscegavnr" path="res://Assets/Boss_1_Spritesheet_1.png" id="2_leia6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8bd05"]
+size = Vector2(20, 14)
+
+[node name="Raio_Boss" type="CharacterBody2D" unique_id=1355893610 groups=["Inimigos"]]
+z_index = 1
+script = ExtResource("1_41bf4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=202350606]
+shape = SubResource("RectangleShape2D_8bd05")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1012061530]
+texture = ExtResource("2_leia6")
+region_enabled = true
+region_rect = Rect2(63, 9, 16, 10)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=375981229]
+rect = Rect2(-10, -7, 20, 14)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
