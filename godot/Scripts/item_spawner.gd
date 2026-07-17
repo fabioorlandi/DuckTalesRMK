@@ -7,7 +7,7 @@ var already_obtained: bool = false
 
 @export var canIPogoAndAttack: bool
 
-@export var isStatic: bool = false
+@export var isStatic: bool = true
 
 func SetChest() -> void:
 	isChest = true

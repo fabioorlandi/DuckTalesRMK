@@ -9,6 +9,7 @@ var fall_direction = Vector2.ZERO
 
 @export var dropHelmet: bool = true
 @export var spawnChest: bool
+@export var isStatic: bool = false
 @export var chest: PackedScene
 @export var item: PackedScene
 
@@ -62,6 +63,7 @@ func _physics_process(delta: float) -> void:
 		
 			chestObj = chest.instantiate()
 			chestObj.SetChest()
+			chestObj.isStatic = isStatic
 			chestObj.item_to_spawn = item
 			chestObj.global_position = $RigidBodyElmo.global_position
 			get_tree().current_scene.add_child(chestObj)
