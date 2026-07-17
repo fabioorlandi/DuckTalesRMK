@@ -36,6 +36,7 @@ animations = [{
 }]
 
 [node name="Fantasma" type="CharacterBody2D" unique_id=184599053 groups=["Inimigos"]]
+process_mode = 1
 script = ExtResource("1_4kdwh")
 
 [node name="DetectorColisão" type="Area2D" parent="." unique_id=1214937787]
@@ -64,6 +65,7 @@ initial_state = NodePath("DESATIVADO")
 script = ExtResource("4_uymrm")
 
 [node name="MOVENDO" type="Node" parent="FSM" unique_id=1508527078]
+process_mode = 1
 script = ExtResource("5_8trad")
 
 [node name="DESATIVADO" type="Node" parent="FSM" unique_id=647334625]

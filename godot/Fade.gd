@@ -48,6 +48,8 @@ func DoFadeInOutTeleport(positionTo: Vector2, floor: float, screenLayer: int) ->
 	fade_out(0.5)
 	await get_tree().create_timer(0.6).timeout
 	get_tree().paused = !get_tree().paused
+	
+	AudioManager.process_mode = Node.PROCESS_MODE_INHERIT
 
 func DoFadeOutToScene(scene: String) -> void:
 	get_tree().paused = !get_tree().paused

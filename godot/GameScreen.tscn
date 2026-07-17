@@ -102,6 +102,7 @@ scale = Vector2(1, 1.5)
 position = Vector2(62, 340)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=356561041 node_paths=PackedStringArray("player")]
+process_mode = 3
 position = Vector2(128, 312)
 script = ExtResource("7_1sa6h")
 player = NodePath("../Patinhas")

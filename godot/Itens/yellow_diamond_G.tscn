@@ -84,6 +84,7 @@ animation = &"brilho"
 frame_progress = 0.009255302
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1754361571]
+process_mode = 1
 position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_dfwst")
 disabled = true

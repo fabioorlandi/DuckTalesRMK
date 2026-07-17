@@ -113,6 +113,7 @@ animations = [{
 }]
 
 [node name="Boss_1" type="CharacterBody2D" unique_id=1845184148 groups=["Inimigos"]]
+process_mode = 1
 script = ExtResource("1_tyqv6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=862346417]
