@@ -18,6 +18,7 @@
 [ext_resource type="FontFile" uid="uid://dtdqm04fcn0od" path="res://Pixelon.ttf" id="8_rf2pp"]
 [ext_resource type="Texture2D" uid="uid://byx22j1o1twia" path="res://Assets/hpImages.png" id="9_t4tih"]
 [ext_resource type="PackedScene" uid="uid://3l1di1euah7" path="res://Itens/cake.tscn" id="9_xc2wj"]
+[ext_resource type="Script" uid="uid://cph7qpif1d2lf" path="res://Typewriter.gd" id="12_8roi7"]
 [ext_resource type="FontFile" uid="uid://bmvryxwvhho2k" path="res://Ducktales_Font2.ttf" id="13_55obg"]
 [ext_resource type="Script" uid="uid://duegq8tgxl7vr" path="res://Scripts/CameraCollider.gd" id="13_voubw"]
 [ext_resource type="PackedScene" uid="uid://y0qr46lfx8x2" path="res://spawn_esqueleto.tscn" id="16_55obg"]
@@ -168,6 +169,7 @@ offset_left = -75.0
 offset_top = -12.0
 offset_right = -35.0
 offset_bottom = 11.0
+script = ExtResource("12_8roi7")
 
 [node name="Pause_Left" type="Sprite2D" parent="Camera2D/UI" unique_id=1284352635]
 visible = false
@@ -794,9 +796,11 @@ shape = SubResource("SegmentShape2D_pgjuh")
 
 [node name="Patrícia" parent="NPC\'s" unique_id=265802063 instance=ExtResource("17_mw0eb")]
 position = Vector2(640, 278)
+patricia = true
 
 [node name="Huguinho" parent="NPC\'s" unique_id=2086296186 instance=ExtResource("18_gtvlv")]
 position = Vector2(696, 53)
+huguinho = true
 
 [node name="ItensInWorld" type="Node2D" parent="." unique_id=1965688229]
 
