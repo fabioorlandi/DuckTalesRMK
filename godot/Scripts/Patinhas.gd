@@ -134,7 +134,7 @@ func on_die():
 			0.0, 1.0, 0.75
 		)
 	await get_tree().create_timer(wait_timer_to_reset).timeout
-	
+
 	$"../Fade".DoFadeIn(true)
 	queue_free()
 	
