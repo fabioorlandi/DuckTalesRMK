@@ -19,7 +19,6 @@
 [ext_resource type="Texture2D" uid="uid://byx22j1o1twia" path="res://Assets/hpImages.png" id="9_t4tih"]
 [ext_resource type="PackedScene" uid="uid://3l1di1euah7" path="res://Itens/cake.tscn" id="9_xc2wj"]
 [ext_resource type="Script" uid="uid://cph7qpif1d2lf" path="res://Scripts/Typewriter.gd" id="12_8roi7"]
-[ext_resource type="FontFile" uid="uid://bmvryxwvhho2k" path="res://Ducktales_Font2.ttf" id="13_55obg"]
 [ext_resource type="Script" uid="uid://duegq8tgxl7vr" path="res://Scripts/CameraCollider.gd" id="13_voubw"]
 [ext_resource type="PackedScene" uid="uid://y0qr46lfx8x2" path="res://Inimigos/spawn_esqueleto.tscn" id="16_55obg"]
 [ext_resource type="PackedScene" uid="uid://cd1fwimvplkgl" path="res://Mirror.tscn" id="16_udr8q"]
@@ -75,14 +74,17 @@ size = Vector2(5.6447678, 49.09293)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_pgjuh"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f3uit"]
+
 [node name="MainNode" type="Node2D" unique_id=1058646140]
 process_mode = 3
 script = ExtResource("1_620js")
 player = ExtResource("3_deayw")
 checkpoints = PackedVector2Array(62, 340)
 
-[node name="Fade" parent="." unique_id=2112622473 instance=ExtResource("2_4t8am")]
+[node name="Fade" parent="." unique_id=2112622473 groups=["Fade"] instance=ExtResource("2_4t8am")]
 process_mode = 3
+visible = false
 position = Vector2(128, 312)
 
 [node name="TileMapLayerBackground" parent="." unique_id=1744038407 instance=ExtResource("2_55obg")]
@@ -167,8 +169,12 @@ region_rect = Rect2(81, 102, 167, 39)
 [node name="Label" type="Label" parent="Camera2D/UI/Talk_Right" unique_id=259188609]
 offset_left = -75.0
 offset_top = -12.0
-offset_right = -35.0
+offset_right = 75.905
 offset_bottom = 11.0
+theme_override_constants/line_spacing = -3
+theme_override_fonts/font = ExtResource("8_rf2pp")
+theme_override_font_sizes/font_size = 10
+autowrap_mode = 3
 script = ExtResource("12_8roi7")
 
 [node name="Pause_Left" type="Sprite2D" parent="Camera2D/UI" unique_id=1284352635]
@@ -205,8 +211,7 @@ offset_left = -69.0
 offset_top = 262.0
 offset_right = -29.0
 offset_bottom = 285.0
-theme_override_fonts/font = ExtResource("13_55obg")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 10
 text = "$"
 vertical_alignment = 1
 
@@ -217,8 +222,7 @@ layout_mode = 0
 offset_left = 16.0
 offset_right = 56.0
 offset_bottom = 23.0
-theme_override_fonts/font = ExtResource("13_55obg")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 10
 text = "0"
 horizontal_alignment = 2
 vertical_alignment = 1
@@ -230,7 +234,6 @@ offset_left = 22.0
 offset_top = 257.0
 offset_right = 62.0
 offset_bottom = 280.0
-theme_override_fonts/font = ExtResource("8_rf2pp")
 theme_override_font_sizes/font_size = 11
 text = "TOTAL"
 horizontal_alignment = 1
@@ -243,7 +246,6 @@ offset_left = -16.0
 offset_top = 11.0
 offset_right = 24.0
 offset_bottom = 34.0
-theme_override_fonts/font = ExtResource("8_rf2pp")
 theme_override_font_sizes/font_size = 11
 text = "$"
 vertical_alignment = 1
@@ -253,9 +255,8 @@ z_index = 13
 layout_mode = 0
 offset_left = 16.0
 offset_top = 11.0
-offset_right = 56.0
+offset_right = 52.0
 offset_bottom = 34.0
-theme_override_fonts/font = ExtResource("8_rf2pp")
 theme_override_font_sizes/font_size = 11
 text = "0"
 horizontal_alignment = 2
@@ -267,7 +268,6 @@ offset_left = 22.0
 offset_top = 278.0
 offset_right = 62.0
 offset_bottom = 301.0
-theme_override_fonts/font = ExtResource("8_rf2pp")
 theme_override_font_sizes/font_size = 11
 text = "P. "
 horizontal_alignment = 1
@@ -279,7 +279,6 @@ offset_left = -81.0
 offset_top = 276.0
 offset_right = -41.0
 offset_bottom = 299.0
-theme_override_fonts/font = ExtResource("8_rf2pp")
 theme_override_font_sizes/font_size = 11
 text = "HP"
 horizontal_alignment = 1
@@ -321,7 +320,6 @@ offset_left = 86.0
 offset_top = 268.0
 offset_right = 126.0
 offset_bottom = 291.0
-theme_override_fonts/font = ExtResource("8_rf2pp")
 theme_override_font_sizes/font_size = 11
 text = "TIME"
 vertical_alignment = 1
@@ -332,7 +330,6 @@ layout_mode = 0
 offset_left = 23.0
 offset_right = 63.0
 offset_bottom = 23.0
-theme_override_fonts/font = ExtResource("8_rf2pp")
 theme_override_font_sizes/font_size = 11
 text = "500"
 horizontal_alignment = 2
@@ -604,7 +601,7 @@ position = Vector2(1541, -346)
 script = ExtResource("30_f2b0i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelInteraction/Boss_Area_Enter" unique_id=2121887603]
-position = Vector2(0, -6)
+position = Vector2(-68, -6)
 shape = SubResource("RectangleShape2D_o1twf")
 
 [node name="CameraColliders" type="Node2D" parent="." unique_id=2126482727]
@@ -1019,6 +1016,14 @@ position = Vector2(1096, 57)
 item_to_spawn = ExtResource("20_5yvvo")
 isChest = true
 canIPogoAndAttack = true
+
+[node name="arenaBlock" type="CharacterBody2D" parent="." unique_id=747387167]
+position = Vector2(1536, -352)
+scale = Vector2(1.48, 1.5199902)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="arenaBlock" unique_id=1751808110 groups=["ArenaBlock"]]
+shape = SubResource("RectangleShape2D_f3uit")
+disabled = true
 
 [connection signal="body_entered" from="LevelInteraction/Boss_Area_Enter" to="LevelInteraction/Boss_Area_Enter" method="_on_body_entered"]
 [connection signal="body_entered" from="CameraColliders/camCol" to="CameraColliders/camCol" method="_on_body_entered"]

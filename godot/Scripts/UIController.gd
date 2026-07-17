@@ -72,6 +72,8 @@ func AddToTotalScore() -> void:
 	totalPointsLabel.text = str(totalScore)
 	
 	GamePoints.totalScore = totalScore
+	await get_tree().create_timer(.2).timeout
+	ResetScore()
 
 func CauseDamage() -> void:
 	var healthDamage = 0
