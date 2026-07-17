@@ -442,10 +442,10 @@ position = Vector2(747, 69)
 position = Vector2(2038, -461)
 
 [node name="Spawn_Fantasma6" parent="Inimigos" unique_id=2007441208 instance=ExtResource("30_spb85")]
-position = Vector2(1650, -456)
+position = Vector2(1596, -457)
 
 [node name="Spawn_Fantasma7" parent="Inimigos" unique_id=1882419046 instance=ExtResource("30_spb85")]
-position = Vector2(1815, -458)
+position = Vector2(1745, -458)
 
 [node name="Boss_1" parent="Inimigos" unique_id=1845184148 instance=ExtResource("32_l5rbu")]
 position = Vector2(1333, -351)
