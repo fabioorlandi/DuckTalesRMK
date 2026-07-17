@@ -82,7 +82,6 @@ checkpoints = PackedVector2Array(62, 340)
 
 [node name="Fade" parent="." unique_id=2112622473 groups=["Fade"] instance=ExtResource("2_4t8am")]
 process_mode = 3
-visible = false
 position = Vector2(128, 312)
 
 [node name="TileMapLayerBackground" parent="." unique_id=1744038407 instance=ExtResource("2_55obg")]
@@ -107,7 +106,7 @@ disabled = true
 [node name="Patinhas" parent="." unique_id=917563206 instance=ExtResource("3_deayw")]
 position = Vector2(62, 340)
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=356561041 node_paths=PackedStringArray("player")]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=356561041 node_paths=PackedStringArray("player") groups=["Camera"]]
 process_mode = 3
 position = Vector2(128, 312)
 script = ExtResource("7_1sa6h")

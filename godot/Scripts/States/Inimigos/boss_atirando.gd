@@ -50,7 +50,6 @@ func atirar_2():
 	
 	raio.global_position = spawn_point.global_position
 	if metade_area.overlaps_body(actor):
-		
 		raio.direction = Vector2.RIGHT
 	else:
 		
