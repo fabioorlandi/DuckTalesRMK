@@ -8,6 +8,7 @@ extends Area2D
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Patinhas" and canTravel:
+		AudioManager.process_mode = Node.PROCESS_MODE_ALWAYS
 		AudioManager.play_sound_effect(load("res://Sounds/SFX/Duck Tales SFX (30).wav"))
-
+		
 		$"../../Fade".DoFadeInOutTeleport(positionTo, floorPos, screenLayer)

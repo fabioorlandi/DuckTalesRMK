@@ -96,6 +96,7 @@ size = Vector2(84, 16)
 size = Vector2(24, 31)
 
 [node name="Inimigo_mummy" type="CharacterBody2D" unique_id=1622208230 groups=["Inimigos"]]
+process_mode = 1
 script = ExtResource("1_dx7rg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=711778305]

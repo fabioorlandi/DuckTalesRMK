@@ -62,6 +62,7 @@ position = Vector2(0, 18)
 shape = SubResource("RectangleShape2D_l102d")
 
 [node name="RigidBodyElmo" type="RigidBody2D" parent="." unique_id=2128562684]
+process_mode = 1
 freeze_mode = 1
 script = ExtResource("2_kxvc7")
 metadata/_edit_group_ = true

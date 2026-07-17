@@ -36,6 +36,7 @@ size = Vector2(1, 4)
 radius = 9.0
 
 [node name="Ice Cream" type="CharacterBody2D" unique_id=106499222]
+process_mode = 1
 script = ExtResource("1_id2yj")
 current_item = 6
 destroyable = true

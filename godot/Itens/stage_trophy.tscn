@@ -46,6 +46,7 @@ size = Vector2(1, 4)
 radius = 9.0
 
 [node name="StageTrophy" type="CharacterBody2D" unique_id=106499222]
+process_mode = 1
 script = ExtResource("1_djfym")
 current_item = 3
 

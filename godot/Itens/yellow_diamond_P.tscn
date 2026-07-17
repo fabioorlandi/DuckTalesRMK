@@ -75,6 +75,7 @@ size = Vector2(1, 4)
 radius = 9.0
 
 [node name="YellowDiamondP" type="CharacterBody2D" unique_id=106499222]
+process_mode = 1
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_y33gs")
 current_item = 1
