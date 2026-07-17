@@ -1,44 +1,44 @@
 [gd_scene format=3 uid="uid://dk8uxrf3ew60t"]
 
-[ext_resource type="Script" uid="uid://bwjyq5ou7c883" path="res://Mumia_Scripts/inimigo_mummy.gd" id="1_dx7rg"]
-[ext_resource type="Texture2D" uid="uid://eyckrs081bgs" path="res://Assets/Inimigo_Mumia.png" id="2_epufl"]
-[ext_resource type="Script" uid="uid://btx64rff6hb07" path="res://Mumia_Scripts/fsm_Inimigo_Mumia.gd" id="3_k4o33"]
-[ext_resource type="Texture2D" uid="uid://gt1v2ybrwx6u" path="res://Assets/Bola_Inimigo_Mumia.png" id="3_kvpv3"]
-[ext_resource type="Script" uid="uid://cpqatuhian43e" path="res://Mumia_Scripts/Idle_Mumia.gd" id="4_tepjr"]
-[ext_resource type="Script" uid="uid://d3s84xdmpjy46" path="res://Mumia_Scripts/walk_mummy.gd" id="5_s43cp"]
-[ext_resource type="Script" uid="uid://1tgqheeuod50" path="res://Mumia_Scripts/return_from_right.gd" id="6_iui0h"]
-[ext_resource type="Script" uid="uid://carkkg162w1ry" path="res://Mumia_Scripts/walk_mummy_left.gd" id="7_l21nl"]
-[ext_resource type="Script" uid="uid://bujxrh3thh3s6" path="res://Mumia_Scripts/return_from_left.gd" id="8_0occg"]
+[ext_resource type="Script" uid="uid://bwjyq5ou7c883" path="res://Scripts/Inimigos/inimigo_mummy.gd" id="1_5koug"]
+[ext_resource type="Texture2D" uid="uid://eyckrs081bgs" path="res://Assets/Inimigo_Mumia.png" id="2_uhxsw"]
+[ext_resource type="Texture2D" uid="uid://gt1v2ybrwx6u" path="res://Assets/Bola_Inimigo_Mumia.png" id="3_eobyj"]
+[ext_resource type="Script" uid="uid://btx64rff6hb07" path="res://Scripts/States/Inimigos/fsm_Inimigo_Mumia.gd" id="4_uhxsw"]
+[ext_resource type="Script" uid="uid://cpqatuhian43e" path="res://Scripts/States/Inimigos/Idle_Mumia.gd" id="5_eobyj"]
+[ext_resource type="Script" uid="uid://d3s84xdmpjy46" path="res://Scripts/States/Inimigos/walk_mummy.gd" id="6_5koug"]
+[ext_resource type="Script" uid="uid://1tgqheeuod50" path="res://Scripts/States/Inimigos/return_from_right.gd" id="7_uhxsw"]
+[ext_resource type="Script" uid="uid://carkkg162w1ry" path="res://Scripts/States/Inimigos/walk_mummy_left.gd" id="8_eobyj"]
+[ext_resource type="Script" uid="uid://bujxrh3thh3s6" path="res://Scripts/States/Inimigos/return_from_left.gd" id="9_6mut2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kdjip"]
 size = Vector2(24, 31)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rfgdg"]
-atlas = ExtResource("2_epufl")
+atlas = ExtResource("2_uhxsw")
 region = Rect2(104, 0, 24, 33)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m5n7u"]
-atlas = ExtResource("2_epufl")
+atlas = ExtResource("2_uhxsw")
 region = Rect2(130, 0, 24, 33)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5qvjo"]
-atlas = ExtResource("2_epufl")
+atlas = ExtResource("2_uhxsw")
 region = Rect2(156, 0, 24, 33)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u6aen"]
-atlas = ExtResource("2_epufl")
+atlas = ExtResource("2_uhxsw")
 region = Rect2(0, 0, 24, 33)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e1rjv"]
-atlas = ExtResource("2_epufl")
+atlas = ExtResource("2_uhxsw")
 region = Rect2(78, 0, 24, 33)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ls7r7"]
-atlas = ExtResource("2_epufl")
+atlas = ExtResource("2_uhxsw")
 region = Rect2(26, 0, 24, 33)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hygu2"]
-atlas = ExtResource("2_epufl")
+atlas = ExtResource("2_uhxsw")
 region = Rect2(52, 0, 24, 33)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xo88k"]
@@ -86,7 +86,7 @@ animations = [{
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ksb4e"]
-atlas = ExtResource("3_kvpv3")
+atlas = ExtResource("3_eobyj")
 region = Rect2(21, 9, 6, 6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nkdbr"]
@@ -97,7 +97,7 @@ size = Vector2(24, 31)
 
 [node name="Inimigo_mummy" type="CharacterBody2D" unique_id=1622208230 groups=["Inimigos"]]
 process_mode = 1
-script = ExtResource("1_dx7rg")
+script = ExtResource("1_5koug")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=711778305]
 position = Vector2(0, -0.5)
@@ -137,23 +137,23 @@ offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="FSM" type="Node" parent="." unique_id=213337848 node_paths=PackedStringArray("initial_state")]
-script = ExtResource("3_k4o33")
+script = ExtResource("4_uhxsw")
 initial_state = NodePath("Idle_Mummy")
 
 [node name="Idle_Mummy" type="Node" parent="FSM" unique_id=1754085877]
-script = ExtResource("4_tepjr")
+script = ExtResource("5_eobyj")
 
 [node name="Walk_Mummy_Right" type="Node" parent="FSM" unique_id=1001465619]
-script = ExtResource("5_s43cp")
+script = ExtResource("6_5koug")
 
 [node name="Return_From_Right" type="Node" parent="FSM" unique_id=777988172]
-script = ExtResource("6_iui0h")
+script = ExtResource("7_uhxsw")
 
 [node name="Walk_Mummy_Left" type="Node" parent="FSM" unique_id=738097416]
-script = ExtResource("7_l21nl")
+script = ExtResource("8_eobyj")
 
 [node name="Return_From_Left" type="Node" parent="FSM" unique_id=353009723]
-script = ExtResource("8_0occg")
+script = ExtResource("9_6mut2")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=117598070]
 

@@ -1,7 +1,7 @@
 extends Area2D
 
-var enemy_scene = preload("res://Pato_Esqueleto.tscn")
-var current_enemy: PatoEsqueleto = null
+var enemy_scene = preload("res://Inimigos/inimigo_mummy.tscn")
+var current_enemy: PatoMumia = null
 	
 func _ready() -> void:
 	$VisibleOnScreenNotifier2D.screen_entered.connect(_on_screen_entered)
@@ -20,6 +20,5 @@ func _on_screen_entered() -> void:
 	if current_enemy == null:
 		spawn_enemy()
 
-
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	pass # Replace with function body.
+	pass

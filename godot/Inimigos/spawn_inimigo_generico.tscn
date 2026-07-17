@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ctktdpn0xdjmu"]
 
-[ext_resource type="Script" uid="uid://c65edsceegxda" path="res://spawn_inimigo_generico.gd" id="1_sfxqn"]
+[ext_resource type="Script" uid="uid://c65edsceegxda" path="res://Scripts/Inimigos/spawn_inimigo_generico.gd" id="1_sfxqn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nkdbr"]
 
