@@ -1,24 +1,24 @@
 [gd_scene format=3 uid="uid://whihmuos5mw"]
 
-[ext_resource type="Texture2D" uid="uid://njfi4doxwglu" path="res://Assets/Inimigo_Generico_Spritesheet.png" id="1_s8fcv"]
-[ext_resource type="Script" uid="uid://d2kc20yi84k1v" path="res://Inimigo_Generico/inimigo_generico.gd" id="1_x52ph"]
-[ext_resource type="Script" uid="uid://byq10t2yfih38" path="res://Inimigo_Generico/fsm_inimigo_generico.gd" id="2_pf64t"]
-[ext_resource type="Script" uid="uid://cehp3facp1sml" path="res://Inimigo_Generico/move_inimigo_generico.gd" id="3_fh3h5"]
-[ext_resource type="Script" uid="uid://rviwao4ikrwt" path="res://Inimigo_Generico/desativado_inimigo_generico.gd" id="5_xduj7"]
+[ext_resource type="Script" uid="uid://d2kc20yi84k1v" path="res://Scripts/Inimigos/inimigo_generico.gd" id="1_em5w6"]
+[ext_resource type="Texture2D" uid="uid://njfi4doxwglu" path="res://Assets/Inimigo_Generico_Spritesheet.png" id="2_8sfxo"]
+[ext_resource type="Script" uid="uid://byq10t2yfih38" path="res://Scripts/States/Inimigos/fsm_inimigo_generico.gd" id="3_em5w6"]
+[ext_resource type="Script" uid="uid://cehp3facp1sml" path="res://Scripts/States/Inimigos/move_inimigo_generico.gd" id="4_d66e6"]
+[ext_resource type="Script" uid="uid://rviwao4ikrwt" path="res://Scripts/States/Inimigos/desativado_inimigo_generico.gd" id="5_8sfxo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pf64t"]
 size = Vector2(26, 31)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fh3h5"]
-atlas = ExtResource("1_s8fcv")
+atlas = ExtResource("2_8sfxo")
 region = Rect2(26, 0, 26, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x52ph"]
-atlas = ExtResource("1_s8fcv")
+atlas = ExtResource("2_8sfxo")
 region = Rect2(0, 0, 26, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xduj7"]
-atlas = ExtResource("1_s8fcv")
+atlas = ExtResource("2_8sfxo")
 region = Rect2(52, 0, 26, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_k8f6y"]
@@ -45,7 +45,7 @@ animations = [{
 process_mode = 1
 collision_layer = 17
 collision_mask = 17
-script = ExtResource("1_x52ph")
+script = ExtResource("1_em5w6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=807732150]
 position = Vector2(0, -0.5)
@@ -63,14 +63,14 @@ offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="FSM" type="Node" parent="." unique_id=1104170057 node_paths=PackedStringArray("initial_state")]
-script = ExtResource("2_pf64t")
+script = ExtResource("3_em5w6")
 initial_state = NodePath("DESATIVADO")
 
 [node name="MOVE" type="Node" parent="FSM" unique_id=624948675]
-script = ExtResource("3_fh3h5")
+script = ExtResource("4_d66e6")
 
 [node name="DESATIVADO" type="Node" parent="FSM" unique_id=1734096457]
-script = ExtResource("5_xduj7")
+script = ExtResource("5_8sfxo")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1778270510]
 rect = Rect2(-13, -16, 26, 32)

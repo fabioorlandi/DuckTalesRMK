@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dnxtbxch2goom"]
 
 [ext_resource type="Texture2D" uid="uid://bdxti27hvfdlj" path="res://Assets/Tilemap_Ducktales.png" id="1_2eu0j"]
-[ext_resource type="Script" uid="uid://xm8kv68duqkx" path="res://Fade.gd" id="1_7ah53"]
+[ext_resource type="Script" uid="uid://xm8kv68duqkx" path="res://Scripts/Fade.gd" id="1_7ah53"]
 
 [node name="Fade" type="Node2D" unique_id=2112622473]
 z_index = 200

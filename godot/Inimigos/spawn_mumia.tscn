@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ceofs14kqndsd"]
 
-[ext_resource type="Script" uid="uid://ba6r3kbu5iv0c" path="res://spawn_mumia.gd" id="1_l38ej"]
+[ext_resource type="Script" uid="uid://ba6r3kbu5iv0c" path="res://Scripts/Inimigos/spawn_mumia.gd" id="1_l38ej"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hdvu2"]
 

@@ -1,6 +1,6 @@
 extends Area2D
 
-var enemy_scene = preload("res://Inimigo_Fantasma.tscn")
+var enemy_scene = preload("res://Inimigos/Inimigo_Fantasma.tscn")
 var current_enemy: Fantasma = null
 
 func _ready() -> void:

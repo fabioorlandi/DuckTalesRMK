@@ -42,11 +42,8 @@ func _on_die():
 		var tween = create_tween()
 		tween.tween_property(self, "global_position:y", global_position.y - 25, 0.15)
 
-	
-		
 func _physics_process(delta: float) -> void:
 	if morrendo:
-		# gravidade
 		velocity.y += 800 * delta
 		
 		move_and_slide()
@@ -55,10 +52,11 @@ func _physics_process(delta: float) -> void:
 		if global_position.y > 700:
 			print("MORREU E SAIU")
 			queue_free()
+			
+			AudioManager.play_background_music(load("res://Sounds/11_-_DuckTales_-_NES_-_Stage_Complete.ogg"))
 		
 		return
-		
-	
+
 func modulate_boss():
 	
 	var tween = create_tween()

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c0no7wuq2en61"]
 
-[ext_resource type="Script" uid="uid://clp0xapb37l57" path="res://spawn_fantasma.gd" id="1_3sogo"]
+[ext_resource type="Script" uid="uid://clp0xapb37l57" path="res://Scripts/Inimigos/spawn_fantasma.gd" id="1_3sogo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nkdbr"]
 

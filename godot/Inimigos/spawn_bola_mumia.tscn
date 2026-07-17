@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dr4b1dq8u1gqe"]
 
-[ext_resource type="Script" uid="uid://dbx3xw8fud4mm" path="res://spawn_bola_mumia.gd" id="1_5rxiy"]
+[ext_resource type="Script" uid="uid://dbx3xw8fud4mm" path="res://Scripts/Inimigos/spawn_bola_mumia.gd" id="1_5rxiy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nkdbr"]
 size = Vector2(24, 24)
