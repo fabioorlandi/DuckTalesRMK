@@ -21,6 +21,7 @@ func _ready():
 	vidas = 3
 
 func _on_die():
+	can_hit_patinhas = false
 	if vidas >= 1:
 		vidas -= 1
 		if vidas > 0:
@@ -29,6 +30,7 @@ func _on_die():
 		pass
 		
 	if vidas == 0:
+		can_hit_patinhas = false
 		morrendo = true
 		
 		
