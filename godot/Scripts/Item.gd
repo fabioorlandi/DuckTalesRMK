@@ -32,7 +32,6 @@ func _ready() -> void:
 	if !fades.is_empty():
 		fade = fades[0]
 	
-	
 	$AnimatedSprite2D.play("brilho")
 	
 	if (destroyable):
@@ -100,11 +99,18 @@ func DoFunction(body: Node2D) -> void:
 		Item.red_diamond_G:
 			ui.AddScore(50000)
 		Item.stage_trophy:
+			AudioManager.play_background_music(load("res://Sounds/11_-_DuckTales_-_NES_-_Stage_Complete.ogg"))
+			
 			self.visible = false
 			ui.AddScore(1000000)
-			await get_tree().create_timer(0.5).timeout
-			ui.AddToTotalScore()
 			await get_tree().create_timer(1).timeout
+			ui.AddToTotalScore()
+			await get_tree().create_timer(2.5).timeout
+			
+			AudioManager.stop_background_music()
+			
+			await get_tree().create_timer(2).timeout
+			
 			fade.DoFadeOutToScene("res://main_menu.tscn")
 		Item.invulnerable:
 			body.emit_signal("invulnerability_ticks_started", 480, true)

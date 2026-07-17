@@ -8,8 +8,10 @@ func _ready() -> void:
 	await get_tree().create_timer(1.0).timeout
 
 func _process(delta: float) -> void:
-	if $"../Camera2D":
-		global_position = $"../Camera2D".global_position
+	var camera = get_tree().get_first_node_in_group("Camera")
+	
+	if camera:
+		global_position = camera.global_position
 
 func fade_out(duracao: float = 0.5):
 	var tween = create_tween()
