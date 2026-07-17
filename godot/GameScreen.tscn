@@ -29,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://b4i584dk46f7w" path="res://Huguinho.tscn" id="18_gtvlv"]
 [ext_resource type="PackedScene" uid="uid://cngw0b08a76xu" path="res://item_spawner.tscn" id="19_uvku6"]
 [ext_resource type="PackedScene" uid="uid://cupbo0s5wtpur" path="res://Itens/yellow_diamond_G.tscn" id="20_5yvvo"]
+[ext_resource type="PackedScene" uid="uid://beapua56bg7a5" path="res://Inimigos/spawn_boss.tscn" id="20_f2b0i"]
 [ext_resource type="PackedScene" uid="uid://ctktdpn0xdjmu" path="res://Inimigos/spawn_inimigo_generico.tscn" id="21_t4jw2"]
 [ext_resource type="PackedScene" uid="uid://cnh4dsac87c5a" path="res://Itens/red_diamond_G.tscn" id="21_uvku6"]
 [ext_resource type="PackedScene" uid="uid://bvdfja30frw6n" path="res://death_area.tscn" id="22_75g3y"]
@@ -40,7 +41,6 @@
 [ext_resource type="Script" uid="uid://sjbkg2nblocg" path="res://Scripts/boss_area_enter.gd" id="30_f2b0i"]
 [ext_resource type="PackedScene" uid="uid://c0no7wuq2en61" path="res://Inimigos/spawn_fantasma.tscn" id="30_spb85"]
 [ext_resource type="PackedScene" uid="uid://c8by4hv38u7kb" path="res://Inimigos/Inimigo_Fantasma.tscn" id="31_txsse"]
-[ext_resource type="PackedScene" uid="uid://dteuqmbjdu3ta" path="res://Inimigos/boss_1.tscn" id="32_l5rbu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_enhxt"]
 texture = ExtResource("3_620js")
@@ -450,15 +450,15 @@ position = Vector2(1596, -457)
 [node name="Spawn_Fantasma7" parent="Inimigos" unique_id=1882419046 instance=ExtResource("30_spb85")]
 position = Vector2(1745, -458)
 
-[node name="Boss_1" parent="Inimigos" unique_id=1845184148 instance=ExtResource("32_l5rbu")]
-position = Vector2(1333, -351)
-
 [node name="Area_Boss" type="Area2D" parent="Inimigos" unique_id=748952039]
 position = Vector2(1305, -471)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Inimigos/Area_Boss" unique_id=744101248]
 position = Vector2(44.5, 125)
 shape = SubResource("RectangleShape2D_8bd05")
+
+[node name="Spawn_Boss" parent="Inimigos" unique_id=1991303554 instance=ExtResource("20_f2b0i")]
+position = Vector2(1334, -347)
 
 [node name="LevelInteraction" type="Node2D" parent="." unique_id=1607798104]
 

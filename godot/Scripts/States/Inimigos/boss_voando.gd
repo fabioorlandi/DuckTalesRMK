@@ -35,13 +35,13 @@ func physics_update(delta):
 	actor.velocity.x = actor.direction * 80
 	actor.move_and_slide()
 	
-	# troca direção nas bordas (exemplo)
+
 	if actor.is_on_wall():
 		actor.direction *= -1
 	
 	var sprite: AnimatedSprite2D = actor.get_node("AnimatedSprite2D")
 	sprite.flip_h = actor.direction < 0
-	# depois de um tempo, pousa
+	
 	if tempo > [8.0, 8.0, 8.0, 6.0, 6.0, 4.0, 10].pick_random():
 		transitioned.emit(self, "pousando")
 		

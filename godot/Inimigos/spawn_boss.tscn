@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://beapua56bg7a5"]
+
+[ext_resource type="Script" uid="uid://di6macm8swjjq" path="res://Scripts/Inimigos/spawn_boss.gd" id="1_bppdi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nkdbr"]
+
+[node name="Spawn_Boss" type="Area2D" unique_id=1991303554]
+script = ExtResource("1_bppdi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=279459751]
+shape = SubResource("RectangleShape2D_nkdbr")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1038664024]
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
