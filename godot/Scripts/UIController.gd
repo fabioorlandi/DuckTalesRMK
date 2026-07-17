@@ -183,3 +183,32 @@ func loadFromGamePoints() -> void:
 	
 func ReloadPlayer() -> void:
 	pass
+
+func ShowMessage() -> void:
+	$Left.visible = false
+	$Right.visible = false
+	$Pause_Left.visible = false
+	$Pause_Right.visible = false
+	$"$Stage".visible = false
+	$"$Total".visible = false
+	$Lifes.visible = false
+	$HP.visible = false
+	$Time.visible = false
+	
+	$Talk_Left.visible = true
+	$Talk_Right.visible = true
+
+func ShowInGameUI() -> void:
+	$Talk_Left.visible = false
+	$Talk_Right.visible = false
+	
+	$Pause_Left.visible = false
+	$Pause_Right.visible = false
+	
+	$Left.visible = true
+	$Right.visible = true	
+	$"$Stage".visible = true
+	$"$Total".visible = true
+	$Lifes.visible = true
+	$HP.visible = true
+	$Time.visible = true
