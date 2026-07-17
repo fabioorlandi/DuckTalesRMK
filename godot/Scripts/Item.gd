@@ -6,6 +6,8 @@ enum Item { yellow_diamond_G, yellow_diamond_P, red_diamond_G, stage_trophy, ske
 @export var current_item: Item
 @onready var ui = get_tree().get_first_node_in_group("ui")
 
+@onready var fade = $Fade
+
 var on_fade: bool = false
 var collect_item_sfx = "res://Sounds/SFX/Duck Tales SFX (13).wav"
 
@@ -25,6 +27,11 @@ var direction: int = 1
 func _ready() -> void:
 	var patinhas = get_tree().get_nodes_in_group("Patinhas")[0]
 	self.add_collision_exception_with(patinhas)
+	
+	var fades = get_tree().get_nodes_in_group("Fade")
+	if !fades.is_empty():
+		fade = fades[0]
+	
 	
 	$AnimatedSprite2D.play("brilho")
 	
@@ -69,7 +76,6 @@ func _physics_process(delta: float) -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Patinhas":
 		DoFunction(body)
-		queue_free()
 		
 func apply_tween() -> void:
 	var tween = create_tween()
@@ -95,6 +101,10 @@ func DoFunction(body: Node2D) -> void:
 			ui.AddScore(50000)
 		Item.stage_trophy:
 			ui.AddScore(1000000)
+			await get_tree().create_timer(0.5).timeout
+			ui.AddToTotalScore()
+			await get_tree().create_timer(1).timeout
+			fade.DoFadeOutToScene("res://main_menu.tscn")
 		Item.invulnerable:
 			body.emit_signal("invulnerability_ticks_started", 480, true)
 		Item.health_star:
@@ -105,6 +115,7 @@ func DoFunction(body: Node2D) -> void:
 			ui.ResetHealth()
 		Item.ice_cream:
 			ui.ReceiveCure(1)
+	queue_free()
 
 
 func _check_wall_collision() -> void:

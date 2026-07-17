@@ -9,6 +9,9 @@ var collision_disabled := false
 var vidas: int
 var morrendo : bool = false
 
+@export var itemSpawner: PackedScene
+@export var trophy: PackedScene
+
 func _ready():
 	connect("die_on_collision", _on_die)
 	var inimigos = get_tree().get_nodes_in_group("Inimigos")
@@ -50,7 +53,19 @@ func _physics_process(delta: float) -> void:
 		
 		# saiu da tela (ou passou de um limite)
 		if global_position.y > 700:
-			print("MORREU E SAIU")
+			print("MORREU E SAIU") 
+			
+			get_tree().paused = true
+			await get_tree().create_timer(1).timeout
+			var obj = itemSpawner.instantiate()
+			obj.global_position = Vector2(1408.0, -344.0 )
+			obj.SetChest()
+			obj.canIPogoAndAttack = true
+			obj.item_to_spawn = trophy
+			get_tree().current_scene.add_child(obj)
+			await get_tree().create_timer(1).timeout
+			get_tree().paused = false
+			
 			queue_free()
 			
 			AudioManager.play_background_music(load("res://Sounds/11_-_DuckTales_-_NES_-_Stage_Complete.ogg"))
@@ -68,7 +83,6 @@ func modulate_boss():
 
 func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 	player_on_screen = true
-
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	player_on_screen = false

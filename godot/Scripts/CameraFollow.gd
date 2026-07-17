@@ -15,7 +15,7 @@ var onTransition: bool = false
 
 @export var screenLayer: int
 
-var onBoss: bool = false
+@export var onBoss: bool = false
 var alreadyCameraOnBoss: bool = false
 
 @export var smooth_speed: float = 5.0

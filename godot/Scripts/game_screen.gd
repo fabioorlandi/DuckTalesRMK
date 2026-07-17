@@ -30,6 +30,9 @@ func ResetPlayer() -> void:
 			$Fade.player = obj
 			$Camera2D/UI.player = obj
 			
+			if $Camera2D.onBoss:
+				$Camera2D.onBoss = false
+			
 			# resetar pos da camera
 			# verificar se perde ponto quando morre
 			

@@ -8,11 +8,15 @@ extends Area2D
 
 func _process(delta: float) -> void:
 	if alreadyTalk == true and $"../../Camera2D/UI/Talk_Right/Label".alreadyWrite == true and Input.is_action_just_pressed("jump"):
-		$"../../Camera2D/UI/Talk_Right/Label".alreadyWrite = false
 		get_tree().paused = false
 		$"../../Camera2D/UI/Talk_Right/Label".type_text("")
-		$"../../Camera2D/UI".ShowInGameUI()
+		$"../../Camera2D/UI".ShowInGameUI()		
 
+	var player = get_tree().get_nodes_in_group("Patinhas")
+	if !player.is_empty() and $"../../Camera2D/UI/Talk_Right/Label".alreadyWrite:
+		if player[0].global_position.x - global_position.x >= 200:
+			$"../../Camera2D/UI/Talk_Right/Label".alreadyWrite = false
+	  
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Patinhas" and alreadyTalk == false:
 		self.alreadyTalk = true
