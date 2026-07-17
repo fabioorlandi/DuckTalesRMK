@@ -108,6 +108,7 @@ func DoFunction(body: Node2D) -> void:
 			await get_tree().create_timer(2.5).timeout
 			
 			AudioManager.stop_background_music()
+			AudioManager.process_mode = Node.PROCESS_MODE_INHERIT
 			
 			await get_tree().create_timer(2).timeout
 			
