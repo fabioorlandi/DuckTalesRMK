@@ -7,6 +7,7 @@
 script/source = "extends Marker2D
 
 func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
+	$Minecart.moving = false
 	$Minecart/Area2D.monitoring = true
 	$Minecart/CollisionPolygon2D.disabled = false
 	$Minecart/AnimatedSprite2D.visible = true
@@ -70,7 +71,7 @@ sprite_frames = SubResource("SpriteFrames_f0asi")
 animation = &"minecart"
 autoplay = "minecart"
 
-[node name="Area2D" type="Area2D" parent="Minecart" unique_id=2086199152 groups=["Minecart"]]
+[node name="Area2D" type="Area2D" parent="Minecart" unique_id=2086199152]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Minecart/Area2D" unique_id=36928397]
 position = Vector2(-1, -1)

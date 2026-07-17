@@ -30,6 +30,7 @@ func _on_die() -> void:
 		return
 	
 	can_hit_patinhas = false
+	
 	is_dead = true 
 	velocity = Vector2.ZERO
 	$AnimatedSprite2D.play("Die_Mummy")
