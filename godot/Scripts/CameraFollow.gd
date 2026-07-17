@@ -26,7 +26,7 @@ func _ready():
 func _process(delta):
 	CheckMinMax()
 	
-	if player and not onBoss:
+	if player and not onBoss and not player.dead:
 		# Camera follow in X
 		if isFixedCamera == false and onTransition == false:
 			if player.global_position.x < minX:
@@ -110,5 +110,8 @@ func TransitionCam(posUp: float, posDown: float, layer: int, block: bool) -> voi
 	isFixedCamera = true
 	onTransition = true
 	
-func TransitionBossSite() -> void:
+func TransitionInBossSite() -> void:
 	onBoss = true
+
+func TransitionOutBossSite() -> void:
+	onBoss = false

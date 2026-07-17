@@ -74,8 +74,6 @@ size = Vector2(5.6447678, 49.09293)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_pgjuh"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_f3uit"]
-
 [node name="MainNode" type="Node2D" unique_id=1058646140]
 process_mode = 3
 script = ExtResource("1_620js")
@@ -100,6 +98,11 @@ tile_set = SubResource("TileSet_63sgq")
 [node name="InvisibleBarrier" parent="." unique_id=1618907823 instance=ExtResource("6_t4jw2")]
 position = Vector2(-2, 369)
 scale = Vector2(1, 1.5)
+
+[node name="BossInvisibleBarrier" parent="." unique_id=1689886447 instance=ExtResource("6_t4jw2")]
+position = Vector2(1536, -352)
+scale = Vector2(1.5, 1.5)
+disabled = true
 
 [node name="Patinhas" parent="." unique_id=917563206 instance=ExtResource("3_deayw")]
 position = Vector2(62, 340)
@@ -597,11 +600,12 @@ spawnChest = true
 item_to_spawn = ExtResource("20_5yvvo")
 
 [node name="Boss_Area_Enter" type="Area2D" parent="LevelInteraction" unique_id=171627084]
-position = Vector2(1541, -346)
+position = Vector2(1408, -417.00003)
+scale = Vector2(11.3, 5)
 script = ExtResource("30_f2b0i")
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelInteraction/Boss_Area_Enter" unique_id=2121887603]
-position = Vector2(-68, -6)
 shape = SubResource("RectangleShape2D_o1twf")
 
 [node name="CameraColliders" type="Node2D" parent="." unique_id=2126482727]
@@ -1017,15 +1021,8 @@ item_to_spawn = ExtResource("20_5yvvo")
 isChest = true
 canIPogoAndAttack = true
 
-[node name="arenaBlock" type="CharacterBody2D" parent="." unique_id=747387167]
-position = Vector2(1536, -352)
-scale = Vector2(1.48, 1.5199902)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="arenaBlock" unique_id=1751808110 groups=["ArenaBlock"]]
-shape = SubResource("RectangleShape2D_f3uit")
-disabled = true
-
 [connection signal="body_entered" from="LevelInteraction/Boss_Area_Enter" to="LevelInteraction/Boss_Area_Enter" method="_on_body_entered"]
+[connection signal="body_exited" from="LevelInteraction/Boss_Area_Enter" to="LevelInteraction/Boss_Area_Enter" method="_on_body_exited"]
 [connection signal="body_entered" from="CameraColliders/camCol" to="CameraColliders/camCol" method="_on_body_entered"]
 [connection signal="body_entered" from="CameraColliders/camCol2" to="CameraColliders/camCol2" method="_on_body_entered"]
 [connection signal="body_entered" from="CameraColliders/camCol3" to="CameraColliders/camCol3" method="_on_body_entered"]
