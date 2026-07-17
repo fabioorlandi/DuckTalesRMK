@@ -37,6 +37,7 @@
 [ext_resource type="PackedScene" uid="uid://dj0doqnic8div" path="res://Itens/life_duck.tscn" id="25_y5hv7"]
 [ext_resource type="PackedScene" uid="uid://10slnqn82k85" path="res://Itens/health_star.tscn" id="26_r1eh8"]
 [ext_resource type="PackedScene" uid="uid://dhxidj128h1r0" path="res://Coffin.tscn" id="27_piond"]
+[ext_resource type="Script" uid="uid://sjbkg2nblocg" path="res://boss_area_enter.gd" id="30_f2b0i"]
 [ext_resource type="PackedScene" uid="uid://c0no7wuq2en61" path="res://spawn_fantasma.tscn" id="30_spb85"]
 [ext_resource type="PackedScene" uid="uid://c8by4hv38u7kb" path="res://Inimigo_Fantasma.tscn" id="31_txsse"]
 [ext_resource type="PackedScene" uid="uid://dteuqmbjdu3ta" path="res://boss_1.tscn" id="32_l5rbu"]
@@ -64,6 +65,9 @@ size = Vector2(107, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nkdbr"]
 size = Vector2(16, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o1twf"]
+size = Vector2(20, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1sa6h"]
 size = Vector2(5.6447678, 49.09293)
@@ -583,6 +587,14 @@ position = Vector2(1648, 112)
 spawnChest = true
 item_to_spawn = ExtResource("20_5yvvo")
 
+[node name="Boss_Area_Enter" type="Area2D" parent="LevelInteraction" unique_id=171627084]
+position = Vector2(1541, -346)
+script = ExtResource("30_f2b0i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelInteraction/Boss_Area_Enter" unique_id=2121887603]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_o1twf")
+
 [node name="CameraColliders" type="Node2D" parent="." unique_id=2126482727]
 
 [node name="camCol" type="Area2D" parent="CameraColliders" unique_id=80427989]
@@ -994,9 +1006,7 @@ item_to_spawn = ExtResource("20_5yvvo")
 isChest = true
 canIPogoAndAttack = true
 
-[node name="Boss_1" parent="." unique_id=1845184148 instance=ExtResource("32_l5rbu")]
-position = Vector2(1333, -351)
-
+[connection signal="body_entered" from="LevelInteraction/Boss_Area_Enter" to="LevelInteraction/Boss_Area_Enter" method="_on_body_entered"]
 [connection signal="body_entered" from="CameraColliders/camCol" to="CameraColliders/camCol" method="_on_body_entered"]
 [connection signal="body_entered" from="CameraColliders/camCol2" to="CameraColliders/camCol2" method="_on_body_entered"]
 [connection signal="body_entered" from="CameraColliders/camCol3" to="CameraColliders/camCol3" method="_on_body_entered"]
