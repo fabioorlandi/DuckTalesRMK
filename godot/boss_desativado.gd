@@ -10,6 +10,7 @@ func update(delta: float) -> void:
 		return
 	if actor.player_on_screen:
 		transitioned.emit(self, "decolando")
+
 func _physics_process(delta: float) -> void:
 	if actor.morrendo:
 		return

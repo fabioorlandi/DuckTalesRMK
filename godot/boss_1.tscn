@@ -123,6 +123,7 @@ sprite_frames = SubResource("SpriteFrames_f35cj")
 animation = &"Atirar"
 
 [node name="Label_State" type="Label" parent="." unique_id=1528068200]
+visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 

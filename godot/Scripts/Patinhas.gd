@@ -155,9 +155,8 @@ func start_invulnerability(ticks: int, allow_kill_enemies: bool = false):
 		self.add_collision_exception_with(enemy)
 
 func end_invulnerability():
-	if not dead :
-		if not $"../Camera2D".onBoss:
-			AudioManager.play_background_music(load(get_parent().currentLevelSong))
+	if not dead and not $"../Camera2D".onBoss:
+		AudioManager.play_background_music(load(get_parent().currentLevelSong))
 	
 	$CollisionArea2D.monitoring = true
 	
