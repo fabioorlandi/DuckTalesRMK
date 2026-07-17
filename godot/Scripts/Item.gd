@@ -100,6 +100,7 @@ func DoFunction(body: Node2D) -> void:
 		Item.red_diamond_G:
 			ui.AddScore(50000)
 		Item.stage_trophy:
+			self.visible = false
 			ui.AddScore(1000000)
 			await get_tree().create_timer(0.5).timeout
 			ui.AddToTotalScore()
@@ -116,7 +117,6 @@ func DoFunction(body: Node2D) -> void:
 		Item.ice_cream:
 			ui.ReceiveCure(1)
 	queue_free()
-
 
 func _check_wall_collision() -> void:
 	for i in range(get_slide_collision_count()):
